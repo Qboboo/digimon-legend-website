@@ -1,0 +1,224 @@
+<!-- digimon_legend_website/frontend/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>数码兽传说 - ORPG地图官网</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <!-- 预加载字体和图片 -->
+  <link rel="preload" href="fonts/ark-pixel-12px-proportional-zh_cn.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://i.postimg.cc/wxZdtM43/243cefdf84959ccd95036cdeb5630766.png" as="image">
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    /* 新增图片容器样式 */
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 60%; /* 控制宽高比 (3:5比例) */
+      overflow: hidden;
+      background: #f0f4ff;
+      border-radius: 8px;
+    }
+
+    /* 响应式图片样式 */
+    .responsive-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.3s ease;
+    }
+
+    .responsive-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* 保持像素风格 */
+    .image-container .pixel-border {
+      border-width: 3px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+    }
+
+    /* 不同方向的图片优化 */
+    .vertical-image {
+      object-position: center 20%;
+    }
+
+    .horizontal-image {
+      object-position: center 35%;
+    }
+
+    /* Custom style for the highlighted link */
+    .link-highlight {
+        color: #fefcbf; /* Light yellow to stand out */
+        text-decoration: underline;
+        display: inline-block; /* Allows transform */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .link-highlight:hover {
+        color: #ffffff; /* Brighter on hover */
+        transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <!-- 添加数码兽背景 -->
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+  <!-- 修改导航栏下方的邀请信息 -->
+  <div class="container mx-auto px-4 mb-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center bg-blue-500 text-white py-3 px-4 rounded-lg pixel-border animate-pulse">
+        <span class="text-xl md:text-2xl font-bold">游玩本图前请先下载<a href="guide-detail?id=xin-shou-xu-zhi-：-ru-he-you-wan-ben-tu" class="link-highlight mx-1">模型包</a>，否则无法正常显示数码兽相关模型</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="container mx-auto px-4">
+    <!-- 主要内容区域 -->
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center mb-6 text-blue-700">欢迎来到数码兽传说</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <img src="https://i.postimg.cc/wxZdtM43/243cefdf84959ccd95036cdeb5630766.png" alt="数码兽传说" class="w-full h-auto rounded-lg pixel-border mb-4">
+          <p class="text-sm md:text-base leading-relaxed">一款数码宝贝主题ORPG地图，收集、培养、进化你的数码兽伙伴，探索广阔的数码世界！</p>
+        </div>
+        <div>
+          <h3 class="text-2xl md:text-3xl text-blue-600 mb-5 font-bold tracking-wide text-center">更新公告</h3>
+          <ul class="space-y-3 md:space-y-4">
+            <li class="flex items-start justify-between">
+              <div class="flex items-start flex-1">
+                <span class="text-blue-500 mr-3 text-lg md:text-xl">▶</span>
+                <div class="flex-1">
+                  <div class="text-lg md:text-xl leading-loose md:leading-loose tracking-wide">2.5.9</div>
+                  <ul class="ml-4 mt-2 space-y-2 text-gray-700">
+                    <li class="flex items-start">
+                    <div class="flex items-start"></div>
+                      <span class="text-blue-500 mr-2 text-sm">•</span>
+                      <span class="text-sm md:text-base leading-relaxed">修复V仔虫虫相关Bug，当错误的数码兽在仓库时自动修正</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-blue-500 mr-2 text-sm">•</span>
+                      <span class="text-sm md:text-base leading-relaxed">优化IC锁镜头</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-blue-500 mr-2 text-sm">•</span>
+                      <span class="text-sm md:text-base leading-relaxed">恐蜂程序改为每次掉落1个</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-blue-500 mr-2 text-sm">•</span>
+                      <span class="text-sm md:text-base leading-relaxed">略微调整终千模型</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <span class="text-lg md:text-xl leading-loose md:leading-loose tracking-wide text-gray-600">2025-04-12</span>
+            </li>
+            <li class="flex items-start justify-between">
+              <div class="flex items-start">
+                <span class="text-blue-500 mr-3 text-lg md:text-xl">▶</span>
+                <a href="#version-2.5.8" class="text-lg md:text-xl leading-loose md:leading-loose tracking-wide hover:text-blue-500 transition-colors">2.5.8</a>
+              </div>
+              <span class="text-lg md:text-xl leading-loose md:leading-loose tracking-wide text-gray-600">2024-04-12</span>
+            </li>
+          </ul>
+        </div>
+    </section>
+
+    <!-- 三个展示模块 -->
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- 最新数码兽卡片 -->
+        <div class="bg-blue-100 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-lg text-center mb-3 text-blue-800">最新数码兽</h3>
+          <div class="image-container">
+            <img 
+              src="https://digimon.net/cimages/digimon/zeedmillenniumon.jpg" 
+              alt="最新数码兽"
+              class="responsive-image pixel-border vertical-image"
+              loading="lazy"
+            >
+          </div>
+          <p class="text-xs text-center mt-2">最终千年兽</p>
+        </div>
+        
+        <!-- 热门攻略卡片 -->
+        <div class="bg-blue-50 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-lg text-center mb-3 text-blue-800">热门攻略</h3>
+          <div class="image-container">
+            <img 
+              src="https://digimon.net/cimages/top/bnr/176_pc.jpg" 
+              alt="热门攻略"
+              class="responsive-image pixel-border horizontal-image"
+              loading="lazy"
+            >
+          </div>
+          <p class="text-xs text-center mt-2">新手攻略</p>
+        </div>
+        
+        <!-- 最新装备卡片 -->
+        <div class="bg-blue-100 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-lg text-center mb-3 text-blue-800">最新装备</h3>
+          <div class="image-container">
+            <img 
+              src="https://i.postimg.cc/hvMT6Zbn/image.png" 
+              alt="最新装备"
+              class="responsive-image pixel-border"
+              loading="lazy"
+            >
+          </div>
+          <p class="text-xs text-center mt-2">邪神系列</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p>© 2025 数码兽传说ORPG地图</p>
+        <p>作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 等待DOM加载完成
+    document.addEventListener('DOMContentLoaded', function() {
+      // 设置当前日期
+      document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+    });
+  </script>
+</body>
+</html>

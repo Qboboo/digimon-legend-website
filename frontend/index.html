@@ -1,0 +1,393 @@
+<!-- digimon_legend_website/frontend/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>数码兽传说 - ORPG地图官网</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <!-- 预加载字体和图片 -->
+  <link rel="preload" href="fonts/ark-pixel-12px-proportional-zh_cn.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="https://i.postimg.cc/wxZdtM43/243cefdf84959ccd95036cdeb5630766.png" as="image">
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    /* 新增图片容器样式 */
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 60%; /* 控制宽高比 (3:5比例) */
+      overflow: hidden;
+      background: #f0f4ff;
+      border-radius: 8px;
+    }
+
+    /* 响应式图片样式 */
+    .responsive-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .responsive-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* 保持像素风格 */
+    .image-container .pixel-border {
+      border-width: 3px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+    }
+
+    /* 不同方向的图片优化 */
+    .vertical-image {
+      object-position: center 20%;
+    }
+
+    .horizontal-image {
+      object-position: center 35%;
+    }
+
+    /* Custom style for the highlighted link */
+    .link-highlight {
+        color: #fefcbf; /* Light yellow to stand out */
+        text-decoration: underline;
+        display: inline-block; /* Allows transform */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .link-highlight:hover {
+        color: #ffffff; /* Brighter on hover */
+        transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <!-- 添加数码兽背景 -->
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+  <!-- 修改导航栏下方的邀请信息 -->
+  <div class="container mx-auto px-4 mb-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center bg-blue-500 text-white py-3 px-4 rounded-lg pixel-border animate-pulse">
+        <span class="text-xl md:text-2xl font-bold">游玩本图前请先下载<a href="guide-detail?id=xin-shou-xu-zhi-：-ru-he-you-wan-ben-tu" class="link-highlight mx-1">模型包</a>，否则无法正常显示数码兽相关模型</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="container mx-auto px-4">
+    <!-- 主要内容区域 -->
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-6">
+        <!-- 左侧图文模块 -->
+        <div class="flex flex-col w-full md:w-1/2">
+          <h3 class="text-xl md:text-2xl text-blue-700 mb-4 tracking-wide text-center">欢迎来到数码兽传说</h3>
+          <div class="flex flex-col flex-grow">
+            <div class="image-container mb-4 pixel-border aspect-video">
+              <img src="js/data/guides/src/guide/boss/Lucemon/456.png" alt="数码兽传说" class="responsive-image">
+            </div>
+            <p class="text-sm md:text-base leading-relaxed mt-auto">一款数码宝贝主题ORPG地图，收集、培养、进化你的数码兽伙伴，探索广阔的数码世界！</p>
+          </div>
+        </div>
+        <!-- 右侧活动模块 -->
+        <div class="flex flex-col w-full md:w-1/2">
+          <h3 class="text-xl md:text-2xl text-blue-700 mb-4 tracking-wide text-center">最新活动</h3>
+          <div class="flex flex-col flex-grow">
+            <div class="image-container pixel-border relative aspect-video mb-4">
+              <div id="activities-carousel" class="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg">
+                <!-- Carousel slides will be injected here -->
+              </div>
+            </div>
+            <div id="carousel-controls" class="flex justify-center items-center mt-auto space-x-2">
+              <button id="prev-btn" class="bg-blue-500 text-white rounded-full p-1 hover:bg-blue-600 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <div id="carousel-indicators" class="flex items-center space-x-2"></div>
+              <button id="next-btn" class="bg-blue-500 text-white rounded-full p-1 hover:bg-blue-600 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三个展示模块 -->
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- 最新数码兽卡片 -->
+        <div class="bg-blue-100 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-lg text-center mb-3 text-blue-800">最新数码兽</h3>
+          <div class="image-container">
+            <a href="digimon.html">
+            <img 
+              src="js/data/guides/src/digimon/GAZIMON/zeedmillenniumon-1751195728415.webp" 
+              alt="最新数码兽"
+                class="responsive-image pixel-border vertical-image"
+              >
+            </a>
+          </div>
+          <p class="text-xs text-center mt-2">最终千年兽</p>
+        </div>
+
+        <div class="bg-blue-100 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-lg text-center mb-3 text-blue-800">最新装备</h3>
+          <div class="image-container">
+            <a href="equipment.html">
+              <img 
+                src="js/data/guides/src/equipment/ZQ/BTNshijianbeilun-1751692416594.png" 
+                alt="最新装备"
+                class="responsive-image pixel-border"
+                loading="lazy"
+              >
+            </a>
+          </div>
+          <p class="text-xs text-center mt-2">邪神系列</p>
+        </div>
+
+        <!-- 新手推荐卡片 -->
+        <div class="bg-blue-100 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-lg text-center mb-3 text-blue-800">新手推荐</h3>
+          <div class="image-container">
+            <a href="guide.html">
+              <img 
+                src="js/data/guides/src/guide/boss/Lucemon/img_kv_09.png" 
+                alt="新手攻略"
+                class="responsive-image pixel-border"
+                loading="lazy"
+              >
+            </a>
+          </div>
+          <p class="text-xs text-center mt-2">新手攻略</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 新增：独立的更新日志模块 -->
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center mb-6 text-blue-700">更新公告</h2>
+      <div id="homepage-changelog-container" class="space-y-4">
+        <ul class="space-y-3 md:space-y-4" id="homepage-changelog-list">
+          <!-- Changelog will be dynamically loaded here -->
+        </ul>
+        <div class="text-center mt-6">
+          <a href="changelog.html" class="inline-block bg-blue-500 text-white font-bold py-2 px-6 rounded-lg pixel-border hover:bg-blue-600 transition-all duration-300">
+            查看历史更新 →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p>© 2025 数码兽传说ORPG地图</p>
+        <p>作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 设置当前日期
+      document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+
+      // 监听数据加载完成事件
+      document.addEventListener('dataLoaded', () => {
+        // 现在轮播是静态的，数据加载后只需要渲染日志
+        renderHomepageChangelog();
+      });
+
+      // 页面加载后直接渲染静态轮播和动态日志
+      renderActivitiesCarousel();
+      // 如果changelog数据已加载，也渲染它
+      if (window.getChangelogData) {
+        renderHomepageChangelog();
+      }
+    });
+
+    // 渲染最新活动轮播（现在是静态配置）
+    function renderActivitiesCarousel() {
+      const carouselContainer = document.getElementById('activities-carousel');
+      const indicatorsContainer = document.getElementById('carousel-indicators');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+
+      if (!carouselContainer || !indicatorsContainer || !prevBtn || !nextBtn) return;
+      
+      // =================================================================
+      // 在这里手动配置您的活动轮播内容
+      // =================================================================
+      const activities = [
+        {
+          title: '带来破灭的终极邪神',
+          imageUrl: 'js/data/guides/src/guide/boss/Lucemon/123.png',
+          linkUrl: 'guide-detail.html?slug=fu-ben-gong-lüe-7：-ao-man-de-mo-wang'
+        },
+        {
+          title: '暗黑之骑士',
+          imageUrl: 'js/data/guides/src/guide/boss/Chaosdukemon/image013.webp',
+          linkUrl: 'guide-detail.html?slug=fu-ben-gong-lüe-6：-an-hei-zhi-qi-shi'
+        },
+        {
+          title: '最终龙魂试炼',
+          imageUrl: 'js/data/guides/src/guide/boss/Medievaldukemon/image008.webp',
+          linkUrl: 'guide-detail.html?slug=fu-ben-gong-lüe-5：-zui-zhong-long-hun-shi-lian'
+        }
+        // 您可以按上面的格式添加更多活动...
+        // {
+        //   title: '新活动标题',
+        //   imageUrl: '图片的URL',
+        //   linkUrl: '点击后跳转的URL'
+        // },
+      ];
+      // =================================================================
+
+      if (activities.length === 0) {
+        carouselContainer.parentElement.innerHTML = '<p class="text-center text-gray-500">暂无最新活动。</p>';
+        return;
+      }
+
+      carouselContainer.innerHTML = '';
+      indicatorsContainer.innerHTML = '';
+
+      activities.forEach((activity, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out';
+        slide.style.opacity = index === 0 ? '1' : '0';
+        slide.innerHTML = `
+          <a href="${activity.linkUrl}" class="block w-full h-full">
+            <img src="${activity.imageUrl}" class="w-full h-full object-fill" alt="${activity.title}">
+            <div class="absolute bottom-0 left-0 w-full p-2 bg-black bg-opacity-50">
+              <h3 class="text-white text-lg font-bold text-center">${activity.title}</h3>
+            </div>
+          </a>
+        `;
+        carouselContainer.appendChild(slide);
+
+        const indicator = document.createElement('button');
+        indicator.className = `w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-blue-600' : 'bg-gray-400'}`;
+        indicator.dataset.index = index;
+        indicatorsContainer.appendChild(indicator);
+      });
+      
+      let currentIndex = 0;
+      const slides = Array.from(carouselContainer.children).filter(el => el.tagName === 'DIV');
+      const indicators = indicatorsContainer.querySelectorAll('button');
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.style.opacity = i === index ? '1' : '0';
+        });
+        indicators.forEach((ind, i) => {
+          ind.className = `w-3 h-3 rounded-full transition-all duration-300 ${i === index ? 'bg-blue-600' : 'bg-gray-400'}`;
+        });
+        currentIndex = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentIndex + 1) % slides.length);
+      }
+
+      prevBtn.addEventListener('click', () => {
+        showSlide((currentIndex - 1 + slides.length) % slides.length);
+      });
+      nextBtn.addEventListener('click', nextSlide);
+
+      indicators.forEach(ind => ind.addEventListener('click', () => showSlide(parseInt(ind.dataset.index))));
+
+      setInterval(nextSlide, 5000);
+    }
+
+    // 动态加载更新日志
+    function renderHomepageChangelog() {
+      const container = document.getElementById('homepage-changelog-list');
+      if (!container) return;
+
+      const changelogData = window.getChangelogData ? window.getChangelogData() : [];
+      if (!changelogData || changelogData.length === 0) {
+        container.innerHTML = '<li><p class="text-center text-gray-500">暂无更新日志。</p></li>';
+        return;
+      }
+
+      const compareVersions = (v1, v2) => {
+        const parts1 = v1.split('.').map(Number);
+        const parts2 = v2.split('.').map(Number);
+        const len = Math.max(parts1.length, parts2.length);
+        for (let i = 0; i < len; i++) {
+          const p1 = parts1[i] || 0;
+          const p2 = parts2[i] || 0;
+          if (p1 > p2) return 1;
+          if (p1 < p2) return -1;
+        }
+        return 0;
+      };
+      
+      const latestChanges = changelogData.sort((a, b) => compareVersions(b.version, a.version)).slice(0, 2);
+      
+      container.innerHTML = '';
+
+      latestChanges.forEach(item => {
+        const changesHtml = item.changes.map(change => `
+          <li class="flex items-start">
+            <span class="text-blue-500 mr-2 text-sm">•</span>
+            <span class="text-sm md:text-base leading-relaxed">${change}</span>
+          </li>
+        `).join('');
+
+        const listItem = document.createElement('li');
+        listItem.className = 'flex items-start justify-between';
+        listItem.innerHTML = `
+          <div class="flex items-start flex-1">
+            <span class="text-blue-500 mr-3 text-lg md:text-xl">▶</span>
+            <div class="flex-1">
+              <div class="text-lg md:text-xl leading-loose md:leading-loose tracking-wide">${item.version}</div>
+              <ul class="ml-4 mt-2 space-y-2 text-gray-700">
+                ${changesHtml}
+              </ul>
+            </div>
+          </div>
+          <span class="text-lg md:text-xl leading-loose md:leading-loose tracking-wide text-gray-600">${item.date}</span>
+        `;
+        container.appendChild(listItem);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!-- digimon_legend_website/frontend/changelog.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>更新日志 - 数码兽传说</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    /* 更新日志折叠样式 */
+    .changelog-banner {
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 3px solid #4a5568;
+      padding: 0.75rem 1.25rem; /* Reduced padding */
+      margin-bottom: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+      border-radius: 0.75rem;
+      position: relative;
+    }
+
+    .changelog-banner:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 8px 10px 0 rgba(0,0,0,0.2);
+    }
+    
+    .changelog-content {
+      /* Base styles */
+      margin: -0.5rem 0 1.5rem 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid #e2e8f0;
+      border-top: none;
+      border-radius: 0 0 0.75rem 0.75rem;
+      
+      /* Animation properties */
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 0;
+      padding-bottom: 0;
+      transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding-top 0.4s ease-in-out, padding-bottom 0.4s ease-in-out;
+    }
+
+    .changelog-content.open {
+      max-height: 500px; /* Adjust if content can be longer */
+      opacity: 1;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .arrow-icon {
+      transition: transform 0.3s ease;
+      font-size: 1.5rem;
+    }
+
+    .arrow-icon.open {
+      transform: rotate(90deg);
+    }
+
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 flex-grow">
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center mb-6 text-blue-700">更新日志</h2>
+      
+      <!-- Search input -->
+      <div class="mb-6">
+        <input type="text" id="changelog-search" placeholder="搜索版本号或更新内容..." 
+               class="w-full px-4 py-3 rounded-lg text-lg pixel-border focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+      </div>
+      
+      <div class="space-y-4" id="changelog-list">
+        <!-- 更新日志将通过JavaScript动态加载 -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p>© 2025 数码兽传说ORPG地图</p>
+        <p>作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- 引入数据文件 -->
+  <script src="js/data.js"></script>
+  
+  <script>
+    // 设置当前日期
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('changelog-list');
+      const searchInput = document.getElementById('changelog-search');
+      let allChangelogData = [];
+
+      // 渲染更新日志
+      function renderChangelog(filter = '') {
+        if (!container) return;
+        
+        container.innerHTML = '';
+        const lowerCaseFilter = filter.toLowerCase();
+
+        const filteredData = allChangelogData.filter(item => {
+          if (item.version.toLowerCase().includes(lowerCaseFilter)) {
+            return true;
+          }
+          return item.changes.some(change => change.toLowerCase().includes(lowerCaseFilter));
+        });
+        
+        if (filteredData.length === 0) {
+          container.innerHTML = '<p class="text-center text-gray-500">没有找到匹配的更新日志。</p>';
+          return;
+        }
+
+        // 遍历数据生成更新日志
+        filteredData.forEach((item, index) => {
+          const changelogItem = document.createElement('div');
+          changelogItem.className = 'changelog-item';
+
+          const banner = document.createElement('div');
+          banner.className = 'changelog-banner';
+          banner.innerHTML = `
+            <h3 class="text-lg font-bold">${item.version}</h3>
+            <div class="flex items-center gap-4">
+              <span class="text-sm text-blue-500 font-semibold">${item.date}</span>
+              <span class="arrow-icon">▶</span>
+            </div>
+          `;
+
+          const content = document.createElement('div');
+          content.className = 'changelog-content';
+          content.id = `changelog-content-${index}`;
+
+          const list = document.createElement('ul');
+          list.className = 'list-disc list-inside space-y-2 text-gray-700';
+          
+          item.changes.forEach(change => {
+            const listItem = document.createElement('li');
+            listItem.textContent = change;
+            list.appendChild(listItem);
+          });
+
+          content.appendChild(list);
+          changelogItem.appendChild(banner);
+          changelogItem.appendChild(content);
+          
+          container.appendChild(changelogItem);
+
+          // 添加点击事件
+          banner.addEventListener('click', () => {
+            const isOpen = content.classList.toggle('open');
+            banner.querySelector('.arrow-icon').classList.toggle('open');
+            banner.querySelector('.arrow-icon').textContent = isOpen ? '▼' : '▶';
+          });
+        });
+      }
+
+      function initialLoad() {
+        allChangelogData = window.getChangelogData ? window.getChangelogData() : [];
+
+        if (!allChangelogData || allChangelogData.length === 0) {
+            renderChangelog(); // Will show "no logs" message
+            return;
+        }
+
+        const compareVersions = (v1, v2) => {
+            const parts1 = v1.split('.').map(Number);
+            const parts2 = v2.split('.').map(Number);
+            const len = Math.max(parts1.length, parts2.length);
+            for (let i = 0; i < len; i++) {
+                const p1 = parts1[i] || 0;
+                const p2 = parts2[i] || 0;
+                if (p1 > p2) return 1;
+                if (p1 < p2) return -1;
+            }
+            return 0;
+        };
+        
+        allChangelogData.sort((a, b) => compareVersions(b.version, a.version));
+        
+        renderChangelog();
+      }
+      
+      // 监听数据加载完成事件
+      document.addEventListener('dataLoaded', initialLoad);
+
+      // 如果数据已存在，直接渲染
+      if (window.changelogData) {
+          initialLoad();
+      }
+
+      // 添加搜索事件
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          renderChangelog(e.target.value);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
