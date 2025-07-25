@@ -1,0 +1,3892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>攻略管理后台</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+  <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+  <script src="js/lib/marked.min.js"></script>
+  <script src="js/lib/Sortable.min.js"></script>
+  <script src="js/lib/pinyin-pro.js"></script>
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    body,
+    h1, h2, h3, h4, h5, h6,
+    button, input, select, textarea {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    .EasyMDEContainer .editor-toolbar {
+      position: -webkit-sticky;
+      position: sticky;
+      top: -1px; /* Use a small negative value to prevent jittering on some browsers */
+      background: white;
+      z-index: 10;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .expand-on-focus {
+        resize: none;
+        overflow: hidden;
+        height: 38px; /* Match default Tailwind input height */
+        white-space: nowrap; /* Prevent text wrapping when not focused */
+        transition: height 0.15s ease-out;
+    }
+    .expand-on-focus:focus {
+        white-space: normal; /* Allow text wrapping when focused */
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <header class="bg-blue-600 text-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">后台管理系统</h1>
+      <div>
+        <a href="index.html" target="_blank" class="text-sm hover:underline mr-4">返回网站首页</a>
+        <button id="logout-btn" class="text-sm hover:underline">登出</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- Tab navigation -->
+    <div class="mb-4 border-b border-gray-200">
+      <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+        <button id="tab-guides" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-blue-500 text-blue-600">
+          攻略管理
+        </button>
+        <button id="tab-digimon" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+          数码兽管理
+        </button>
+        <button id="tab-evolutions" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+          进化路线管理
+        </button>
+        <button id="tab-equipment" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+          装备管理
+        </button>
+        <button id="tab-changelog" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+          日志管理
+        </button>
+        <button id="tab-item-guide" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+          综合图鉴管理
+        </button>
+        <button id="tab-synthesis" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+          合成管理
+        </button>
+      </nav>
+    </div>
+
+    <!-- Guides Management Panel -->
+    <div id="panel-guides">
+      <div class="flex justify-between items-center mb-4">
+        <div>
+          <button id="view-active-btn" class="bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded-l-lg focus:outline-none">当前攻略</button>
+          <button id="view-trashed-btn" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-r-lg hover:bg-blue-600 focus:outline-none">回收站</button>
+        </div>
+        <button id="new-guide-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded shadow-lg">
+          + 创建新攻略
+        </button>
+      </div>
+
+      <div class="mb-4">
+        <input type="text" id="guides-search" placeholder="搜索攻略标题或slug..." class="w-full md:w-1/3 px-3 py-2 border rounded-md shadow-sm">
+      </div>
+
+      <!-- 攻略列表 -->
+      <div id="guides-list" class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="p-4 border-b">
+          <h2 id="list-title" class="text-xl font-semibold">当前攻略</h2>
+        </div>
+        <table class="min-w-full">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">标题</th>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">状态</th>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">分类</th>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">更新日期</th>
+              <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+            </tr>
+          </thead>
+          <tbody id="guides-table-body">
+            <!-- 动态加载 -->
+          </tbody>
+        </table>
+      </div>
+      <div id="guides-pagination-controls" class="flex justify-center mt-4"></div>
+    </div>
+
+    <!-- Digimon Management Panel (Initially Hidden) -->
+    <div id="panel-digimon" class="hidden">
+      <!-- Digimon List Section -->
+      <div class="bg-white rounded-lg shadow overflow-hidden mb-8">
+        <div class="p-4 border-b flex justify-between items-center">
+          <h2 class="text-xl font-semibold">数码兽列表</h2>
+          <button id="add-digimon-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow-lg">
+            + 添加新数码兽
+          </button>
+        </div>
+        <div class="p-4">
+          <input type="text" id="digimon-search" placeholder="搜索数码兽名称或ID..." class="w-full md:w-1/3 px-3 py-2 border rounded-md shadow-sm">
+        </div>
+        <table class="min-w-full">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">ID</th>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">名称</th>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">操作</th>
+            </tr>
+          </thead>
+          <tbody id="digimon-table-body">
+            <!-- Digimon data will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+      <div id="digimon-pagination-controls" class="flex justify-center mt-4"></div>
+    </div>
+
+    <!-- Evolution Management Panel (Initially Hidden) -->
+    <div id="panel-evolutions" class="hidden">
+      <!-- Evolution List Section -->
+      <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="p-4 border-b flex justify-between items-center">
+          <h2 class="text-xl font-semibold">进化路线列表</h2>
+          <button id="add-evolution-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded shadow-lg">
+            + 添加新进化路线
+          </button>
+        </div>
+        <div class="p-4">
+          <input type="text" id="evolution-search" placeholder="搜索路线名称或ID..." class="w-full md:w-1/3 px-3 py-2 border rounded-md shadow-sm">
+        </div>
+        <table class="min-w-full">
+          <thead>
+            <tr>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">路线ID</th>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">路线名称</th>
+              <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">操作</th>
+            </tr>
+          </thead>
+          <tbody id="evolutions-table-body">
+            <!-- Evolution data will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+      <div id="evolutions-pagination-controls" class="flex justify-center mt-4"></div>
+    </div>
+
+    <!-- Equipment Management Panel -->
+    <div id="panel-equipment" class="hidden">
+      <div class="bg-white rounded-lg shadow overflow-hidden mb-8">
+        <div class="p-4 border-b flex justify-between items-center">
+            <h2 class="text-xl font-semibold">副本装备管理</h2>
+            <div class="flex items-center gap-4">
+              <div id="equipment-search-container" class="flex-grow">
+                <input type="text" id="equipment-search-input" placeholder="搜索装备名称、类型..." class="w-full md:w-80 px-3 py-2 border rounded-md shadow-sm">
+              </div>
+              <button id="add-dungeon-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded shadow-lg">
+                + 添加新副本
+              </button>
+            </div>
+        </div>
+        
+        <div id="equipment-dungeon-list">
+            <table class="min-w-full">
+              <thead>
+                <tr>
+                  <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">副本ID</th>
+                  <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">副本名称</th>
+                  <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">套装数量</th>
+                  <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">操作</th>
+                </tr>
+              </thead>
+              <tbody id="equipment-table-body">
+                <!-- Equipment data will be loaded here -->
+              </tbody>
+            </table>
+        </div>
+
+        <div id="equipment-search-results" class="hidden">
+            <!-- Search results will be populated here -->
+        </div>
+
+      </div>
+      <div id="equipment-pagination-controls" class="flex justify-center mt-4"></div>
+    </div>
+
+    <!-- Changelog Management Panel -->
+    <div id="panel-changelog" class="hidden">
+      <!-- Changelog Management Panel (Existing) -->
+      <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold">日志管理</h3>
+          <button id="add-changelog-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              添加新日志
+          </button>
+      </div>
+      <div class="overflow-x-auto">
+          <table class="min-w-full bg-white">
+              <thead class="bg-gray-200">
+                  <tr>
+                      <th class="py-2 px-4">版本</th>
+                      <th class="py-2 px-4">日期</th>
+                      <th class="py-2 px-4">操作</th>
+                  </tr>
+              </thead>
+              <tbody id="changelog-table-body">
+                  <!-- Changelog rows will be injected here -->
+              </tbody>
+          </table>
+      </div>
+      <div id="changelog-pagination-controls" class="flex justify-center mt-4">
+        <!-- Pagination controls will be injected here -->
+      </div>
+    </div>
+    
+    <!-- Item Guide Management Panel -->
+    <div id="panel-item-guide" class="hidden">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">综合图鉴管理</h3>
+        <button id="add-item-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          添加新道具
+        </button>
+      </div>
+      <div class="mb-4">
+        <input type="text" id="item-guide-search" placeholder="搜索道具名称或ID..." class="w-full md:w-1/3 px-3 py-2 border rounded-md shadow-sm">
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="py-2 px-4">图片</th>
+              <th class="py-2 px-4">名称</th>
+              <th class="py-2 px-4">分类</th>
+              <th class="py-2 px-4">操作</th>
+            </tr>
+          </thead>
+          <tbody id="item-guide-table-body">
+            <!-- Item rows will be injected here -->
+          </tbody>
+        </table>
+      </div>
+      <div id="item-guide-pagination-controls" class="flex justify-center mt-4"></div>
+    </div>
+
+    <!-- Synthesis Management Panel -->
+    <div id="panel-synthesis" class="hidden">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">合成配方管理</h3>
+        <button id="add-synthesis-recipe-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          创建新配方
+        </button>
+      </div>
+      <div class="mb-4">
+        <input type="text" id="synthesis-search" placeholder="搜索目标装备名称..." class="w-full md:w-1/3 px-3 py-2 border rounded-md shadow-sm">
+      </div>
+      <div class="overflow-x-auto bg-white rounded-lg shadow">
+        <table class="min-w-full">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="py-3 px-6 text-left">目标装备</th>
+              <th class="py-3 px-6 text-left">所需材料</th>
+              <th class="py-3 px-6 text-center">操作</th>
+            </tr>
+          </thead>
+          <tbody id="synthesis-table-body">
+            <!-- Synthesis recipes will be injected here -->
+          </tbody>
+        </table>
+      </div>
+      <div id="synthesis-pagination-controls" class="flex justify-center mt-4"></div>
+    </div>
+  </main>
+
+  <!-- 编辑/新建模态框 -->
+  <div id="editor-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 p-8 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl w-full max-h-full flex flex-col">
+      <h2 id="modal-title" class="text-2xl font-bold p-6 pb-4">创建新攻略</h2>
+      <form id="guide-form" class="flex-1 flex flex-col min-h-0">
+        
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 px-6 overflow-y-auto">
+          <input type="hidden" id="guide-slug-hidden">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-4 p-4 border rounded-md">
+            <!-- Left Column: All text/select inputs -->
+            <div class="space-y-4">
+              <div>
+                <label for="title" class="block text-sm font-medium text-gray-700">标题</label>
+                <input type="text" id="title" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              </div>
+              <div>
+                <label for="slug" class="block text-sm font-medium text-gray-700">URL标识 (Slug)</label>
+                <input type="text" id="slug" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm bg-gray-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="由标题自动生成...">
+              </div>
+              <div>
+                <label for="category" class="block text-sm font-medium text-gray-700">分类</label>
+                <select id="category" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  <option value="gameplay">玩法攻略</option>
+                  <option value="area">区域攻略</option>
+                  <option value="boss">BOSS攻略</option>
+                </select>
+              </div>
+              <div>
+                <label for="difficulty" class="block text-sm font-medium text-gray-700">难度</label>
+                <input type="text" id="difficulty" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="例如: 新手, 中级, 高级">
+              </div>
+            </div>
+            <!-- Middle Column: Summary textarea -->
+            <div class="flex flex-col">
+              <label for="summary" class="block text-sm font-medium text-gray-700">摘要</label>
+              <textarea id="summary" rows="10" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 flex-grow"></textarea>
+            </div>
+            <!-- Right Column: TOC Preview -->
+            <div class="hidden md:flex md:flex-col">
+              <label class="block text-sm font-medium text-gray-700">目录预览</label>
+              <div id="toc-preview" class="mt-1 border p-3 bg-gray-50 overflow-y-auto rounded-md flex-grow">
+                  <ul id="toc-preview-list" class="text-sm p-0 space-y-1" style="list-style: none;"></ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">内容格式</label>
+            <div class="mt-2 flex items-center space-x-4">
+              <div class="flex items-center">
+                <input id="contentTypeMarkdown" name="contentType" type="radio" value="markdown" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                <label for="contentTypeMarkdown" class="ml-2 block text-sm text-gray-900">Markdown</label>
+              </div>
+              <div class="flex items-center">
+                <input id="contentTypeHtml" name="contentType" type="radio" value="html" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                <label for="contentTypeHtml" class="ml-2 block text-sm text-gray-900">HTML</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-1 flex flex-col min-h-0 mb-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+                  <div class="md:col-span-1 flex flex-col min-h-0">
+                      <label for="content-editor" class="text-center text-sm font-medium text-gray-700 mb-1">内容</label>
+                      <textarea id="content-editor"></textarea>
+                  </div>
+                  <div class="md:col-span-1 flex flex-col min-h-0">
+                      <label class="text-center text-sm font-medium text-gray-700 mb-1">实时预览</label>
+                      <div id="content-preview" class="max-w-none border p-4 bg-gray-50 h-full overflow-y-auto rounded-md"></div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Sticky Footer with Buttons -->
+        <div class="flex-shrink-0 flex justify-end gap-4 px-6 py-4 border-t">
+          <button type="button" id="cancel-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">取消</button>
+          <button type="button" id="save-draft-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">存为草稿</button>
+          <button type="submit" id="publish-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">发布</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Digimon Editor Modal -->
+  <div id="digimon-editor-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 p-8 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-4xl mx-auto h-full flex flex-col">
+      <h2 id="digimon-modal-title" class="text-2xl font-bold mb-4">编辑数码兽</h2>
+      <form id="digimon-form" class="flex-1 flex flex-col min-h-0 space-y-4">
+        <input type="hidden" id="digimon-id-hidden">
+        
+        <!-- Basic Info -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="digimon-id" class="block text-sm font-medium text-gray-700">ID</label>
+            <input type="text" id="digimon-id" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          </div>
+          <div>
+            <label for="digimon-name" class="block text-sm font-medium text-gray-700">名称</label>
+            <input type="text" id="digimon-name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          </div>
+          <div>
+            <label for="digimon-positioning" class="block text-sm font-medium text-gray-700">定位</label>
+            <input type="text" id="digimon-positioning" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          </div>
+        </div>
+
+        <div>
+          <label for="digimon-image" class="block text-sm font-medium text-gray-700">图片URL</label>
+          <div class="mt-1 flex rounded-md shadow-sm">
+            <input type="text" id="digimon-image" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300">
+            <button type="button" onclick="this.nextElementSibling.click()" class="relative inline-flex items-center space-x-2 px-4 py-2 border border-l-0 border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
+              <span>上传</span>
+            </button>
+            <input type="file" style="display:none;" accept="image/*" onchange="handleAssetUpload(event, 'digimon-image', false, false)">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div>
+            <label for="digimon-type" class="block text-sm font-medium text-gray-700">Type</label>
+            <input type="text" id="digimon-type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+          </div>
+          <div>
+            <label for="digimon-armor" class="block text-sm font-medium text-gray-700">Armor</label>
+            <input type="text" id="digimon-armor" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+          </div>
+          <div>
+            <label for="digimon-fit" class="block text-sm font-medium text-gray-700">Fit</label>
+            <input type="text" id="digimon-fit" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+          </div>
+          <div>
+            <label for="digimon-egg" class="block text-sm font-medium text-gray-700">Egg</label>
+            <input type="text" id="digimon-egg" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+          </div>
+           <div>
+            <label for="digimon-time" class="block text-sm font-medium text-gray-700">Time</label>
+            <input type="text" id="digimon-time" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+          </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="border-t pt-4 flex-1 flex flex-col min-h-0">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-lg font-medium">技能</h3>
+            <button type="button" id="add-skill-btn" class="bg-blue-500 text-white px-3 py-1 rounded text-sm">添加技能</button>
+          </div>
+          <div id="skills-container" class="space-y-3 overflow-y-auto pr-2 flex-1">
+            <!-- Skills will be dynamically added here -->
+          </div>
+        </div>
+        
+        <div class="flex justify-end gap-4 pt-4 border-t">
+          <button type="button" id="cancel-digimon-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">取消</button>
+          <button type="submit" id="save-digimon-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="evolution-editor-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 p-4 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-full h-full overflow-y-auto">
+      <div class="flex justify-between items-center sticky top-0 bg-white py-2 -mx-6 px-6 mb-4 z-10 border-b">
+        <h2 id="evolution-modal-title" class="text-2xl font-bold">编辑进化路线</h2>
+        <button type="button" id="cancel-evolution-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded">关闭</button>
+      </div>
+      <form id="evolution-form" class="space-y-4">
+        <input type="hidden" id="evolution-id-hidden">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="evolution-id" class="block text-sm font-medium text-gray-700">路线ID</label>
+            <input type="text" id="evolution-id" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="例如: evolution-1">
+          </div>
+          <div>
+            <label for="evolution-title" class="block text-sm font-medium text-gray-700">路线名称</label>
+            <input type="text" id="evolution-title" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          </div>
+        </div>
+
+        <!-- Card and Main Data Section -->
+        <div class="border-y py-4 my-4 space-y-4">
+            <div class="p-3 bg-gray-50 rounded-md border space-y-3">
+                <h4 class="font-semibold text-gray-600">内容页卡片数据</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="evolution-card-name" class="block text-sm font-medium text-gray-700">卡片名称</label>
+                        <input type="text" id="evolution-card-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-sm" placeholder="例如: 基尔兽">
+                    </div>
+                    <div>
+                        <label for="evolution-card-image" class="block text-sm font-medium text-gray-700">卡片图片 URL</label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                          <input type="text" id="evolution-card-image" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300">
+                          <button type="button" onclick="this.nextElementSibling.click()" class="relative inline-flex items-center space-x-2 px-4 py-2 border border-l-0 border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">上传</button>
+                          <input type="file" style="display:none;" accept="image/*" multiple onchange="handleAssetUpload(event, 'evolution-card-evoimages', true, true)">
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="evolution-card-evonames" class="block text-sm font-medium text-gray-700">卡片进化名称 (逗号分隔)</label>
+                        <input type="text" id="evolution-card-evonames" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-sm" placeholder="名称1,名称2,...">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="evolution-card-evoimages" class="block text-sm font-medium text-gray-700">卡片进化图片 (逗号分隔)</label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                          <input type="text" id="evolution-card-evoimages" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300">
+                          <button type="button" onclick="this.nextElementSibling.click()" class="relative inline-flex items-center space-x-2 px-4 py-2 border border-l-0 border-gray-300 text-sm font-medium rounded-r-md text-gray-700 bg-gray-50 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">上传</button>
+                          <input type="file" style="display:none;" accept="image/*" multiple onchange="handleAssetUpload(event, 'evolution-card-evoimages', true, true)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Evolution Paths Section -->
+        <div class="border-y py-4 my-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-medium">进化路径管理</h3>
+                <button type="button" id="add-evolution-path-btn" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm shadow-sm">+ 添加新路径</button>
+            </div>
+            <div id="evolution-paths-manager" class="space-y-6">
+                <!-- Evolution paths will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Cross Connections Section -->
+        <div class="border-y py-4 my-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-medium">分支路线 (Cross Connections)</h3>
+                <button type="button" id="add-cross-connection-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1 rounded text-sm shadow-sm">+ 添加交叉连接</button>
+            </div>
+            <div id="cross-connections-container" class="space-y-3">
+                <!-- Cross-connection cards will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Main Acquisition Section -->
+        <div class="border-y py-4 my-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-medium">主要获取方式 (路线/形态按钮)</h3>
+                <button type="button" id="add-main-acquisition-btn" class="bg-teal-500 hover:bg-teal-600 text-white px-3 py-1 rounded text-sm shadow-sm">+ 添加主获取方式</button>
+            </div>
+            <div id="main-acquisition-container" class="space-y-4">
+                <!-- Main acquisition cards will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Branch Acquisition Methods Section -->
+        <div class="border-y py-4 my-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-medium">分支获取方式</h3>
+                <button type="button" id="add-branch-acquisition-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm shadow-sm">+ 添加获取方式</button>
+            </div>
+            <div id="branch-acquisition-container" class="space-y-3">
+                <!-- Branch acquisition cards will be dynamically added here -->
+            </div>
+        </div>
+
+        <div class="flex justify-end gap-4 pt-4 border-t sticky bottom-0 bg-white py-4 -mx-6 px-6">
+          <button type="button" id="cancel-evolution-btn-dummy" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">取消</button>
+          <button type="submit" id="save-evolution-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Equipment Editor Modal -->
+  <div id="equipment-editor-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 p-8 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-7xl mx-auto h-full flex flex-col">
+      <h2 id="equipment-modal-title" class="text-2xl font-bold mb-4">编辑副本装备</h2>
+      <form id="equipment-form" class="flex-1 flex flex-col min-h-0 space-y-4">
+        <input type="hidden" id="dungeon-id-hidden">
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto -mx-6 px-6 space-y-4">
+          <!-- Basic Dungeon Info -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="dungeon-id" class="block text-sm font-medium text-gray-700">副本ID</label>
+              <input type="text" id="dungeon-id" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="例如: dark_area">
+            </div>
+            <div>
+              <label for="dungeon-name" class="block text-sm font-medium text-gray-700">副本名称</label>
+              <input type="text" id="dungeon-name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            </div>
+            <div>
+              <label for="dungeon-image" class="block text-sm font-medium text-gray-700">副本图标URL</label>
+              <input type="text" id="dungeon-image" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            </div>
+          </div>
+
+          <!-- Equipment Sets Section -->
+          <div class="border-t pt-4">
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-lg font-medium">装备套装管理</h3>
+              <button type="button" id="add-equipment-set-btn" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm shadow-sm">+ 添加新套装</button>
+            </div>
+            <div id="equipment-sets-container" class="space-y-6">
+              <!-- Equipment sets will be dynamically added here -->
+            </div>
+          </div>
+
+          <!-- Loose Items Section -->
+          <div class="border-t pt-4">
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-lg font-medium">散件管理</h3>
+              <button type="button" id="add-loose-item-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm shadow-sm">+ 添加散件</button>
+            </div>
+            <div id="loose-items-container" class="space-y-3">
+              <!-- Loose items will be dynamically added here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Footer -->
+        <div class="flex-shrink-0 flex justify-end gap-4 pt-4 border-t -mx-6 px-6">
+          <button type="button" id="cancel-equipment-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">取消</button>
+          <button type="submit" id="save-equipment-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Equipment Set Template -->
+  <template id="equipment-set-template">
+    <div class="equipment-set bg-white p-4 rounded-lg border shadow-sm">
+      <div class="flex justify-between items-center mb-3">
+        <input type="text" placeholder="套装名称" class="set-name-input w-64 rounded-md border-gray-300 shadow-sm text-sm">
+        <button type="button" class="remove-set-btn text-red-500 hover:text-red-700">×</button>
+      </div>
+      <div class="items-container space-y-2">
+        <!-- Items will be added here -->
+      </div>
+      <button type="button" class="add-item-btn mt-2 text-sm text-blue-600 hover:text-blue-800">+ 添加装备</button>
+      <div class="set-bonus mt-4">
+        <h4 class="font-medium text-sm mb-2">套装效果</h4>
+        <div class="bonus-container space-y-2">
+          <!-- Bonus effects will be added here -->
+        </div>
+        <button type="button" class="add-bonus-btn mt-2 text-sm text-green-600 hover:text-green-800">+ 添加套装效果</button>
+      </div>
+    </div>
+  </template>
+
+  <!-- Equipment Item Template -->
+  <template id="equipment-item-template">
+    <div class="equipment-item grid grid-cols-[1fr_1fr_1fr_1.5fr_1.5fr_1.5fr_auto] gap-2 items-start bg-gray-50 p-2 rounded">
+      <input type="text" placeholder="ID (自动生成)" readonly class="item-id-input bg-gray-200 rounded-md border-gray-300 shadow-sm text-sm">
+      <input type="text" placeholder="装备名称" class="item-name-input rounded-md border-gray-300 shadow-sm text-sm">
+      <select class="item-type-select rounded-md border-gray-300 shadow-sm text-sm">
+        <option value="数码之魂">数码之魂</option>
+        <option value="万能插件">万能插件</option>
+        <option value="防御插件">防御插件</option>
+        <option value="攻击插件">攻击插件</option>
+        <option value="速度插件">速度插件</option>
+      </select>
+      <div class="flex gap-1 col-span-1">
+        <input type="text" placeholder="图标URL" class="item-icon-input rounded-md border-gray-300 shadow-sm text-sm flex-grow">
+        <button type="button" class="upload-icon-btn bg-blue-100 text-blue-700 px-3 py-1 rounded text-sm hover:bg-blue-200 flex-shrink-0">
+          上传
+        </button>
+      </div>
+      <textarea placeholder="属性 (例如: 攻击+100)" class="item-attributes-input rounded-md border-gray-300 shadow-sm text-sm expand-on-focus" rows="1"></textarea>
+      <textarea placeholder="获取方式" class="item-acquisition-input rounded-md border-gray-300 shadow-sm text-sm expand-on-focus" rows="1"></textarea>
+      <button type="button" class="remove-item-btn text-red-500 hover:text-red-700 justify-self-end">×</button>
+    </div>
+  </template>
+
+  <!-- Set Bonus Template -->
+  <template id="set-bonus-template">
+    <div class="bonus-effect grid grid-cols-5 gap-2 items-center">
+      <input type="number" placeholder="件数" min="2" class="bonus-count-input col-span-1 rounded-md border-gray-300 shadow-sm text-sm">
+      <input type="text" placeholder="效果描述" class="bonus-description-input col-span-3 rounded-md border-gray-300 shadow-sm text-sm">
+      <button type="button" class="remove-bonus-btn text-red-500 hover:text-red-700 justify-self-end">×</button>
+    </div>
+  </template>
+
+  <!-- Evolution Stage Template -->
+  <template id="evolution-stage-template">
+    <div class="evolution-stage-card relative flex-shrink-0 cursor-pointer p-4 rounded-lg border-2 border-dashed border-gray-300 hover:border-blue-500 transition-colors w-64 text-center flex flex-col items-center justify-center">
+      <div class="stage-preview">
+        <img src="" alt="Stage Preview" class="stage-preview-image h-32 w-32 object-contain mx-auto">
+        <p class="stage-preview-name text-base font-semibold mt-3 truncate w-full">点击编辑</p>
+      </div>
+      <div class="stage-details-form hidden absolute top-full left-1/2 -translate-x-1/2 mt-2 p-4 bg-white rounded-lg shadow-xl z-10 w-64 border">
+        <h5 class="text-lg font-bold mb-3">编辑阶段</h5>
+        <div class="space-y-2 text-left">
+          <div>
+            <label class="text-sm text-gray-600">图片 URL</label>
+             <div class="mt-1 flex rounded-md shadow-sm">
+                <input type="text" class="stage-image-input flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300">
+                <button type="button" onclick="this.nextElementSibling.click()" class="relative inline-flex items-center space-x-2 px-4 py-2 border border-l-0 border-gray-300 text-sm font-medium rounded-r-md text-gamma-50 hover:bg-gray-100">上传</button>
+                <input type="file" style="display:none;" accept="image/*" onchange="handleAssetUpload(event, null, false, true)">
+            </div>
+          </div>
+          <div>
+            <label class="text-sm text-gray-600">名称</label>
+            <input type="text" class="stage-name-input mt-1 block w-full rounded-md border-gray-300 shadow-sm text-base">
+          </div>
+          <div>
+            <label class="text-sm text-gray-600">需求</label>
+            <textarea class="stage-requirement-input resize mt-1 block w-full rounded-md border-gray-300 shadow-sm text-base" rows="3"></textarea>
+          </div>
+          <div>
+            <label class="text-sm text-gray-600">关联数码兽ID (可选)</label>
+            <input type="text" class="stage-id-link-input mt-1 block w-full rounded-md border-gray-300 shadow-sm text-base">
+          </div>
+          <div class="flex items-center pt-2">
+            <input type="checkbox" class="stage-hidden-checkbox h-4 w-4 rounded border-gray-300">
+            <label class="ml-2 text-sm text-gray-700">隐藏此阶段</label>
+          </div>
+
+          <div class="border-t mt-3 pt-2">
+            <h6 class="text-sm font-semibold text-gray-700 mb-2">获取方式</h6>
+            <div class="acquisition-container space-y-2">
+              <!-- Acquisition items will be added here -->
+            </div>
+            <button type="button" class="add-acquisition-btn mt-2 text-sm text-blue-600 hover:text-blue-800">+ 添加获取方式</button>
+          </div>
+          
+        </div>
+        <button type="button" class="remove-stage-btn bg-red-500 text-white w-full py-1 mt-3 rounded-md text-sm hover:bg-red-600">删除此阶段</button>
+        <button type="button" class="close-stage-editor-btn absolute top-2 right-2 text-gray-400 hover:text-gray-500 text-2xl">&times;</button>
+      </div>
+    </div>
+  </template>
+
+  <!-- Cross Connection Template -->
+  <template id="connection-template">
+    <div class="connection-card bg-white p-3 rounded-md border shadow-sm grid grid-cols-[1fr_1fr_auto_1fr_1fr_auto] gap-2 items-center">
+        <input type="number" placeholder="From Path" class="connection-from-path-input col-span-1 rounded-md border-gray-300 shadow-sm text-sm">
+        <input type="number" placeholder="From Stage" class="connection-from-stage-input col-span-1 rounded-md border-gray-300 shadow-sm text-sm">
+        <span class="text-center text-gray-400">&rarr;</span>
+        <input type="number" placeholder="To Path" class="connection-to-path-input col-span-1 rounded-md border-gray-300 shadow-sm text-sm">
+        <input type="number" placeholder="To Stage" class="connection-to-stage-input col-span-1 rounded-md border-gray-300 shadow-sm text-sm">
+        <button type="button" class="remove-connection-btn text-red-500 hover:text-red-700 justify-self-end">×</button>
+    </div>
+  </template>
+
+  <!-- Branch Acquisition Template -->
+  <template id="branch-acquisition-template">
+    <div class="branch-acquisition-card bg-white p-3 rounded-md border shadow-sm grid grid-cols-[1fr_3fr_auto] gap-2 items-center">
+        <select class="branch-acquisition-type-select rounded-md border-gray-300 shadow-sm text-sm">
+            <option value="AT">AT</option>
+            <option value="BA">BA</option>
+            <option value="SP">SP</option>
+            <option value="EX">EX</option>
+            <option value="X-AI">X-AI</option>
+        </select>
+        <input type="text" placeholder="获取方式描述" class="branch-acquisition-text-input col-span-1 rounded-md border-gray-300 shadow-sm text-sm">
+        <button type="button" class="remove-branch-acquisition-btn text-red-500 hover:text-red-700 justify-self-end">×</button>
+    </div>
+  </template>
+
+  <!-- Main Acquisition Item Template -->
+  <template id="main-acquisition-template">
+    <div class="main-acquisition-item bg-gray-50 p-4 rounded-lg border space-y-3">
+        <div class="flex justify-between items-center border-b pb-2 mb-3">
+             <h4 class="font-semibold text-gray-700">获取方式卡片</h4>
+             <button type="button" class="remove-main-acquisition-btn bg-red-100 text-red-600 px-3 py-1 rounded-md text-sm hover:bg-red-200">删除此卡片</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" placeholder="按钮名称 (e.g. 红莲骑士兽)" class="main-acq-name-input rounded-md border-gray-300 shadow-sm text-sm h-9">
+            <select class="main-acq-type-select rounded-md border-gray-300 shadow-sm text-sm h-9">
+                <option value="">-- 选择类型 --</option>
+                <option value="AT">AT</option>
+                <option value="BA">BA</option>
+                <option value="SP">SP</option>
+                <option value="EX">EX</option>
+                <option value="X-AI">X-AI</option>
+            </select>
+        </div>
+        <div>
+            <label class="text-sm font-medium text-gray-700 mb-1 block">路线程式 (单个)</label>
+            <div class="main-acq-program-container min-h-[50px] bg-white p-2 border rounded-md flex flex-wrap gap-2 items-center">
+                <!-- Selected program will be here -->
+            </div>
+            <button type="button" class="add-main-program-btn mt-1 text-sm text-blue-600 hover:text-blue-800">+ 添加程式</button>
+        </div>
+        <div>
+            <label class="text-sm font-medium text-gray-700 mb-1 block">关键道具 (多个)</label>
+            <div class="main-acq-items-container min-h-[50px] bg-white p-2 border rounded-md flex flex-wrap gap-2 items-center">
+                <!-- Selected items will be here -->
+            </div>
+            <button type="button" class="add-main-item-btn mt-1 text-sm text-blue-600 hover:text-blue-800">+ 添加道具</button>
+        </div>
+    </div>
+  </template>
+
+  <template id="selected-item-tag-template">
+    <div class="selected-item-tag flex items-center bg-blue-100 text-blue-800 text-sm font-medium pl-2 pr-1 py-1 rounded-full">
+        <span class="item-name-tag">Item Name</span>
+        <button type="button" class="remove-item-tag-btn ml-1 flex-shrink-0 bg-blue-200 hover:bg-blue-300 rounded-full w-4 h-4 flex items-center justify-center">&times;</button>
+    </div>
+  </template>
+
+  <!-- Changelog Editor Modal -->
+  <div id="changelog-editor-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 p-8 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-2xl mx-auto h-full flex flex-col">
+      <h2 id="changelog-modal-title" class="text-2xl font-bold mb-4">编辑日志</h2>
+      <form id="changelog-form" class="flex-1 flex flex-col min-h-0 space-y-4">
+        <input type="hidden" id="changelog-version-hidden">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="changelog-version" class="block text-sm font-medium text-gray-700">版本号</label>
+            <input type="text" id="changelog-version" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="例如: 1.2.1">
+          </div>
+          <div>
+            <label for="changelog-date" class="block text-sm font-medium text-gray-700">更新日期</label>
+            <input type="date" id="changelog-date" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          </div>
+        </div>
+        
+        <div class="border-t pt-4 flex-1 flex flex-col min-h-0">
+          <h3 class="text-lg font-medium mb-2">更新内容</h3>
+          <textarea id="changelog-changes-textarea" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 flex-1" placeholder="每行输入一条更新记录..."></textarea>
+        </div>
+
+        <div class="flex justify-end gap-4 pt-4 border-t">
+          <button type="button" id="cancel-changelog-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">取消</button>
+          <button type="submit" id="save-changelog-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Item Editor Modal -->
+  <div id="item-editor-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden" style="z-index: 100;">
+    <div class="relative top-20 mx-auto p-5 border w-full max-w-3xl shadow-lg rounded-md bg-white">
+      <div class="mt-3">
+        <h3 class="text-lg leading-6 font-medium text-gray-900" id="item-modal-title">编辑道具</h3>
+        <form id="item-editor-form" class="mt-2 space-y-4">
+          <input type="hidden" id="item-id">
+          <div>
+            <label for="item-name" class="block text-sm font-medium text-gray-700">道具名称</label>
+            <input type="text" id="item-name" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="item-category" class="block text-sm font-medium text-gray-700">分类</label>
+            <select id="item-category" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <option>消耗品</option>
+              <option value="数码核">孵化相关</option>
+              <option>材料</option>
+              <option>副本材料</option>
+              <option>商城道具</option>
+              <option>进化道具</option>
+              <option>活动道具</option>
+              <option>任务道具</option>
+              <option>IC</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">道具图片</label>
+            <div class="mt-1 flex items-center">
+                <img id="item-image-preview" src="" class="h-16 w-16 object-cover rounded mr-4" alt="Image preview">
+                <input type="file" id="item-image-upload" class="hidden">
+                <button type="button" onclick="document.getElementById('item-image-upload').click()" class="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
+                    更换图片
+                </button>
+                <input type="hidden" id="item-image-url">
+            </div>
+          </div>
+          <div>
+            <label for="item-description" class="block text-sm font-medium text-gray-700">道具描述</label>
+            <textarea id="item-description" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+          </div>
+          <div>
+            <label for="item-acquisition" class="block text-sm font-medium text-gray-700">获取方式</label>
+            <textarea id="item-acquisition" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+          </div>
+        </form>
+        <div class="items-center px-4 py-3">
+          <button id="save-item-button" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            保存
+          </button>
+          <button id="cancel-item-btn" class="mt-2 px-4 py-2 bg-gray-200 text-gray-800 text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-300 focus:outline-none">
+            取消
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item Selector Modal -->
+  <div id="item-selector-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 p-8 hidden" style="z-index: 60;">
+    <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-3xl mx-auto h-[80vh] flex flex-col">
+      <h2 id="item-selector-title" class="text-2xl font-bold mb-4">选择道具</h2>
+      <div class="mb-4">
+          <input type="text" id="item-selector-search" placeholder="搜索道具名称或ID..." class="block w-full rounded-md border-gray-300 shadow-sm text-sm h-10 px-3">
+      </div>
+      <div id="item-selector-list" class="flex-1 overflow-y-auto border rounded-md p-2 space-y-2 bg-gray-50">
+          <!-- Item list will be populated here -->
+      </div>
+      <div class="flex justify-end gap-4 pt-4 mt-4 border-t">
+          <button type="button" id="cancel-item-selector-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Synthesis Recipe Editor Modal -->
+  <div id="synthesis-editor-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 p-8 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-3xl mx-auto h-full flex flex-col">
+      <h2 id="synthesis-modal-title" class="text-2xl font-bold mb-4">编辑合成配方</h2>
+      <form id="synthesis-form" class="flex-1 flex flex-col min-h-0 space-y-4">
+        <input type="hidden" id="synthesis-id-hidden">
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">目标合成装备</label>
+          <div class="mt-1 flex items-center gap-2 p-2 border rounded-md bg-gray-50 min-h-[50px]" id="synthesis-target-item-container">
+            <!-- Selected target will be here -->
+          </div>
+          <button type="button" id="select-target-item-btn" class="mt-1 text-sm text-blue-600 hover:text-blue-800">+ 选择目标装备</button>
+        </div>
+
+        <div class="border-t pt-4 flex-1 flex flex-col min-h-0">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-lg font-medium">所需材料</h3>
+            <button type="button" id="add-material-btn" class="bg-blue-500 text-white px-3 py-1 rounded text-sm">+ 添加材料</button>
+          </div>
+          <div id="synthesis-materials-container" class="space-y-3 overflow-y-auto pr-2 flex-1 bg-gray-50 p-3 rounded-md">
+            <!-- Materials will be dynamically added here -->
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-4 pt-4 border-t">
+          <button type="button" id="cancel-synthesis-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">取消</button>
+          <button type="submit" id="save-synthesis-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Synthesis Material Template -->
+  <template id="synthesis-material-template">
+    <div class="synthesis-material-item grid grid-cols-[1fr_5fr_auto] gap-3 items-center bg-white p-2 rounded border">
+      <input type="number" placeholder="数量" value="1" min="1" class="material-quantity-input rounded-md border-gray-300 shadow-sm text-sm">
+      <div class="material-item-display flex items-center gap-2 p-2 border rounded-md bg-gray-50 min-h-[40px]">
+        <!-- Selected material will be here -->
+      </div>
+      <button type="button" class="remove-material-btn text-red-500 hover:text-red-700 font-bold text-xl self-center justify-self-center">×</button>
+    </div>
+  </template>
+
+  <!-- Stage Acquisition Item Template -->
+  <template id="stage-acquisition-item-template">
+    <div class="stage-acquisition-item flex items-center gap-2">
+      <input type="text" placeholder="获取方式描述..." class="acquisition-text-input flex-grow rounded-md border-gray-300 shadow-sm text-sm">
+      <button type="button" class="remove-stage-acquisition-item-btn text-red-500 hover:text-red-700 font-bold text-sm">×</button>
+    </div>
+  </template>
+
+  <script>
+    // --- Global Constants & State ---
+    const apiBaseUrl = '/api';
+    const serverOrigin = window.location.origin;
+    let easyMDE;
+    let currentSlug = null;
+    let tempUploadedFiles = [];
+    let currentView = 'active';
+
+    let currentGuidesPage = 1;
+    let currentDigimonPage = 1;
+    let currentEvolutionsPage = 1;
+    let currentEquipmentPage = 1;
+    let currentItemGuidePage = 1;
+    let currentSynthesisPage = 1;
+    let currentChangelogPage = 1;
+
+    let evolutionSortable = null;
+    let allGuidesCache = [];
+    let allDigimonsCache = []; // Add a cache for Digimon data
+    let allEvolutionsCache = {}; // Add a cache for Evolution data
+    let allEquipmentCache = [];
+    let allFlatEquipmentCache = []; // For search
+    let allChangelogsCache = [];
+    let allItemsCache = [];
+    let allSynthesisRecipesCache = [];
+    let allEquipmentItemNamesCache = [];
+    let allCraftableItemsCache = []; // NEW: Cache for the combined item list
+    let tocResizeObserver = null;
+
+    // --- Function Definitions ---
+
+    const autoExpandTextarea = (textarea) => {
+        // Temporarily shrink to get the correct scrollHeight, then set it.
+        textarea.style.height = 'auto';
+        textarea.style.height = (textarea.scrollHeight) + 'px';
+    };
+
+    const collapseTextarea = (textarea) => {
+        textarea.style.height = '38px';
+    };
+
+    const syncTocHeight = () => {
+        const summaryTextarea = document.getElementById('summary');
+        const tocPreviewDiv = document.getElementById('toc-preview');
+        // only run if modal is open
+        if (summaryTextarea && tocPreviewDiv && summaryTextarea.offsetParent !== null) {
+            tocPreviewDiv.style.height = `${summaryTextarea.clientHeight}px`;
+        }
+    };
+    
+    const startTocHeightSync = () => {
+        const summaryTextarea = document.getElementById('summary');
+        if (!summaryTextarea) return;
+
+        if (window.ResizeObserver) {
+            if (!tocResizeObserver) {
+                tocResizeObserver = new ResizeObserver(syncTocHeight);
+            }
+            tocResizeObserver.observe(summaryTextarea);
+        } else {
+            // Fallback for older browsers
+            summaryTextarea.addEventListener('input', syncTocHeight);
+            summaryTextarea.addEventListener('mouseup', syncTocHeight);
+            window.addEventListener('resize', syncTocHeight);
+        }
+        syncTocHeight(); // Initial sync
+    };
+
+    const stopTocHeightSync = () => {
+        const summaryTextarea = document.getElementById('summary');
+        if (!summaryTextarea) return;
+
+        if (tocResizeObserver) {
+            tocResizeObserver.unobserve(summaryTextarea);
+        } else {
+            summaryTextarea.removeEventListener('input', syncTocHeight);
+            summaryTextarea.removeEventListener('mouseup', syncTocHeight);
+            window.removeEventListener('resize', syncTocHeight);
+        }
+    };
+
+    // Generic API Fetch
+    async function apiFetch(url, options = {}) {
+      const defaultOptions = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      // Use apiBaseUrl which is already defined in the script
+      const response = await fetch(`${apiBaseUrl}${url}`, { ...defaultOptions, ...options });
+      
+      if (response.status === 401) {
+        // Session expired or unauthorized, redirect to login
+        alert('您的登录已过期，请重新登录。');
+        window.location.href = '/login.html';
+        throw new Error('Unauthorized');
+      }
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: 'An unknown error occurred' }));
+        const error = new Error(errorData.message);
+        error.response = response;
+        throw error;
+      }
+      if (response.status === 204) return;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        return response.json();
+      }
+      return await response.text();
+    }
+    
+    // Generic Pagination Renderer
+    function renderPaginationControls(containerId, totalItems, itemsPerPage, currentPage, onPageClick) {
+        const paginationContainer = document.getElementById(containerId);
+        if (!paginationContainer) return;
+        paginationContainer.innerHTML = '';
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+        if (totalPages <= 1) return;
+
+        const createButton = (text, page, isDisabled = false, isCurrent = false) => {
+            const button = document.createElement('button');
+            button.textContent = text;
+            button.disabled = isDisabled;
+            let classes = 'px-4 py-2 mx-1 rounded-md border text-sm ';
+            if (isDisabled) {
+                classes += 'bg-gray-100 text-gray-400 cursor-not-allowed';
+            } else if (isCurrent) {
+                classes += 'bg-blue-500 text-white border-blue-500';
+            } else {
+                classes += 'bg-white text-gray-700 hover:bg-gray-100';
+            }
+            button.className = classes;
+            if (!isDisabled && !isCurrent) {
+                button.addEventListener('click', () => onPageClick(page));
+            }
+            return button;
+        };
+
+        const createEllipsis = () => {
+            const span = document.createElement('span');
+            span.textContent = '...';
+            span.className = 'px-4 py-2 mx-1 text-sm text-gray-500';
+            return span;
+        };
+
+        paginationContainer.appendChild(createButton('上一页', currentPage - 1, currentPage === 1));
+
+        if (totalPages <= 7) { // Show all pages if 7 or less
+            for (let i = 1; i <= totalPages; i++) {
+                paginationContainer.appendChild(createButton(i, i, false, i === currentPage));
+            }
+        } else {
+            const pagesToShow = new Set([1, totalPages, currentPage, currentPage - 1, currentPage + 1]);
+            let lastPage = 0;
+            for (let i = 1; i <= totalPages; i++) {
+                if (pagesToShow.has(i)) {
+                    if (i > lastPage + 1) {
+                        paginationContainer.appendChild(createEllipsis());
+                    }
+                    paginationContainer.appendChild(createButton(i, i, false, i === currentPage));
+                    lastPage = i;
+                }
+            }
+        }
+
+        paginationContainer.appendChild(createButton('下一页', currentPage + 1, currentPage === totalPages));
+    }
+
+    // Unified Asset Uploader
+    async function handleAssetUpload(event, targetInputId, isMultiple = false, isEvolutionAsset = false) {
+        const input = event.target;
+        const files = input.files;
+        if (!files.length) return;
+
+        let targetInput;
+        if (targetInputId) {
+            targetInput = document.getElementById(targetInputId);
+        } else {
+            // For dynamic templates, find the input relative to the file input
+            targetInput = input.closest('.flex').querySelector('input[type="text"]');
+        }
+
+        if (!targetInput) {
+            console.error('Upload handler: could not find target input.');
+            alert('发生内部错误，无法找到目标输入框。');
+            return;
+        }
+
+        let folderPath;
+        if (isEvolutionAsset) {
+            const evolutionId = document.getElementById('evolution-id').value;
+            if (!evolutionId) {
+                alert('请先填写并确认路线ID，再上传与路线相关的图片。');
+                input.value = ''; // Clear file input
+                return;
+            }
+            folderPath = `guides/src/digimon/${evolutionId}`;
+        } else {
+            folderPath = 'guides/src/digimon/details_digimons';
+        }
+
+        const uploadButton = input.previousElementSibling;
+        if(uploadButton) {
+            const span = uploadButton.querySelector('span');
+            if(span) span.textContent = '...';
+            else uploadButton.textContent = '...';
+        }
+
+        const uploadPromises = Array.from(files).map(file => {
+            const formData = new FormData();
+            formData.append('image', file);
+            // We use fetch directly here as apiFetch is not for FormData
+            return fetch(`${apiBaseUrl}/upload/digimon-asset?folderPath=${folderPath}`, {
+                method: 'POST',
+                body: formData
+            }).then(res => {
+                if(!res.ok) {
+                    return res.json().then(err => { throw new Error(err.message || 'Upload failed on server') });
+                }
+                return res.json();
+            });
+        });
+
+        try {
+            const results = await Promise.all(uploadPromises);
+            const newUrls = results.map(res => res.url).filter(Boolean);
+
+            if (newUrls.length) {
+                if (isMultiple) {
+                    const existingValue = targetInput.value.trim();
+                    const separator = existingValue ? ',' : '';
+                    targetInput.value = existingValue + separator + newUrls.join(',');
+                } else {
+                    targetInput.value = newUrls[0];
+                }
+            }
+        } catch (error) {
+            console.error('Upload failed:', error);
+            alert(`上传失败: ${error.message}`);
+        } finally {
+            if(uploadButton) {
+                const span = uploadButton.querySelector('span');
+                if(span) span.textContent = '上传';
+                else uploadButton.textContent = '上传';
+            }
+            input.value = ''; // Clear file input to allow re-uploading the same file
+        }
+    }
+
+    // TABS
+    function switchTab(activeTabId, activePanelId) {
+        const tabs = ['guides', 'digimon', 'evolutions', 'equipment', 'changelog', 'item-guide', 'synthesis'];
+        
+        tabs.forEach(tabId => {
+            const tabEl = document.getElementById(`tab-${tabId}`);
+            const panelEl = document.getElementById(`panel-${tabId}`);
+            
+            if (tabEl && panelEl) {
+                if (tabId === activeTabId.replace('tab-', '')) {
+                    tabEl.classList.add('border-blue-500', 'text-blue-600');
+                    tabEl.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                    panelEl.classList.remove('hidden');
+                } else {
+                    tabEl.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                    tabEl.classList.remove('border-blue-500', 'text-blue-600');
+                    panelEl.classList.add('hidden');
+                }
+            }
+        });
+
+        const panelToLoad = document.getElementById(activePanelId);
+        if (panelToLoad && !panelToLoad.dataset.loaded) {
+            const loadFunctionName = `load${activePanelId.charAt(0).toUpperCase() + activePanelId.slice(1).replace(/-/g, '')}Data`;
+            const specialLoaders = {
+                'panel-guides': loadGuides,
+                'panel-digimon': loadDigimonData,
+                'panel-evolutions': loadEvolutionsData,
+                'panel-equipment': loadEquipmentData,
+                'panel-changelog': loadChangelogData,
+                'panel-item-guide': loadItemGuidePanel,
+                'panel-synthesis': loadSynthesisData
+            };
+            if (specialLoaders[activePanelId]) {
+                specialLoaders[activePanelId]();
+                panelToLoad.dataset.loaded = 'true';
+            }
+        }
+    }
+
+    // GUIDES
+    const handleTocToggleClick = (event) => {
+        const li = event.currentTarget;
+        const index = parseInt(li.dataset.headingIndex, 10);
+        
+        const contentType = document.querySelector('input[name="contentType"]:checked').value;
+        if (contentType !== 'html') {
+            alert('此功能仅在HTML模式下可用。\n\n在Markdown模式下，请手动将标题转换为HTML标签并添加 class="no-toc" 来隐藏它。\n例如：<h2 class="no-toc">要隐藏的标题</h2>');
+            return;
+        }
+
+        const content = easyMDE.value();
+        const parser = new DOMParser();
+        // Wrap in body to handle fragments properly
+        const doc = parser.parseFromString(`<body>${content}</body>`, 'text/html');
+        const headings = doc.querySelectorAll('h2, h3');
+        
+        if (headings && headings[index]) {
+            headings[index].classList.toggle('no-toc');
+            
+            const newContent = doc.body.innerHTML;
+            
+            const cursorPos = easyMDE.codemirror.getCursor();
+            easyMDE.value(newContent);
+            easyMDE.codemirror.focus();
+            easyMDE.codemirror.setCursor(cursorPos);
+        } else {
+            console.error("Could not find heading at index", index, "to toggle visibility.");
+            alert("无法找到要切换的标题，操作失败。");
+        }
+    };
+
+    const updateTocPreview = () => {
+        const previewEl = document.getElementById('content-preview');
+        const tocListEl = document.getElementById('toc-preview-list');
+        if (!previewEl || !tocListEl) return;
+
+        tocListEl.innerHTML = '';
+        const headings = previewEl.querySelectorAll('h2, h3');
+
+        if (headings.length === 0) {
+            tocListEl.innerHTML = '<li class="text-gray-400 italic">没有可显示的目录</li>';
+            return;
+        }
+
+        headings.forEach((heading, index) => {
+            const li = document.createElement('li');
+            const isHidden = heading.classList.contains('no-toc');
+
+            li.className = 'py-1 px-2 truncate flex justify-between items-center cursor-pointer hover:bg-gray-200 rounded';
+            li.dataset.headingIndex = index;
+            
+            const textSpan = document.createElement('span');
+            textSpan.textContent = heading.textContent;
+            
+            const eyeIcon = document.createElement('i');
+            eyeIcon.className = isHidden ? 'fa fa-eye-slash text-gray-400' : 'fa fa-eye text-gray-600';
+            eyeIcon.title = isHidden ? '点击以在目录中显示' : '点击以从目录中隐藏';
+
+            if (isHidden) {
+                textSpan.classList.add('line-through', 'text-gray-400');
+            }
+            if (heading.tagName === 'H3') {
+                li.classList.add('pl-4');
+            }
+
+            li.appendChild(textSpan);
+            li.appendChild(eyeIcon);
+            
+            li.addEventListener('click', handleTocToggleClick);
+            tocListEl.appendChild(li);
+        });
+    };
+
+    const updatePreview = () => {
+        if (!easyMDE || !window.marked) {
+            const previewEl = document.getElementById('content-preview');
+            if(previewEl) previewEl.innerHTML = "编辑器或预览库加载失败。";
+            return;
+        }
+        const content = easyMDE.value();
+        const previewEl = document.getElementById('content-preview');
+
+        if (document.getElementById('contentTypeMarkdown').checked) {
+            previewEl.innerHTML = marked.parse(content);
+            previewEl.classList.add('prose');
+        } else {
+            previewEl.innerHTML = content;
+            previewEl.classList.remove('prose');
+        }
+        updateTocPreview();
+    };
+
+    const initEditor = async () => {
+        console.log('初始化编辑器...');
+        if (easyMDE) {
+            console.log('清理现有编辑器实例');
+            easyMDE.toTextArea();
+            easyMDE = null;
+        }
+        if (!window.EasyMDE) {
+            console.error('EasyMDE库未加载');
+            alert("错误：编辑器库(EasyMDE)未能加载，请检查网络连接并刷新页面。");
+            return;
+        }
+        const editorEl = document.getElementById('content-editor');
+        if (!editorEl) {
+            console.error('找不到编辑器文本域');
+            alert("错误：找不到编辑器文本域 #content-editor。");
+            return;
+        }
+        console.log('开始加载物品数据...');
+        try {
+            console.log('正在初始化EasyMDE...');
+            easyMDE = new EasyMDE({
+                element: editorEl,
+                spellChecker: false,
+                toolbar: [
+                    "bold", "italic", "heading", "|", 
+                    "quote", "unordered-list", "ordered-list", "|",
+                    "link", 
+                    {
+                        name: "uploadImage",
+                        action: function(editor) {
+                            const input = document.createElement('input');
+                            input.type = 'file';
+                            input.accept = 'image/*';
+                            input.onchange = async () => {
+                                const file = input.files[0];
+                                if (!file) return;
+                                const formData = new FormData();
+                                formData.append('image', file);
+                                try {
+                                    const response = await fetch(`${apiBaseUrl}/upload/temp`, {
+                                        method: 'POST',
+                                        body: formData,
+                                    });
+                                    if (!response.ok) {
+                                        const errorData = await response.json();
+                                        throw new Error(errorData.message || 'Upload failed');
+                                    }
+                                    const result = await response.json();
+                                    const relativeUrl = result.url;
+                                    const imageUrl = serverOrigin + relativeUrl;
+                                    tempUploadedFiles.push(result.filename);
+                                    const cm = editor.codemirror;
+                                    const doc = cm.getDoc();
+                                    const cursor = doc.getCursor();
+                                    const imageHtml = `<p style="text-align: center;"><img src="${imageUrl}" alt="${file.name}" style="max-width: 60%; display: inline-block;"></p>`;
+                                    doc.replaceRange(imageHtml, cursor);
+                                } catch (error) {
+                                    console.error('Image upload error:', error);
+                                    alert(`图片上传失败: ${error.message}`);
+                                }
+                            };
+                            input.click();
+                        },
+                        className: "fas fa-image",
+                        title: "Upload Image",
+                    },
+                    {
+                        name: "insertDropSection",
+                        action: function(editor) {
+                            const cm = editor.codemirror;
+                            const doc = cm.getDoc();
+                            const cursor = doc.getCursor();
+                            const sectionHtml = `\n<div class="drop-section">\n  <h3 class="drop-title">区域掉落/BOSS装备</h3>\n  <div class="drop-items-container">\n    <!-- 在这里插入道具 -->\n  </div>\n</div>\n`;
+                            doc.replaceRange(sectionHtml, cursor);
+                        },
+                        className: "fas fa-table-list",
+                        title: "插入掉落物章节",
+                    },
+                    {
+                        name: "insertItemWithImage",
+                        action: function(editor) {
+                            openItemSelectorModal(null, false, 'any', (item) => {
+                                if (item) {
+                                    const itemHtml = ` <span class="item-drop" data-item-id="${item.id}">\n  <img src="${item.image}" alt="${item.name}" loading="lazy">\n  <span>${item.name}</span>\n</span> `;
+                                    const cm = editor.codemirror;
+                                    const doc = cm.getDoc();
+                                    const cursor = doc.getCursor();
+                                    doc.replaceRange(itemHtml, cursor);
+                                }
+                                closeItemSelectorModal();
+                            });
+                        },
+                        className: "fas fa-gem",
+                        title: "插入道具(带图)",
+                    },
+                    {
+                        name: "insertItem",
+                        action: function(editor) {
+                          openItemSelectorModal(null, false, 'any', (item) => {
+                            if (item) {
+                              const itemHtml = `<span class="text-gray-600" data-item-id="${item.id}">${item.name}</span>`;
+                              const cm = editor.codemirror;
+                              const doc = cm.getDoc();
+                              const cursor = doc.getCursor();
+                              doc.replaceRange(itemHtml, cursor);
+                            }
+                            closeItemSelectorModal();
+                          });
+                        },
+                        className: "fas fa-archive",
+                        title: "插入掉落物",
+                    },
+                    "|", "preview", "side-by-side", "fullscreen"
+                ],
+                toolbarTips: true,
+                status: false,
+                autoDownloadFontAwesome: false,
+                forceSync: true,
+            });
+            const editorContainer = editorEl.nextElementSibling;
+            if (editorContainer && editorContainer.classList.contains('EasyMDEContainer')) {
+                editorContainer.style.display = 'flex';
+                editorContainer.style.flexDirection = 'column';
+                editorContainer.style.height = '100%';
+                const codeMirrorWrapper = editorContainer.querySelector('.CodeMirror');
+                if (codeMirrorWrapper) {
+                    codeMirrorWrapper.style.flexGrow = '1';
+                }
+            }
+            easyMDE.codemirror.on("change", updatePreview);
+        } catch (e) {
+            console.error("初始化EasyMDE编辑器失败:", e);
+            alert("初始化编辑器时发生错误，请查看控制台了解详情。");
+        }
+    };
+
+    const openModal = async (slugParam = null) => {
+        console.log('打开编辑器模态框...');
+        currentSlug = slugParam;
+        tempUploadedFiles = [];
+        const form = document.getElementById('guide-form');
+        const modalTitle = document.getElementById('modal-title');
+        const publishBtn = document.getElementById('publish-btn');
+        form.reset();
+
+        // 预加载物品数据
+        if (allCraftableItemsCache.length === 0) {
+            try {
+                allCraftableItemsCache = await apiFetch('/all-craftable-items');
+            } catch (error) {
+                console.error('加载物品列表失败:', error);
+            }
+        }
+
+        if (!easyMDE) {
+            await initEditor();
+        }
+        let guideData = { contentType: 'markdown' };
+        if (slugParam) {
+            modalTitle.textContent = '编辑攻略';
+            const response = await fetch(`${apiBaseUrl}/guides/${slugParam}?raw=true`);
+            guideData = await response.json();
+            publishBtn.textContent = '更新';
+        } else {
+            modalTitle.textContent = '创建新攻略';
+            publishBtn.textContent = '发布';
+        }
+        document.getElementById('title').value = guideData.title || '';
+        document.getElementById('slug').value = guideData.slug || '';
+        document.getElementById('guide-slug-hidden').value = guideData.slug || '';
+        document.getElementById('summary').value = guideData.summary || '';
+        document.getElementById('category').value = guideData.category || 'gameplay';
+        document.getElementById('difficulty').value = guideData.difficulty || '';
+        const contentType = guideData.contentType || 'markdown';
+        document.getElementById(`contentType${contentType.charAt(0).toUpperCase() + contentType.slice(1)}`).checked = true;
+        let contentForEditor = guideData.content || '';
+        if (contentForEditor) {
+            const imagePathRegex = /(!\[.*?\]\()(\/uploads\/)/g;
+            contentForEditor = contentForEditor.replace(imagePathRegex, `$1${serverOrigin}$2`);
+        }
+        easyMDE.value(contentForEditor);
+        document.getElementById('editor-modal').classList.remove('hidden');
+        setTimeout(() => {
+            updatePreview();
+            if (easyMDE) easyMDE.codemirror.refresh();
+            startTocHeightSync();
+        }, 10);
+    };
+
+    const closeModal = () => {
+        document.getElementById('editor-modal').classList.add('hidden');
+        stopTocHeightSync();
+    };
+
+    const renderGuidesPage = (page) => {
+        currentGuidesPage = page;
+        const itemsPerPage = 10;
+        const tbody = document.getElementById('guides-table-body');
+        tbody.innerHTML = '';
+
+        const searchTerm = document.getElementById('guides-search')?.value.toLowerCase() || '';
+
+        let searchedGuides = allGuidesCache;
+        if (searchTerm) {
+            searchedGuides = allGuidesCache.filter(g => 
+                g.title.toLowerCase().includes(searchTerm) || 
+                g.slug.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        let filteredGuides = [];
+        if (currentView === 'active') {
+            filteredGuides = searchedGuides.filter(g => g.status === 'published' || g.status === 'draft');
+        } else {
+            filteredGuides = searchedGuides.filter(g => g.status === 'trashed');
+        }
+        filteredGuides.sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
+
+        const startIndex = (page - 1) * itemsPerPage;
+        const paginatedGuides = filteredGuides.slice(startIndex, startIndex + itemsPerPage);
+
+        if (paginatedGuides.length === 0 && page > 1) {
+            renderGuidesPage(page - 1);
+            return;
+        }
+
+        if (paginatedGuides.length === 0 && page === 1) {
+            const colCount = document.querySelector('#guides-list thead tr').children.length;
+            tbody.innerHTML = `<tr><td colspan="${colCount}" class="text-center py-8 text-gray-500">这里空空如也...</td></tr>`;
+            renderPaginationControls('guides-pagination-controls', 0, itemsPerPage, 1, renderGuidesPage);
+            return;
+        }
+
+        paginatedGuides.forEach(guide => {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-gray-50';
+            const statusColors = { published: 'bg-green-100 text-green-800', draft: 'bg-yellow-100 text-yellow-800', trashed: 'bg-red-100 text-red-800' };
+            const statusNames = { published: '已发布', draft: '草稿', trashed: '已删除' };
+            let buttonsHtml = '';
+            if (currentView === 'active') {
+                buttonsHtml = `
+                    <button class="text-indigo-600 hover:text-indigo-900" onclick="openModal('${guide.slug}')">编辑</button>
+                    <button class="ml-4 text-red-600 hover:text-red-900" onclick="deleteGuide('${guide.slug}')">删除</button>
+                `;
+            } else {
+                buttonsHtml = `
+                    <button class="text-green-600 hover:text-green-900" onclick="restoreGuide('${guide.slug}')">恢复</button>
+                    <button class="ml-4 text-red-600 hover:text-red-900" onclick="deleteGuide('${guide.slug}', true)">永久删除</button>
+                `;
+            }
+            tr.innerHTML = `
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><div class="text-sm leading-5 font-medium text-gray-900">${guide.title}</div><div class="text-xs leading-5 text-gray-500">${guide.slug}</div></td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusColors[guide.status] || 'bg-gray-100 text-gray-800'}">${statusNames[guide.status] || guide.status}</span></td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">${guide.category}</td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">${new Date(guide.updatedAt || guide.createdAt || guide.updateDate).toLocaleDateString('zh-CN')}</td>
+                <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">${buttonsHtml}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        renderPaginationControls('guides-pagination-controls', filteredGuides.length, itemsPerPage, page, renderGuidesPage);
+    };
+
+    const loadGuides = async () => {
+        try {
+            const response = await fetch(`${apiBaseUrl}/admin/guides`);
+            allGuidesCache = await response.json();
+            document.getElementById('guides-search')?.addEventListener('input', () => renderGuidesPage(1));
+            renderGuidesPage(currentGuidesPage);
+        } catch (error) {
+            console.error('Failed to load guides:', error);
+            document.getElementById('guides-table-body').innerHTML = `<tr><td colspan="5" class="text-center py-8 text-red-500">加载攻略失败</td></tr>`;
+        }
+    };
+    
+    const deleteGuide = async (slug, permanent = false) => {
+        const confirmText = permanent ? '此操作将永久删除该攻略及其所有关联图片，无法恢复！确定要继续吗？' : '确定要将此攻略移至回收站吗？';
+        if (!confirm(confirmText)) return;
+        try {
+            const url = permanent ? `${apiBaseUrl}/guides/${slug}/permanent` : `${apiBaseUrl}/guides/${slug}`;
+            const response = await fetch(url, { method: 'DELETE' });
+            if (!response.ok && response.status !== 204) throw new Error('删除失败');
+            loadGuides(); // Reload data
+        } catch (error) {
+            alert(`操作失败: ${error.message}`);
+        }
+    };
+    
+    const restoreGuide = async (slug) => {
+        if (!confirm('确定要从回收站恢复此攻略吗？')) return;
+        try {
+            const response = await fetch(`${apiBaseUrl}/guides/${slug}/restore`, { method: 'PUT' });
+            if (!response.ok) throw new Error('恢复失败');
+            loadGuides(); // Reload data
+        } catch (error) {
+            alert(`恢复失败: ${error.message}`);
+        }
+    };
+    
+    const saveGuide = async (status) => {
+        const title = document.getElementById('title').value;
+        const slug = document.getElementById('slug').value;
+        const originalSlug = document.getElementById('guide-slug-hidden').value;
+        if (!title || !slug) {
+            alert('标题和URL标识(Slug)不能为空。');
+            return;
+        }
+        let contentToSave = easyMDE.value();
+        const serverOriginRegex = new RegExp(serverOrigin.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g');
+        contentToSave = contentToSave.replace(serverOriginRegex, '');
+        const guideData = {
+            title, slug,
+            category: document.getElementById('category').value,
+            difficulty: document.getElementById('difficulty').value,
+            summary: document.getElementById('summary').value,
+            content: contentToSave,
+            contentType: document.querySelector('input[name="contentType"]:checked').value,
+            status: status,
+            tempFiles: tempUploadedFiles,
+            updatedAt: new Date().toISOString()
+        };
+        const isUpdating = !!originalSlug;
+        const url = isUpdating ? `${apiBaseUrl}/guides/${originalSlug}` : `${apiBaseUrl}/guides`;
+        const method = isUpdating ? 'PUT' : 'POST';
+        try {
+            const response = await fetch(url, {
+                method: method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(guideData)
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || '保存失败');
+            }
+            closeModal();
+            loadGuides(); // Reload data
+        } catch (error) {
+            alert(`保存失败: ${error.message}`);
+        }
+    };
+    
+    // DIGIMON & EVOLUTIONS (Data Loading)
+    const renderDigimonPage = (page, digimonsToRender = null) => {
+        currentDigimonPage = page;
+        const itemsPerPage = 15;
+        const tableBody = document.getElementById('digimon-table-body');
+        tableBody.innerHTML = '';
+
+        const sourceDigimons = digimonsToRender !== null ? digimonsToRender : allDigimonsCache;
+
+        const startIndex = (page - 1) * itemsPerPage;
+        const paginatedDigimons = sourceDigimons.slice(startIndex, startIndex + itemsPerPage);
+
+        if (paginatedDigimons.length === 0 && page > 1) {
+            renderDigimonPage(page - 1, digimonsToRender);
+            return;
+        }
+
+        if (paginatedDigimons.length === 0 && page === 1) {
+            tableBody.innerHTML = '<tr><td colspan="3" class="text-center py-8 text-gray-500">暂无数据</td></tr>';
+        } else {
+            paginatedDigimons.forEach(digimon => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${digimon.id}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${digimon.name}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm">
+                        <button class="edit-digimon-btn text-indigo-600 hover:text-indigo-900" data-id="${digimon.id}">编辑</button>
+                        <button class="delete-digimon-btn text-red-600 hover:text-red-900 ml-4" data-id="${digimon.id}">删除</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        renderPaginationControls('digimon-pagination-controls', sourceDigimons.length, itemsPerPage, page, (newPage) => {
+            renderDigimonPage(newPage, digimonsToRender);
+        });
+    };
+
+    const loadDigimonData = async () => {
+      try {
+        const response = await fetch(`${apiBaseUrl}/digimons`);
+        allDigimonsCache = await response.json();
+        
+        document.getElementById('digimon-search').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredDigimons = allDigimonsCache.filter(d => 
+                d.name.toLowerCase().includes(searchTerm) || 
+                d.id.toLowerCase().includes(searchTerm)
+            );
+            renderDigimonPage(1, filteredDigimons);
+        });
+
+        renderDigimonPage(currentDigimonPage);
+      } catch (error) {
+        console.error('Error loading digimons:', error);
+        document.getElementById('digimon-table-body').innerHTML = `<tr><td colspan="3" class="text-red-500 text-center p-4">加载数码兽数据失败</td></tr>`;
+      }
+    };
+
+    const renderEvolutionsPage = (page, evolutionsToRender = null) => {
+        currentEvolutionsPage = page;
+        const itemsPerPage = 15;
+        const tableBody = document.getElementById('evolutions-table-body');
+        tableBody.innerHTML = '';
+        const evolutionArray = evolutionsToRender !== null ? evolutionsToRender : Object.values(allEvolutionsCache);
+
+        const startIndex = (page - 1) * itemsPerPage;
+        const paginatedEvolutions = evolutionArray.slice(startIndex, startIndex + itemsPerPage);
+        
+        if (paginatedEvolutions.length === 0 && page > 1) {
+            renderEvolutionsPage(page - 1, evolutionsToRender);
+            return;
+        }
+
+        if (paginatedEvolutions.length === 0 && page === 1) {
+            tableBody.innerHTML = `<tr><td colspan="3" class="text-center py-8 text-gray-500">这里空空如也...</td></tr>`;
+        } else {
+            paginatedEvolutions.forEach(evolution => {
+                const key = evolution.main.id;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${evolution.main.id}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${evolution.main.title}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm">
+                    <button class="edit-evolution-btn text-indigo-600 hover:text-indigo-900" data-id="${key}">编辑</button>
+                    <button class="delete-evolution-btn text-red-600 hover:text-red-900 ml-4" data-id="${key}">删除</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        renderPaginationControls('evolutions-pagination-controls', evolutionArray.length, itemsPerPage, page, (newPage) => {
+            renderEvolutionsPage(newPage, evolutionsToRender);
+        });
+    };
+
+    const loadEvolutionsData = async () => {
+      try {
+        const response = await fetch(`${apiBaseUrl}/evolutions`);
+        allEvolutionsCache = await response.json(); // Cache the loaded data
+        
+        document.getElementById('evolution-search').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredEvolutions = Object.values(allEvolutionsCache).filter(evo => 
+                evo.main.title.toLowerCase().includes(searchTerm) ||
+                evo.main.id.toLowerCase().includes(searchTerm)
+            );
+            renderEvolutionsPage(1, filteredEvolutions);
+        });
+
+        renderEvolutionsPage(currentEvolutionsPage);
+      } catch (error) {
+        console.error('Error loading evolutions:', error);
+        document.getElementById('evolutions-table-body').innerHTML = `<tr><td colspan="3" class="text-red-500 text-center p-4">加载进化路线数据失败</td></tr>`;
+      }
+    };
+
+    // DIGIMON (Modal & Form Logic)
+    const openDigimonModal = (digimon = null) => {
+      const digimonForm = document.getElementById('digimon-form');
+      const skillsContainer = document.getElementById('skills-container');
+      digimonForm.reset();
+      skillsContainer.innerHTML = '';
+      document.getElementById('digimon-id-hidden').value = digimon ? digimon.id : '';
+      if (digimon) {
+        document.getElementById('digimon-modal-title').textContent = '编辑数码兽';
+        document.getElementById('digimon-id').value = digimon.id;
+        document.getElementById('digimon-id').readOnly = true;
+        document.getElementById('digimon-name').value = digimon.name || '';
+        document.getElementById('digimon-image').value = digimon.image || '';
+        document.getElementById('digimon-positioning').value = digimon.positioning || '';
+        document.getElementById('digimon-type').value = digimon.Type || '';
+        document.getElementById('digimon-armor').value = digimon.armor || '';
+        document.getElementById('digimon-fit').value = digimon.fit || '';
+        document.getElementById('digimon-egg').value = digimon.egg || '';
+        document.getElementById('digimon-time').value = digimon.time || '';
+        if (digimon.skills && Array.isArray(digimon.skills)) {
+          digimon.skills.forEach(skill => addSkillToForm(skill));
+        }
+      } else {
+        document.getElementById('digimon-modal-title').textContent = '添加新数码兽';
+        document.getElementById('digimon-id').readOnly = false;
+      }
+      document.getElementById('digimon-editor-modal').classList.remove('hidden');
+    };
+
+    const closeDigimonModal = () => {
+      document.getElementById('digimon-editor-modal').classList.add('hidden');
+    };
+    
+    const addSkillToForm = (skill = {}) => {
+        const skillsContainer = document.getElementById('skills-container');
+        const skillDiv = document.createElement('div');
+        skillDiv.className = 'grid grid-cols-[1fr_2fr_5px] gap-2 items-center';
+        skillDiv.innerHTML = `
+            <input type="text" placeholder="技能名称 (如: Q - 火焰)" value="${skill.name || ''}" class="skill-name-input rounded-md border-gray-300 text-sm">
+            <textarea placeholder="技能描述" rows="2" class="skill-desc-input rounded-md border-gray-300 text-sm">${skill.description || ''}</textarea>
+            <button type="button" class="remove-skill-btn text-red-500 text-xl font-bold">×</button>
+        `;
+        skillsContainer.appendChild(skillDiv);
+        skillDiv.querySelector('.remove-skill-btn').addEventListener('click', () => skillDiv.remove());
+    };
+
+    const handleSaveDigimon = async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('digimon-id').value.trim();
+        const originalId = document.getElementById('digimon-id-hidden').value;
+        const isEditing = !!originalId;
+        const skillsContainer = document.getElementById('skills-container');
+        const skills = Array.from(skillsContainer.querySelectorAll('.grid')).map(div => ({
+            name: div.querySelector('.skill-name-input').value.trim(),
+            description: div.querySelector('.skill-desc-input').value.trim()
+        })).filter(s => s.name);
+        const digimonData = {
+            id, name: document.getElementById('digimon-name').value.trim(),
+            image: document.getElementById('digimon-image').value.trim(),
+            positioning: document.getElementById('digimon-positioning').value.trim(),
+            Type: document.getElementById('digimon-type').value.trim(),
+            armor: document.getElementById('digimon-armor').value.trim(),
+            fit: document.getElementById('digimon-fit').value.trim(),
+            egg: document.getElementById('digimon-egg').value.trim(),
+            time: document.getElementById('digimon-time').value.trim(),
+            skills
+        };
+        try {
+            const url = isEditing ? `${apiBaseUrl}/digimons/${originalId}` : `${apiBaseUrl}/digimons`;
+            const method = isEditing ? 'PUT' : 'POST';
+            const response = await fetch(url, {
+                method, headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(digimonData)
+            });
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message);
+            }
+            closeDigimonModal();
+            loadDigimonData();
+        } catch (error) {
+            alert(`保存失败: ${error.message}`);
+        }
+    };
+
+    const handleEditDigimon = (e) => {
+        const id = e.target.dataset.id;
+        const digimon = allDigimonsCache.find(d => d.id === id);
+        if (digimon) {
+            openDigimonModal(digimon);
+        } else {
+            alert('在缓存中找不到该数码兽的数据，请尝试刷新页面。');
+        }
+    };
+    
+    const handleDeleteDigimon = async (e) => {
+        const id = e.target.dataset.id;
+        if (!confirm(`确定要删除ID为 "${id}" 的数码兽吗？此操作不可撤销。`)) return;
+        try {
+            const response = await fetch(`${apiBaseUrl}/digimons/${id}`, { method: 'DELETE' });
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message);
+            }
+            loadDigimonData();
+        } catch (error) {
+            alert(`删除失败: ${error.message}`);
+        }
+    };
+
+    // EVOLUTIONS (Modal & Form Logic)
+    const addStageToForm = (stage = {}, pathContainer) => {
+        const template = document.getElementById('evolution-stage-template');
+        const newCard = template.content.cloneNode(true).firstElementChild;
+
+        // --- Populate Preview ---
+        const previewImage = newCard.querySelector('.stage-preview-image');
+        const previewName = newCard.querySelector('.stage-preview-name');
+        const placeholderUri = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='transparent'/%3E%3C/svg%3E";
+        previewImage.src = stage.image || placeholderUri;
+        previewName.textContent = stage.name || '点击编辑';
+        
+        // --- Populate Form ---
+        const formImage = newCard.querySelector('.stage-image-input');
+        const formName = newCard.querySelector('.stage-name-input');
+        formImage.value = stage.image || '';
+        formName.value = stage.name || '';
+        newCard.querySelector('.stage-requirement-input').value = stage.requirement || '';
+        newCard.querySelector('.stage-id-link-input').value = stage.digimon_id_link || '';
+        newCard.querySelector('.stage-hidden-checkbox').checked = stage.is_hidden || false;
+        
+        // --- Event Listeners ---
+        const detailsForm = newCard.querySelector('.stage-details-form');
+        
+        // Close button ('x')
+        newCard.querySelector('.close-stage-editor-btn').onclick = (e) => {
+            e.stopPropagation();
+            detailsForm.classList.add('hidden');
+        };
+
+        // New 'Delete Stage' button
+        newCard.querySelector('.remove-stage-btn').onclick = (e) => {
+            e.stopPropagation();
+            if (confirm('确定要删除这个阶段吗？此操作不可撤销。')) {
+                newCard.remove();
+            }
+        };
+        
+        // Toggle form visibility
+        newCard.onclick = (e) => {
+            // Prevent toggling when clicking inside the form itself
+            if (e.target.closest('.stage-details-form')) return;
+
+            const manager = document.getElementById('evolution-paths-manager');
+            const wasHidden = detailsForm.classList.contains('hidden');
+
+            // Always hide all forms first.
+            manager.querySelectorAll('.stage-details-form').forEach(form => form.classList.add('hidden'));
+            
+            // If the clicked form was hidden, un-hide it and scroll if necessary.
+            if (wasHidden) {
+                detailsForm.classList.remove('hidden');
+
+                // Use a timeout to allow the DOM to render the form before we measure it
+                setTimeout(() => {
+                    const formRect = detailsForm.getBoundingClientRect();
+                    const managerRect = manager.getBoundingClientRect();
+
+                    if (formRect.bottom > managerRect.bottom) {
+                        // How much the form is cut off at the bottom
+                        const scrollAmount = formRect.bottom - managerRect.bottom + 16; // 16px for padding
+                        manager.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+                    }
+                }, 10);
+            }
+        };
+
+        // Add acquisition method logic
+        const acquisitionContainer = newCard.querySelector('.acquisition-container');
+        const addAcquisitionBtn = newCard.querySelector('.add-acquisition-btn');
+        addAcquisitionBtn.onclick = (e) => {
+            e.stopPropagation(); // prevent card from closing
+            addStageAcquisitionItemToForm(acquisitionContainer);
+        };
+
+        if (stage.acquisition && Array.isArray(stage.acquisition)) {
+            stage.acquisition.forEach(acq => {
+                // Handle both old object format and new string format for backward compatibility
+                const acqText = (typeof acq === 'object' && acq.name) ? acq.name : (typeof acq === 'string' ? acq : '');
+                if (acqText) {
+                    addStageAcquisitionItemToForm(acquisitionContainer, acqText);
+                }
+            });
+        }
+
+        // Update preview on input change
+        formImage.oninput = () => { previewImage.src = formImage.value || placeholderUri; };
+        formName.oninput = () => { previewName.textContent = formName.value || '点击编辑'; };
+
+        pathContainer.appendChild(newCard);
+    };
+
+    const addConnectionToForm = (connection = {}) => {
+        const template = document.getElementById('connection-template');
+        const newCard = template.content.cloneNode(true).firstElementChild;
+
+        if (connection.type === 'cross') {
+            newCard.querySelector('.connection-from-path-input').value = connection.from_path ?? '';
+            newCard.querySelector('.connection-from-stage-input').value = connection.from_stage ?? '';
+            newCard.querySelector('.connection-to-path-input').value = connection.to_path ?? '';
+            newCard.querySelector('.connection-to-stage-input').value = connection.to_stage ?? '';
+        }
+        
+        newCard.querySelector('.remove-connection-btn').onclick = () => newCard.remove();
+        document.getElementById('cross-connections-container').appendChild(newCard);
+    };
+
+    const addBranchAcquisitionToForm = (acquisition = {}) => {
+        const template = document.getElementById('branch-acquisition-template');
+        const newCard = template.content.cloneNode(true).firstElementChild;
+        if (acquisition.type) {
+            newCard.querySelector('.branch-acquisition-type-select').value = acquisition.type;
+        }
+        if (acquisition.text) {
+            newCard.querySelector('.branch-acquisition-text-input').value = acquisition.text;
+        }
+        newCard.querySelector('.remove-branch-acquisition-btn').onclick = () => newCard.remove();
+        document.getElementById('branch-acquisition-container').appendChild(newCard);
+    };
+
+    const addAcquisitionToForm = (container, acquisition = {}) => {
+        const template = document.getElementById('acquisition-item-template');
+        const newItem = template.content.cloneNode(true).firstElementChild;
+        
+        newItem.querySelector('.acquisition-name-input').value = acquisition.name || '';
+
+        const programsContainer = newItem.querySelector('.acquisition-programs-container');
+        const itemsContainer = newItem.querySelector('.acquisition-items-container');
+
+        if (acquisition.programs && Array.isArray(acquisition.programs)) {
+            acquisition.programs.forEach(itemId => {
+                const itemData = allItemsCache.find(i => i.id === itemId);
+                if(itemData) addSelectedItemTag(itemData, programsContainer);
+            });
+        }
+        if (acquisition.items && Array.isArray(acquisition.items)) {
+            acquisition.items.forEach(itemId => {
+                const itemData = allItemsCache.find(i => i.id === itemId);
+                if(itemData) addSelectedItemTag(itemData, itemsContainer);
+            });
+        }
+        
+        newItem.querySelector('.add-program-btn').addEventListener('click', () => {
+            openItemSelectorModal(programsContainer);
+        });
+        newItem.querySelector('.add-item-btn').addEventListener('click', () => {
+            openItemSelectorModal(itemsContainer);
+        });
+
+        newItem.querySelector('.remove-acquisition-item-btn').addEventListener('click', () => {
+            newItem.remove();
+        });
+
+        container.appendChild(newItem);
+    };
+
+    const addSelectedItemTag = (item, container) => {
+        const template = document.getElementById('selected-item-tag-template');
+        const newTag = template.content.cloneNode(true).firstElementChild;
+        newTag.querySelector('.item-name-tag').textContent = item.name;
+        newTag.dataset.id = item.id;
+        newTag.querySelector('.remove-item-tag-btn').addEventListener('click', () => newTag.remove());
+        container.appendChild(newTag);
+    };
+
+    const openItemSelectorModal = async (targetContainer, isMultiple = true, targetType = 'any', callback = null) => {
+        console.log('打开物品选择器...');
+        // NEW: Use the new endpoint and cache
+        if (allCraftableItemsCache.length === 0) {
+            try {
+                console.log('加载物品数据...');
+                allCraftableItemsCache = await apiFetch('/all-craftable-items');
+                console.log('物品数据加载成功:', allCraftableItemsCache);
+            } catch (error) {
+                console.error('加载物品列表失败:', error);
+                alert('加载所有物品列表失败，请稍后重试。');
+                return;
+            }
+        }
+
+        const modal = document.getElementById('item-selector-modal');
+        const listContainer = document.getElementById('item-selector-list');
+        const searchInput = document.getElementById('item-selector-search');
+        listContainer.innerHTML = '';
+        searchInput.value = '';
+
+        // Store callback and target for later use
+        modal.dataset.callback = callback ? 'true' : 'false';
+        window.itemSelectorCallback = callback;
+        window.itemSelectorTarget = targetContainer;
+
+        const renderList = (filter = '') => {
+            listContainer.innerHTML = '';
+            
+            // Filter by search term
+            let itemsToShow = allCraftableItemsCache;
+            if (filter) {
+                const lowerFilter = filter.toLowerCase();
+                itemsToShow = itemsToShow.filter(item => 
+                    item.name.toLowerCase().includes(lowerFilter) || 
+                    item.id.toLowerCase().includes(lowerFilter)
+                );
+            }
+
+            // Filter by target type (for target vs material)
+            if (targetType === 'equipment') {
+                itemsToShow = itemsToShow.filter(item => item.type === 'equipment');
+            }
+
+            itemsToShow.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'flex items-center gap-4 p-2 bg-white rounded-md cursor-pointer hover:bg-blue-50 border';
+                itemDiv.innerHTML = `
+                    <img src="${item.image || 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='}" alt="${item.name}" class="w-10 h-10 object-contain rounded">
+                    <div class="flex-grow">
+                        <p class="font-semibold">${item.name}</p>
+                        <p class="text-xs text-gray-500">ID: ${item.id} | 类型: ${item.type === 'equipment' ? '装备' : (item.type || '道具')}</p>
+                    </div>
+                `;
+                itemDiv.addEventListener('click', () => {
+                    if (window.itemSelectorCallback) {
+                        window.itemSelectorCallback(item);
+                        // The callback is responsible for closing the modal
+                    } else if (window.itemSelectorTarget) {
+                        if (!isMultiple) {
+                            window.itemSelectorTarget.innerHTML = ''; // Clear previous selection
+                        }
+                        addSelectedItemTag(item, window.itemSelectorTarget);
+                        closeItemSelectorModal();
+                    }
+                });
+                listContainer.appendChild(itemDiv);
+            });
+        };
+
+        searchInput.oninput = () => renderList(searchInput.value);
+        document.getElementById('cancel-item-selector-btn').onclick = closeItemSelectorModal;
+        renderList();
+        modal.classList.remove('hidden');
+    };
+
+    const closeItemSelectorModal = () => {
+        document.getElementById('item-selector-modal').classList.add('hidden');
+    };
+
+    const addStageAcquisitionItemToForm = (container, text = '') => {
+        const template = document.getElementById('stage-acquisition-item-template');
+        const newItem = template.content.cloneNode(true).firstElementChild;
+        newItem.querySelector('.acquisition-text-input').value = text;
+        newItem.querySelector('.remove-stage-acquisition-item-btn').onclick = () => newItem.remove();
+        container.appendChild(newItem);
+    };
+
+    const openEvolutionModal = async (evolutionId = null, evolutionData = null) => {
+        const evolutionForm = document.getElementById('evolution-form');
+        const pathsManager = document.getElementById('evolution-paths-manager');
+        const connectionsContainer = document.getElementById('cross-connections-container');
+        const acquisitionContainer = document.getElementById('branch-acquisition-container');
+        const mainAcquisitionContainer = document.getElementById('main-acquisition-container');
+        evolutionForm.reset();
+        pathsManager.innerHTML = '';
+        connectionsContainer.innerHTML = '';
+        acquisitionContainer.innerHTML = '';
+        mainAcquisitionContainer.innerHTML = '';
+        
+        document.getElementById('evolution-id-hidden').value = evolutionId || '';
+
+        if (allItemsCache.length === 0) {
+            try {
+                allItemsCache = await apiFetch('/items');
+            } catch (e) {
+                console.error("Failed to pre-fetch items for evolution modal", e);
+                // Non-critical, selector will try again
+            }
+        }
+        
+        if (evolutionId && evolutionData) {
+            // --- Populate Modal with existing data ---
+            document.getElementById('evolution-modal-title').textContent = '编辑进化路线';
+            document.getElementById('evolution-id').value = evolutionData.main.id || evolutionId;
+            document.getElementById('evolution-id').readOnly = true;
+            document.getElementById('evolution-title').value = evolutionData.main.title || '';
+            
+            // Populate card and main data
+            const cardData = evolutionData.card || {};
+            document.getElementById('evolution-card-name').value = cardData.name || '';
+            document.getElementById('evolution-card-image').value = cardData.image || '';
+            document.getElementById('evolution-card-evonames').value = cardData.evolution_names || '';
+            document.getElementById('evolution-card-evoimages').value = cardData.evolution_images || '';
+            const mainData = evolutionData.main || {};
+
+            // --- Multi-Path Loading Logic ---
+            if (evolutionData.stages && Array.isArray(evolutionData.stages)) {
+                // Group stages by path_index
+                const stagesByPath = evolutionData.stages.reduce((acc, stage) => {
+                    const pathIndex = stage.path_index || 0;
+                    if (!acc[pathIndex]) acc[pathIndex] = [];
+                    acc[pathIndex].push(stage);
+                    return acc;
+                }, {});
+
+                // Sort path indices and create UI for each path
+                Object.keys(stagesByPath).sort((a,b) => a - b).forEach(pathIndexStr => {
+                    const pathIndex = parseInt(pathIndexStr, 10);
+                    const pathStages = stagesByPath[pathIndex].sort((a,b) => a.stage_index - b.stage_index);
+                    const pathType = (mainData.branch_types && mainData.branch_types[pathIndex]) ? mainData.branch_types[pathIndex] : '';
+
+                    const pathContainer = createPathContainer(pathIndex, pathType);
+                    pathsManager.appendChild(pathContainer);
+                    
+                    const stagesList = pathContainer.querySelector('.stages-list');
+                    pathStages.forEach(stage => {
+                        addStageToForm(stage, stagesList);
+                    });
+                });
+            }
+
+            if (evolutionData.connections && Array.isArray(evolutionData.connections)) {
+                evolutionData.connections.forEach(conn => {
+                    if (conn.type === 'cross') {
+                        addConnectionToForm(conn)
+                    }
+                });
+            }
+            if (evolutionData.main.branch_acquisition && Array.isArray(evolutionData.main.branch_acquisition)) {
+                evolutionData.main.branch_acquisition.forEach(acq => addBranchAcquisitionToForm(acq));
+            }
+            if (evolutionData.acquisition && Array.isArray(evolutionData.acquisition)) {
+                evolutionData.acquisition.forEach(acq => addMainAcquisitionToForm(mainAcquisitionContainer, acq));
+            }
+        } else {
+            // --- Setup for a new evolution route ---
+            document.getElementById('evolution-modal-title').textContent = '添加新进化路线';
+            document.getElementById('evolution-id').readOnly = false;
+            // Add one default path to start with
+            pathsManager.appendChild(createPathContainer(0, ''));
+        }
+
+        document.getElementById('evolution-editor-modal').classList.remove('hidden');
+    };
+
+    const createPathContainer = (index, type) => {
+        const container = document.createElement('div');
+        container.className = 'evolution-path-container bg-white p-4 rounded-lg shadow-md border';
+        container.dataset.pathIndex = index;
+
+        container.innerHTML = `
+            <div class="flex justify-between items-center mb-3 border-b pb-2">
+                <div class="flex items-center gap-4 flex-grow mr-4">
+                    <h4 class="text-md font-semibold whitespace-nowrap">路径 ${index + 1}</h4>
+                    <input type="text" placeholder="路径类型 (e.g., AT)" value="${type}" class="path-type-input mt-1 block w-full rounded-md border-gray-300 shadow-sm text-sm">
+                </div>
+                <button type="button" class="remove-path-btn bg-red-100 text-red-700 px-3 py-1 rounded-md text-sm hover:bg-red-200 flex-shrink-0">删除路径</button>
+            </div>
+            <div class="stages-list-wrapper">
+                <div class="stages-list flex flex-wrap items-start gap-6 p-4 bg-gray-50 rounded-md">
+                    <!-- Draggable stages will be inserted here -->
+                </div>
+            </div>
+            <button type="button" class="add-stage-to-path-btn bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-sm hover:bg-blue-200 mt-3">+ 添加阶段到此路径</button>
+        `;
+
+        const stagesList = container.querySelector('.stages-list');
+        container.querySelector('.add-stage-to-path-btn').onclick = () => addStageToForm({}, stagesList);
+        container.querySelector('.remove-path-btn').onclick = () => {
+            if (confirm(`确定要删除路径 ${index + 1} 吗？`)) {
+                container.remove();
+            }
+        };
+
+        if (evolutionSortable) evolutionSortable.destroy();
+        evolutionSortable = new Sortable(stagesList, {
+            handle: '.handle', 
+            animation: 150,
+            direction: 'horizontal'
+        });
+
+        return container;
+    }
+
+    const closeEvolutionModal = () => {
+        document.getElementById('evolution-editor-modal').classList.add('hidden');
+    };
+
+    const handleEditEvolution = (e) => {
+        const id = e.target.dataset.id;
+        const evolutionData = allEvolutionsCache[id];
+        if (evolutionData) {
+            openEvolutionModal(id, evolutionData);
+        } else {
+            alert('在缓存中找不到该进化路线的数据，请尝试刷新页面。');
+        }
+    };
+
+    const handleDeleteEvolution = async (e) => {
+        const id = e.target.dataset.id;
+        if (!confirm(`确定要删除ID为 "${id}" 的进化路线吗？此操作不可撤销。`)) return;
+        try {
+            const response = await fetch(`${apiBaseUrl}/evolutions/${id}`, { method: 'DELETE' });
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || '删除失败');
+            }
+            loadEvolutionsData();
+        } catch (error) {
+            alert(`删除失败: ${error.message}`);
+        }
+    };
+
+    const handleSaveEvolution = async (e) => {
+        e.preventDefault();
+        const idFromInput = document.getElementById('evolution-id').value.trim();
+        const originalId = document.getElementById('evolution-id-hidden').value;
+        const isEditing = !!originalId;
+        if (!idFromInput) {
+            alert('路线ID不能为空。');
+            return;
+        }
+
+        const finalData = {
+            card: {},
+            main: {},
+            stages: [],
+            connections: [],
+            acquisition: [],
+            main: {
+                branch_acquisition: [],
+                branch_types: []
+            }
+        };
+
+        // 1. Populate Card and Main data
+        finalData.card = {
+            id: idFromInput,
+            name: document.getElementById('evolution-card-name').value.trim(),
+            image: document.getElementById('evolution-card-image').value.trim(),
+            evolution_names: document.getElementById('evolution-card-evonames').value.trim(),
+            evolution_images: document.getElementById('evolution-card-evoimages').value.trim()
+        };
+        finalData.main = {
+            id: idFromInput,
+            title: document.getElementById('evolution-title').value.trim(),
+            branch_acquisition: [],
+            branch_types: []
+        };
+
+        // 2. Process all evolution paths and their stages
+        const pathContainers = document.getElementById('evolution-paths-manager').querySelectorAll('.evolution-path-container');
+        const pathTypeKeys = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+
+        pathContainers.forEach((container, pathIndex) => {
+            const pathType = container.querySelector('.path-type-input').value.trim();
+            finalData.main.branch_types.push(pathType);
+
+            // Add the 'line' type connection for this path
+            finalData.connections.push({
+                evolution_id: idFromInput,
+                type: 'line',
+                line_type: pathType,
+                line_path_index: pathIndex
+            });
+
+            const stageCards = container.querySelectorAll('.evolution-stage-card');
+            stageCards.forEach((card, stageIndex) => {
+                const stageData = {
+                    evolution_id: idFromInput,
+                    path_index: pathIndex,
+                    stage_index: stageIndex,
+                    name: card.querySelector('.stage-name-input').value.trim(),
+                    image: card.querySelector('.stage-image-input').value.trim(),
+                    requirement: card.querySelector('.stage-requirement-input').value.trim(),
+                    is_hidden: card.querySelector('.stage-hidden-checkbox').checked,
+                    digimon_id_link: card.querySelector('.stage-id-link-input').value.trim() || null
+                };
+
+                const acquisitionContainer = card.querySelector('.acquisition-container');
+                if (acquisitionContainer) {
+                    const acquisitionInputs = acquisitionContainer.querySelectorAll('.acquisition-text-input');
+                    const acquisitionData = Array.from(acquisitionInputs)
+                        .map(input => input.value.trim())
+                        .filter(text => text); // Filter out empty strings
+                    
+                    if (acquisitionData.length > 0) {
+                        stageData.acquisition = acquisitionData;
+                    }
+                }
+
+                finalData.stages.push(stageData);
+            });
+        });
+
+        // 3. Process all cross-connections
+        const connectionCards = document.getElementById('cross-connections-container').querySelectorAll('.connection-card');
+        connectionCards.forEach(card => {
+            const from_path = parseInt(card.querySelector('.connection-from-path-input').value, 10);
+            const from_stage = parseInt(card.querySelector('.connection-from-stage-input').value, 10);
+            const to_path = parseInt(card.querySelector('.connection-to-path-input').value, 10);
+            const to_stage = parseInt(card.querySelector('.connection-to-stage-input').value, 10);
+
+            if (!isNaN(from_path) && !isNaN(from_stage) && !isNaN(to_path) && !isNaN(to_stage)) {
+                finalData.connections.push({
+                    evolution_id: idFromInput,
+                    type: 'cross',
+                    from_path: from_path,
+                    from_stage: from_stage,
+                    to_path: to_path,
+                    to_stage: to_stage
+                            });
+                        }
+                    });
+
+        finalData.main.branch_acquisition = [];
+        const acquisitionCards = document.querySelectorAll('#branch-acquisition-container .branch-acquisition-card');
+        acquisitionCards.forEach(card => {
+            const type = card.querySelector('.branch-acquisition-type-select').value;
+            const text = card.querySelector('.branch-acquisition-text-input').value.trim();
+            if (type && text) {
+                finalData.main.branch_acquisition.push({ type, text });
+            }
+        });
+
+        const mainAcquisitionContainer = document.getElementById('main-acquisition-container');
+        const mainAcquisitionItems = mainAcquisitionContainer.querySelectorAll('.main-acquisition-item');
+        mainAcquisitionItems.forEach(item => {
+            const name = item.querySelector('.main-acq-name-input').value.trim();
+            const type = item.querySelector('.main-acq-type-select').value;
+
+            const programContainer = item.querySelector('.main-acq-program-container');
+            const programTag = programContainer.querySelector('.selected-item-tag');
+            const programId = programTag ? programTag.dataset.id : null;
+
+            const itemsContainer = item.querySelector('.main-acq-items-container');
+            const itemTags = itemsContainer.querySelectorAll('.selected-item-tag');
+            const itemIds = Array.from(itemTags).map(tag => tag.dataset.id);
+
+            if (name) {
+                finalData.acquisition.push({
+                    name,
+                    type,
+                    programId,
+                    itemIds
+                });
+            }
+        });
+
+        try {
+            const url = isEditing ? `${apiBaseUrl}/evolutions/${originalId}` : `${apiBaseUrl}/evolutions`;
+            const method = isEditing ? 'PUT' : 'POST';
+            const body = { id: idFromInput, data: finalData };
+            const response = await fetch(url, {
+                method, headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || '保存失败');
+            }
+            closeEvolutionModal();
+            loadEvolutionsData();
+        } catch (error) {
+            alert(`保存失败: ${error.message}`);
+        }
+    };
+
+    // Equipment Management Functions
+    const renderEquipmentSearchResults = (page) => {
+        currentEquipmentPage = page;
+        const resultsContainer = document.getElementById('equipment-search-results');
+        const paginationControls = document.getElementById('equipment-pagination-controls');
+        const dungeonList = document.getElementById('equipment-dungeon-list');
+        const searchInput = document.getElementById('equipment-search-input');
+
+        const searchTerm = searchInput.value.toLowerCase();
+
+        if (!searchTerm) {
+            resultsContainer.classList.add('hidden');
+            dungeonList.classList.remove('hidden');
+            document.querySelector('#panel-equipment .text-xl.font-semibold').textContent = '副本装备管理';
+            renderEquipmentPage(1); // Go back to the first page of dungeon list
+            return;
+        }
+
+        dungeonList.classList.add('hidden');
+        resultsContainer.classList.remove('hidden');
+        document.querySelector('#panel-equipment .text-xl.font-semibold').textContent = '装备搜索结果';
+
+        const filteredItems = allFlatEquipmentCache.filter(item => 
+            (item.name && item.name.toLowerCase().includes(searchTerm)) ||
+            (item.type && item.type.toLowerCase().includes(searchTerm)) ||
+            (item.attributes && item.attributes.toLowerCase().includes(searchTerm)) ||
+            (item.acquisitionMethod && item.acquisitionMethod.toLowerCase().includes(searchTerm))
+        );
+
+        resultsContainer.innerHTML = ''; // Clear previous results
+        
+        const header = document.createElement('div');
+        header.className = 'p-4 border-b flex justify-between items-center';
+        header.innerHTML = `
+          <h3 class="text-lg font-semibold">找到 ${filteredItems.length} 个装备</h3>
+          <button id="back-to-dungeons-btn" class="text-sm text-blue-600 hover:underline">返回副本列表</button>
+        `;
+        resultsContainer.appendChild(header);
+        header.querySelector('#back-to-dungeons-btn').addEventListener('click', () => {
+            searchInput.value = '';
+            renderEquipmentSearchResults(1);
+        });
+
+        const itemsPerPage = 15;
+        const startIndex = (page - 1) * itemsPerPage;
+        const paginatedItems = filteredItems.slice(startIndex, startIndex + itemsPerPage);
+
+        if (paginatedItems.length === 0) {
+            resultsContainer.insertAdjacentHTML('beforeend', '<p class="p-4 text-center text-gray-500">找不到匹配的装备。</p>');
+            paginationControls.innerHTML = '';
+            return;
+        }
+
+        const table = document.createElement('table');
+        table.className = 'min-w-full';
+        table.innerHTML = `
+            <thead>
+                <tr>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-medium text-gray-600 uppercase">图标</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-medium text-gray-600 uppercase">名称 / 属性</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-medium text-gray-600 uppercase">类型</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-xs font-medium text-gray-600 uppercase">来源</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        `;
+        const tbody = table.querySelector('tbody');
+
+        paginatedItems.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-gray-50';
+            tr.innerHTML = `
+                <td class="px-6 py-4 border-b"><img src="${item.icon}" alt="${item.name}" class="h-10 w-10 object-contain rounded"></td>
+                <td class="px-6 py-4 border-b">
+                    <div class="text-sm font-medium text-gray-900">${item.name}</div>
+                    <div class="text-xs text-gray-500" title="${item.attributes}">${item.attributes}</div>
+                </td>
+                <td class="px-6 py-4 border-b text-sm text-gray-700">${item.type}</td>
+                <td class="px-6 py-4 border-b">
+                    <div class="text-sm text-gray-800">${item.dungeonName}</div>
+                    <div class="text-xs text-gray-500">${item.acquisitionMethod}</div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+        
+        resultsContainer.appendChild(table);
+
+        renderPaginationControls('equipment-pagination-controls', filteredItems.length, itemsPerPage, page, renderEquipmentSearchResults);
+    };
+
+    const renderEquipmentPage = (page) => {
+        currentEquipmentPage = page;
+        const itemsPerPage = 15;
+        const tableBody = document.getElementById('equipment-table-body');
+        tableBody.innerHTML = '';
+        
+        const startIndex = (page - 1) * itemsPerPage;
+        const paginatedDungeons = allEquipmentCache.slice(startIndex, startIndex + itemsPerPage);
+
+        if (paginatedDungeons.length === 0 && page > 1) {
+            renderEquipmentPage(page - 1);
+            return;
+        }
+
+        if (paginatedDungeons.length === 0 && page === 1) {
+          tableBody.innerHTML = '<tr><td colspan="4" class="text-center py-8 text-gray-500">暂无副本数据...</td></tr>';
+        } else {
+            paginatedDungeons.forEach(dungeon => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${dungeon.dungeonId}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${dungeon.dungeonName}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${dungeon.equipmentSets?.length || 0}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm">
+                    <button class="edit-dungeon-btn text-indigo-600 hover:text-indigo-900" data-id="${dungeon.dungeonId}">编辑</button>
+                    <button class="delete-dungeon-btn text-red-600 hover:text-red-900 ml-4" data-id="${dungeon.dungeonId}">删除</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        renderPaginationControls('equipment-pagination-controls', allEquipmentCache.length, itemsPerPage, page, renderEquipmentPage);
+    };
+
+    const loadEquipmentData = async () => {
+      try {
+        const dungeons = await apiFetch('/equipment');
+        allEquipmentCache = dungeons;
+        
+        // Flatten the equipment data for searching
+        allFlatEquipmentCache = dungeons.flatMap(dungeon => {
+            const allItems = [];
+            if (dungeon.looseItems) {
+                allItems.push(...dungeon.looseItems.map(item => ({...item, dungeonName: dungeon.dungeonName})));
+            }
+            if (dungeon.equipmentSets) {
+                dungeon.equipmentSets.forEach(set => {
+                    if (set.items) {
+                        allItems.push(...set.items.map(item => ({...item, dungeonName: dungeon.dungeonName, setName: set.setName})));
+                    }
+                });
+            }
+            return allItems.map(item => ({
+              id: item.id || '',
+              name: item.name || '',
+              type: item.type || '',
+              icon: item.icon || '',
+              attributes: item.attributes || '',
+              acquisitionMethod: item.acquisitionMethod || '',
+              dungeonName: item.dungeonName || '',
+              setName: item.setName || ''
+            }));
+        });
+
+        renderEquipmentPage(currentEquipmentPage);
+      } catch (error) {
+        console.error('Error loading equipment data:', error);
+        document.getElementById('equipment-table-body').innerHTML = 
+          '<tr><td colspan="4" class="text-red-500 text-center p-4">加载副本数据失败</td></tr>';
+      }
+    };
+
+    const openEquipmentModal = (dungeon = null) => {
+      const form = document.getElementById('equipment-form');
+      const setsContainer = document.getElementById('equipment-sets-container');
+      const looseItemsContainer = document.getElementById('loose-items-container');
+      form.reset();
+      setsContainer.innerHTML = '';
+      looseItemsContainer.innerHTML = '';
+
+      document.getElementById('dungeon-id-hidden').value = dungeon ? dungeon.dungeonId : '';
+      
+      if (dungeon) {
+        document.getElementById('equipment-modal-title').textContent = '编辑副本装备';
+        document.getElementById('dungeon-id').value = dungeon.dungeonId;
+        document.getElementById('dungeon-id').readOnly = true;
+        document.getElementById('dungeon-name').value = dungeon.dungeonName || '';
+        document.getElementById('dungeon-image').value = dungeon.dungeonImage || '';
+
+        // Load equipment sets
+        if (dungeon.equipmentSets && Array.isArray(dungeon.equipmentSets)) {
+          dungeon.equipmentSets.forEach(set => addEquipmentSetToForm(set));
+        }
+
+        // Load loose items
+        if (dungeon.looseItems && Array.isArray(dungeon.looseItems)) {
+          dungeon.looseItems.forEach(item => addLooseItemToForm(item));
+        }
+      } else {
+        document.getElementById('equipment-modal-title').textContent = '添加新副本';
+        document.getElementById('dungeon-id').readOnly = false;
+      }
+
+      document.getElementById('equipment-editor-modal').classList.remove('hidden');
+    };
+
+    const closeEquipmentModal = () => {
+      document.getElementById('equipment-editor-modal').classList.add('hidden');
+    };
+
+    const addEquipmentSetToForm = (set = {}) => {
+      const template = document.getElementById('equipment-set-template');
+      const newSet = template.content.cloneNode(true).firstElementChild;
+      
+      // Set name
+      newSet.querySelector('.set-name-input').value = set.setName || '';
+      
+      // Add items
+      const itemsContainer = newSet.querySelector('.items-container');
+      if (set.items && Array.isArray(set.items)) {
+        set.items.forEach(item => {
+          const itemElement = addItemToContainer(itemsContainer, item);
+          itemElement.querySelector('.item-name-input').value = item.name || '';
+          itemElement.querySelector('.item-type-select').value = item.type || '武器';
+          itemElement.querySelector('.item-attributes-input').value = item.attributes || '';
+        });
+      }
+
+      // Add bonus effects
+      const bonusContainer = newSet.querySelector('.bonus-container');
+      if (set.setBonus && Array.isArray(set.setBonus)) {
+        set.setBonus.forEach(bonus => {
+          const bonusElement = addBonusToContainer(bonusContainer, bonus);
+          bonusElement.querySelector('.bonus-count-input').value = bonus.count || '';
+          bonusElement.querySelector('.bonus-description-input').value = bonus.description || '';
+        });
+      }
+
+      // Event listeners
+      newSet.querySelector('.remove-set-btn').onclick = () => newSet.remove();
+      newSet.querySelector('.add-item-btn').onclick = () => addItemToContainer(itemsContainer);
+      newSet.querySelector('.add-bonus-btn').onclick = () => addBonusToContainer(bonusContainer);
+
+      document.getElementById('equipment-sets-container').appendChild(newSet);
+    };
+
+    const addItemToContainer = (container, item = {}) => {
+      const template = document.getElementById('equipment-item-template');
+      const newItem = template.content.cloneNode(true).firstElementChild;
+      
+      if (item.id) newItem.querySelector('.item-id-input').value = item.id;
+      if (item.name) newItem.querySelector('.item-name-input').value = item.name;
+      if (item.type) newItem.querySelector('.item-type-select').value = item.type;
+      if (item.icon) newItem.querySelector('.item-icon-input').value = item.icon;
+      if (item.attributes) newItem.querySelector('.item-attributes-input').value = item.attributes;
+      if (item.acquisitionMethod || item.acquisition_method) newItem.querySelector('.item-acquisition-input').value = (item.acquisitionMethod || item.acquisition_method);
+      
+      // Auto-resize for textareas
+      const textareas = newItem.querySelectorAll('.expand-on-focus');
+      textareas.forEach(textarea => {
+        textarea.addEventListener('focus', () => autoExpandTextarea(textarea));
+        textarea.addEventListener('input', () => autoExpandTextarea(textarea));
+        textarea.addEventListener('blur', () => collapseTextarea(textarea));
+        collapseTextarea(textarea); // Ensure initial height is correct
+      });
+      
+      // 添加图片上传处理
+      const uploadBtn = newItem.querySelector('.upload-icon-btn');
+      if (uploadBtn) {
+        uploadBtn.onclick = async () => {
+          // 创建选择菜单
+          const menu = document.createElement('div');
+          menu.className = 'absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50';
+          menu.style.left = uploadBtn.offsetLeft + 'px';
+          menu.style.top = (uploadBtn.offsetTop + uploadBtn.offsetHeight) + 'px';
+          
+          menu.innerHTML = `
+            <div class="py-1" role="menu" aria-orientation="vertical">
+              <button class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" id="local-upload">
+                上传本地图片
+              </button>
+              <button class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" id="url-upload">
+                输入图片URL
+              </button>
+            </div>
+          `;
+          
+          document.body.appendChild(menu);
+          
+          // 点击其他地方关闭菜单
+          const closeMenu = () => {
+            menu.remove();
+            document.removeEventListener('click', closeMenu);
+          };
+          
+          setTimeout(() => {
+            document.addEventListener('click', closeMenu);
+          }, 0);
+          
+          // 本地上传
+          menu.querySelector('#local-upload').onclick = async () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            
+            input.onchange = async () => {
+              const file = input.files[0];
+              if (!file) return;
+              
+              // 获取当前上下文
+              const dungeonId = document.getElementById('dungeon-id').value;
+              const setContainer = newItem.closest('.equipment-set');
+              const setId = setContainer ? setContainer.querySelector('.set-name-input').value : 'loose';
+              
+              if (!dungeonId) {
+                alert('请先填写副本ID');
+                return;
+              }
+              
+              // 创建FormData对象
+              const formData = new FormData();
+              formData.append('image', file);
+              
+              try {
+                // 显示上传中状态
+                uploadBtn.textContent = '上传中...';
+                uploadBtn.disabled = true;
+                
+                // 发送上传请求
+                const response = await fetch(`${apiBaseUrl}/upload/equipment?dungeonId=${dungeonId}`, {
+                  method: 'POST',
+                  body: formData
+                });
+                
+                if (!response.ok) {
+                  throw new Error(`上传失败: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // 更新图标URL输入框
+                const iconInput = newItem.querySelector('.item-icon-input');
+                if (iconInput) {
+                  iconInput.value = data.url; // 直接使用返回的URL
+                }
+              } catch (error) {
+                console.error('图片上传错误:', error);
+                alert('图片上传失败，请重试');
+              } finally {
+                // 恢复按钮状态
+                uploadBtn.innerHTML = `
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                  </svg>`;
+                uploadBtn.disabled = false;
+              }
+            };
+            
+            input.click();
+          };
+          
+          // 网络图片
+          menu.querySelector('#url-upload').onclick = async () => {
+            const url = prompt('请输入图片URL：');
+            if (!url) return;
+            
+            // 获取当前上下文
+            const dungeonId = document.getElementById('dungeon-id').value;
+            const setContainer = newItem.closest('.equipment-set');
+            const setId = setContainer ? setContainer.querySelector('.set-name-input').value : 'loose';
+            
+            if (!dungeonId) {
+              alert('请先填写副本ID');
+              return;
+            }
+            
+            try {
+              // 显示保存中状态
+              uploadBtn.textContent = '保存中...';
+              uploadBtn.disabled = true;
+              
+              // 从URL中提取文件名
+              const filename = url.split('/').pop() || 'image.png';
+              
+              // 发送保存请求
+              const response = await fetch(`${apiBaseUrl}/save/equipment/image`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  imageUrl: url,
+                  dungeonId,
+                  setId,
+                  filename
+                })
+              });
+              
+              if (!response.ok) {
+                throw new Error(`保存失败: ${response.status}`);
+              }
+              
+              const data = await response.json();
+              
+              // 更新图标URL输入框
+              const iconInput = newItem.querySelector('.item-icon-input');
+              if (iconInput) {
+                iconInput.value = data.url; // 直接使用返回的URL
+              }
+            } catch (error) {
+              console.error('保存网络图片错误:', error);
+              alert('保存网络图片失败，请重试');
+            } finally {
+              // 恢复按钮状态
+              uploadBtn.innerHTML = `
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>`;
+              uploadBtn.disabled = false;
+            }
+          };
+        };
+      }
+      
+      newItem.querySelector('.remove-item-btn').onclick = () => newItem.remove();
+      container.appendChild(newItem);
+      return newItem;
+    };
+
+    const addBonusToContainer = (container, bonus = {}) => {
+      const template = document.getElementById('set-bonus-template');
+      const newBonus = template.content.cloneNode(true).firstElementChild;
+      
+      if (bonus.count) newBonus.querySelector('.bonus-count-input').value = bonus.count;
+      if (bonus.description) newBonus.querySelector('.bonus-description-input').value = bonus.description;
+      
+      newBonus.querySelector('.remove-bonus-btn').onclick = () => newBonus.remove();
+      container.appendChild(newBonus);
+      return newBonus;
+    };
+
+    const addLooseItemToForm = (item = {}) => {
+      const container = document.getElementById('loose-items-container');
+      return addItemToContainer(container, item);
+    };
+
+    const handleSaveEquipment = async (e) => {
+      e.preventDefault();
+      const dungeonId = document.getElementById('dungeon-id').value.trim();
+      const originalId = document.getElementById('dungeon-id-hidden').value;
+      const isEditing = !!originalId;
+
+      // Collect form data
+      const dungeonData = {
+        dungeonId,
+        dungeonName: document.getElementById('dungeon-name').value.trim(),
+        dungeonImage: document.getElementById('dungeon-image').value.trim(),
+        equipmentSets: [],
+        looseItems: []
+      };
+
+      // Collect equipment sets
+      document.querySelectorAll('.equipment-set').forEach(setEl => {
+        const set = {
+          setName: setEl.querySelector('.set-name-input').value.trim(),
+          items: [],
+          setBonus: []
+        };
+
+        // Collect items in this set
+        setEl.querySelectorAll('.equipment-item').forEach(itemEl => {
+          let itemId = itemEl.querySelector('.item-id-input').value.trim();
+          if (!itemId) {
+            itemId = `equip-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
+          }
+          set.items.push({
+            id: itemId,
+            name: itemEl.querySelector('.item-name-input').value.trim(),
+            type: itemEl.querySelector('.item-type-select').value,
+            icon: itemEl.querySelector('.item-icon-input').value.trim(),
+            attributes: itemEl.querySelector('.item-attributes-input').value.trim(),
+            acquisitionMethod: itemEl.querySelector('.item-acquisition-input').value.trim()
+          });
+        });
+
+        // Collect bonus effects
+        setEl.querySelectorAll('.bonus-effect').forEach(bonusEl => {
+          set.setBonus.push({
+            count: parseInt(bonusEl.querySelector('.bonus-count-input').value),
+            description: bonusEl.querySelector('.bonus-description-input').value.trim()
+          });
+        });
+
+        dungeonData.equipmentSets.push(set);
+      });
+
+      // Collect loose items
+      document.querySelectorAll('#loose-items-container .equipment-item').forEach(itemEl => {
+        let itemId = itemEl.querySelector('.item-id-input').value.trim();
+        if (!itemId) {
+          itemId = `equip-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
+        }
+        dungeonData.looseItems.push({
+          id: itemId,
+          name: itemEl.querySelector('.item-name-input').value.trim(),
+          type: itemEl.querySelector('.item-type-select').value,
+          icon: itemEl.querySelector('.item-icon-input').value.trim(),
+          attributes: itemEl.querySelector('.item-attributes-input').value.trim(),
+          acquisitionMethod: itemEl.querySelector('.item-acquisition-input').value.trim()
+        });
+      });
+
+      try {
+        const url = isEditing ? `${apiBaseUrl}/equipment/dungeons/${originalId}` : `${apiBaseUrl}/equipment/dungeons`;
+        const method = isEditing ? 'PUT' : 'POST';
+        const response = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dungeonData)
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.message || '保存失败');
+        }
+
+        closeEquipmentModal();
+        loadEquipmentData();
+        allCraftableItemsCache = []; // Invalidate cache
+      } catch (error) {
+        alert(`保存失败: ${error.message}`);
+      }
+    };
+
+    const handleDeleteDungeon = async (e) => {
+      const dungeonId = e.target.dataset.id;
+      if (!confirm(`确定要删除副本 "${dungeonId}" 吗？此操作不可撤销。`)) return;
+      
+      try {
+        const response = await fetch(`${apiBaseUrl}/equipment/dungeons/${dungeonId}`, { method: 'DELETE' });
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.message || '删除失败');
+        }
+        loadEquipmentData();
+        allCraftableItemsCache = []; // Invalidate cache
+      } catch (error) {
+        alert(`删除失败: ${error.message}`);
+      }
+    };
+
+    // Changelog Management Functions
+    const renderChangelogPage = (page) => {
+        currentChangelogPage = page;
+        const tableBody = document.getElementById('changelog-table-body');
+        tableBody.innerHTML = '';
+        const itemsPerPage = 15;
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedLogs = allChangelogsCache.slice(startIndex, endIndex);
+
+        if (paginatedLogs.length === 0 && page > 1) {
+            renderChangelogPage(page - 1);
+            return;
+        }
+
+        if (allChangelogsCache.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="3" class="text-center py-8 text-gray-500">暂无日志数据...</td></tr>';
+            document.getElementById('changelog-pagination-controls').innerHTML = '';
+            return;
+        }
+
+        paginatedLogs.forEach(log => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${log.version}</td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">${log.date}</td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm">
+                    <button class="edit-changelog-btn text-indigo-600 hover:text-indigo-900" data-version="${log.version}">编辑</button>
+                    <button class="delete-changelog-btn text-red-600 hover:text-red-900 ml-4" data-version="${log.version}">删除</button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+        
+        renderPaginationControls('changelog-pagination-controls', allChangelogsCache.length, itemsPerPage, page, renderChangelogPage);
+    };
+
+    const loadChangelogData = async () => {
+        try {
+            if (allChangelogsCache.length === 0) {
+              allChangelogsCache = await apiFetch('/changelogs');
+              allChangelogsCache.sort((a, b) => {
+                const partsA = a.version.split('.').map(Number);
+                const partsB = b.version.split('.').map(Number);
+                for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
+                  const numA = partsA[i] || 0;
+                  const numB = partsB[i] || 0;
+                  if (numB !== numA) return numB - numA;
+                }
+                return 0;
+              });
+            }
+            renderChangelogPage(currentChangelogPage);
+
+        } catch (error) {
+            console.error('Error loading changelog data:', error);
+            document.getElementById('changelog-table-body').innerHTML = 
+                '<tr><td colspan="3" class="text-red-500 text-center p-4">加载日志数据失败</td></tr>';
+        }
+    };
+
+    const renderChangelogPagination = (totalLogs, logsPerPage) => {
+        const paginationContainer = document.getElementById('changelog-pagination-controls');
+        paginationContainer.innerHTML = '';
+        const totalPages = Math.ceil(totalLogs / logsPerPage);
+
+        if (totalPages <= 1) return;
+
+        for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement('button');
+            button.textContent = i;
+            button.className = 'px-4 py-2 mx-1 rounded-md border';
+            if (i === currentChangelogPage) {
+                button.className += ' bg-blue-500 text-white border-blue-500';
+            } else {
+                button.className += ' bg-white text-gray-700 hover:bg-gray-100';
+            }
+            button.addEventListener('click', () => renderChangelogPage(i));
+            paginationContainer.appendChild(button);
+        }
+    };
+
+    const openChangelogModal = (log = null) => {
+        const form = document.getElementById('changelog-form');
+        const changesTextarea = document.getElementById('changelog-changes-textarea');
+        form.reset();
+        changesTextarea.value = '';
+
+        document.getElementById('changelog-version-hidden').value = log ? log.version : '';
+        
+        if (log) {
+            document.getElementById('changelog-modal-title').textContent = '编辑日志';
+            document.getElementById('changelog-version').value = log.version;
+            document.getElementById('changelog-version').readOnly = false; // Allow editing
+            document.getElementById('changelog-date').value = log.date;
+            if (log.changes && Array.isArray(log.changes)) {
+                changesTextarea.value = log.changes.join('\n');
+            }
+        } else {
+            document.getElementById('changelog-modal-title').textContent = '添加新日志';
+            document.getElementById('changelog-version').readOnly = false;
+        }
+
+        document.getElementById('changelog-editor-modal').classList.remove('hidden');
+    };
+
+    const closeChangelogModal = () => {
+        document.getElementById('changelog-editor-modal').classList.add('hidden');
+    };
+    
+    const handleSaveChangelog = async (e) => {
+        e.preventDefault();
+        const version = document.getElementById('changelog-version').value.trim();
+        const originalVersion = document.getElementById('changelog-version-hidden').value;
+        const isEditing = !!originalVersion;
+
+        const changes = document.getElementById('changelog-changes-textarea').value.split('\n').map(line => line.trim()).filter(line => line);
+
+        const logData = {
+            version,
+            date: document.getElementById('changelog-date').value,
+            changes
+        };
+
+        try {
+            const url = isEditing ? `/changelogs/${originalVersion}` : '/changelogs';
+            const method = isEditing ? 'PUT' : 'POST';
+            await apiFetch(url, { method, body: JSON.stringify(logData) });
+            closeChangelogModal();
+            allChangelogsCache = []; // Invalidate cache to force reload
+            loadChangelogData();
+        } catch (error) {
+            alert(`保存失败: ${error.message}`);
+        }
+    };
+
+    const handleDeleteChangelog = async (version) => {
+        if (!confirm(`确定要删除版本为 "${version}" 的日志吗？此操作不可撤销。`)) return;
+        
+        try {
+            await apiFetch(`/changelogs/${version}`, { method: 'DELETE' });
+            allChangelogsCache = []; // Invalidate cache to force reload
+            loadChangelogData();
+        } catch (error) {
+            alert(`删除失败: ${error.message}`);
+        }
+    };
+
+    // Item Guide Management Functions
+    const renderItemGuidePage = (page, itemsToRender = null) => {
+        currentItemGuidePage = page;
+        const itemsPerPage = 10;
+        const tableBody = document.getElementById('item-guide-table-body');
+        tableBody.innerHTML = '';
+
+        const sourceItems = itemsToRender !== null ? itemsToRender : allItemsCache;
+
+        const excludedCategories = ['关键道具', '礼盒'];
+        const categoryMapping = { '数码核': '孵化相关' };
+        const itemsToDisplay = sourceItems.filter(item => !excludedCategories.includes(item.category));
+        
+        const startIndex = (page - 1) * itemsPerPage;
+        const paginatedItems = itemsToDisplay.slice(startIndex, startIndex + itemsPerPage);
+
+        if (paginatedItems.length === 0 && page > 1) {
+            renderItemGuidePage(page - 1, itemsToRender);
+            return;
+        }
+
+        if (paginatedItems.length === 0 && page === 1) {
+            tableBody.innerHTML = '<tr><td colspan="4" class="text-center py-8 text-gray-500">暂无道具数据...</td></tr>';
+        } else {
+            paginatedItems.forEach(item => {
+                const row = document.createElement('tr');
+                const displayCategory = categoryMapping[item.category] || item.category;
+                row.innerHTML = `
+                    <td class="px-6 py-4 border-b"><img src="${item.image}" alt="${item.name}" class="h-12 w-12 object-contain rounded"></td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b">${item.name}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b">${displayCategory}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap border-b text-sm">
+                        <button class="edit-item-btn text-indigo-600 hover:text-indigo-900" data-id="${item.id}">编辑</button>
+                        <button class="delete-item-btn text-red-600 hover:text-red-900 ml-4" data-id="${item.id}">删除</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        renderPaginationControls('item-guide-pagination-controls', itemsToDisplay.length, itemsPerPage, page, (newPage) => {
+            renderItemGuidePage(newPage, itemsToRender);
+        });
+    };
+
+    const loadItemGuidePanel = async () => {
+        try {
+            allItemsCache = await apiFetch('/items');
+
+            document.getElementById('item-guide-search').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredItems = allItemsCache.filter(item => 
+                    item.name.toLowerCase().includes(searchTerm) ||
+                    (item.id && item.id.toLowerCase().includes(searchTerm))
+                );
+                renderItemGuidePage(1, filteredItems);
+            });
+
+            renderItemGuidePage(currentItemGuidePage);
+        } catch (error) {
+            console.error('Error loading item guide data:', error);
+            document.getElementById('item-guide-table-body').innerHTML = 
+                '<tr><td colspan="4" class="text-red-500 text-center p-4">加载道具数据失败</td></tr>';
+        }
+    };
+
+    const openItemEditor = (item = null) => {
+        const modal = document.getElementById('item-editor-modal');
+        const form = document.getElementById('item-editor-form');
+        form.reset();
+
+        const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFNUU3RUIiLz48L3N2Zz4=';
+
+        document.getElementById('item-modal-title').textContent = item ? '编辑道具' : '添加新道具';
+        document.getElementById('item-id').value = item ? item.id : '';
+        document.getElementById('item-name').value = item ? item.name : '';
+        document.getElementById('item-category').value = item ? item.category : '消耗品';
+        document.getElementById('item-image-preview').src = item && item.image ? item.image : placeholderImage;
+        document.getElementById('item-image-url').value = item ? item.image : '';
+        document.getElementById('item-description').value = item ? item.description : '';
+        document.getElementById('item-acquisition').value = item ? (item.acquisitionMethod || item.acquisition_method) : '';
+
+        modal.classList.remove('hidden');
+    };
+
+    const closeItemEditor = () => {
+        document.getElementById('item-editor-modal').classList.add('hidden');
+    };
+
+    const handleSaveItem = async () => {
+        const itemId = document.getElementById('item-id').value;
+        const isEditing = !!itemId;
+
+        const itemData = {
+            id: isEditing ? itemId : `item-${Date.now()}`,
+            name: document.getElementById('item-name').value.trim(),
+            category: document.getElementById('item-category').value,
+            image: document.getElementById('item-image-url').value.trim(),
+            description: document.getElementById('item-description').value.trim(),
+            acquisitionMethod: document.getElementById('item-acquisition').value.trim(),
+        };
+
+        if (!itemData.name) {
+            alert('道具名称不能为空。');
+            return;
+        }
+
+        try {
+            const url = isEditing ? `/items/${itemId}` : '/items';
+            const method = isEditing ? 'PUT' : 'POST';
+            await apiFetch(url, { method, body: JSON.stringify(itemData) });
+            closeItemEditor();
+            loadItemGuidePanel();
+            allCraftableItemsCache = []; // Invalidate cache
+        } catch (error) {
+            alert(`保存失败: ${error.message}`);
+        }
+    };
+
+    const handleDeleteItem = async (itemId) => {
+        if (!confirm(`确定要删除该道具吗？此操作不可撤销。`)) return;
+        
+        try {
+            await apiFetch(`/items/${itemId}`, { method: 'DELETE' });
+            loadItemGuidePanel();
+            allCraftableItemsCache = []; // Invalidate cache
+        } catch (error) {
+            alert(`删除失败: ${error.message}`);
+        }
+    };
+
+    document.getElementById('item-image-upload').addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const category = document.getElementById('item-category').value;
+        if (!category) {
+            alert('请在上传图片前先选择一个道具分类。');
+            event.target.value = ''; // Reset file input
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('image', file);
+        
+        try {
+            // Use the dedicated item upload endpoint, passing category in query
+            const res = await fetch(`${apiBaseUrl}/upload/item?category=${encodeURIComponent(category)}`, { 
+                method: 'POST', 
+                body: formData 
+            });
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.message || 'Upload failed');
+            }
+            const result = await res.json();
+
+            const absoluteUrl = `${serverOrigin}${result.url}`;
+            document.getElementById('item-image-preview').src = absoluteUrl;
+            document.getElementById('item-image-url').value = absoluteUrl;
+
+        } catch (error) {
+            alert('图片上传失败: ' + error.message);
+        }
+    });
+
+    // --- Synthesis Management Functions ---
+    const renderSynthesisPage = (page, recipesToRender = null) => {
+        currentSynthesisPage = page;
+        const itemsPerPage = 10;
+        const tableBody = document.getElementById('synthesis-table-body');
+        tableBody.innerHTML = '';
+
+        const sourceRecipes = recipesToRender !== null ? recipesToRender : allSynthesisRecipesCache;
+
+        const startIndex = (page - 1) * itemsPerPage;
+        const paginatedRecipes = sourceRecipes.slice(startIndex, startIndex + itemsPerPage);
+
+        if (paginatedRecipes.length === 0 && page > 1) {
+            renderSynthesisPage(page - 1, recipesToRender);
+            return;
+        }
+
+        if (paginatedRecipes.length === 0 && page === 1) {
+            tableBody.innerHTML = '<tr><td colspan="3" class="text-center py-8 text-gray-500">暂无合成配方...</td></tr>';
+        } else {
+            paginatedRecipes.forEach(recipe => {
+                const row = document.createElement('tr');
+                row.className = 'border-b';
+                row.innerHTML = `
+                    <td class="py-3 px-6 font-medium">${recipe.targetItemName}</td>
+                    <td class="py-3 px-6">
+                        <ul class="list-disc list-inside text-sm">
+                            ${recipe.materials.map(m => `<li>${m.quantity} x ${m.itemName}</li>`).join('')}
+                        </ul>
+                    </td>
+                    <td class="py-3 px-6 text-center">
+                        <button class="edit-synthesis-btn text-indigo-600 hover:text-indigo-900" data-id="${recipe.id}">编辑</button>
+                        <button class="delete-synthesis-btn text-red-600 hover:text-red-900 ml-4" data-id="${recipe.id}">删除</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        renderPaginationControls('synthesis-pagination-controls', sourceRecipes.length, itemsPerPage, page, (newPage) => {
+            renderSynthesisPage(newPage, recipesToRender);
+        });
+    };
+
+    const loadSynthesisData = async () => {
+        try {
+            allSynthesisRecipesCache = await apiFetch('/synthesis');
+            document.getElementById('synthesis-search').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredRecipes = allSynthesisRecipesCache.filter(recipe => 
+                    recipe.targetItemName.toLowerCase().includes(searchTerm)
+                );
+                renderSynthesisPage(1, filteredRecipes);
+            });
+            renderSynthesisPage(currentSynthesisPage);
+        } catch (error) {
+            console.error('Error loading synthesis data:', error);
+            document.getElementById('synthesis-table-body').innerHTML = 
+                '<tr><td colspan="3" class="text-red-500 text-center p-4">加载合成配方失败</td></tr>';
+        }
+    };
+    
+    const openSynthesisModal = async (recipe = null) => {
+        const modal = document.getElementById('synthesis-editor-modal');
+        const form = document.getElementById('synthesis-form');
+        const materialsContainer = document.getElementById('synthesis-materials-container');
+        const targetContainer = document.getElementById('synthesis-target-item-container');
+        form.reset();
+        materialsContainer.innerHTML = '';
+        targetContainer.innerHTML = '';
+        
+        // Ensure the unified item list is loaded
+        if (allCraftableItemsCache.length === 0) {
+            try {
+                allCraftableItemsCache = await apiFetch('/all-craftable-items');
+            } catch (error) {
+                console.error("Failed to fetch craftable items:", error);
+                alert('加载物品列表失败，无法打开编辑器。');
+                return;
+            }
+        }
+        
+        document.getElementById('synthesis-id-hidden').value = recipe ? recipe.id : '';
+        
+        if (recipe) {
+            document.getElementById('synthesis-modal-title').textContent = '编辑合成配方';
+            
+            // Find and display target item
+            const targetItem = allCraftableItemsCache.find(i => i.id === recipe.targetItemId);
+            if (targetItem) {
+                addSelectedItemTag(targetItem, targetContainer, true);
+            } else {
+                targetContainer.innerHTML = `<span class="text-red-500">错误: 找不到ID为 ${recipe.targetItemId} 的目标物品</span>`;
+            }
+
+            // Find and display material items
+            recipe.materials.forEach(material => {
+                const materialItem = allCraftableItemsCache.find(i => i.id === material.materialId);
+                if (materialItem) {
+                    addMaterialToForm({ item: materialItem, quantity: material.quantity });
+                }
+            });
+
+        } else {
+            document.getElementById('synthesis-modal-title').textContent = '创建新配方';
+            addMaterialToForm(); // Add one empty material to start
+        }
+
+        modal.classList.remove('hidden');
+    };
+
+    const closeSynthesisModal = () => {
+        document.getElementById('synthesis-editor-modal').classList.add('hidden');
+    };
+
+    const addMaterialToForm = (material = {}) => {
+        const template = document.getElementById('synthesis-material-template');
+        const newItem = template.content.cloneNode(true).firstElementChild;
+        const displayContainer = newItem.querySelector('.material-item-display');
+        
+        if (material.item) {
+            addSelectedItemTag(material.item, displayContainer, true);
+        }
+        if (material.quantity) {
+            newItem.querySelector('.material-quantity-input').value = material.quantity;
+        }
+
+        displayContainer.onclick = () => openItemSelectorModal(displayContainer, false, 'any');
+        
+        newItem.querySelector('.remove-material-btn').onclick = () => newItem.remove();
+        document.getElementById('synthesis-materials-container').appendChild(newItem);
+    };
+
+    const handleSaveSynthesis = async (e) => {
+        e.preventDefault();
+        const recipeId = document.getElementById('synthesis-id-hidden').value;
+        const isEditing = !!recipeId;
+
+        const targetContainer = document.getElementById('synthesis-target-item-container');
+        const targetTag = targetContainer.querySelector('.selected-item-tag');
+
+        if (!targetTag || !targetTag.dataset.id) {
+            alert('必须选择一个目标合成装备。');
+            return;
+        }
+        const targetItemId = targetTag.dataset.id;
+
+        const materials = Array.from(document.querySelectorAll('.synthesis-material-item')).map(itemEl => {
+            const materialTag = itemEl.querySelector('.selected-item-tag');
+            if (!materialTag || !materialTag.dataset.id) return null;
+
+            return {
+                materialId: materialTag.dataset.id,
+                quantity: parseInt(itemEl.querySelector('.material-quantity-input').value, 10) || 1
+            };
+        }).filter(m => m !== null);
+
+        if (materials.length === 0) {
+            alert('至少需要一个有效的材料。');
+            return;
+        }
+
+        const recipeData = { 
+            targetItemId, 
+            materials,
+            // The backend will get the name from the ID, so we don't need to send it.
+        };
+
+        if (isEditing) {
+            recipeData.id = recipeId;
+        }
+        // The ID is now always set on the server to prevent duplicates.
+        
+        try {
+            const url = isEditing ? `/synthesis/${recipeId}` : '/synthesis';
+            const method = isEditing ? 'PUT' : 'POST';
+            await apiFetch(url, { method, body: JSON.stringify(recipeData) });
+            closeSynthesisModal();
+            loadSynthesisData();
+        } catch (error) {
+            alert(`保存失败: ${error.message}`);
+        }
+    };
+    
+    const handleDeleteSynthesis = async (recipeId) => {
+        const recipe = allSynthesisRecipesCache.find(r => r.id === recipeId);
+        if (!recipe) {
+            alert('找不到要删除的配方。');
+            return;
+        }
+        
+        if (!confirm(`确定要删除 "${recipe.targetItemName}" 的合成配方吗？`)) return;
+        
+        try {
+            await apiFetch(`/synthesis/${recipeId}`, { method: 'DELETE' });
+            loadSynthesisData();
+        } catch (error) {
+            alert(`删除失败: ${error.message}`);
+        }
+    };
+
+    const addMainAcquisitionToForm = (container, acquisition = {}) => {
+        const template = document.getElementById('main-acquisition-template');
+        const newItem = template.content.cloneNode(true).firstElementChild;
+
+        newItem.querySelector('.main-acq-name-input').value = acquisition.name || '';
+        newItem.querySelector('.main-acq-type-select').value = acquisition.type || '';
+
+        const programContainer = newItem.querySelector('.main-acq-program-container');
+        const itemsContainer = newItem.querySelector('.main-acq-items-container');
+
+        if (acquisition.programId) {
+            const itemData = allItemsCache.find(i => i.id === acquisition.programId);
+            if (itemData) addSelectedItemTag(itemData, programContainer);
+        }
+        
+        if (acquisition.itemIds && Array.isArray(acquisition.itemIds)) {
+            acquisition.itemIds.forEach(itemId => {
+                const itemData = allItemsCache.find(i => i.id === itemId);
+                if(itemData) addSelectedItemTag(itemData, itemsContainer);
+            });
+        }
+
+        newItem.querySelector('.add-main-program-btn').addEventListener('click', () => {
+            if (programContainer.children.length === 0) {
+                openItemSelectorModal(programContainer);
+            } else {
+                alert('只能添加一个程式。');
+            }
+        });
+        newItem.querySelector('.add-main-item-btn').addEventListener('click', () => {
+            openItemSelectorModal(itemsContainer);
+        });
+        newItem.querySelector('.remove-main-acquisition-btn').addEventListener('click', () => newItem.remove());
+
+        container.appendChild(newItem);
+    };
+
+    // --- Main Execution ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // Global handler to close stage editor popups when clicking outside
+        document.body.addEventListener('click', (e) => {
+            const openForm = document.querySelector('#evolution-editor-modal .stage-details-form:not(.hidden)');
+            if (openForm) {
+                const parentCard = openForm.closest('.evolution-stage-card');
+                if (parentCard && !parentCard.contains(e.target)) {
+                    openForm.classList.add('hidden');
+                }
+            }
+        }, true);
+
+        // --- Get Elements ---
+        const tabGuides = document.getElementById('tab-guides');
+        const tabDigimon = document.getElementById('tab-digimon');
+        const tabEvolutions = document.getElementById('tab-evolutions');
+        const tabEquipment = document.getElementById('tab-equipment');
+        const tabChangelog = document.getElementById('tab-changelog');
+        const tabItemGuide = document.getElementById('tab-item-guide');
+        const tabSynthesis = document.getElementById('tab-synthesis');
+        const newGuideBtn = document.getElementById('new-guide-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const saveDraftBtn = document.getElementById('save-draft-btn');
+        const guideForm = document.getElementById('guide-form');
+        const titleInput = document.getElementById('title');
+        const slugInput = document.getElementById('slug');
+        const viewActiveBtn = document.getElementById('view-active-btn');
+        const viewTrashedBtn = document.getElementById('view-trashed-btn');
+        const addDigimonBtn = document.getElementById('add-digimon-btn');
+        const cancelDigimonBtn = document.getElementById('cancel-digimon-btn');
+        const digimonForm = document.getElementById('digimon-form');
+        const addSkillBtn = document.getElementById('add-skill-btn');
+        const addEvolutionBtn = document.getElementById('add-evolution-btn');
+        const cancelEvolutionBtn = document.getElementById('cancel-evolution-btn');
+        const evolutionForm = document.getElementById('evolution-form');
+        const addEvolutionPathBtn = document.getElementById('add-evolution-path-btn');
+        const digimonTableBody = document.getElementById('digimon-table-body');
+        const evolutionsTableBody = document.getElementById('evolutions-table-body');
+        const connectionsContainer = document.getElementById('cross-connections-container');
+        const addConnectionBtn = document.getElementById('add-cross-connection-btn');
+        const addDungeonBtn = document.getElementById('add-dungeon-btn');
+        const cancelEquipmentBtn = document.getElementById('cancel-equipment-btn');
+        const equipmentForm = document.getElementById('equipment-form');
+        const addEquipmentSetBtn = document.getElementById('add-equipment-set-btn');
+        const addLooseItemBtn = document.getElementById('add-loose-item-btn');
+        const equipmentTableBody = document.getElementById('equipment-table-body');
+        const changelogTableBody = document.getElementById('changelog-table-body');
+        const logoutBtn = document.getElementById('logout-btn');
+        const cancelItemSelectorBtn = document.getElementById('cancel-item-selector-btn');
+        const addMainAcquisitionBtn = document.getElementById('add-main-acquisition-btn');
+        const selectTargetItemBtn = document.getElementById('select-target-item-btn');
+
+        // --- Attach Event Listeners ---
+        // Tabs
+        const tabs = [tabGuides, tabDigimon, tabEvolutions, tabEquipment, tabChangelog, tabItemGuide, tabSynthesis];
+        tabs.forEach(tab => {
+            if(tab) {
+                tab.addEventListener('click', (e) => {
+                    const panelId = e.currentTarget.id.replace('tab-', 'panel-');
+                    switchTab(e.currentTarget.id, panelId);
+                });
+            }
+        });
+
+        // Guides
+        newGuideBtn.addEventListener('click', () => openModal());
+        cancelBtn.addEventListener('click', closeModal);
+        saveDraftBtn.addEventListener('click', () => saveGuide('draft'));
+        guideForm.addEventListener('submit', (e) => { e.preventDefault(); saveGuide('published'); });
+        titleInput.addEventListener('input', (e) => {
+            if (!slugInput.dataset.edited) {
+                if (window.pinyinPro) {
+                    slugInput.value = pinyinPro.pinyin(e.target.value, { toneType: 'none', nonZh: 'consecutive' }).replace(/\s+/g, '-').toLowerCase();
+                }
+            }
+        });
+        slugInput.addEventListener('input', () => { slugInput.dataset.edited = 'true'; });
+        viewActiveBtn.addEventListener('click', () => {
+            currentView = 'active';
+            document.getElementById('list-title').textContent = '当前攻略';
+            viewActiveBtn.className = 'bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded-l-lg focus:outline-none';
+            viewTrashedBtn.className = 'bg-blue-500 text-white font-semibold py-2 px-4 rounded-r-lg hover:bg-blue-600 focus:outline-none';
+            renderGuidesPage(1);
+        });
+        viewTrashedBtn.addEventListener('click', () => {
+            currentView = 'trashed';
+            document.getElementById('list-title').textContent = '回收站';
+            viewTrashedBtn.className = 'bg-white text-blue-600 border border-blue-600 font-semibold py-2 px-4 rounded-r-lg focus:outline-none';
+            viewActiveBtn.className = 'bg-blue-500 text-white font-semibold py-2 px-4 rounded-l-lg hover:bg-blue-600 focus:outline-none';
+            renderGuidesPage(1);
+        });
+        cancelBtn.addEventListener('click', () => {
+            if (tempUploadedFiles.length > 0) console.log('Modal cancelled, temp files will be cleaned up by server later:', tempUploadedFiles);
+        });
+
+        // Digimon
+        addDigimonBtn.addEventListener('click', () => openDigimonModal());
+        cancelDigimonBtn.addEventListener('click', closeDigimonModal);
+        addSkillBtn.addEventListener('click', () => addSkillToForm());
+        digimonForm.addEventListener('submit', handleSaveDigimon);
+        digimonTableBody.addEventListener('click', (e) => { // Event Delegation
+            if (e.target.classList.contains('edit-digimon-btn')) handleEditDigimon(e);
+            if (e.target.classList.contains('delete-digimon-btn')) handleDeleteDigimon(e);
+        });
+
+        // Evolutions
+        addEvolutionBtn.addEventListener('click', () => openEvolutionModal());
+        cancelEvolutionBtn.addEventListener('click', closeEvolutionModal);
+        document.getElementById('cancel-evolution-btn-dummy').addEventListener('click', closeEvolutionModal);
+        addEvolutionPathBtn.addEventListener('click', () => {
+            const manager = document.getElementById('evolution-paths-manager');
+            const newIndex = manager.children.length;
+            manager.appendChild(createPathContainer(newIndex, ''));
+        });
+        addConnectionBtn.addEventListener('click', () => addConnectionToForm({ type: 'cross' }));
+        document.getElementById('add-branch-acquisition-btn').addEventListener('click', () => addBranchAcquisitionToForm());
+        addMainAcquisitionBtn.addEventListener('click', () => addMainAcquisitionToForm(document.getElementById('main-acquisition-container')));
+        evolutionForm.addEventListener('submit', handleSaveEvolution);
+        evolutionsTableBody.addEventListener('click', (e) => { // Event Delegation
+            if (e.target.classList.contains('edit-evolution-btn')) handleEditEvolution(e);
+            if (e.target.classList.contains('delete-evolution-btn')) handleDeleteEvolution(e);
+        });
+        connectionsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-connection-btn')) {
+                e.target.closest('.connection-card').remove();
+            }
+        });
+
+        // --- Initial Load ---
+        loadGuides();
+
+        // Equipment Management
+        document.getElementById('equipment-search-input').addEventListener('input', () => renderEquipmentSearchResults(1));
+        addDungeonBtn.addEventListener('click', () => openEquipmentModal());
+        cancelEquipmentBtn.addEventListener('click', closeEquipmentModal);
+        equipmentForm.addEventListener('submit', handleSaveEquipment);
+        addEquipmentSetBtn.addEventListener('click', () => addEquipmentSetToForm());
+        addLooseItemBtn.addEventListener('click', () => addLooseItemToForm());
+
+        equipmentTableBody.addEventListener('click', (e) => {
+          if (e.target.classList.contains('edit-dungeon-btn')) {
+            const dungeonId = e.target.dataset.id;
+            // Fetch all dungeons to find the one to edit.
+            // This is inefficient but simple for now.
+            apiFetch('/equipment')
+              .then(dungeons => {
+                const dungeon = dungeons.find(d => d.dungeonId === dungeonId);
+                if (dungeon) {
+                  openEquipmentModal(dungeon);
+                } else {
+                  alert('找不到该副本的数据');
+                }
+              })
+              .catch(error => alert('加载副本数据失败: ' + error.message));
+          }
+          if (e.target.classList.contains('delete-dungeon-btn')) {
+            handleDeleteDungeon(e);
+          }
+        });
+
+        // Changelog
+        document.getElementById('add-changelog-btn').addEventListener('click', () => openChangelogModal());
+        document.getElementById('cancel-changelog-btn').addEventListener('click', closeChangelogModal);
+        document.getElementById('changelog-form').addEventListener('submit', handleSaveChangelog);
+        changelogTableBody.addEventListener('click', (e) => {
+            if (e.target.classList.contains('edit-changelog-btn')) {
+                const version = e.target.dataset.version;
+                const log = allChangelogsCache.find(c => c.version === version);
+                openChangelogModal(log);
+            }
+            if (e.target.classList.contains('delete-changelog-btn')) {
+                handleDeleteChangelog(e.target.dataset.version);
+            }
+        });
+
+        // Item Guide
+        document.getElementById('add-item-btn').addEventListener('click', () => openItemEditor());
+        document.getElementById('save-item-button').addEventListener('click', handleSaveItem);
+        document.getElementById('cancel-item-btn').addEventListener('click', closeItemEditor);
+
+        document.getElementById('item-guide-table-body').addEventListener('click', (e) => {
+            if (e.target.classList.contains('edit-item-btn')) {
+                const itemId = e.target.dataset.id;
+                const item = allItemsCache.find(i => i.id === itemId);
+                openItemEditor(item);
+            }
+            if (e.target.classList.contains('delete-item-btn')) {
+                handleDeleteItem(e.target.dataset.id);
+            }
+        });
+
+        // Synthesis
+        document.getElementById('add-synthesis-recipe-btn').addEventListener('click', () => openSynthesisModal());
+        document.getElementById('synthesis-form').addEventListener('submit', handleSaveSynthesis);
+        document.getElementById('cancel-synthesis-btn').addEventListener('click', closeSynthesisModal);
+        document.getElementById('add-material-btn').addEventListener('click', () => addMaterialToForm());
+        selectTargetItemBtn.addEventListener('click', () => {
+            const targetContainer = document.getElementById('synthesis-target-item-container');
+            openItemSelectorModal(targetContainer, false, 'equipment');
+        });
+        document.getElementById('synthesis-table-body').addEventListener('click', (e) => {
+            if (e.target.classList.contains('edit-synthesis-btn')) {
+                const recipeId = e.target.dataset.id;
+                const recipe = allSynthesisRecipesCache.find(r => r.id === recipeId);
+                openSynthesisModal(recipe);
+            }
+            if (e.target.classList.contains('delete-synthesis-btn')) {
+                const recipeId = e.target.dataset.id;
+                handleDeleteSynthesis(recipeId);
+            }
+        });
+
+        // Logout
+        if(logoutBtn) {
+            logoutBtn.addEventListener('click', async () => {
+                try {
+                    const response = await fetch('/api/logout', { method: 'POST' });
+                    if(response.ok) {
+                        window.location.href = '/login.html';
+                    } else {
+                        alert('登出失败，请稍后重试。');
+                    }
+                } catch (error) {
+                    alert('网络错误，无法登出。');
+                }
+            });
+        }
+
+        // Item Selector Modal
+        if(cancelItemSelectorBtn) {
+            cancelItemSelectorBtn.addEventListener('click', closeItemSelectorModal);
+        }
+
+        // Initialize Tooltips on frontend pages
+        if (document.getElementById('guide-detail')) {
+            initItemTooltips();
+        }
+    });
+
+    // --- ITEM TOOLTIP LOGIC ---
+    function initItemTooltips() {
+      const tooltip = document.createElement('div');
+      tooltip.id = 'item-tooltip';
+      tooltip.className = 'hidden absolute z-50 p-3 rounded-lg bg-white shadow-xl border border-gray-200 w-64';
+      document.body.appendChild(tooltip);
+
+      document.body.addEventListener('mouseover', async (e) => {
+        const target = e.target.closest('[data-item-id]');
+        if (!target) return;
+
+        const itemId = target.dataset.itemId;
+        
+        // Fetch combined list if not already cached
+        if (window.allCraftableItemsCache.length === 0) {
+          try {
+            window.allCraftableItemsCache = await apiFetch('/all-craftable-items');
+          } catch (error) {
+            console.error("Failed to fetch item list for tooltip:", error);
+            tooltip.innerHTML = `<div class="text-red-500">Error loading item data.</div>`;
+            return;
+          }
+        }
+        
+        const item = window.allCraftableItemsCache.find(i => i.id === itemId);
+
+        if (item) {
+          let attributesHtml = '';
+          if (item.type === 'equipment' && item.attributes) {
+              attributesHtml = `<div class="text-sm text-indigo-600 mt-2">${item.attributes}</div>`;
+          }
+
+          tooltip.innerHTML = `
+            <div class="flex items-center gap-3 border-b pb-2 mb-2">
+              <img src="${item.image || 'placeholder.png'}" class="w-12 h-12 object-contain rounded">
+              <div>
+                <div class="font-bold text-lg">${item.name}</div>
+                <div class="text-xs text-gray-500">${item.type === 'equipment' ? '装备' : '道具'}</div>
+              </div>
+            </div>
+            <div class="text-sm text-gray-700">${item.description || ''}</div>
+            ${attributesHtml}
+            <div class="text-xs text-gray-500 mt-2 pt-2 border-t"><strong>获取:</strong> ${item.acquisitionMethod || 'N/A'}</div>
+          `;
+
+          // Position tooltip
+          const rect = target.getBoundingClientRect();
+          tooltip.style.left = `${rect.left + window.scrollX}px`;
+          tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+          tooltip.classList.remove('hidden');
+        } else {
+          tooltip.innerHTML = `<div class="text-sm">未找到物品信息...</div>`;
+        }
+      });
+
+      document.body.addEventListener('mouseout', (e) => {
+        const target = e.target.closest('[data-item-id]');
+        if (target) {
+          tooltip.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+  <!-- 物品选择器模态框 -->
+  <div id="item-selector-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 p-8 z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl p-6 w-full max-w-2xl mx-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-semibold">选择物品</h3>
+        <button type="button" onclick="closeItemSelectorModal()" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">关闭</span>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mb-4">
+        <input type="text" id="item-selector-search" class="w-full px-3 py-2 border rounded-md" placeholder="搜索物品...">
+      </div>
+      <div class="max-h-96 overflow-y-auto">
+        <div id="item-selector-list" class="space-y-2">
+          <!-- 物品列表将在这里动态加载 -->
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

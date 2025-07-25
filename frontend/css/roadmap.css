@@ -1,0 +1,163 @@
+/* General Setup */
+body {
+    background-color: #000;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    overflow-x: hidden;
+}
+
+.roadmap {
+    width: 1200px;
+    color: #fff;
+    margin: 50px 0;
+}
+
+/* Segment Layout */
+.segment {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 200px; /* 调整段落间距以匹配连接线高度 */
+}
+
+.segment:last-child {
+    margin-bottom: 0;
+}
+
+.segment.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Horizontal Path Line */
+.segment::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 60px;
+    right: 60px;
+    height: 12px;
+    background: linear-gradient(to right, #94e1ff, #62c7f0, #94e1ff);
+    border: 1px solid #33a2d2;
+    border-radius: 6px;
+    z-index: 1;
+}
+
+/* Nodes */
+.node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px; /* Width of the node area */
+    flex-shrink: 0;
+}
+
+/* Dot on the path */
+.node::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background-color: #4A4A4A;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Labels */
+.label-bottom {
+    margin-top: 85px;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Milestone Nodes */
+.milestone {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    border: 4px solid #4A4A4A;
+    z-index: 3;
+}
+
+.label-top {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    white-space: nowrap;
+    color: #fff;
+}
+
+/* Start/End Node Specifics (Dotted Lines) */
+.node.start > .milestone::before,
+.node.end:not(:has(.connector))::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 12px;
+    width: 80px;
+    background: repeating-linear-gradient(to right, #62c7f0 0, #62c7f0 8px, transparent 8px, transparent 16px);
+    z-index: 1;
+}
+
+.node.start > .milestone::before {
+    right: 100%;
+    margin-right: -2px;
+}
+
+.node.end:not(:has(.connector))::after {
+    left: 100%;
+    margin-left: -2px;
+}
+
+.segment.reverse .node.start > .milestone::before {
+    left: 100%;
+    margin-left: -2px;
+}
+
+.segment.reverse .node.end:not(:has(.connector))::after {
+    right: 100%;
+    margin-right: -2px;
+}
+
+/* 修改垂直连接线样式 */
+.connector {
+    position: absolute;
+    width: 12px;
+    height: 200px; /* 增加高度到200px */
+    background: linear-gradient(to bottom, #94e1ff, #62c7f0, #94e1ff);
+    border: 1px solid #33a2d2;
+    z-index: 0;
+}
+
+.connector.curve-down {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 0 0 30px 30px; /* 增加圆角 */
+}
+
+/* 反向段落的连接线 */
+.segment.reverse .connector.curve-down {
+    transform: translate(-50%, 0);
+    border-radius: 0 0 30px 30px;
+} 

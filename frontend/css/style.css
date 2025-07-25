@@ -1,0 +1,471 @@
+/* digimon_legend_website/frontend/css/style.css */
+@import url('https://fonts.loli.net/css?family=Press+Start+2P');
+
+:root {
+  --primary: #1a73e8;    /* Changed to blue */
+  --secondary: #4285f4;  /* Another blue shade */
+  --accent: #34a853;
+  --dark: #2d3436;
+  --light: #f7f7f7;
+  --success: #55efc4;
+  --warning: #fdcb6e;
+  --danger: #ff7675;
+  --info: #74b9ff;
+}
+
+body {
+  font-family: "ark-pixel-12px-proportional-zh_cn", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  color: var(--dark);
+  margin: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Global Digimon background */
+.p-bgMonster {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.p-bgMonster:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: #d3dbff url("../js/data/guides/src/css/1.webp") repeat left top;
+  background-size: calc(2640px / 1.375) auto;
+  -webkit-animation: bg-anime_pc 40s infinite linear;
+  animation: bg-anime_pc 40s infinite linear;
+  pointer-events: none;
+}
+
+/* Background animation */
+@keyframes bg-anime_pc {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -1000px 0;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ark Pixel', sans-serif;
+  line-height: 1.3;
+  letter-spacing: 1px;
+}
+
+/* Pixel border style */
+.pixel-border {
+  border: 4px solid var(--dark);
+  box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Navigation items - blue and white theme */
+.nav-item {
+  transition: all 0.3s ease;
+  font-family: 'Ark Pixel', sans-serif;
+  background-color: var(--primary) !important;
+  color: white !important;
+  border: 2px solid white !important;
+}
+
+.nav-item:hover {
+  transform: translateY(-3px) scale(1.05);
+  background-color: var(--secondary) !important;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
+}
+
+/* Cards with white background and slight transparency */
+.card, .digimon-card, .modal-content, .type-filter, .info-field {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover, .digimon-card:hover {
+  transform: scale(1.05);
+}
+
+.evolution-path {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.evolution-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.evolution-arrow {
+  font-family: 'Ark Pixel', sans-serif;
+  font-size: 24px;
+  margin: 0 8px;
+}
+
+/* Smaller screens adjustments */
+@media (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+  
+  .digimon-card {
+    width: 100%;
+  }
+  
+  .nav-item {
+    padding: 0.5rem 1rem !important;
+  }
+}
+
+/* Font setup */
+@font-face {
+  font-family: 'Ark Pixel';
+  src: url('../fonts/ark-pixel-12px-proportional-zh_cn.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Main content sections */
+main section {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Site header */
+.site-header {
+  margin-bottom: 2rem;
+}
+
+.site-header h1 {
+  color: white;
+  text-shadow: 2px 2px 0 var(--primary);
+  background-color: var(--primary);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
+/* Blue and white themed buttons */
+.blue-btn {
+  background-color: var(--primary);
+  color: white;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+
+.blue-btn:hover {
+  background-color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+/* Guide Content Styles */
+.guide-content-area {
+  max-width: 100%;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.guide-content-area h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.guide-content-area h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+  border-left: 4px solid var(--secondary);
+  padding-left: 0.75rem;
+}
+
+.guide-content-area p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.guide-content-area ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.guide-content-area li {
+  margin-bottom: 0.75rem;
+}
+
+.guide-content-area .space-y-4 {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Guide Card Styles */
+[data-category] {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-category]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Guide page navigation buttons */
+#guide-nav a {
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+#guide-nav a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Category indicators */
+.border-l-4 {
+  position: relative;
+}
+
+.border-l-4::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 2px;
+  left: 0;
+}
+/* 橙色相关样式 */
+.text-orange-700 {
+  color: #c2410c !important;
+}
+
+.bg-orange-400 {
+  background-color: #fb923c !important;
+}
+
+.bg-orange-50 {
+  background-color: #fff7ed !important;
+}
+
+.border-orange-100 {
+  border-color: #ffedd5 !important;
+}
+
+.border-orange-200 {
+  border-color: #fed7aa !important;
+}
+
+.text-orange-500 {
+  color: #f97316 !important;
+}
+
+.text-orange-600 {
+  color: #ea580c !important;
+}
+
+/* 更新页脚样式 */
+.footer-wrapper {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  padding: 1rem 0;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.footer-text {
+  color: #1a365d;
+}
+
+.item-acquisition {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Synthesis Modal Styles */
+.synthesis-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.synthesis-modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: slide-up 0.3s ease-out;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #999;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.modal-close:hover {
+    color: #333;
+}
+
+.item-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.materials-list .item-card {
+    margin-top: 0.5rem;
+}
+
+.item-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    flex-shrink: 0;
+    background-color: #e9ecef;
+    border-radius: 4px;
+}
+
+.craftable-icon {
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.craftable-icon:hover {
+    background-color: #e2e8f0;
+}
+
+/* --- Styles for Drop Section in Guides --- */
+.drop-section {
+  background-color: rgba(230, 240, 255, 0.7); /* A lighter, slightly transparent blue background */
+  padding: 1rem;
+  margin: 2rem auto; /* Updated to auto for horizontal centering */
+  max-width: 80%;     /* Shortened width */
+  border-radius: 8px; /* Standard border-radius */
+  animation: breathe-glow 4s ease-in-out infinite;
+  border: 3px solid transparent; /* Required for pixel-border to work with animation */
+  /* Re-using the existing pixel-border style for consistency */
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+}
+
+@keyframes breathe-glow {
+  0%, 100% {
+    border-color: #60a5fa; /* A standard blue from your theme */
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.1), 0 0 5px rgba(96, 165, 250, 0.2);
+  }
+  50% {
+    border-color: #93c5fd; /* A lighter blue */
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.1), 0 0 15px rgba(147, 197, 253, 0.4);
+  }
+}
+
+.drop-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600;
+  color: #1e3a8a; /* Dark blue text to match theme */
+  margin-top: 0 !important; /* Override prose styles */
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px dashed #93c5fd; /* Dashed border for a more 'game UI' feel */
+}
+
+.drop-items-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.item-drop {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb; /* border-gray-200 */
+  border-radius: 8px;
+  padding: 0.75rem;
+  width: 120px;
+  text-align: center;
+  cursor: help;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none; /* Remove underline from wrapper */
+}
+
+.item-drop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.item-drop img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 0.25rem;
+  /* Override general img styles inside guide-content */
+  cursor: help !important; 
+}
+
+.item-drop span {
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.2;
+}

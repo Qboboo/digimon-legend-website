@@ -1,0 +1,1192 @@
+[
+  {
+    "dungeonId": "SLZ",
+    "dungeonName": "修炼镇",
+    "dungeonImage": "/js/data/guides/src/equipment/Cultivation Town/960a304e251f95ca19644365c5177f3e66095254-1750581407079.jpeg",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "eq_cultivation_claw_attack",
+        "name": "攻击之爪",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/Cultivation Town/BTNClawsOfAttack-1750581349792.jpg",
+        "attributes": "增加3点攻击力",
+        "acquisitionMethod": "修炼镇巨狼掉落"
+      },
+      {
+        "id": "eq_cultivation_claw_attack_sharp",
+        "name": "攻击之爪(尖锐的)",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/Cultivation Town/BTNClawsOfAttack-1750581349792.jpg",
+        "attributes": "增加15点攻击力;攻击加成+3%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "eq_cultivation_ring_guard",
+        "name": "守护指环",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/Cultivation Town/BTNRingGreen-1750607258704.jpg",
+        "attributes": "增加1点护甲",
+        "acquisitionMethod": "修炼镇野人长者掉落"
+      },
+      {
+        "id": "eq_cultivation_ring_guard_sturdy",
+        "name": "守护指环(坚固的)",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/Cultivation Town/BTNRingGreen-1750607258704.jpg",
+        "attributes": "增加5点护甲;伤害减免+3%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1750992532705-7hmra",
+        "name": "速度之靴",
+        "type": "速度插件",
+        "icon": "/js/data/guides/src/equipment/Cultivation Town/BTNBootsOfSpeed-1751048229683.jpg",
+        "attributes": "增加20点移速",
+        "acquisitionMethod": "修炼镇小怪掉落"
+      },
+      {
+        "id": "equip-1750992532705-8cx7g",
+        "name": "速度之靴(珍藏版)",
+        "type": "速度插件",
+        "icon": "/js/data/guides/src/equipment/Cultivation Town/BTNBootsOfSpeed-1751048229683.jpg",
+        "attributes": "攻击暴击+1%；技能暴击+1%；攻击速度+20%；移动速度+60",
+        "acquisitionMethod": "鼻涕兽支线获取"
+      },
+      {
+        "id": "equip-1750992586525-16kwg",
+        "name": "鼻涕兽的训练腰带",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/Cultivation Town/BTNRunedBracers-1751048254633.jpg",
+        "attributes": "每秒回血+2；每秒回魔+0.2",
+        "acquisitionMethod": "鼻涕兽支线获取"
+      },
+      {
+        "id": "equip-1751702847440-ol6sw",
+        "name": "鼻涕兽的训练腰带(VIP版)",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/SLZ/BTNRunedBracers-1751702822712.jpg",
+        "attributes": "每秒回血+4；每秒回魔+0.4；经验加成+44%",
+        "acquisitionMethod": "鼻涕兽处合成"
+      }
+    ]
+  },
+  {
+    "dungeonId": "BMQ",
+    "dungeonName": "编码器遗迹",
+    "dungeonImage": "/js/data/guides/src/equipment/Cultivation Town/960a304e251f95ca19644365c5177f3e66095254-1750581407079.jpeg",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1750994640770-v56wg",
+        "name": "豺狼人之靴",
+        "type": "速度插件",
+        "icon": "/js/data/guides/src/equipment/encoderRuins/chailangshouwangzhexue-1751048648439.png",
+        "attributes": "攻击速度+10%；移动速度+40",
+        "acquisitionMethod": "编码器遗迹豺狼人掉落"
+      },
+      {
+        "id": "equip-1750994640770-3h1wr",
+        "name": "泥潭护甲",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/encoderRuins/BTNHoodOfCunning-1751048314008.jpg",
+        "attributes": "护甲+1；生命上限+500",
+        "acquisitionMethod": "编码器遗迹石头人掉落"
+      },
+      {
+        "id": "equip-1750994797396-1m5dy",
+        "name": "火焰之球",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/encoderRuins/BTNOrbOfFire-1751048354055.jpg",
+        "attributes": "攻击附加5点溅射伤害(有彩蛋)",
+        "acquisitionMethod": "编码器遗迹地狱火机关人掉落"
+      },
+      {
+        "id": "equip-1750995017692-g0spz",
+        "name": "守望之靴",
+        "type": "速度插件",
+        "icon": "/js/data/guides/src/equipment/encoderRuins/09313074-1751048603300.png",
+        "attributes": "攻击暴击+3%；技能暴击+3%；攻击速度+25%；移动速度+60",
+        "acquisitionMethod": "编码器遗迹祖顿兽处合成获得"
+      },
+      {
+        "id": "equip-1750995782838-hsjny",
+        "name": "岩石战甲",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/encoderRuins/yanshizhanjia-1751048654912.png",
+        "attributes": "力量+3；护甲+5；生命上限+500",
+        "acquisitionMethod": "编码器遗迹祖顿兽处合成获得"
+      },
+      {
+        "id": "equip-1751003659533-juoe0",
+        "name": "火焰手套",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/encoderRuins/BTNAdvancedUnholyStrength-1751048431196.jpg",
+        "attributes": "攻击力+10；攻击暴伤+10%；攻击附加5点溅射伤害",
+        "acquisitionMethod": "编码器遗迹祖顿兽处合成获得"
+      },
+      {
+        "id": "equip-1751012391667-8n8ny",
+        "name": "大地圆环",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/encoderRuins/BTNCirclet-1751048447179.jpg",
+        "attributes": "力量+3；防御+3；智力+3；伤害减免+3%；生命加成+5%",
+        "acquisitionMethod": "编码器遗迹花岗岩傀儡掉落"
+      },
+      {
+        "id": "equip-1751021862064-14dka",
+        "name": "机械之心",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/encoderRuins/BTNHeartOfAszune-1751171589440.jpg",
+        "attributes": "力量+3；防御+3；智力+3；攻击加成+5%；技能加成+3%",
+        "acquisitionMethod": "编码器遗迹地狱战舰掉落"
+      },
+      {
+        "id": "equip-1751613732165-niep3",
+        "name": "哈克兽的训练腰带",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/BMQ/09313034-1751702767150.png",
+        "attributes": "每秒回血+20；每秒回魔+2；经验加成+100%",
+        "acquisitionMethod": "在哈克兽处合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "WWW",
+    "dungeonName": "万维网大陆",
+    "dungeonImage": "/js/data/guides/src/equipment/Cultivation Town/960a304e251f95ca19644365c5177f3e66095254-1750581407079.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "最后的修炼者",
+        "items": [
+          {
+            "id": "equip-1751533263691-uha3x",
+            "name": "最后的修炼者之服",
+            "type": "防御插件",
+            "icon": "/js/data/guides/src/equipment/WWW/BTNKaiWangFJLv4-1751545275857.png",
+            "attributes": "防御+48；护甲+80；生命上限+8000；每秒回血+16；生命加成+20%；防御加成+30%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751533263691-amlau",
+            "name": "最后的修炼者之武",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/WWW/BTNKaiWangWQLv4-1751545340089.png",
+            "attributes": "力量+48；攻击力+240；攻击加成+20%；攻击暴伤+40%；力量加成+30%；火焰溅射：攻击时附加80点溅射伤害。",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751533263691-qz7vw",
+            "name": "最后的修炼者之靴",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/WWW/BTNKaiWangXZLv4-1751545347822.png",
+            "attributes": "智力+48；攻击速度+45%；移动速度+110；每秒回魔+0.8；攻击暴击+12%；智力加成+30%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": [
+          {
+            "count": 3,
+            "description": "<br>三相流转：每隔10秒按规律获得以下效果。<br>- 力：提高100%攻击加成<br>- 御：受到伤害时概率完全抵挡此次伤害<br>- 技：下一次造成的技能伤害提高100%"
+          }
+        ]
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751533797147-1u81z",
+        "name": "修炼者之服 Lv9",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/WWW/BTNKaiWangFJLv3-1751545363934.png",
+        "attributes": "防御+24；护甲+40；生命上限+4000；每秒回血+16；生命加成+20%；防御加成+30%",
+        "acquisitionMethod": "合成获得以及副本[汇编塔封印区域]掉落"
+      },
+      {
+        "id": "equip-1751533797147-mctz2",
+        "name": "修炼者之武 Lv9",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/WWW/BTNKaiWangWQLv3-1751545369317.png",
+        "attributes": "力量+24；攻击力+120；攻击加成+20%；攻击暴伤+40%；力量加成+30%\n；火焰溅射：攻击时附加40点溅射伤害。",
+        "acquisitionMethod": "合成获得以及副本[汇编塔封印区域]掉落"
+      },
+      {
+        "id": "equip-1751533797147-apl1s",
+        "name": "修炼者之靴 Lv9",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/WWW/BTNKaiWangXZLv3-1751545377329.png",
+        "attributes": "智力+24；攻击速度+40%；移动速度+100；每秒回魔+0.8；攻击暴击+12%；\n智力加成+30%",
+        "acquisitionMethod": "合成获得以及副本[汇编塔封印区域]掉落"
+      },
+      {
+        "id": "equip-1751536392876-5bq72",
+        "name": "修炼者之服",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/WWW/BTNLeatherUpgradeOne-1751545550615.jpg",
+        "attributes": "",
+        "acquisitionMethod": "主线任务获得"
+      },
+      {
+        "id": "equip-1751536392876-o24ys",
+        "name": "修炼者之武",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/WWW/BTNOrcMeleeUpOne-1751545541042.jpg",
+        "attributes": "",
+        "acquisitionMethod": "主线任务获得"
+      },
+      {
+        "id": "equip-1751536392876-6cg6g",
+        "name": "修炼者之靴",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/WWW/BTNSlippersOfAgility-1751545487796.jpg",
+        "attributes": "",
+        "acquisitionMethod": "主线任务获得"
+      },
+      {
+        "id": "equip-1751614455093-ftnd9",
+        "name": "合成型数码核",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/WWW/BTN(55)-1751680751591.png",
+        "attributes": "力量+6；防御+6；智力+6；攻击暴伤+20%；\n技能暴击+5%；技能暴伤+5%；\n伤害抵挡：减少8点受到的伤害，但伤害不能低于3点。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751687047631-m8jbj",
+        "name": "破坏者指环",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/WWW/BTNpohuaizhihuan-1751687030506.png",
+        "attributes": "攻击速度+60%；移动速度+522；\n冷却缩减+5%；伤害减免+5%；快速移动：立即向面向角度移动600码距离。",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "HBT",
+    "dungeonName": "汇编塔封印区域",
+    "dungeonImage": "/js/data/guides/src/equipment/compileTowerDepths/vamdemon-1751049208361.jpeg",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1751008243441-433hg",
+        "name": "嗜血伯爵假面",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/compileTowerDepths/BTNimg24-1751048672115.png",
+        "attributes": "攻击+7%；\n攻击吸血+7%；生命加成+7%；每秒回血+7",
+        "acquisitionMethod": "1.副本汇编塔通关敲柱子概率掉落成品2.合成获得"
+      },
+      {
+        "id": "equip-1751008678791-f67t0",
+        "name": "因为孤独使我的心变得更加坚韧",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/compileTowerDepths/BTNsmzhwss-1751176817976.png",
+        "attributes": "力量+12；防御+12；智力+12；技能加成+10%；技能暴击+5%；每秒回魔+0.5",
+        "acquisitionMethod": "1.副本汇编塔通关敲柱子概率掉落成品2.合成获得"
+      },
+      {
+        "id": "equip-1751680891372-j71qo",
+        "name": "怨毒鬼手",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/HBT/BTNimg23-1751680881407.png",
+        "attributes": "攻击加成；+10%；攻击吸血+10%；技能吸血+1%；\n；生命加成+10%\n；每秒回血+10",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "JJL",
+    "dungeonName": "金甲龙兽的实力检验",
+    "dungeonImage": "/js/data/guides/src/equipment/scriptForest/magnamon-1751049193740.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "力量",
+        "items": [
+          {
+            "id": "equip-1751549849991-yddns",
+            "name": "奇迹战刃",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/JJL/BTNQiJiZhanRen-1751549124307.png",
+            "attributes": "力量+144；攻击力+480；攻击加成+40%；攻击暴伤+80%；力量加成+45%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751549849991-k6l8d",
+            "name": "奇迹战靴",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/JJL/BTNQiJiZhanXue-1751549817216.png",
+            "attributes": "力量+144；攻击速度+60%；移动速度+130；每秒回魔+1；攻击暴击+15% ；力量加成+45%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      },
+      {
+        "setName": "智力",
+        "items": [
+          {
+            "id": "equip-1751549849991-5od4s",
+            "name": "奇迹权杖",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/JJL/BTNQiJiQuanZhang-1751549821409.png",
+            "attributes": "智力+235；技能加成+10%；技能暴伤+20% ；智力加成+45%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751549849991-q7sfs",
+            "name": "奇迹法靴",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/JJL/BTNQiJiFaXue-1751549824707.png",
+            "attributes": "智力+144；移动速度+130；每秒回魔+1；技能暴击+5%；冷却缩减+8%；智力加成+45%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751011763644-5y093",
+        "name": "奇迹数码精神",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/scriptForest/BTNQiJiZhuangJia-1751048792471.png",
+        "attributes": "力量+99;防御+99;智力+99;每秒回血+10;每秒回魔+1",
+        "acquisitionMethod": "1.副本金甲龙兽的实力检验打宝箱概率掉落成品2.合成获得"
+      },
+      {
+        "id": "equip-1751011903784-6v35v",
+        "name": "奇迹手镯",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/scriptForest/BTNQiJiShouZhuo-1751048800263.png",
+        "attributes": "力量+24;防御+24;智力+24;攻击加成+5%;技能加成+3%;伤害减免+3%;生命加成+5%",
+        "acquisitionMethod": "1.副本金甲龙兽的实力检验打宝箱概率掉落成品2.合成获得"
+      },
+      {
+        "id": "equip-1751549849991-vldqm",
+        "name": "奇迹之壁",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/JJL/BTNQiJiZhiBi-1751549830538.png",
+        "attributes": "防御+144；护甲+100；生命上限+25000；每秒回血+20；生命加成+30%；防御加成+60%",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "TZ",
+    "dungeonName": "团结之历练",
+    "dungeonImage": "/js/data/guides/src/equipment/TZ/hexeblaumon-1751682190874.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "力量",
+        "items": [
+          {
+            "id": "equip-1751553743420-m6k0q",
+            "name": "魔导之战刃",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/TZ/BTN02248-1751631248216.png",
+            "attributes": "力量+288；攻击力+960；攻击加成+60；攻击暴伤+120%；力量加成+65%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751553931906-pweri",
+            "name": "魔导碧晶战靴",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/TZ/BTN01826-1751631303227.png",
+            "attributes": "力量+288；攻击速度+120%；移动速度+150；每秒回魔+2；攻击暴击+22%；力量加成+65%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      },
+      {
+        "setName": "智力",
+        "items": [
+          {
+            "id": "equip-1751554132663-gemst",
+            "name": "魔导的意志",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/TZ/BTN02411-1751631309531.png",
+            "attributes": "智力+288；技能加成+15%；技能暴伤+30%；智力加成+65%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751554132663-zz3gx",
+            "name": "魔导碧晶法靴",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/TZ/BTN01816-1751631311857.png",
+            "attributes": "智力+288；移动速度+150；每秒回魔+2；技能暴击+7.5%；冷却缩减+12%；智力加成+65%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751554360393-2xqdv",
+        "name": "碧晶之心",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/TZ/BTN02365-1751631314359.png",
+        "attributes": "防御+288；护甲+120；生命上限+40000；每秒回血+30；生命加成+45%；防御加成+90%",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "FXY",
+    "dungeonName": "风雪域",
+    "dungeonImage": "/js/data/guides/src/equipment/Cultivation Town/960a304e251f95ca19644365c5177f3e66095254-1750581407079.jpeg",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1751013595523-787q0",
+        "name": "魔导冰之权杖",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/iceDevimon'sIsland/INV_Axe_51-1751048876119.png",
+        "attributes": "智力+470；技能加成+10%；技能暴伤+20%；智力加成+45%",
+        "acquisitionMethod": "击败冰恶魔兽概率掉落"
+      },
+      {
+        "id": "equip-1751013595523-31zcs",
+        "name": "魔导冰之法靴",
+        "type": "速度插件",
+        "icon": "/js/data/guides/src/equipment/iceDevimon'sIsland/09313074-1751048883019.png",
+        "attributes": "智力+288；移动速度+150；每秒回魔+1；技能暴击+5%；冷却缩减+8%；智力加成+45%",
+        "acquisitionMethod": "击败冰恶魔兽概率掉落"
+      },
+      {
+        "id": "equip-1751682697379-xfczq",
+        "name": "魔导冰之护",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/FXY/INV_Shield_34-1751682521350.png",
+        "attributes": "防御+288；护甲+120；生命上限+40000；每秒回血+20；生命加成+30%；防御加成+60%",
+        "acquisitionMethod": "风雪域雪人兽支线"
+      },
+      {
+        "id": "equip-1751612937947-igqd1",
+        "name": "钢铁之翼",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/FXY/BTNGangTieZhiYi-1751631334485.png",
+        "attributes": "攻击速度+40%；移动速度+100；滑翔：立即向面向角度移动600码距离。",
+        "acquisitionMethod": "冰石兽支线任务（若丢失可于时钟兽处兑换）"
+      },
+      {
+        "id": "equip-1751613114397-y4jjl",
+        "name": "光束机翼",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/FXY/BTNzgtzy-1751631382907.png",
+        "attributes": "攻击速度+45%；移动速度+522；滑翔：立即向面向角度移动600码距离。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751682697379-i34ur",
+        "name": "勇者无畏护手",
+        "type": "速度插件",
+        "icon": "/js/data/guides/src/equipment/FXY/yongzhewuweihushou-1751682579901.png",
+        "attributes": "力量+432；攻击速度+150%；移动速度+180；每秒回魔+2；攻击暴击+20%；\n力量加成+60%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751682697379-0vetz",
+        "name": "勇者无畏之盾",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/FXY/yongzhewuweizhidun-1751682594060.png",
+        "attributes": "防御+432；护甲+180；生命上限+60000；每秒回血+26；生命加成+39%；防御加成+78%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751682697379-8p37l",
+        "name": "勇者无畏之牙",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/FXY/yongzhewuweizhiya-1751682627363.png",
+        "attributes": "力量+432；攻击力+720；攻击加成+52%；攻击暴伤+104%；力量加成+60%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751682697379-l4emu",
+        "name": "毁灭魔枪",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/FXY/huimiemoxue-1751682655900.png",
+        "attributes": "力量+520；攻击力+960；攻击加成+78%；攻击暴伤+156%；力量加成+85%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751682697379-11tc0",
+        "name": "灾厄魔铠",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/FXY/zaiemokai-1751682672058.png",
+        "attributes": "防御+580；护甲+200；生命上限+80000；每秒回血+40；生命加成+60%；防御加成+120%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751682697379-salf6",
+        "name": "恐惧魔靴",
+        "type": "速度插件",
+        "icon": "/js/data/guides/src/equipment/FXY/kongjumoxue-1751682692280.png",
+        "attributes": "智力+500；移动速度+180；每秒回魔+2；技能暴击+10%；冷却缩减+16%；智力加成+85%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751687105822-pi762",
+        "name": "吾辈的道路以此箭开创",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/FXY/BTNbazumahun-1751687089470.png",
+        "attributes": "力量+200；智力+200；攻击速度+100%；圣弩「穆斯贝尔海姆」（被动）：为普攻附加力量x1点伤害，光属性数码兽持有时附加的伤害翻倍。",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "YQ",
+    "dungeonName": "勇气之试炼",
+    "dungeonImage": "/js/data/guides/src/equipment/YQ/heavyleomon-1751682208180.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "力量",
+        "items": [
+          {
+            "id": "equip-1751554650561-i3jya",
+            "name": "冲云破雾战剑",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/YQ/BTN01888-1751631398620.png",
+            "attributes": "力量+432；攻击力+1440；攻击加成+78%；攻击暴伤+156%；力量加成+85%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751554650561-x3ntd",
+            "name": "冲云破雾战靴",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/YQ/BTN01866-1751631403927.png",
+            "attributes": "力量+432；攻击速度+150%；移动速度+180；每秒回魔+4；攻击暴击+25%；力量加成+85%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      },
+      {
+        "setName": "智力",
+        "items": [
+          {
+            "id": "equip-1751554650561-axrsm",
+            "name": "有勇知方权杖",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/YQ/BTN01598-1751631406269.png",
+            "attributes": "智力+705；技能加成+20%；技能暴伤+40%；智力加成+85%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751554650561-7aslg",
+            "name": "有勇知方法靴",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/YQ/BTN01886-1751631409387.png",
+            "attributes": "智力+432；移动速度+180；每秒回魔+4；技能暴击+10%；冷却缩减+16%；智力加成+85%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751554650561-w20pd",
+        "name": "坚韧不拔之盔",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/YQ/BTN01881-1751631412706.png",
+        "attributes": "防御+432；护甲+180生命上限+60000；每秒回血+40；生命加成+60%；防御加成+120%",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "LH",
+    "dungeonName": "最终龙魂试炼",
+    "dungeonImage": "/js/data/guides/src/equipment/LH/medievaldukemon-1751682219881.jpeg",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1751554894478-ija0q",
+        "name": "龙魂指环",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/LH/BTN01794-1751631419602.png",
+        "attributes": "力量+144；防御+144；智力+144；攻击加成+10%；技能加成+6%；伤害减免+6%；生命加成+10%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751554894478-xu5y6",
+        "name": "潜龙之魂",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/LH/BTNSMZHZSJ-1751631424854.png",
+        "attributes": "力量+200；防御+100；智力+200；移动速度+100；技能加成+10%；技能暴击+5%；每秒回魔+0.5",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "AH",
+    "dungeonName": "暗黑之骑士",
+    "dungeonImage": "/js/data/guides/src/equipment/AH/chaosdukemon-1751682235216.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "力量",
+        "items": [
+          {
+            "id": "equip-1751555366124-9dgo4",
+            "name": "绝望的召来",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/AH/BTN02031-1751631442696.png",
+            "attributes": "力量+520；攻击力+1800；攻击加成+85%；攻击暴伤+200%；力量加成+90%<br>主动效果：绝望召来：主动使用，10秒内增加自身20%攻击吸血，减少伤害目标20%护甲，持续10s, cd60s。",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751555366124-ayh2m",
+            "name": "勇者的信念",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/AH/BTN01806-1751631455073.png",
+            "attributes": "力量+500；攻击速度+200%；移动速度+180；每秒回魔+7；攻击暴击+25%；力量加成+90%<br>主动效果：勇者信念：主动使用，增加自身100%攻速与移速，持续10s, cd60s。（同类效果冲突）",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      },
+      {
+        "setName": "智力",
+        "items": [
+          {
+            "id": "equip-1751556556001-g61u3",
+            "name": "希望的诞生",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/AH/BTN02408-1751631459108.png",
+            "attributes": "智力+860；技能加成+25%；技能暴伤+50%；智力加成+90%<br>主动效果：新的希望：主动使用对前方直线造成智力x20技能伤害，cd60s。",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751556556001-hw2j3",
+            "name": "孤独的意义",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/AH/BTN01786-1751631461260.png",
+            "attributes": "智力+500；移动速度+180；技能暴击+12%；冷却缩减+20%；智力加成+90%<br>主动效果：孤独意义：主动使用增加自身魔法盾，每点智力转换10护盾，持续5s，cd30s。（护盾不能抵挡真实伤害）",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751556556001-az66o",
+        "name": "力量的觉悟",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/AH/BTN02263-1751631466407.png",
+        "attributes": "防御+580；护甲+200；生命上限+100000；每秒回血+100；生命加成+70%；防御加成+150%<br>主动效果：力量觉悟：主动使用，增加自身50%伤害减免，持续5s，cd60s。",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "LG",
+    "dungeonName": "忠诚的圣骑士",
+    "dungeonImage": "/js/data/guides/src/equipment/LG/craniummon-1751682247326.jpeg",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1751555070215-xvedb",
+        "name": "魔盾「阿瓦隆」",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/LG/BTNawalong-1751631475128.png",
+        "attributes": "防御+1000；伤害减免+10%；防御加成+100%<br>主动效果：骑士决斗（主动）：主动吸引周围敌人攻击自身。 <br>被动效果：神之庇佑（被动）：获得等同于自身防御75%的技能减伤，若自身为物理属性则效果增强为100%。",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "GM",
+    "dungeonName": "傲慢的魔王",
+    "dungeonImage": "/js/data/guides/src/equipment/GM/lucemon-1751682260614.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "力量",
+        "items": [
+          {
+            "id": "equip-1751557506548-qex8h",
+            "name": "神执的律法",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/GM/BTNshenzhidelvfa-1751631486277.png",
+            "attributes": "力量+1100；攻击力+3000；攻击加成+100%；攻击暴伤+200%；力量加成+90%<br>主动效果：神之律法：主动扣除50%最大生命，10s内接下来的3次普攻额外造成1000%攻击力伤害，cd90s。",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751557506548-i81c8",
+            "name": "神思的秩序",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/GM/BTNshensidezhixu-1751633381060.png",
+            "attributes": "力量+700；攻击速度+200%；移动速度+180；攻击暴击+30%；技能暴击+10%；冷却缩减+10%；力量加成+90%<br>神之秩序：主动使用增加自身100%攻击力与20%攻击暴击，持续10s，cd60s。",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      },
+      {
+        "setName": "智力",
+        "items": [
+          {
+            "id": "equip-1751557506548-7wgbe",
+            "name": "神拥的智慧",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/GM/BTNshenyongdezhihui-1751631524143.png",
+            "attributes": "智力+1100；技能加成+25%；技能暴伤+50%；智力加成+90%<br>主动效果：神之智慧：主动使用对选定目标造成智力×30伤害，本次伤害技能吸血提高100%，cd90s。",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751557506548-fqrd7",
+            "name": "神行的旅途",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/GM/BTNshenxingdelvtu-1751631527727.png",
+            "attributes": "智力+700；移动速度+180；技能暴击+15%；冷却缩减+20%；智力加成+90%<br>主动效果：神之旅途：主动使用增加自身20%智力加成和25%技能暴击，持续10s，cd60s。",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": []
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751014519302-69tz4",
+        "name": "神给予的爱",
+        "type": "速度插件",
+        "icon": "/js/data/guides/src/equipment/demonLordOfPride/BTN01806-1751048912983.png",
+        "attributes": "力量+700；攻击速度+100%；移动速度+180；生命加成+10%；冷却缩减+15%；力量加成+90%<br>神之慈爱：主动使用，增加自身及周围友军50%伤害减免（可叠加），持续5s, cd60s。",
+        "acquisitionMethod": "通关傲慢的魔王副本后开宝箱概率掉落"
+      },
+      {
+        "id": "equip-1751014519302-92uzo",
+        "name": "神选的传承",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/demonLordOfPride/BTNshengiyudeai-1751049030422.png",
+        "attributes": "力量+700；攻击力+180；攻击加成+85%；生命加成+10%；力量加成+90%<br>神之传承：主动为一名队友承担50%所受伤害，持续10s，cd40s。（不叠加）",
+        "acquisitionMethod": "通关傲慢的魔王副本后开宝箱概率掉落"
+      },
+      {
+        "id": "equip-1751557506548-hjln9",
+        "name": "神赐的护佑",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/GM/BTNshencidehuyou-1751631540452.png",
+        "attributes": "防御+800；护甲+200；生命上限+120000；每秒回血+200；生命加成+75%；防御加成+100%<br>主动效果：神的护佑：主动使用，增加自身50%伤害减免，持续5s。cot60s。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751557506548-9w4ct",
+        "name": "神的傲慢",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/GM/BTNshendeaoman-1751631543392.png",
+        "attributes": "力量+300；防御+100；智力+300；移动速度+100；技能加成+20%；技能暴击+10%；每秒回魔+0.5<br>主动效果：神之傲慢：主动使用后增加自身20%伤害并扣除50%伤害减免，持续10s，cd60s。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751557506548-5o6g9",
+        "name": "神的仁慈",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/GM/BTNshenderenci-1751631550045.png",
+        "attributes": "力量+1100；技能加成+20%；技能暴伤+30%；力量加成+30%<br>主动效果：神的仁慈：使用后10秒内增加自身10%技能暴击与20%技能暴伤，cd60s。",
+        "acquisitionMethod": "通关傲慢的魔王50次在光明兽处领取"
+      }
+    ]
+  },
+  {
+    "dungeonId": "SH",
+    "dungeonName": "神话时代",
+    "dungeonImage": "/js/data/guides/src/equipment/Cultivation Town/960a304e251f95ca19644365c5177f3e66095254-1750581407079.jpeg",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1751644833818-lbunx",
+        "name": "猿猴套装",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/SH/BTNyuanhou-1751644788928.png",
+        "attributes": "防御+288；护甲+100",
+        "acquisitionMethod": "神话时代猿猴兽掉落"
+      },
+      {
+        "id": "equip-1751686988210-jqonm",
+        "name": "强化猿猴套装",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/SH/BTNyuanhou-1751686776514.png",
+        "attributes": "防御+800；护甲+120",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751686988210-l41mz",
+        "name": "超合金铠甲",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/SH/BTNgangtieyuanhou-1751686907253.png",
+        "attributes": "防御+1000；护甲+200；防御加成+100%",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751686988210-xnaer",
+        "name": "古代智慧纹章",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/SH/BTNMagicalSentry-1751686922270.jpg",
+        "attributes": "智力+500；生命上限+15000；技能加成+10%；",
+        "acquisitionMethod": "神话时代风雪域怪物掉落"
+      },
+      {
+        "id": "equip-1751686988210-np19o",
+        "name": "太古预言书",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/SH/BTNBookOfTheDead-1751686973430.jpg",
+        "attributes": "智力+1100；生命上限+20000；技能加成+20%；技能吸血+1%",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "HL",
+    "dungeonName": "统一四方的皇帝",
+    "dungeonImage": "/js/data/guides/src/equipment/HL/huanglongmon-1751682377435.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "坐镇中央的帝皇",
+        "items": [
+          {
+            "id": "equip-1751691501307-6c71y",
+            "name": "帝皇之牙",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/HL/BTNdihuangzhiya-1751691352689.png",
+            "attributes": "力量+1500；智力+1500；攻击力+5000；攻击加成+120%；攻击暴伤+150%；\n力量加成+60%；智力加成+60%<br>帝皇之牙：普攻时附加攻击力50%的物理伤害",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751691501307-5da19",
+            "name": "帝皇之烈焰",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/HL/BTNdihuangleiting-1751691402415.png",
+            "attributes": "力量+1500；智力+1500；攻击力+30%；攻击速度+200%；移动速度+180；攻击暴击+20%；\n力量加成+60%；智力加成+60%<br>帝皇烈焰：普攻时附加（力量+智力）*25%的物理伤害",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": [
+          {
+            "count": 2,
+            "description": "<br>力量加成+50%<br>智力加成+50%"
+          }
+        ]
+      },
+      {
+        "setName": "掌管大地之龙",
+        "items": [
+          {
+            "id": "equip-1751691501307-5rbpo",
+            "name": "帝皇太极",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/HL/BTNdihuangtaiji-1751691432011.png",
+            "attributes": "力量+1500；智力+1500；技能加成+40%；技能暴伤+60%；力量加成+60%；\n智力加成+60%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751691501307-t6iii",
+            "name": "帝皇之雷霆",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/HL/BTNdihuanglieyan-1751691435071.png",
+            "attributes": "力量+1500；智力+1500；移动速度+180；技能加成+20%；技能暴击+30%；\n冷却缩减+20%；力量加成+60%\n智力加成+60%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": [
+          {
+            "count": 2,
+            "description": "<br>力量加成+50%<br>智力加成+50%"
+          }
+        ]
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751691501307-43d1l",
+        "name": "帝皇之护",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/HL/BTNdihuanghuyou-1751691454857.png",
+        "attributes": "防御+1000；护甲+300；生命上限+140000；每秒回血+500；生命加成+80%；防御加成+250%<br>玄武之佑：主动使用，增加自身80%伤害减免，持续7s，cd70s。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751691501307-3xiim",
+        "name": "神兽之力",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/HL/BTNshenshouzhili-1751691492009.png",
+        "attributes": "防御+2000；防御加成+100%；生命加成+10%；冷却缩减+20%；\n治疗加成+50%",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "LD",
+    "dungeonName": "君临顶点之龙帝",
+    "dungeonImage": "/js/data/guides/src/equipment/LD/examon-1751682366439.jpeg",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1751691638012-qml6x",
+        "name": "安布罗修斯",
+        "type": "攻击插件",
+        "icon": "/js/data/guides/src/equipment/LD/BTNlongdiW-1751691543139.png",
+        "attributes": "攻击力+3000；攻击速度+150%；攻击加成+70%<br>阿瓦隆之门：主动使用增加自身100%攻击力与20%攻击暴击，持续10s，cd60s。<br>巨大长枪（被动）：为普攻附加150%攻击力的伤害。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751691638012-m3xa9",
+        "name": "龙之威严",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/LD/BTNlongzhidingdian-1751691602823.png",
+        "attributes": "力量+1500；智力+1500；生命上限+25000；伤害减免+5%；\n冷却缩减+10%<br>威严の重压：使用后5s内的下一次英雄技能视为60%冷却缩减，若同时携带两件该装备则改为99%，cd60s。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751691638012-cbw2c",
+        "name": "卡雷德乌尔弗",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/LD/BTNlongdiE-1751691606784.png",
+        "attributes": "护甲+500；生命上限+100000；攻击速度+100%；伤害减免+10%；生命加成+50%；防御加成+150%<br>具有意志的巨翼：主动使用，增加自身30%技能加成与20%技能暴击，持续10s，cd30s。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751691638012-1c2yu",
+        "name": "龙帝の荣光",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/LD/BTNlongdiR-1751691621510.png",
+        "attributes": "力量+500；防御+200；智力+500；移动速度+200；技能加成+30%；技能暴击+10%；冷却缩减+10%；每秒回魔+1<br>\n龙帝の荣光：主动使用后增加自身30%伤害，持续10s，cd60s。",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "GB",
+    "dungeonName": "未知的圣骑士",
+    "dungeonImage": "/js/data/guides/src/equipment/GB/omegamon-alter-s-1751682352222.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "神秘の意志",
+        "items": [
+          {
+            "id": "equip-1751691806712-0n9d9",
+            "name": "月华光刃",
+            "type": "万能插件",
+            "icon": "/js/data/guides/src/equipment/GB/BTNwuqiyuegou-1751691678577.png",
+            "attributes": "攻击力+1440；攻击速度+100%；攻击加成+30%<br>光刃（主动）：对直线敌人造成8000%攻击力点伤害，cd60s。<br>月华（被动）：攻击时扣除目标40%护甲4s（不可叠加），每累计攻击10次则附加(力量+智力)x8的伤害。",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751691806712-54ag0",
+            "name": "电磁光炮",
+            "type": "万能插件",
+            "icon": "/js/data/guides/src/equipment/GB/BTNwuqidianbao-1751691700679.png",
+            "attributes": "力量+1100；智力+1100；生命加成+15%；技能加成+30%；技能暴伤+20%<br>电磁（主动）：下一次普攻额外造成一次力量x60点伤害并降低目标10%伤害减免10s，cd60s。<br>蓄能（被动）：每次释放技能临时提高2%技能暴击，每10s重置一次（第一层蓄能时开始计时）。",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": [
+          {
+            "count": 2,
+            "description": "<br>「光刃」：附加移除护盾效果<br>「电磁」：附加击晕效果，持续3s"
+          }
+        ]
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751691883588-hs1pu",
+        "name": "中世纪公爵兽の友情",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/GB/BTNfb04-1751691833190.png",
+        "attributes": "生命上限+30000；防御+1000；防御加成+100%；治疗加成+50%<br>守护魔法（主动）：提高大范围内友军50%伤害减免，持续7s，cd70s。<br>治愈魔法（被动）：每次释放技能，回复自身800码范围内除自身外的友军自身智力x7的生命值，每7秒最多触发一次。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751691883588-21x4b",
+        "name": "光之神枪「冈格尼尔」",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/GB/Gungnir-1751691889371.png",
+        "attributes": "力量+1100；攻击加成+75%；攻击暴击+15%；攻击爆伤+60%<br>\n光之神枪（主动）：主动使用对前方直线造成全属性x20技能伤害并在10s内削除敌人80%护甲（不可叠加），cd60s。<br>救出所爱（被动）：变身类技能降低30%冷却时间。",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "GD",
+    "dungeonName": "古代数码世界",
+    "dungeonImage": "/js/data/guides/src/equipment/Cultivation Town/960a304e251f95ca19644365c5177f3e66095254-1750581407079.jpeg",
+    "equipmentSets": [],
+    "looseItems": []
+  },
+  {
+    "dungeonId": "AKD",
+    "dungeonName": "营造理想乡的最终兵器",
+    "dungeonImage": "/js/data/guides/src/digimon/ARKADIMON/320px-Arkadimon_superultimate-1751737878246.webp",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1751692172429-8usv2",
+        "name": "噩梦的敌托邦",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/AKD/BTNakdzb2-1751692111462.png",
+        "attributes": "力量+800；智力+800；生命上限+10000；魔法上限+3000；伤害减免+10%；\n冷却缩减+5%<br>敌托邦：令800距离内一名友军增加60%技能加成和30%技能暴伤7s，cd70s。（同类效果不叠加）",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751692172429-a0iux",
+        "name": "矩阵引力",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/AKD/BTNakdzb1-1751692144500.png",
+        "attributes": "智力+1100；生命上限+10000；魔法上限+3000；技能加成+15%；伤害减免+5%；\n冷却缩减+5%<br>引力：将800距离内一名友军拉至身前，cd30s。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751692172429-3gfl5",
+        "name": "猎杀者之印",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/AKD/BTNlieshazhe-1751692169763.png",
+        "attributes": "攻击速度+80%；移动速度+522；攻击加成+30%；攻击暴击+10%\n冷却缩减+10%<br>\n捕猎（主动）：立即向面向角度移动600码距离。<br>分解（被动）：攻击时扣除目标40%护甲4s（不可叠加）。",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "ZQ",
+    "dungeonName": "带来破灭的终极邪神",
+    "dungeonImage": "/js/data/guides/src/equipment/ZQ/zeedmillenniumon-1751682330402.jpeg",
+    "equipmentSets": [
+      {
+        "setName": "带来破灭的终极邪神",
+        "items": [
+          {
+            "id": "equip-1751692421718-zcoaq",
+            "name": "邪神的野望",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/ZQ/BTNxieshendeyewang-1751692240288.png",
+            "attributes": "力量+1800；智力+1800；攻击力+7000；攻击加成+130%；攻击暴伤+160%；\n力量加成+70%；智力加成+70%<br>邪神之力：普攻时附加攻击力60%的物理伤害",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751692421718-q7a5k",
+            "name": "时光咆哮",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/ZQ/BTNshiguangpaoxiao-1751692277016.png",
+            "attributes": "力量+1800；智力+1800；攻击力+40%；攻击速度+200%；移动速度+180；攻击暴击+20%；攻击暴伤+20%；\n力量加成+70%；智力加成+70%<br>时光咆哮：普攻时附加（力量+智力）*30%的物理伤害。",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": [
+          {
+            "count": 2,
+            "description": "<br>力量加成+50%<br>智力加成+50%"
+          }
+        ]
+      },
+      {
+        "setName": "红黑的双头魔龙",
+        "items": [
+          {
+            "id": "equip-1751692421718-v1nw8",
+            "name": "复苏的暗之魂",
+            "type": "攻击插件",
+            "icon": "/js/data/guides/src/equipment/ZQ/BTNfusudeanzhihun-1751692309099.png",
+            "attributes": "力量+1800；智力+1800；技能加成+50%；技能暴伤+70%；力量加成+70%；\n智力加成+70%",
+            "acquisitionMethod": "合成获得"
+          },
+          {
+            "id": "equip-1751692421718-ardxv",
+            "name": "遮天的黑暗",
+            "type": "速度插件",
+            "icon": "/js/data/guides/src/equipment/ZQ/BTNzhetiandeheian-1751692346187.png",
+            "attributes": "力量+1800；智力+1800；移动速度+180；技能加成+30%；技能暴击+40%；\n冷却缩减+20%；力量加成+70%；\n智力加成+70%",
+            "acquisitionMethod": "合成获得"
+          }
+        ],
+        "setBonus": [
+          {
+            "count": 2,
+            "description": "<br>力量加成+50%<br>智力加成+50%"
+          }
+        ]
+      }
+    ],
+    "looseItems": [
+      {
+        "id": "equip-1751692421718-pvq1r",
+        "name": "咒缚锁链",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/ZQ/BTNzhoufusuolian-1751692379341.png",
+        "attributes": "防御+1200；护甲+400；生命上限+160000；每秒回血+1000；生命加成+90%；防御加成+280%<br>咒缚封印：主动使用，增加自身80%伤害减免，持续8s，cd70s。",
+        "acquisitionMethod": "合成获得"
+      },
+      {
+        "id": "equip-1751692421718-nx0b1",
+        "name": "时间悖论",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/ZQ/BTNshijianbeilun-1751692416594.png",
+        "attributes": "防御+1000；护甲+400；生命上限+150000；冷却缩减+10%；生命加成+70%；防御加成+200%<br>逆转时间（被动）：受到非真伤的致命伤害时免疫本次伤害，回复50%最大生命并提高50%伤害减免5s，cd90s。",
+        "acquisitionMethod": "合成获得"
+      }
+    ]
+  },
+  {
+    "dungeonId": "DHL",
+    "dungeonName": "究极的古代龙&始祖的回归",
+    "dungeonImage": "/js/data/guides/src/digimon/V-MON/imperialdramondragonmode-1751186448684.webp",
+    "equipmentSets": [],
+    "looseItems": [
+      {
+        "id": "equip-1752255254828-g465q",
+        "name": "奥米加之剑",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/DHL/QQ20250712-013316-1752255206700.png",
+        "attributes": "攻击力+6000；\n攻击速度+150%；\n攻击加成+100%；\n冷却缩减+10%<br>\n初始化：主动使用增加自身100%攻击力与20%攻击暴击并使接下来3次普攻附加1500%攻击力伤害。持续10s，cd60s。<br>\n救世意志（被动）：为普攻附加200%攻击力的伤害。",
+        "acquisitionMethod": "副本材料合成"
+      },
+      {
+        "id": "equip-1752256303452-7alf7",
+        "name": "救世荣光",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/DHL/QQ20250712-015241-1752256522324.png",
+        "attributes": "力量+800；\n防御+200；\n智力+800；\n技能加成+30%；\n技能暴击+10%；\n冷却缩减+10%<br>\n世界的救世主（主动）：使用后增加自身30%伤害并获得100次伤害抵挡（免疫非真实伤害），持续8s，效果结束时清除所有伤害抵挡，cd60s。",
+        "acquisitionMethod": "副本材料合成"
+      },
+      {
+        "id": "equip-1752256303452-s9nwh",
+        "name": "救世之旅",
+        "type": "防御插件",
+        "icon": "/js/data/guides/src/equipment/DHL/QQ20250712-015318-1752256528654.png",
+        "attributes": "护甲+600；\n生命上限+150000；\n攻击速度+100%；\n伤害减免+10%；\n生命加成+50%；\n防御加成+200%<br>\n踏上旅途（主动）：主动使用，扣除50%当前生命，增加自身40%技能加成与30%技能暴击，持续10s，cd30s。<br>\n跨越试炼（被动）：「踏上旅途」持续期间受到非真伤的致命伤害时免疫本次伤害，回复50%最大生命并提高50%伤害减免5s，每次使用仅触发一次。",
+        "acquisitionMethod": "副本材料合成"
+      },
+      {
+        "id": "equip-1752256303452-6j1hb",
+        "name": "正电子激光炮",
+        "type": "数码之魂",
+        "icon": "/js/data/guides/src/equipment/DHL/QQ20250712-015230-1752256533801.png",
+        "attributes": "力量+800；\n智力+800；\n攻击暴击+10%；\n技能暴击+10%；\n技能加成+30%；\n冷却缩减+10%<br>\n光子镭射（主动）：主动选取自身500码内目标点，对该目标点500码范围射出炮击，造成(智力+力量)x50的伤害，cd30s。<br>\n湮灭之光（被动）：当自身造成光属性伤害时，该次伤害结算时额外附加1次该伤害10%的真实伤害，每0.2s最多触发1次。",
+        "acquisitionMethod": "副本材料合成"
+      },
+      {
+        "id": "equip-1752256303452-ia4jh",
+        "name": "正义之心",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/DHL/QQ20250712-015310-1752256539895.png",
+        "attributes": "力量+800；\n智力+800；\n技能加成+30%；\n技能暴击+10%；\n技能暴伤+25%；\n冷却缩减+10%<br>\n力量掌握（主动）:使用后直接进入古代之力状态，若当前已处于该状态则刷新持续时间，冷却60s。<br>\n古代之力（被动）:使用技能增加自身10%技能暴击与25%技能暴伤，持续5s。每30s最多触发1次。",
+        "acquisitionMethod": "副本材料合成"
+      },
+      {
+        "id": "equip-1752256303452-m6vul",
+        "name": "破坏之戒",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/DHL/QQ20250712-015247-1752256544094.png",
+        "attributes": "攻击力+4000；\n攻击力+50%；\n冷却缩减+10%<br>\n黑暗之心（主动）：使用后直接进入破坏神状态，若当前已处于该状态则刷新持续时间，冷却60s。<br>\n破坏神（被动）：自身普攻造成伤害时，使自身进入6s破坏神状态，期间增加自身50%攻击力与20%攻击暴击，状态结束后冷却24s。",
+        "acquisitionMethod": "副本材料合成"
+      },
+      {
+        "id": "equip-1752256303452-8tieq",
+        "name": "战士的觉醒",
+        "type": "万能插件",
+        "icon": "/js/data/guides/src/equipment/DHL/QQ20250712-015224-1752256550610.png",
+        "attributes": "力量+2500；\n智力+2500；\n攻击暴击+10%；\n攻击暴伤+30%<br>\n力量掌握（主动）:使用后直接进入力量释放状态，若当前已处于该状态则刷新持续时间，冷却60s。<br>\n力量释放（被动）:使用技能后增加自身15%攻击暴击与50%攻击暴伤，持续5s。每30s最多触发一次。",
+        "acquisitionMethod": "副本材料合成"
+      }
+    ]
+  }
+]

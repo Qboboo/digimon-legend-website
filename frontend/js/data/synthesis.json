@@ -1,0 +1,1650 @@
+[
+  {
+    "targetItemId": "eq_cultivation_ring_guard_sturdy",
+    "materials": [
+      {
+        "materialId": "mat_sturdy_skull",
+        "quantity": 1
+      },
+      {
+        "materialId": "eq_cultivation_ring_guard",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1750685542016_bmxgisfck"
+  },
+  {
+    "targetItemId": "eq_cultivation_claw_attack_sharp",
+    "materials": [
+      {
+        "materialId": "eq_cultivation_claw_attack",
+        "quantity": 1
+      },
+      {
+        "materialId": "mat_energy_crystal",
+        "quantity": 5
+      }
+    ],
+    "id": "syn_1751234567890_abcdefghi"
+  },
+  {
+    "targetItemId": "equip-1750995017692-g0spz",
+    "materials": [
+      {
+        "materialId": "equip-1750994640770-v56wg",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1750994797396-1m5dy",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1750995362367",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1750995286539_nwnasdez3"
+  },
+  {
+    "targetItemId": "equip-1750995782838-hsjny",
+    "materials": [
+      {
+        "materialId": "equip-1750994640770-v56wg",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1750994640770-3h1wr",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1750995821347",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1750995840219_qpbnf0oms"
+  },
+  {
+    "targetItemId": "equip-1751003659533-juoe0",
+    "materials": [
+      {
+        "materialId": "equip-1750994797396-1m5dy",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1750994640770-3h1wr",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751003697637_w3krl0p7x"
+  },
+  {
+    "targetItemId": "equip-1751008243441-433hg",
+    "materials": [
+      {
+        "materialId": "item-1751009171694",
+        "quantity": 20
+      }
+    ],
+    "id": "syn_1751009999682_n4tqtirwc"
+  },
+  {
+    "targetItemId": "equip-1751008678791-f67t0",
+    "materials": [
+      {
+        "materialId": "item-1751009171694",
+        "quantity": 30
+      }
+    ],
+    "id": "syn_1751010017899_cqhmjmvly"
+  },
+  {
+    "targetItemId": "equip-1751011903784-6v35v",
+    "materials": [
+      {
+        "materialId": "item-1751012093676",
+        "quantity": 20
+      },
+      {
+        "materialId": "equip-1751012391667-8n8ny",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751012156446_gm1y8el3v"
+  },
+  {
+    "targetItemId": "equip-1751011763644-5y093",
+    "materials": [
+      {
+        "materialId": "item-1751012093676",
+        "quantity": 30
+      },
+      {
+        "materialId": "item-1751013870453",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1751021862064-14dka",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751013096849_1q58c1ffs"
+  },
+  {
+    "targetItemId": "equip-1751533797147-1u81z",
+    "materials": [
+      {
+        "materialId": "equip-1751536392876-5bq72",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751533870566",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751533913331_jvlixb53s"
+  },
+  {
+    "targetItemId": "equip-1751533797147-mctz2",
+    "materials": [
+      {
+        "materialId": "equip-1751536392876-o24ys",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751533870566",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751536422323_72q940csv"
+  },
+  {
+    "targetItemId": "equip-1751533797147-apl1s",
+    "materials": [
+      {
+        "materialId": "equip-1751536392876-6cg6g",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751533870566",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751536435483_86wtxuu1l"
+  },
+  {
+    "targetItemId": "equip-1751533263691-uha3x",
+    "materials": [
+      {
+        "materialId": "equip-1751533797147-1u81z",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751545951006",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751545808202",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751545579101_f0j30kn68"
+  },
+  {
+    "targetItemId": "equip-1751533263691-amlau",
+    "materials": [
+      {
+        "materialId": "equip-1751533797147-mctz2",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751545862938",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751545951006",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751546013535_8umjua9hx"
+  },
+  {
+    "targetItemId": "equip-1751533263691-qz7vw",
+    "materials": [
+      {
+        "materialId": "equip-1751533797147-apl1s",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751545951006",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751545818838",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751546038944_bw99cz5kt"
+  },
+  {
+    "targetItemId": "equip-1751549849991-yddns",
+    "materials": [
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1751533263691-amlau",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012093676",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751549958827_1i3lh8cni"
+  },
+  {
+    "targetItemId": "equip-1751549849991-k6l8d",
+    "materials": [
+      {
+        "materialId": "equip-1751533263691-qz7vw",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012093676",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751550027433_5h4964pfe"
+  },
+  {
+    "targetItemId": "equip-1751549849991-5od4s",
+    "materials": [
+      {
+        "materialId": "equip-1751533263691-amlau",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012093676",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751550058282_ffw6bexdw"
+  },
+  {
+    "targetItemId": "equip-1751549849991-q7sfs",
+    "materials": [
+      {
+        "materialId": "equip-1751533263691-qz7vw",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012093676",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751550084444_4zjxkbjw3"
+  },
+  {
+    "targetItemId": "equip-1751549849991-vldqm",
+    "materials": [
+      {
+        "materialId": "equip-1751533263691-uha3x",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012093676",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751013870453",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751550115959_nh1i0x5s5"
+  },
+  {
+    "targetItemId": "equip-1751613114397-y4jjl",
+    "materials": [
+      {
+        "materialId": "equip-1751612937947-igqd1",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751012093676",
+        "quantity": 3
+      },
+      {
+        "materialId": "item-1751611639399",
+        "quantity": 3
+      },
+      {
+        "materialId": "item-1751012874307",
+        "quantity": 3
+      }
+    ],
+    "id": "syn_1751613167360_y59ejswyg"
+  },
+  {
+    "targetItemId": "equip-1751553743420-m6k0q",
+    "materials": [
+      {
+        "materialId": "equip-1751549849991-yddns",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751611943735",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751612457819",
+        "quantity": 10
+      }
+    ],
+    "id": "syn_1751613240529_4ymzucgqt"
+  },
+  {
+    "targetItemId": "equip-1751554132663-gemst",
+    "materials": [
+      {
+        "materialId": "equip-1751549849991-5od4s",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751611943735",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751612868142",
+        "quantity": 10
+      }
+    ],
+    "id": "syn_1751613276551_nihhmtqvq"
+  },
+  {
+    "targetItemId": "equip-1751614455093-ftnd9",
+    "materials": [
+      {
+        "materialId": "item-1751616015620",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751616357689",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751616310783",
+        "quantity": 3
+      },
+      {
+        "materialId": "item-1751616391971",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751616199643",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751616859024_4dax7gz6u"
+  },
+  {
+    "targetItemId": "equip-1751680891372-j71qo",
+    "materials": [
+      {
+        "materialId": "equip-1751008243441-433hg",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751634937539",
+        "quantity": 3
+      },
+      {
+        "materialId": "item-1751620798017",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751616332811",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751680920265_wavd6q8mw"
+  },
+  {
+    "targetItemId": "equip-1751554132663-zz3gx",
+    "materials": [
+      {
+        "materialId": "equip-1751549849991-q7sfs",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751612868142",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751611943735",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751680997369_7e31xhwqp"
+  },
+  {
+    "targetItemId": "equip-1751553931906-pweri",
+    "materials": [
+      {
+        "materialId": "equip-1751549849991-k6l8d",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751612457819",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751611943735",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751681038799_97xsjga5u"
+  },
+  {
+    "targetItemId": "equip-1751554360393-2xqdv",
+    "materials": [
+      {
+        "materialId": "equip-1751549849991-vldqm",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751612457819",
+        "quantity": 5
+      },
+      {
+        "materialId": "item-1751612868142",
+        "quantity": 5
+      },
+      {
+        "materialId": "item-1751013870453",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751611943735",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751681072037_l5qa6vbl0"
+  },
+  {
+    "targetItemId": "equip-1751682697379-8p37l",
+    "materials": [
+      {
+        "materialId": "equip-1751013595523-787q0",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751621065762",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751682729217_bzqhyc08g"
+  },
+  {
+    "targetItemId": "equip-1751682697379-0vetz",
+    "materials": [
+      {
+        "materialId": "equip-1751682697379-xfczq",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751621065762",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751682742497_2rdibjqhg"
+  },
+  {
+    "targetItemId": "equip-1751682697379-i34ur",
+    "materials": [
+      {
+        "materialId": "equip-1751013595523-31zcs",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751621065762",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751682756349_pt6m4hfib"
+  },
+  {
+    "targetItemId": "equip-1751682697379-l4emu",
+    "materials": [
+      {
+        "materialId": "equip-1751682697379-8p37l",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751621553064",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751682773669_ruflbn2wz"
+  },
+  {
+    "targetItemId": "equip-1751682697379-11tc0",
+    "materials": [
+      {
+        "materialId": "equip-1751682697379-0vetz",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751621553064",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751682798712_iicy04n94"
+  },
+  {
+    "targetItemId": "equip-1751682697379-salf6",
+    "materials": [
+      {
+        "materialId": "equip-1751682697379-i34ur",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751621553064",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751682817544_hnqgvaxu1"
+  },
+  {
+    "targetItemId": "equip-1751687047631-m8jbj",
+    "materials": [
+      {
+        "materialId": "equip-1751613114397-y4jjl",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751633675304",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751652411103",
+        "quantity": 20
+      },
+      {
+        "materialId": "item-1751634937539",
+        "quantity": 3
+      }
+    ],
+    "id": "syn_1751693470912_543w6un9h"
+  },
+  {
+    "targetItemId": "equip-1751687105822-pi762",
+    "materials": [
+      {
+        "materialId": "item-1751130801584",
+        "quantity": 200
+      },
+      {
+        "materialId": "item-1751174731180",
+        "quantity": 80
+      },
+      {
+        "materialId": "item-1751174748432",
+        "quantity": 20
+      }
+    ],
+    "id": "syn_1751693529476_9wzbfc3h9"
+  },
+  {
+    "targetItemId": "equip-1751554650561-i3jya",
+    "materials": [
+      {
+        "materialId": "equip-1751553743420-m6k0q",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751613931633",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751613851305",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693574570_m6sui6amt"
+  },
+  {
+    "targetItemId": "equip-1751554650561-x3ntd",
+    "materials": [
+      {
+        "materialId": "equip-1751553931906-pweri",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751613931633",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751613851305",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693600348_oxyj10ogc"
+  },
+  {
+    "targetItemId": "equip-1751554650561-axrsm",
+    "materials": [
+      {
+        "materialId": "equip-1751554132663-gemst",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751613931633",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751613851305",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693633035_e2ahgy63v"
+  },
+  {
+    "targetItemId": "equip-1751554650561-7aslg",
+    "materials": [
+      {
+        "materialId": "equip-1751554132663-zz3gx",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751613931633",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751613851305",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693658638_cgzo45r9k"
+  },
+  {
+    "targetItemId": "equip-1751554650561-w20pd",
+    "materials": [
+      {
+        "materialId": "equip-1751554360393-2xqdv",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013870453",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751613931633",
+        "quantity": 15
+      },
+      {
+        "materialId": "item-1751613851305",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693702586_1r08kn33k"
+  },
+  {
+    "targetItemId": "equip-1751554894478-ija0q",
+    "materials": [
+      {
+        "materialId": "equip-1751011903784-6v35v",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751637110172",
+        "quantity": 35
+      },
+      {
+        "materialId": "item-1751693779191",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693741134_tj9zkyk0l"
+  },
+  {
+    "targetItemId": "equip-1751554894478-xu5y6",
+    "materials": [
+      {
+        "materialId": "equip-1751008678791-f67t0",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751637110172",
+        "quantity": 45
+      },
+      {
+        "materialId": "item-1751634866230",
+        "quantity": 3
+      }
+    ],
+    "id": "syn_1751693822422_9rx18om9t"
+  },
+  {
+    "targetItemId": "equip-1751555366124-9dgo4",
+    "materials": [
+      {
+        "materialId": "equip-1751554650561-i3jya",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751637329097",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751637807758",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693865455_sbgt48kx1"
+  },
+  {
+    "targetItemId": "equip-1751555366124-ayh2m",
+    "materials": [
+      {
+        "materialId": "equip-1751554650561-x3ntd",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751637329097",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751637807758",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693891038_xdxpxkr9u"
+  },
+  {
+    "targetItemId": "equip-1751556556001-g61u3",
+    "materials": [
+      {
+        "materialId": "equip-1751554650561-axrsm",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751637329097",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751637807758",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693922460_8bdy7l0pa"
+  },
+  {
+    "targetItemId": "equip-1751556556001-hw2j3",
+    "materials": [
+      {
+        "materialId": "equip-1751554650561-7aslg",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751637329097",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751637807758",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693945606_xwi26xbi5"
+  },
+  {
+    "targetItemId": "equip-1751556556001-az66o",
+    "materials": [
+      {
+        "materialId": "equip-1751554650561-w20pd",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013870453",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751637329097",
+        "quantity": 15
+      },
+      {
+        "materialId": "item-1751637807758",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751693978833_5pnzr5tf3"
+  },
+  {
+    "targetItemId": "equip-1751555070215-xvedb",
+    "materials": [
+      {
+        "materialId": "equip-1751554894478-ija0q",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751694184854",
+        "quantity": 3
+      }
+    ],
+    "id": "syn_1751694040793_40icdws1d"
+  },
+  {
+    "targetItemId": "equip-1751557506548-qex8h",
+    "materials": [
+      {
+        "materialId": "equip-1751555366124-9dgo4",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751644005348",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751695893705_achu83f8w"
+  },
+  {
+    "targetItemId": "equip-1751557506548-i81c8",
+    "materials": [
+      {
+        "materialId": "equip-1751555366124-ayh2m",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013895430",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751644005348",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751700410104_eg1h2z2a9"
+  },
+  {
+    "targetItemId": "equip-1751557506548-9w4ct",
+    "materials": [
+      {
+        "materialId": "equip-1751554894478-xu5y6",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751644005348",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751700443745_2k7nqluw3"
+  },
+  {
+    "targetItemId": "equip-1751557506548-7wgbe",
+    "materials": [
+      {
+        "materialId": "equip-1751556556001-g61u3",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751644005348",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751700505102_sowkxke1w"
+  },
+  {
+    "targetItemId": "equip-1751557506548-fqrd7",
+    "materials": [
+      {
+        "materialId": "equip-1751556556001-hw2j3",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013906198",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751644005348",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751700538694_wa51gr2vm"
+  },
+  {
+    "targetItemId": "equip-1751557506548-hjln9",
+    "materials": [
+      {
+        "materialId": "equip-1751556556001-az66o",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751013870453",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751644005348",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751700570635_1o8nj7uhw"
+  },
+  {
+    "targetItemId": "equip-1751686988210-jqonm",
+    "materials": [
+      {
+        "materialId": "equip-1751644833818-lbunx",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751644521389",
+        "quantity": 5
+      }
+    ],
+    "id": "syn_1751700614844_sdnl6jmd0"
+  },
+  {
+    "targetItemId": "equip-1751686988210-l41mz",
+    "materials": [
+      {
+        "materialId": "equip-1751686988210-jqonm",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751644521389",
+        "quantity": 10
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 3
+      }
+    ],
+    "id": "syn_1751700834501_gaqqbr3lp"
+  },
+  {
+    "targetItemId": "equip-1751686988210-np19o",
+    "materials": [
+      {
+        "materialId": "equip-1751686988210-xnaer",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1751680891372-j71qo",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1751554894478-xu5y6",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751651018696",
+        "quantity": 50
+      }
+    ],
+    "id": "syn_1751700890825_tjp053wq2"
+  },
+  {
+    "targetItemId": "equip-1751691501307-6c71y",
+    "materials": [
+      {
+        "materialId": "equip-1751557506548-qex8h",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751646534938",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 2
+      }
+    ],
+    "id": "syn_1751701077688_gk2wteu76"
+  },
+  {
+    "targetItemId": "equip-1751691501307-5rbpo",
+    "materials": [
+      {
+        "materialId": "equip-1751557506548-7wgbe",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751646534938",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 2
+      }
+    ],
+    "id": "syn_1751701102983_ar2muqbua"
+  },
+  {
+    "targetItemId": "equip-1751691501307-43d1l",
+    "materials": [
+      {
+        "materialId": "equip-1751557506548-hjln9",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 2
+      },
+      {
+        "materialId": "item-1751646534938",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751701193799_xwjd07iq1"
+  },
+  {
+    "targetItemId": "equip-1751691501307-t6iii",
+    "materials": [
+      {
+        "materialId": "equip-1751557506548-fqrd7",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751646534938",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 2
+      }
+    ],
+    "id": "syn_1751701213444_eriqzh15f"
+  },
+  {
+    "targetItemId": "equip-1751691501307-5da19",
+    "materials": [
+      {
+        "materialId": "equip-1751557506548-i81c8",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751646534938",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 2
+      }
+    ],
+    "id": "syn_1751701231790_zzl7mm5yb"
+  },
+  {
+    "targetItemId": "equip-1751691501307-3xiim",
+    "materials": [
+      {
+        "materialId": "equip-1751686988210-l41mz",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751646534938",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 2
+      }
+    ],
+    "id": "syn_1751701254836_rjs3g2st7"
+  },
+  {
+    "targetItemId": "equip-1751691638012-qml6x",
+    "materials": [
+      {
+        "materialId": "equip-1751687105822-pi762",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 2
+      },
+      {
+        "materialId": "item-1751650279428",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751701966081_7o2mts46d"
+  },
+  {
+    "targetItemId": "equip-1751691638012-1c2yu",
+    "materials": [
+      {
+        "materialId": "equip-1751557506548-9w4ct",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751650279428",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751701983689_304iap8c8"
+  },
+  {
+    "targetItemId": "equip-1751691638012-cbw2c",
+    "materials": [
+      {
+        "materialId": "equip-1751682697379-11tc0",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751700795625",
+        "quantity": 2
+      },
+      {
+        "materialId": "item-1751650279428",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702006032_jul98ulsw"
+  },
+  {
+    "targetItemId": "equip-1751691638012-m3xa9",
+    "materials": [
+      {
+        "materialId": "item-1751650279428",
+        "quantity": 3
+      }
+    ],
+    "id": "syn_1751702023579_262eh1flt"
+  },
+  {
+    "targetItemId": "equip-1751691806712-0n9d9",
+    "materials": [
+      {
+        "materialId": "equip-1751687105822-pi762",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751134403768",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751650486688",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702183252_w38ado5nz"
+  },
+  {
+    "targetItemId": "equip-1751691806712-54ag0",
+    "materials": [
+      {
+        "materialId": "equip-1751686988210-l41mz",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751134266449",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751650486688",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702202498_ko0oqzgde"
+  },
+  {
+    "targetItemId": "equip-1751691883588-21x4b",
+    "materials": [
+      {
+        "materialId": "item-1751117484894",
+        "quantity": 2
+      },
+      {
+        "materialId": "item-1751702330275",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751650486688",
+        "quantity": 3
+      }
+    ],
+    "id": "syn_1751702221214_kvj25sbs5"
+  },
+  {
+    "targetItemId": "equip-1751691883588-hs1pu",
+    "materials": [
+      {
+        "materialId": "equip-1751014519302-69tz4",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1751554894478-xu5y6",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751650486688",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702420689_fw11wjkhb"
+  },
+  {
+    "targetItemId": "equip-1751692172429-8usv2",
+    "materials": [
+      {
+        "materialId": "item-1751633675304",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751651018696",
+        "quantity": 30
+      },
+      {
+        "materialId": "item-1751650836849",
+        "quantity": 7
+      }
+    ],
+    "id": "syn_1751702458962_ghqqw0q1n"
+  },
+  {
+    "targetItemId": "equip-1751692172429-a0iux",
+    "materials": [
+      {
+        "materialId": "equip-1751686988210-xnaer",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751650547246",
+        "quantity": 20
+      },
+      {
+        "materialId": "item-1751650836849",
+        "quantity": 7
+      }
+    ],
+    "id": "syn_1751702491560_liedxmps0"
+  },
+  {
+    "targetItemId": "equip-1751692172429-3gfl5",
+    "materials": [
+      {
+        "materialId": "equip-1751687047631-m8jbj",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751651063375",
+        "quantity": 20
+      },
+      {
+        "materialId": "item-1751650836849",
+        "quantity": 14
+      }
+    ],
+    "id": "syn_1751702515831_qabur3lge"
+  },
+  {
+    "targetItemId": "equip-1751692421718-zcoaq",
+    "materials": [
+      {
+        "materialId": "equip-1751691501307-6c71y",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751652860657",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751702605688",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702542004_blg3wuisp"
+  },
+  {
+    "targetItemId": "equip-1751692421718-v1nw8",
+    "materials": [
+      {
+        "materialId": "equip-1751691501307-5rbpo",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751702605688",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751652860657",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702664158_dovchh5gm"
+  },
+  {
+    "targetItemId": "equip-1751692421718-pvq1r",
+    "materials": [
+      {
+        "materialId": "equip-1751691501307-43d1l",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751702605688",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751652860657",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702688696_31b3j2iuy"
+  },
+  {
+    "targetItemId": "equip-1751692421718-nx0b1",
+    "materials": [
+      {
+        "materialId": "equip-1751014519302-92uzo",
+        "quantity": 1
+      },
+      {
+        "materialId": "equip-1751014519302-69tz4",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751702605688",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751652860657",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702711611_qpnu8v49y"
+  },
+  {
+    "targetItemId": "equip-1751692421718-q7a5k",
+    "materials": [
+      {
+        "materialId": "equip-1751691501307-5da19",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751702605688",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751652860657",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702730447_b9lnxmebl"
+  },
+  {
+    "targetItemId": "equip-1751692421718-ardxv",
+    "materials": [
+      {
+        "materialId": "equip-1751691501307-t6iii",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751702605688",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751652860657",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702754190_frygi9ya2"
+  },
+  {
+    "targetItemId": "equip-1751702847440-ol6sw",
+    "materials": [
+      {
+        "materialId": "equip-1750992586525-16kwg",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751702902946",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702878769_3i926ukkj"
+  },
+  {
+    "targetItemId": "equip-1751613732165-niep3",
+    "materials": [
+      {
+        "materialId": "equip-1751702847440-ol6sw",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1751619669688",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1751702924565_34m20bide"
+  },
+  {
+    "targetItemId": "equip-1752255254828-g465q",
+    "materials": [
+      {
+        "materialId": "equip-1751691638012-qml6x",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256826621",
+        "quantity": 2
+      },
+      {
+        "materialId": "item-1752256723562",
+        "quantity": 2
+      },
+      {
+        "materialId": "item-1751702330275",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1752256889986_9ciyi1xwj"
+  },
+  {
+    "targetItemId": "equip-1752256303452-7alf7",
+    "materials": [
+      {
+        "materialId": "equip-1751691638012-1c2yu",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256826621",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256723562",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1752256966212_qolhwl5ag"
+  },
+  {
+    "targetItemId": "equip-1752256303452-s9nwh",
+    "materials": [
+      {
+        "materialId": "equip-1751691638012-cbw2c",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256826621",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256723562",
+        "quantity": 1
+      }
+    ],
+    "id": "syn_1752256993163_qyrhl4dga"
+  },
+  {
+    "targetItemId": "equip-1752256303452-6j1hb",
+    "materials": [
+      {
+        "materialId": "item-1751117484894",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256723562",
+        "quantity": 2
+      }
+    ],
+    "id": "syn_1752257036686_vqpp17d7k"
+  },
+  {
+    "targetItemId": "equip-1752256303452-8tieq",
+    "materials": [
+      {
+        "materialId": "equip-1751686988210-xnaer",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256723562",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256788994",
+        "quantity": 5
+      }
+    ],
+    "id": "syn_1752257080062_pmfdq1m4w"
+  },
+  {
+    "targetItemId": "equip-1752256303452-ia4jh",
+    "materials": [
+      {
+        "materialId": "equip-1751011903784-6v35v",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256723562",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256788994",
+        "quantity": 5
+      }
+    ],
+    "id": "syn_1752257117840_c8sninj8y"
+  },
+  {
+    "targetItemId": "equip-1752256303452-m6vul",
+    "materials": [
+      {
+        "materialId": "equip-1751682697379-l4emu",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256723562",
+        "quantity": 1
+      },
+      {
+        "materialId": "item-1752256788994",
+        "quantity": 5
+      }
+    ],
+    "id": "syn_1752257150559_p4xj31a1s"
+  }
+]

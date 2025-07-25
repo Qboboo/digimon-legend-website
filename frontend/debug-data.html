@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据调试 - 数码兽传说</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">数据调试工具</h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- 数码兽数据 -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">数码兽数据</h2>
+                <div id="digimon-data" class="text-sm"></div>
+            </div>
+            
+            <!-- 进化数据 -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">进化数据</h2>
+                <div id="evolution-data" class="text-sm"></div>
+            </div>
+        </div>
+        
+        <!-- 数据匹配检查 -->
+        <div class="bg-white p-6 rounded-lg shadow mt-6">
+            <h2 class="text-xl font-bold mb-4">数据匹配检查</h2>
+            <div id="match-results" class="text-sm"></div>
+        </div>
+        
+        <!-- 控制台日志 -->
+        <div class="bg-black text-green-400 p-4 rounded-lg mt-6">
+            <h2 class="text-xl font-bold mb-4 text-white">控制台日志</h2>
+            <div id="console-log" class="font-mono text-sm h-64 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script>
+        // 重写console.log来显示在页面上
+        const originalLog = console.log;
+        const logContainer = document.getElementById('console-log');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const logEntry = document.createElement('div');
+            logEntry.textContent = args.join(' ');
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        };
+        
+        // 等待数据加载完成
+        document.addEventListener('dataLoaded', () => {
+            console.log('数据加载完成，开始调试...');
+            
+            const digimonData = window.getDigimonData() || [];
+            const evolutionData = window.getEvolutionData() || {};
+            
+            // 显示数码兽数据
+            const digimonContainer = document.getElementById('digimon-data');
+            digimonContainer.innerHTML = `
+                <p><strong>数码兽总数:</strong> ${digimonData.length}</p>
+                <div class="mt-2">
+                    <strong>前10个数码兽ID:</strong>
+                    <ul class="list-disc list-inside mt-1">
+                        ${digimonData.slice(0, 10).map(d => `<li>${d.id} - ${d.name}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            // 显示进化数据
+            const evolutionContainer = document.getElementById('evolution-data');
+            const evolutionKeys = Object.keys(evolutionData);
+            evolutionContainer.innerHTML = `
+                <p><strong>进化路线总数:</strong> ${evolutionKeys.length}</p>
+                <div class="mt-2">
+                    <strong>前10个进化路线:</strong>
+                    <ul class="list-disc list-inside mt-1">
+                        ${evolutionKeys.slice(0, 10).map(key => `<li>${key}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            // 检查数据匹配
+            const matchContainer = document.getElementById('match-results');
+            let matchResults = [];
+            let totalDigimonIds = new Set();
+            
+            // 收集所有进化路线中的digimonId
+            Object.values(evolutionData).forEach(evolution => {
+                if (evolution.stages) {
+                    evolution.stages.forEach(stage => {
+                        if (stage.digimonId) {
+                            totalDigimonIds.add(stage.digimonId);
+                        }
+                    });
+                }
+                
+                // 检查新格式的evolvesTo
+                if (evolution.evolvesTo) {
+                    evolution.evolvesTo.forEach(stage => {
+                        if (stage.digimonId) {
+                            totalDigimonIds.add(stage.digimonId);
+                        }
+                    });
+                }
+            });
+            
+            console.log(`进化路线中找到 ${totalDigimonIds.size} 个唯一的digimonId`);
+            
+            // 检查匹配情况
+            const digimonIds = new Set(digimonData.map(d => d.id));
+            const matchedIds = [];
+            const unmatchedIds = [];
+            
+            totalDigimonIds.forEach(id => {
+                if (digimonIds.has(id)) {
+                    matchedIds.push(id);
+                } else {
+                    unmatchedIds.push(id);
+                }
+            });
+            
+            matchContainer.innerHTML = `
+                <div class="space-y-4">
+                    <div>
+                        <p><strong>匹配成功:</strong> ${matchedIds.length} 个</p>
+                        <p class="text-green-600">匹配率: ${((matchedIds.length / totalDigimonIds.size) * 100).toFixed(1)}%</p>
+                    </div>
+                    
+                    ${unmatchedIds.length > 0 ? `
+                        <div>
+                            <p><strong class="text-red-600">未匹配的ID:</strong> ${unmatchedIds.length} 个</p>
+                            <ul class="list-disc list-inside mt-1 text-red-600">
+                                ${unmatchedIds.slice(0, 20).map(id => `<li>${id}</li>`).join('')}
+                                ${unmatchedIds.length > 20 ? `<li>... 还有 ${unmatchedIds.length - 20} 个</li>` : ''}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    
+                    <div>
+                        <p><strong>进化路线中的digimonId示例:</strong></p>
+                        <ul class="list-disc list-inside mt-1">
+                            ${Array.from(totalDigimonIds).slice(0, 10).map(id => `<li>${id}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            console.log('匹配的ID:', matchedIds);
+            console.log('未匹配的ID:', unmatchedIds);
+            
+            // 检查具体的进化路线数据结构
+            const firstEvolution = Object.values(evolutionData)[0];
+            if (firstEvolution) {
+                console.log('第一个进化路线的数据结构:', firstEvolution);
+                
+                if (firstEvolution.stages) {
+                    console.log('stages格式的第一个阶段:', firstEvolution.stages[0]);
+                }
+                
+                if (firstEvolution.evolvesTo) {
+                    console.log('evolvesTo格式的第一个阶段:', firstEvolution.evolvesTo[0]);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

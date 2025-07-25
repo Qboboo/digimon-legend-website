@@ -1,0 +1,3839 @@
+{
+  "guilmon": {
+    "card": {
+      "id": "guilmon",
+      "name": "基尔兽",
+      "image": "/js/data/guides/src/digimon/guilmon/guilmon-1750492879183.webp",
+      "evolution_names": "基尔兽,公爵兽,破灭魔龙兽,真红莲骑士兽,中世纪公爵兽",
+      "evolution_images": "/js/data/guides/src/digimon/guilmon/guilmon-1750492879183.webp,/js/data/guides/src/digimon/guilmon/dukemon-1750492973368.webp,/js/data/guides/src/digimon/guilmon/megidramon-1750605372170.webp,/js/data/guides/src/digimon/guilmon/dukemoncrimsonmode-1750492973696.webp,/js/data/guides/src/digimon/guilmon/medievaldukemon-1750492974708.webp"
+    },
+    "main": {
+      "id": "guilmon",
+      "title": "基尔兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "AT",
+        "X-AI",
+        "EX"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "guilmon",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "基尔兽",
+        "image": "/js/data/guides/src/digimon/guilmon/guilmon-1750492879183.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "古拉兽",
+        "image": "/js/data/guides/src/digimon/guilmon/growmon-1750492972095.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "大古拉兽",
+        "image": "/js/data/guides/src/digimon/guilmon/megalogrowmon-1750492973026.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "红莲骑士兽",
+        "image": "/js/data/guides/src/digimon/guilmon/dukemon-1750492973368.webp",
+        "requirement": "1.使用枪骑核<br>2.契合达到60%",
+        "is_hidden": false,
+        "digimon_id_link": "dukemon"
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "真红莲骑士兽",
+        "image": "/js/data/guides/src/digimon/guilmon/dukemoncrimsonmode-1750492973696.webp",
+        "requirement": "使用格拉尼",
+        "is_hidden": false,
+        "digimon_id_link": "dukemonzh"
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "古拉兽",
+        "image": "/js/data/guides/src/digimon/guilmon/growmon-1750492972095.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "大古拉兽",
+        "image": "/js/data/guides/src/digimon/guilmon/megalogrowmon-1750492973026.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "红莲骑士兽",
+        "image": "/js/data/guides/src/digimon/guilmon/dukemon-1750492973368.webp",
+        "requirement": "1.使用枪骑核<br>2.契合达到60%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "中世纪公爵兽",
+        "image": "/js/data/guides/src/digimon/guilmon/medievaldukemon-1750492974708.webp",
+        "requirement": "使用森之秘叶",
+        "is_hidden": false,
+        "digimon_id_link": "MEDIEVALDUKEMON"
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 2,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 2,
+        "stage_index": 1,
+        "name": "古拉兽",
+        "image": "/js/data/guides/src/digimon/guilmon/growmon-1750492972095.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 2,
+        "stage_index": 2,
+        "name": "大古拉兽",
+        "image": "/js/data/guides/src/digimon/guilmon/megalogrowmon-1750492973026.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "guilmon",
+        "path_index": 2,
+        "stage_index": 3,
+        "name": "破灭魔龙兽",
+        "image": "/js/data/guides/src/digimon/guilmon/megidramon-1750605372170.webp",
+        "requirement": "神话时代直接抓取",
+        "is_hidden": false,
+        "digimon_id_link": "MEGIDRAMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "guilmon",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "guilmon",
+        "type": "line",
+        "line_type": "X-AI",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "guilmon",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 2
+      },
+      {
+        "evolution_id": "guilmon",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "guilmon",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 2,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "真红莲骑士兽",
+        "type": "AT",
+        "programId": "item-1751112667946",
+        "itemIds": [
+          "item-1751118048460",
+          "item-1751117484894"
+        ]
+      },
+      {
+        "name": "中世纪公爵兽",
+        "type": "X-AI",
+        "programId": "item-1751112667946",
+        "itemIds": [
+          "item-1751118048460",
+          "item-1751135249923"
+        ]
+      }
+    ]
+  },
+  "MONODRAMON": {
+    "card": {
+      "id": "MONODRAMON",
+      "name": "单角龙兽",
+      "image": "/js/data/guides/src/digimon/MONODRAMON/monodramon-1750687067114.webp",
+      "evolution_names": "单角龙兽,裁决兽",
+      "evolution_images": "/js/data/guides/src/digimon/MONODRAMON/monodramon-1750687067114.webp,/js/data/guides/src/digimon/MONODRAMON/justimon_blitzarm-1750687068808.webp"
+    },
+    "main": {
+      "id": "MONODRAMON",
+      "title": "单角龙兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "AT"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "MONODRAMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "单角龙兽",
+        "image": "/js/data/guides/src/digimon/MONODRAMON/monodramon-1750687067114.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "MONODRAMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "强袭龙兽",
+        "image": "/js/data/guides/src/digimon/MONODRAMON/strikedramon-1750687072739.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "MONODRAMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "科学飞龙兽",
+        "image": "/js/data/guides/src/digimon/MONODRAMON/cyberdramon-1750687074906.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "MONODRAMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "裁决兽",
+        "image": "/js/data/guides/src/digimon/MONODRAMON/justimon_blitzarm-1750687068808.webp",
+        "requirement": "使用究极核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "MONODRAMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "裁决兽(传说中的英雄)",
+        "image": "/js/data/guides/src/digimon/MONODRAMON/justimon_blitzarm-1750687068808.webp",
+        "requirement": "使用传说龙魂",
+        "is_hidden": false,
+        "digimon_id_link": "justimon"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "MONODRAMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "裁决兽(传说中的英雄)",
+        "type": "AT",
+        "programId": "item-1751112066204",
+        "itemIds": [
+          "item-1751127282037",
+          "item-1751132421367"
+        ]
+      }
+    ]
+  },
+  "HERISSMON": {
+    "card": {
+      "id": "HERISSMON",
+      "name": "刺猬兽",
+      "image": "/js/data/guides/src/digimon/HERISSMON/herissmon-1750686836171.webp",
+      "evolution_names": "刺猬兽,螺旋兽",
+      "evolution_images": "/js/data/guides/src/digimon/HERISSMON/herissmon-1750686836171.webp, /js/data/guides/src/digimon/HERISSMON/rasenmon-1750686837143.webp"
+    },
+    "main": {
+      "id": "HERISSMON",
+      "title": "刺猬兽进化路线",
+      "branch_acquisition": [
+        {
+          "type": "BA",
+          "text": "御三家\"平衡\"机体，可花15齿轮在究极v龙兽处兑换程式"
+        }
+      ],
+      "branch_types": [
+        "BA"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "HERISSMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "刺猬兽",
+        "image": "/js/data/guides/src/digimon/HERISSMON/herissmon-1750686836171.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HERISSMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "针毛兽",
+        "image": "/js/data/guides/src/digimon/HERISSMON/filmon-1750686843670.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HERISSMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "巨针兽",
+        "image": "/js/data/guides/src/digimon/HERISSMON/stiffilmon-1750686844910.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HERISSMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "螺旋兽",
+        "image": "/js/data/guides/src/digimon/HERISSMON/rasenmon-1750686837143.webp",
+        "requirement": "使用究极核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HERISSMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "螺旋兽(旅途的终点)",
+        "image": "/js/data/guides/src/digimon/HERISSMON/rasenmon-1750686837143.webp",
+        "requirement": "使用传说龙魂",
+        "is_hidden": false,
+        "digimon_id_link": "RASENMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "HERISSMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "螺旋兽(旅途的终点)",
+        "type": "BA",
+        "programId": "item-1751104517287",
+        "itemIds": [
+          "item-1751127282037",
+          "item-1751132421367"
+        ]
+      }
+    ]
+  },
+  "IMPMON": {
+    "card": {
+      "id": "IMPMON",
+      "name": "小妖兽",
+      "image": "/js/data/guides/src/digimon/IMPMON/impmon-1750687196999.webp",
+      "evolution_names": "小妖兽,堕天地狱兽,堕天地狱兽:疾风形态,法老兽",
+      "evolution_images": "/js/data/guides/src/digimon/IMPMON/impmon-1750687196999.webp, /js/data/guides/src/digimon/IMPMON/beelzebumon-1750687437997.webp, /js/data/guides/src/digimon/IMPMON/beelzebumonblastmode-1751209531656.webp, /js/data/guides/src/digimon/IMPMON/pharaohmon-1751192073900.webp"
+    },
+    "main": {
+      "id": "IMPMON",
+      "title": "小妖兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "SP",
+        "BA"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "小妖兽",
+        "image": "/js/data/guides/src/digimon/IMPMON/impmon-1750687196999.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "巫师兽",
+        "image": "/js/data/guides/src/digimon/IMPMON/wizarmon-1750687435161.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "巴力兽",
+        "image": "/js/data/guides/src/digimon/IMPMON/baalmon-1750687437382.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "堕天地狱兽",
+        "image": "/js/data/guides/src/digimon/IMPMON/beelzebumon-1750687437997.webp",
+        "requirement": "使用究极核",
+        "is_hidden": false,
+        "digimon_id_link": "BEELZEBUMON"
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "堕天地狱兽:疾风形态",
+        "image": "/js/data/guides/src/digimon/IMPMON/beelzebumonblastmode-1751209531656.webp",
+        "requirement": "使用传说龙魂",
+        "is_hidden": false,
+        "digimon_id_link": "BEELZEBUMONJF"
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "巫师兽",
+        "image": "/js/data/guides/src/digimon/IMPMON/wizarmon-1750687435161.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "木乃伊兽",
+        "image": "/js/data/guides/src/digimon/IMPMON/mummymon-1751192073488.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "IMPMON",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "法老兽",
+        "image": "/js/data/guides/src/digimon/IMPMON/pharaohmon-1751192073900.webp",
+        "requirement": "地图等级达到50在神话世界古代狮身人面兽处进化",
+        "is_hidden": false,
+        "digimon_id_link": "PHARAOHMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "IMPMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "IMPMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "IMPMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "堕天地狱兽:疾风形态",
+        "type": "SP",
+        "programId": "item-1751112407942",
+        "itemIds": [
+          "item-1751127282037",
+          "item-1751132421367"
+        ]
+      },
+      {
+        "name": "法老兽",
+        "type": "BA",
+        "programId": "item-1751112014780",
+        "itemIds": []
+      }
+    ]
+  },
+  "PLOTMON": {
+    "card": {
+      "id": "PLOTMON",
+      "name": "小狗兽",
+      "image": "/js/data/guides/src/digimon/PLOTMON/plotmon-1750691274511.webp",
+      "evolution_names": "小狗兽,神圣天女兽,莉莉丝兽,莫斯提兽,神圣天女兽FM",
+      "evolution_images": "/js/data/guides/src/digimon/PLOTMON/plotmon-1750691274511.webp,/js/data/guides/src/digimon/PLOTMON/ofanimon-1750691277904.webp,/js/data/guides/src/digimon/PLOTMON/lilithmon-1750691285472.webp,/js/data/guides/src/digimon/PLOTMON/mastemon-1750691275011.webp,/js/data/guides/src/digimon/PLOTMON/ofanimonfalldownmode-1750691296852.webp"
+    },
+    "main": {
+      "id": "PLOTMON",
+      "title": "小狗兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "SP",
+        "BA",
+        "AT",
+        "SP",
+        "AT"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "小狗兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/plotmon-1750691274511.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "迪路兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/tailmon-1750691276051.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "天女兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/angewomon-1750691277117.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "神圣天女兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/ofanimon-1750691277904.webp",
+        "requirement": "使用神女核",
+        "is_hidden": false,
+        "digimon_id_link": "OFANIMON"
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "神圣天女兽(三大天使)",
+        "image": "/js/data/guides/src/digimon/PLOTMON/ofanimon-1750691277904.webp",
+        "requirement": "使用神意的代行者",
+        "is_hidden": false,
+        "digimon_id_link": "OFANIMON"
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "迪路兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/tailmon-1750691276051.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "天女兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/angewomon-1750691277117.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "神圣天女兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/ofanimon-1750691277904.webp",
+        "requirement": "使用神女核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "莫斯提兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/mastemon-1750691275011.webp",
+        "requirement": "内测奖励，已绝版",
+        "is_hidden": false,
+        "digimon_id_link": "MASTEMON"
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 2,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 2,
+        "stage_index": 1,
+        "name": "黑迪路兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/blacktailmon-1750691284009.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 2,
+        "stage_index": 2,
+        "name": "女恶魔兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/ladydevimon-1750691284527.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 2,
+        "stage_index": 3,
+        "name": "莉莉丝兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/lilithmon-1750691285472.webp",
+        "requirement": "使用色欲核",
+        "is_hidden": false,
+        "digimon_id_link": "LILITHMON"
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 2,
+        "stage_index": 4,
+        "name": "莉莉丝兽(七大魔王)",
+        "image": "/js/data/guides/src/digimon/PLOTMON/lilithmon-1750691285472.webp",
+        "requirement": "使用魔女的偏爱",
+        "is_hidden": false,
+        "digimon_id_link": "LILITHMON"
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 3,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 3,
+        "stage_index": 1,
+        "name": "黑迪路兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/blacktailmon-1750691284009.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 3,
+        "stage_index": 2,
+        "name": "女恶魔兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/ladydevimon-1750691284527.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 3,
+        "stage_index": 3,
+        "name": "莉莉丝兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/lilithmon-1750691285472.webp",
+        "requirement": "使用色欲核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 3,
+        "stage_index": 4,
+        "name": "莫斯提兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/mastemon-1750691275011.webp",
+        "requirement": "内测奖励，已绝版",
+        "is_hidden": false,
+        "digimon_id_link": "MASTEMON"
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 4,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 4,
+        "stage_index": 1,
+        "name": "迪路兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/tailmon-1750691276051.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 4,
+        "stage_index": 2,
+        "name": "天女兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/angewomon-1750691277117.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 4,
+        "stage_index": 3,
+        "name": "神圣天女兽",
+        "image": "/js/data/guides/src/digimon/PLOTMON/ofanimon-1750691277904.webp",
+        "requirement": "使用神女核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "path_index": 4,
+        "stage_index": 4,
+        "name": "神圣天女兽FM",
+        "image": "/js/data/guides/src/digimon/PLOTMON/ofanimonfalldownmode-1750691296852.webp",
+        "requirement": "使用炎狩狱镰",
+        "is_hidden": false,
+        "digimon_id_link": "OFANIMONFALLDOWNMODE"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "PLOTMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 2
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 3
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 4
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 2,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 3,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "PLOTMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 4,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "神圣天女兽(三大天使)",
+        "type": "SP",
+        "programId": "item-1751103163102",
+        "itemIds": [
+          "item-1751130402777",
+          "item-1751134511441"
+        ]
+      },
+      {
+        "name": "莫斯提兽",
+        "type": "BA",
+        "programId": "item-1751103163102",
+        "itemIds": [
+          "item-1751130402777",
+          "item-1751133128683"
+        ]
+      },
+      {
+        "name": "莉莉丝兽(七大魔王)",
+        "type": "AT",
+        "programId": "item-1751104129869",
+        "itemIds": [
+          "item-1751130993546",
+          "item-1751134092625"
+        ]
+      },
+      {
+        "name": "莫斯提兽",
+        "type": "SP",
+        "programId": "item-1751104129869",
+        "itemIds": [
+          "item-1751130993546",
+          "item-1751133128683"
+        ]
+      },
+      {
+        "name": "神圣天女兽FM",
+        "type": "AT",
+        "programId": "item-1751103163102",
+        "itemIds": [
+          "item-1751130402777",
+          "item-1751134007605"
+        ]
+      }
+    ]
+  },
+  "AGUMON": {
+    "card": {
+      "id": "AGUMON",
+      "name": "亚古兽",
+      "image": "/js/data/guides/src/digimon/AGUMON/agumon-1751184684315.webp",
+      "evolution_names": "亚古兽,战斗暴龙兽,电光暴龙兽,机械邪龙兽,奥米茄兽,奥米加兽Alter-S,奥米加兽Alter-B,亚古兽BB",
+      "evolution_images": "/js/data/guides/src/digimon/AGUMON/agumon-1751184684315.webp,/js/data/guides/src/digimon/AGUMON/wargreymon-1751184688475.webp,/js/data/guides/src/digimon/AGUMON/blitzgreymon-1751184689777.webp,/js/data/guides/src/digimon/AGUMON/mugendramon-1751184685590.webp,/js/data/guides/src/digimon/AGUMON/omegamon-1751184688970.webp,/js/data/guides/src/digimon/AGUMON/omegamon-alter-s-1751745563369.jpeg,/js/data/guides/src/digimon/AGUMON/omegamon_alter-b-1751745697790.jpeg,/js/data/guides/src/digimon/AGUMON/agumon_kizuna-1751744007161.jpeg"
+    },
+    "main": {
+      "id": "AGUMON",
+      "title": "亚古兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "AT",
+        "BA",
+        "SP",
+        "EX"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "亚古兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/agumon-1751184684315.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/greymon-first-1751184685056.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "丧尸暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/skullgreymon-1751184685167.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "机械邪龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/mugendramon-1751184685590.webp",
+        "requirement": "使用无限核",
+        "is_hidden": false,
+        "digimon_id_link": "MUGENDRAMON"
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "机械邪龙兽(暗黑四天王)",
+        "image": "/js/data/guides/src/digimon/AGUMON/mugendramon-1751184685590.webp",
+        "requirement": "使用启示录兽の怨念",
+        "is_hidden": false,
+        "digimon_id_link": "MUGENDRAMON"
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/greymon-first-1751184685056.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "机械暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/metalgreymon-v-1751184687433.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "战斗暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/wargreymon-1751184688475.webp",
+        "requirement": "使用龙战核",
+        "is_hidden": false,
+        "digimon_id_link": "WARGREYMON"
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "奥米加兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/omegamon-1751184688970.webp",
+        "requirement": "使用遗迹未知物质(充满能量的)",
+        "is_hidden": false,
+        "digimon_id_link": "OMEGAMON"
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 2,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 2,
+        "stage_index": 1,
+        "name": "暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/greymon-first-1751184685056.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 2,
+        "stage_index": 2,
+        "name": "机械暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/metalgreymon-v-1751184687433.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 2,
+        "stage_index": 3,
+        "name": "电光暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/blitzgreymon-1751184689777.webp",
+        "requirement": "契合度75%以下的战斗暴龙兽使用雷电推进器",
+        "is_hidden": false,
+        "digimon_id_link": "BLITZGREYMON"
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 2,
+        "stage_index": 4,
+        "name": "奥米加兽Alter-S",
+        "image": "/js/data/guides/src/digimon/AGUMON/omegamon-alter-s-1751745563369.jpeg",
+        "requirement": "使用融合的意志",
+        "is_hidden": false,
+        "digimon_id_link": "OMEGAMON_ALTER-S"
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 2,
+        "stage_index": 5,
+        "name": "奥米加兽Alter-B",
+        "image": "/js/data/guides/src/digimon/AGUMON/omegamon_alter-b-1751745697790.jpeg",
+        "requirement": "奥米加兽Alter-S在使用IC：BlackDigitron的情况下使用R技能",
+        "is_hidden": false,
+        "digimon_id_link": "OMEGAMON_ALTER-B"
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 3,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 3,
+        "stage_index": 1,
+        "name": "暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/greymon-first-1751184685056.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 3,
+        "stage_index": 2,
+        "name": "机械暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/metalgreymon-v-1751184687433.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 3,
+        "stage_index": 3,
+        "name": "战斗暴龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/wargreymon-1751184688475.webp",
+        "requirement": "使用龙战核",
+        "is_hidden": false,
+        "digimon_id_link": "WARGREYMON"
+      },
+      {
+        "evolution_id": "AGUMON",
+        "path_index": 3,
+        "stage_index": 4,
+        "name": "亚古兽BB",
+        "image": "/js/data/guides/src/digimon/AGUMON/agumon_kizuna-1751744007161.jpeg",
+        "requirement": "使用最后の绊",
+        "is_hidden": false,
+        "digimon_id_link": "AGUMON_KIZUNA"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "AGUMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "AGUMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "AGUMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 2
+      },
+      {
+        "evolution_id": "AGUMON",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 3
+      },
+      {
+        "evolution_id": "AGUMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "AGUMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 2,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "AGUMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 3,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "机械邪龙兽(黑暗四天王)",
+        "type": "AT",
+        "programId": "item-1751112306715",
+        "itemIds": [
+          "item-1751130915279",
+          "item-1751133794127"
+        ]
+      },
+      {
+        "name": "奥米加兽",
+        "type": "BA",
+        "programId": "item-1751103397872",
+        "itemIds": [
+          "item-1751130525030",
+          "item-1751132613403"
+        ]
+      },
+      {
+        "name": "奥米加兽Alter-S",
+        "type": "SP",
+        "programId": "item-1751103397872",
+        "itemIds": [
+          "item-1751130525030",
+          "item-1751134266449",
+          "item-1751133494887",
+          "item-1751695542587"
+        ]
+      },
+      {
+        "name": "亚古兽BB",
+        "type": "EX",
+        "programId": "item-1751114582378",
+        "itemIds": [
+          "item-1751130525030",
+          "item-1751135174647"
+        ]
+      }
+    ]
+  },
+  "GABUMON": {
+    "card": {
+      "id": "GABUMON",
+      "name": "加布兽",
+      "image": "/js/data/guides/src/digimon/GABUMON/gabumon-1751185584372.webp",
+      "evolution_names": "加布兽,钢铁加鲁鲁,偃月加鲁鲁,奥米加兽,奥米加兽Alter-S,奥米加兽Alter-B,加布兽BF",
+      "evolution_images": "/js/data/guides/src/digimon/GABUMON/gabumon-1751185584372.webp,/js/data/guides/src/digimon/GABUMON/metalgarurumon-1751185885216.webp,/js/data/guides/src/digimon/GABUMON/cresgarurumon-1751185890074.webp,/js/data/guides/src/digimon/AGUMON/omegamon-1751184688970.webp,/js/data/guides/src/digimon/AGUMON/omegamon-alter-s-1751745563369.jpeg,/js/data/guides/src/digimon/AGUMON/omegamon_alter-b-1751745697790.jpeg,/js/data/guides/src/digimon/GABUMON/gabumon_kizuna-1751744029879.jpeg"
+    },
+    "main": {
+      "id": "GABUMON",
+      "title": "加布兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "BA",
+        "AT",
+        "EX"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "加布兽",
+        "image": "/js/data/guides/src/digimon/GABUMON/gabumon-1751185584372.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "加鲁鲁兽",
+        "image": "/js/data/guides/src/digimon/GABUMON/garurumon-1751185883219.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "兽人加鲁鲁",
+        "image": "/js/data/guides/src/digimon/GABUMON/weregarrumon-1751185884248.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "钢铁加鲁鲁",
+        "image": "/js/data/guides/src/digimon/GABUMON/metalgarurumon-1751185885216.webp",
+        "requirement": "使用钢狼核",
+        "is_hidden": false,
+        "digimon_id_link": "MetalGarurumon"
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "奥米加兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/omegamon-1751184688970.webp",
+        "requirement": "使用遗迹未知物质(充满能量的)",
+        "is_hidden": false,
+        "digimon_id_link": "OMEGAMON"
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "加鲁鲁兽",
+        "image": "/js/data/guides/src/digimon/GABUMON/garurumon-1751185883219.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "兽人加鲁鲁",
+        "image": "/js/data/guides/src/digimon/GABUMON/weregarrumon-1751185884248.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "偃月加鲁鲁",
+        "image": "/js/data/guides/src/digimon/GABUMON/cresgarurumon-1751185890074.webp",
+        "requirement": "契合75%以下的钢铁加鲁鲁使用黄兽偃月刀",
+        "is_hidden": false,
+        "digimon_id_link": "CresGarurumon"
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "奥米加兽Alter-S",
+        "image": "/js/data/guides/src/digimon/AGUMON/omegamon-alter-s-1751745563369.jpeg",
+        "requirement": "使用融合的意志",
+        "is_hidden": false,
+        "digimon_id_link": "OMEGAMON_ALTER-S"
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 1,
+        "stage_index": 5,
+        "name": "奥米加兽Alter-B",
+        "image": "/js/data/guides/src/digimon/AGUMON/omegamon_alter-b-1751745697790.jpeg",
+        "requirement": "奥米加兽Alter-S在使用IC：BlackDigitron的情况下使用R技能",
+        "is_hidden": false,
+        "digimon_id_link": "OMEGAMON_ALTER-B"
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 2,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 2,
+        "stage_index": 1,
+        "name": "加鲁鲁兽",
+        "image": "/js/data/guides/src/digimon/GABUMON/garurumon-1751185883219.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 2,
+        "stage_index": 2,
+        "name": "兽人加鲁鲁",
+        "image": "/js/data/guides/src/digimon/GABUMON/weregarrumon-1751185884248.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 2,
+        "stage_index": 3,
+        "name": "钢铁加鲁鲁",
+        "image": "/js/data/guides/src/digimon/GABUMON/metalgarurumon-1751185885216.webp",
+        "requirement": "使用钢狼核",
+        "is_hidden": false,
+        "digimon_id_link": "MetalGarurumon"
+      },
+      {
+        "evolution_id": "GABUMON",
+        "path_index": 2,
+        "stage_index": 4,
+        "name": "加布兽BF",
+        "image": "/js/data/guides/src/digimon/GABUMON/gabumon_kizuna-1751744029879.jpeg",
+        "requirement": "使用最后の绊",
+        "is_hidden": false,
+        "digimon_id_link": "GABUMON_KIZUNA"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "GABUMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "GABUMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "GABUMON",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 2
+      },
+      {
+        "evolution_id": "GABUMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "GABUMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 2,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "奥米加兽",
+        "type": "BA",
+        "programId": "item-1751103293233",
+        "itemIds": [
+          "item-1751130568268",
+          "item-1751132613403"
+        ]
+      },
+      {
+        "name": "奥米加兽Alter-S",
+        "type": "AT",
+        "programId": "item-1751103293233",
+        "itemIds": [
+          "item-1751130568268",
+          "item-1751134403768",
+          "item-1751133494887",
+          "item-1751695542587"
+        ]
+      },
+      {
+        "name": "加布兽BF",
+        "type": "EX",
+        "programId": "item-1751103293233",
+        "itemIds": [
+          "item-1751130568268",
+          "item-1751135174647"
+        ]
+      }
+    ]
+  },
+  "V-MON": {
+    "card": {
+      "id": "V-MON",
+      "name": "V仔兽",
+      "image": "/js/data/guides/src/digimon/V-MON/v-mon-1751186445753.webp",
+      "evolution_names": "V仔兽,金甲龙兽,究极V龙兽,帝皇龙甲兽,帝皇龙甲兽:战士形态,帝皇龙甲兽:圣骑士形态",
+      "evolution_images": "/js/data/guides/src/digimon/V-MON/v-mon-1751186445753.webp,/js/data/guides/src/digimon/V-MON/magnamon-1751186446222.webp,/js/data/guides/src/digimon/V-MON/ulforcevdramon-1751186447583.webp,/js/data/guides/src/digimon/V-MON/imperialdramondragonmode-1751186448684.webp,/js/data/guides/src/digimon/V-MON/imperialdramonfightermode-1751186449253.webp,/uploads/guides/boss/fu-ben-gong-lüe-：-shi-zu-de-hui-gui/1752349342001-371630061.webp"
+    },
+    "main": {
+      "id": "V-MON",
+      "title": "V仔兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "EX",
+        "AT",
+        "BA"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "V-MON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "V仔兽",
+        "image": "/js/data/guides/src/digimon/V-MON/v-mon-1751186445753.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "/js/data/guides/src/digimon/V-MON/u=391433674,2029189027&fm=253&fmt=auto&app=138&f=webp-1751186713769.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "金甲龙兽",
+        "image": "/js/data/guides/src/digimon/V-MON/magnamon-1751186446222.webp",
+        "requirement": "使用究极核达到60契合后点击奇迹数码精神",
+        "is_hidden": false,
+        "digimon_id_link": "MAGNAMON"
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "V龙兽",
+        "image": "/js/data/guides/src/digimon/V-MON/v-dramon-1751745263824.jpeg",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "天翔V龙兽",
+        "image": "/js/data/guides/src/digimon/V-MON/earov-dramon-1751186446965.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "究极V龙兽",
+        "image": "/js/data/guides/src/digimon/V-MON/ulforcevdramon-1751186447583.webp",
+        "requirement": "使用究极核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "究极V龙兽(皇家骑士)",
+        "image": "/js/data/guides/src/digimon/V-MON/ulforcevdramon-1751186447583.webp",
+        "requirement": "使用传说龙魂",
+        "is_hidden": false,
+        "digimon_id_link": "ULFORCEVDRAMON"
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 2,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 2,
+        "stage_index": 1,
+        "name": "V仔兽EX",
+        "image": "/js/data/guides/src/digimon/V-MON/xv-mon-1751186447895.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 2,
+        "stage_index": 2,
+        "name": "机甲龙兽",
+        "image": "/js/data/guides/src/digimon/V-MON/paildramon-1751186448469.webp",
+        "requirement": "使用研究成果:联展进化(V仔兽EX联展道具)",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 2,
+        "stage_index": 3,
+        "name": "帝皇龙甲兽",
+        "image": "/js/data/guides/src/digimon/V-MON/imperialdramondragonmode-1751186448684.webp",
+        "requirement": "使用帝龙核",
+        "is_hidden": false,
+        "digimon_id_link": "IMPERIALDRAMON"
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 2,
+        "stage_index": 4,
+        "name": "帝皇龙甲兽:战士形态",
+        "image": "/js/data/guides/src/digimon/V-MON/imperialdramonfightermode-1751186449253.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": "IMPERIALDRAMON:FIGHTERMODE"
+      },
+      {
+        "evolution_id": "V-MON",
+        "path_index": 2,
+        "stage_index": 5,
+        "name": "帝皇龙甲兽:圣骑士形态",
+        "image": "/uploads/guides/boss/fu-ben-gong-lüe-：-shi-zu-de-hui-gui/1752349342001-371630061.webp",
+        "requirement": "使用IC:奥米加之剑",
+        "is_hidden": false,
+        "digimon_id_link": "IMPERIALDRAMON:PALADINMODE"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "V-MON",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "V-MON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "V-MON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 2
+      },
+      {
+        "evolution_id": "V-MON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "V-MON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 2,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "V-MON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 3,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "金甲龙兽",
+        "type": "EX",
+        "programId": "item-1751112567464",
+        "itemIds": [
+          "item-1751127282037",
+          "item-1751135037016"
+        ]
+      },
+      {
+        "name": "究极V龙兽(皇家骑士)",
+        "type": "AT",
+        "programId": "item-1751112567464",
+        "itemIds": [
+          "item-1751127282037",
+          "item-1751132421367"
+        ]
+      },
+      {
+        "name": "帝皇龙甲兽",
+        "type": "BA",
+        "programId": "item-1751115365949",
+        "itemIds": [
+          "item-1751187020743",
+          "item-1751187206461"
+        ]
+      }
+    ]
+  },
+  "KUDAMON": {
+    "card": {
+      "id": "KUDAMON",
+      "name": "管狐兽",
+      "image": "/js/data/guides/src/digimon/KUDAMON/kudamon-2006-1751192806519.webp",
+      "evolution_names": "管狐兽,御魂兽,八足马兽",
+      "evolution_images": "/js/data/guides/src/digimon/KUDAMON/kudamon-2006-1751192806519.webp, /js/data/guides/src/digimon/KUDAMON/mitamamon-1751192808682.webp, /js/data/guides/src/digimon/KUDAMON/sleipmon-1751192810407.webp"
+    },
+    "main": {
+      "id": "KUDAMON",
+      "title": "管狐兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "BA",
+        "AT"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "管狐兽",
+        "image": "/js/data/guides/src/digimon/KUDAMON/kudamon-2006-1751192806519.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "裂波兽",
+        "image": "/js/data/guides/src/digimon/KUDAMON/reppamon-1751192807849.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "麒麟兽",
+        "image": "/js/data/guides/src/digimon/KUDAMON/tyilinmon-1751192808168.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "御魂兽",
+        "image": "/js/data/guides/src/digimon/KUDAMON/mitamamon-1751192808682.webp",
+        "requirement": "使用究极核",
+        "is_hidden": false,
+        "digimon_id_link": "MITAMAMON"
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "裂波兽",
+        "image": "/js/data/guides/src/digimon/KUDAMON/reppamon-1751192807849.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "麒麟兽",
+        "image": "/js/data/guides/src/digimon/KUDAMON/tyilinmon-1751192808168.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "八足马兽",
+        "image": "/js/data/guides/src/digimon/KUDAMON/sleipmon-1751192810407.webp",
+        "requirement": "使用弩骑核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "八足马兽(皇家骑士)",
+        "image": "/js/data/guides/src/digimon/KUDAMON/sleipmon-1751192810407.webp",
+        "requirement": "使用吾辈的道路以此箭开创",
+        "is_hidden": false,
+        "digimon_id_link": "SLEIPMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "KUDAMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "KUDAMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "御魂兽",
+        "type": "BA",
+        "programId": "item-1751103489255",
+        "itemIds": [
+          "item-1751127282037"
+        ]
+      },
+      {
+        "name": "八足马兽(皇家骑士)",
+        "type": "AT",
+        "programId": "item-1751112610899",
+        "itemIds": [
+          "item-1751130801584",
+          "item-1751133390133"
+        ]
+      }
+    ]
+  },
+  "PICODEVIMON": {
+    "card": {
+      "id": "PICODEVIMON",
+      "name": "小恶魔兽",
+      "image": "/js/data/guides/src/digimon/PICODEVIMON/picodevimon-1751194268690.webp",
+      "evolution_names": "小恶魔兽,小丑皇,幽灵面具兽",
+      "evolution_images": "/js/data/guides/src/digimon/PICODEVIMON/picodevimon-1751194268690.webp,/js/data/guides/src/digimon/PICODEVIMON/piemon-1751194271137.webp,/js/data/guides/src/digimon/PICODEVIMON/voltobautamon-1751194269882.webp"
+    },
+    "main": {
+      "id": "PICODEVIMON",
+      "title": "小恶魔兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "BA",
+        "AT",
+        "SP"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "小恶魔兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/picodevimon-1751194268690.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "恶魔兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/devimon-1751194269486.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "吸血魔兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/vamdemon-1751194269622.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "幽灵面具兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/voltobautamon-1751194269882.webp",
+        "requirement": "使用深怨之手",
+        "is_hidden": false,
+        "digimon_id_link": "VOLTOBAUTAMON"
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "猛鬼兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/bakemon-1751194270078.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "死神兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/fantomon-1751194270143.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "小丑皇",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/piemon-1751194271137.webp",
+        "requirement": "使用小丑核",
+        "is_hidden": false,
+        "digimon_id_link": "PIEMON"
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "幽灵面具兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/voltobautamon-1751194269882.webp",
+        "requirement": "深怨之手",
+        "is_hidden": false,
+        "digimon_id_link": "VOLTOBAUTAMON"
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 2,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 2,
+        "stage_index": 1,
+        "name": "猛鬼兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/bakemon-1751194270078.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 2,
+        "stage_index": 2,
+        "name": "死神兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/fantomon-1751194270143.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 2,
+        "stage_index": 3,
+        "name": "小丑皇",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/piemon-1751194271137.webp",
+        "requirement": "使用小丑核",
+        "is_hidden": false,
+        "digimon_id_link": "PIEMON"
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "path_index": 2,
+        "stage_index": 4,
+        "name": "小丑皇(黑暗四天王)",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/piemon-1751194271137.webp",
+        "requirement": "使用启示录兽の怨念",
+        "is_hidden": false,
+        "digimon_id_link": "PIEMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "PICODEVIMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 2
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      },
+      {
+        "evolution_id": "PICODEVIMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 2,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "幽灵面具兽",
+        "type": "BA",
+        "programId": "item-1751116773499",
+        "itemIds": [
+          "item-1751135325355"
+        ]
+      },
+      {
+        "name": "幽灵面具兽",
+        "type": "AT",
+        "programId": "item-1751115114775",
+        "itemIds": [
+          "item-1751131169438",
+          "item-1751135325355"
+        ]
+      },
+      {
+        "name": "小丑皇(黑暗四天王)",
+        "type": "SP",
+        "programId": "item-1751114119846",
+        "itemIds": [
+          "item-1751131169438",
+          "item-1751133794127"
+        ]
+      }
+    ]
+  },
+  "DRACOMON": {
+    "card": {
+      "id": "DRACOMON",
+      "name": "龙仔兽",
+      "image": "/js/data/guides/src/digimon/DRACOMON/dracomon-1751194804494.webp",
+      "evolution_names": "龙仔兽,斩龙兽,破坏龙兽,艾可萨兽",
+      "evolution_images": "/js/data/guides/src/digimon/DRACOMON/dracomon-1751194804494.webp, /js/data/guides/src/digimon/DRACOMON/slayerdramon-1751194805026.webp, /js/data/guides/src/digimon/DRACOMON/breakdramon-1751194805026.webp, /js/data/guides/src/digimon/DRACOMON/examon-1751194805026.webp"
+    },
+    "main": {
+      "id": "DRACOMON",
+      "title": "龙仔兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "SP",
+        "AT"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "龙仔兽",
+        "image": "/js/data/guides/src/digimon/DRACOMON/dracomon-1751194804494.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "核龙兽(蓝)",
+        "image": "/js/data/guides/src/digimon/DRACOMON/coredramon_b-1751194805735.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "翼龙兽",
+        "image": "/js/data/guides/src/digimon/DRACOMON/wingdramon-1751194806011.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "斩龙兽",
+        "image": "/js/data/guides/src/digimon/DRACOMON/slayerdramon-1751194805026.webp",
+        "requirement": "使用四大龙的试炼",
+        "is_hidden": false,
+        "digimon_id_link": "SLAYERDRAMON"
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "艾可萨兽",
+        "image": "/js/data/guides/src/digimon/DRACOMON/examon-1751194805026.webp",
+        "requirement": "使用至高荣光",
+        "is_hidden": false,
+        "digimon_id_link": "EXAMON"
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 1,
+        "stage_index": 0,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 1,
+        "stage_index": 1,
+        "name": "核龙兽(绿)",
+        "image": "/js/data/guides/src/digimon/DRACOMON/coredramon_b-1751194805735.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 1,
+        "stage_index": 2,
+        "name": "地龙兽",
+        "image": "/js/data/guides/src/digimon/DRACOMON/groundramon-1751194806914.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 1,
+        "stage_index": 3,
+        "name": "破坏龙兽",
+        "image": "/js/data/guides/src/digimon/DRACOMON/breakdramon-1751194805026.webp",
+        "requirement": "使用四大龙的试炼",
+        "is_hidden": false,
+        "digimon_id_link": "BREAKDRAMON"
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "path_index": 1,
+        "stage_index": 4,
+        "name": "艾可萨兽",
+        "image": "/js/data/guides/src/digimon/DRACOMON/examon-1751194805026.webp",
+        "requirement": "使用至高荣光",
+        "is_hidden": false,
+        "digimon_id_link": "EXAMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "DRACOMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 0
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 1
+      },
+      {
+        "evolution_id": "DRACOMON",
+        "type": "cross",
+        "from_path": 0,
+        "from_stage": 0,
+        "to_path": 1,
+        "to_stage": 1
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "艾可萨兽",
+        "type": "SP",
+        "programId": "item-1751115726588",
+        "itemIds": [
+          "item-1751130874549",
+          "item-1751133563849"
+        ]
+      },
+      {
+        "name": "艾可萨兽",
+        "type": "AT",
+        "programId": "item-1751103546079",
+        "itemIds": [
+          "item-1751130874549",
+          "item-1751133563849"
+        ]
+      }
+    ]
+  },
+  "LUCEMON": {
+    "card": {
+      "id": "LUCEMON",
+      "name": "光明兽",
+      "image": "/js/data/guides/src/digimon/LUCEMON/lucemon-1751195196988.webp",
+      "evolution_names": "光明兽,光明兽FM,光明兽SM",
+      "evolution_images": "/js/data/guides/src/digimon/LUCEMON/lucemon-1751195196988.webp, /js/data/guides/src/digimon/LUCEMON/rucemonfalldownmode-1751195199521.webp, /js/data/guides/src/digimon/LUCEMON/lucemonsatanmode-1751195200282.webp"
+    },
+    "main": {
+      "id": "LUCEMON",
+      "title": "光明兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "BA"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "LUCEMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "光明兽",
+        "image": "/js/data/guides/src/digimon/LUCEMON/lucemon-1751195196988.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "LUCEMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "LUCEMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "LUCEMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "LUCEMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "光明兽FM",
+        "image": "/js/data/guides/src/digimon/LUCEMON/rucemonfalldownmode-1751195199521.webp",
+        "requirement": "契合40%-60%使用傲魔核<br>契合75%使用神的仁慈",
+        "is_hidden": false,
+        "digimon_id_link": "RUCEMONFALLDOWNMODE"
+      },
+      {
+        "evolution_id": "LUCEMON",
+        "path_index": 0,
+        "stage_index": 5,
+        "name": "光明兽SM",
+        "image": "/js/data/guides/src/digimon/LUCEMON/lucemonsatanmode-1751195200282.webp",
+        "requirement": "使用矶汉那(地狱)",
+        "is_hidden": false,
+        "digimon_id_link": "LUCEMONSATANMODE"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "LUCEMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "光明兽SM",
+        "type": "BA",
+        "programId": "item-1751114364601",
+        "itemIds": [
+          "item-1751130604601",
+          "item-1751132688097",
+          "item-1751175336162"
+        ]
+      }
+    ]
+  },
+  "HAGURUMON": {
+    "card": {
+      "id": "HAGURUMON",
+      "name": "齿轮兽",
+      "image": "/js/data/guides/src/digimon/HAGURUMON/hagurumon-1751195469878.webp",
+      "evolution_names": "齿轮兽,颅骨兽",
+      "evolution_images": "/js/data/guides/src/digimon/HAGURUMON/hagurumon-1751195469878.webp, /js/data/guides/src/digimon/HAGURUMON/craniummon-1751195470355.webp"
+    },
+    "main": {
+      "id": "HAGURUMON",
+      "title": "齿轮兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "BA"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "HAGURUMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "齿轮兽",
+        "image": "/js/data/guides/src/digimon/HAGURUMON/hagurumon-1751195469878.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HAGURUMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "守卫机器人兽",
+        "image": "/js/data/guides/src/digimon/HAGURUMON/guardromon-1751195471819.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HAGURUMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "安杜鲁兽",
+        "image": "/js/data/guides/src/digimon/HAGURUMON/andromon-1751195472297.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HAGURUMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "颅骨兽",
+        "image": "/js/data/guides/src/digimon/HAGURUMON/craniummon-1751195470355.webp",
+        "requirement": "使用髑骑核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HAGURUMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "颅骨兽(皇家骑士)",
+        "image": "/js/data/guides/src/digimon/HAGURUMON/craniummon-1751195470355.webp",
+        "requirement": "使用魔盾「阿瓦隆」",
+        "is_hidden": false,
+        "digimon_id_link": "CRANIUMMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "HAGURUMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "颅骨兽(皇家骑士)",
+        "type": "BA",
+        "programId": "item-1751112499011",
+        "itemIds": [
+          "item-1751130633581",
+          "item-1751132725861"
+        ]
+      }
+    ]
+  },
+  "GAZIMON": {
+    "card": {
+      "id": "GAZIMON",
+      "name": "加支兽",
+      "image": "/js/data/guides/src/digimon/GAZIMON/gazimon-1751195727851.webp",
+      "evolution_names": "加支兽,千年兽,最终千年兽",
+      "evolution_images": "/js/data/guides/src/digimon/GAZIMON/gazimon-1751195727851.webp, /js/data/guides/src/digimon/GAZIMON/millenniumon-1751195728415.webp, /js/data/guides/src/digimon/GAZIMON/zeedmillenniumon-1751195728415.webp"
+    },
+    "main": {
+      "id": "GAZIMON",
+      "title": "加支兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "BA"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "GAZIMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "",
+        "image": "/js/data/guides/src/digimon/GAZIMON/gazimon-1751195728851.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GAZIMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GAZIMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "基米拉兽",
+        "image": "/js/data/guides/src/digimon/GAZIMON/chimairamon-1751195729011.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GAZIMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "GAZIMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "千年兽",
+        "image": "/js/data/guides/src/digimon/GAZIMON/millenniumon-1751195728415.webp",
+        "requirement": "使用邪神之心",
+        "is_hidden": false,
+        "digimon_id_link": "MILLENNIUMON"
+      },
+      {
+        "evolution_id": "GAZIMON",
+        "path_index": 0,
+        "stage_index": 5,
+        "name": "最终千年兽",
+        "image": "/js/data/guides/src/digimon/GAZIMON/zeedmillenniumon-1751195728415.webp",
+        "requirement": "使用IC:邪神降临",
+        "is_hidden": false,
+        "digimon_id_link": "ZEEDMILLENNIUMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "GAZIMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "最终千年兽",
+        "type": "BA",
+        "programId": "item-1751104616001",
+        "itemIds": [
+          "item-1751136311011",
+          "item-1751195886271"
+        ]
+      }
+    ]
+  },
+  "AGUMON-BLACK": {
+    "card": {
+      "id": "AGUMON-BLACK",
+      "name": "黑亚古兽",
+      "image": "/js/data/guides/src/digimon/AGUMON-BLACK/agumon-black-1751744115901.jpeg",
+      "evolution_names": "黑亚古兽,月之千年兽,最终千年兽",
+      "evolution_images": "/js/data/guides/src/digimon/AGUMON-BLACK/agumon-black-1751744115901.jpeg,/js/data/guides/src/digimon/AGUMON-BLACK/moonmillenniumon-1751198277271.webp,/js/data/guides/src/digimon/GAZIMON/zeedmillenniumon-1751195728415.webp"
+    },
+    "main": {
+      "id": "AGUMON-BLACK",
+      "title": "黑亚古兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "SP"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "AGUMON-BLACK",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "黑亚古兽",
+        "image": "/js/data/guides/src/digimon/AGUMON-BLACK/agumon-black-1751744115901.jpeg",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON-BLACK",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "黑暗巨龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON-BLACK/darktyranomon-1751198277652.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON-BLACK",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "金属巨龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON-BLACK/metaltyranomon-1751745212655.jpeg",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON-BLACK",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "机械邪龙兽",
+        "image": "/js/data/guides/src/digimon/AGUMON/mugendramon-1751184685590.webp",
+        "requirement": "使用无限核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "AGUMON-BLACK",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "月之千年兽",
+        "image": "/js/data/guides/src/digimon/AGUMON-BLACK/moonmillenniumon-1751198277271.webp",
+        "requirement": "使用时空悖论",
+        "is_hidden": false,
+        "digimon_id_link": "MOONMILLENNIUMON"
+      },
+      {
+        "evolution_id": "AGUMON-BLACK",
+        "path_index": 0,
+        "stage_index": 5,
+        "name": "最终千年兽",
+        "image": "/js/data/guides/src/digimon/GAZIMON/zeedmillenniumon-1751195728415.webp",
+        "requirement": "使用IC:邪神降临",
+        "is_hidden": false,
+        "digimon_id_link": "ZEEDMILLENNIUMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "AGUMON-BLACK",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "最终千年兽",
+        "type": "SP",
+        "programId": "item-1751114530586",
+        "itemIds": [
+          "item-1751130915279",
+          "item-1751135694968",
+          "item-1751195886271"
+        ]
+      }
+    ]
+  },
+  "LALAMON": {
+    "card": {
+      "id": "LALAMON",
+      "name": "拉拉兽",
+      "image": "/js/data/guides/src/digimon/LALAMON/lalamon-1751198557067.webp",
+      "evolution_names": "拉拉兽,莲花兽,大王花兽",
+      "evolution_images": "/js/data/guides/src/digimon/LALAMON/lalamon-1751198557067.webp, /js/data/guides/src/digimon/LALAMON/lotusmon-1751198557242.webp, /js/data/guides/src/digimon/LALAMON/rafflesimon-1751198557242.webp"
+    },
+    "main": {
+      "id": "LALAMON",
+      "title": "拉拉兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "BA"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "LALAMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "",
+        "image": "/js/data/guides/src/digimon/LALAMON/lalamon-1751198557703.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "LALAMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "向日葵兽",
+        "image": "/js/data/guides/src/digimon/LALAMON/sunflowmon-1751198557901.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "LALAMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "丁香兽",
+        "image": "/js/data/guides/src/digimon/LALAMON/lilamon-1751198558261.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "LALAMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "莲花兽",
+        "image": "/js/data/guides/src/digimon/LALAMON/lotusmon-1751198557242.webp",
+        "requirement": "使用美棘核",
+        "is_hidden": false,
+        "digimon_id_link": "LOTUSMON"
+      },
+      {
+        "evolution_id": "LALAMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "大王花兽",
+        "image": "/js/data/guides/src/digimon/LALAMON/rafflesimon-1751198557242.webp",
+        "requirement": "使用奇迹之种",
+        "is_hidden": false,
+        "digimon_id_link": "RAFFLESIMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "LALAMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "大王花兽",
+        "type": "BA",
+        "programId": "item-1751103351591",
+        "itemIds": [
+          "item-1751130704913",
+          "item-1751133271005"
+        ]
+      }
+    ]
+  },
+  "PALMON": {
+    "card": {
+      "id": "PALMON",
+      "name": "巴鲁兽",
+      "image": "/js/data/guides/src/digimon/PALMON/palmon-1751198796049.webp",
+      "evolution_names": "巴鲁兽,蔷薇兽,大王花兽",
+      "evolution_images": "/js/data/guides/src/digimon/PALMON/palmon-1751198796049.webp, /js/data/guides/src/digimon/PALMON/rosemon-1751198796464.webp, /js/data/guides/src/digimon/LALAMON/rafflesimon-1751198557242.webp"
+    },
+    "main": {
+      "id": "PALMON",
+      "title": "巴鲁兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "SP"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "PALMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "巴鲁兽",
+        "image": "/js/data/guides/src/digimon/PALMON/palmon-1751198796049.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PALMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "仙人掌兽",
+        "image": "/js/data/guides/src/digimon/PALMON/togemon-1751198797351.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PALMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "花仙兽",
+        "image": "/js/data/guides/src/digimon/PALMON/lilimon-1751198798155.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PALMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "蔷薇兽",
+        "image": "/js/data/guides/src/digimon/PALMON/rosemon-1751198796464.webp",
+        "requirement": "使用美棘核",
+        "is_hidden": false,
+        "digimon_id_link": "ROSEMON"
+      },
+      {
+        "evolution_id": "PALMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "大王花兽",
+        "image": "/js/data/guides/src/digimon/LALAMON/rafflesimon-1751198557242.webp",
+        "requirement": "使用奇迹之种",
+        "is_hidden": false,
+        "digimon_id_link": "RAFFLESIMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "PALMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "大王花兽",
+        "type": "SP",
+        "programId": "item-1751115538240",
+        "itemIds": [
+          "item-1751130704913",
+          "item-1751133271005"
+        ]
+      }
+    ]
+  },
+  "WORMMON": {
+    "card": {
+      "id": "WORMMON",
+      "name": "虫虫兽",
+      "image": "/js/data/guides/src/digimon/WORMMON/wormmon-1751198904950.webp",
+      "evolution_names": "虫虫兽,飞虫兽",
+      "evolution_images": "/js/data/guides/src/digimon/WORMMON/wormmon-1751198904950.webp, /js/data/guides/src/digimon/WORMMON/stingmon-1751198905880.webp"
+    },
+    "main": {
+      "id": "WORMMON",
+      "title": "虫虫兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "BA"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "WORMMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "虫虫兽",
+        "image": "/js/data/guides/src/digimon/WORMMON/wormmon-1751198904950.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "WORMMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "飞虫兽",
+        "image": "/js/data/guides/src/digimon/WORMMON/stingmon-1751198905880.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "WORMMON",
+        "type": "line",
+        "line_type": "BA",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "飞虫兽",
+        "type": "BA",
+        "programId": "item-1751115438305",
+        "itemIds": []
+      }
+    ]
+  },
+  "CANDMON": {
+    "card": {
+      "id": "CANDMON",
+      "name": "蜡烛兽",
+      "image": "/js/data/guides/src/digimon/CANDMON/candmon-1751199141390.webp",
+      "evolution_names": "蜡烛兽,顽固兽",
+      "evolution_images": "/js/data/guides/src/digimon/CANDMON/candmon-1751199141390.webp, /js/data/guides/src/digimon/CANDMON/gankoomon-1751199143774.webp"
+    },
+    "main": {
+      "id": "CANDMON",
+      "title": "蜡烛兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "AT"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "CANDMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "蜡烛兽",
+        "image": "/js/data/guides/src/digimon/CANDMON/candmon-1751199141390.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "CANDMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "火焰兽",
+        "image": "/js/data/guides/src/digimon/CANDMON/meramon-1751199142713.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "CANDMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "死神火焰兽",
+        "image": "/js/data/guides/src/digimon/CANDMON/deathmeramon-1751199143133.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "CANDMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "顽固兽",
+        "image": "/js/data/guides/src/digimon/CANDMON/gankoomon-1751199143774.webp",
+        "requirement": "使用顽骑核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "CANDMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "顽固兽(皇家骑士)",
+        "image": "/js/data/guides/src/digimon/CANDMON/gankoomon-1751199143774.webp",
+        "requirement": "使用钢铁的意志",
+        "is_hidden": false,
+        "digimon_id_link": "GANKOOMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "CANDMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "顽固兽(皇家骑士)",
+        "type": "AT",
+        "programId": "item-1751112748552",
+        "itemIds": [
+          "item-1751130944703",
+          "item-1751133867799"
+        ]
+      }
+    ]
+  },
+  "HUCKMON": {
+    "card": {
+      "id": "HUCKMON",
+      "name": "哈克兽",
+      "image": "/js/data/guides/src/digimon/HUCKMON/huckmon-1751199298034.webp",
+      "evolution_names": "哈克兽,杰斯兽",
+      "evolution_images": "/js/data/guides/src/digimon/HUCKMON/huckmon-1751199298034.webp,/js/data/guides/src/digimon/HUCKMON/jesmon-1751199298616.webp"
+    },
+    "main": {
+      "id": "HUCKMON",
+      "title": "哈克兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "EX"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "HUCKMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "哈克兽",
+        "image": "/js/data/guides/src/digimon/HUCKMON/huckmon-1751199298034.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HUCKMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HUCKMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HUCKMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "杰斯兽",
+        "image": "/js/data/guides/src/digimon/HUCKMON/jesmon-1751199298616.webp",
+        "requirement": "图鉴数量达到50后完成编码器遗迹哈克兽支线获得",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "HUCKMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "杰斯兽(皇家骑士)",
+        "image": "/js/data/guides/src/digimon/HUCKMON/jesmon-1751199298616.webp",
+        "requirement": "使用钢铁的意志",
+        "is_hidden": false,
+        "digimon_id_link": "JESMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "HUCKMON",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "杰斯兽(皇家骑士)",
+        "type": "AT",
+        "programId": null,
+        "itemIds": [
+          "item-1751133867799"
+        ]
+      }
+    ]
+  },
+  "TUKAIMON": {
+    "card": {
+      "id": "TUKAIMON",
+      "name": "使魔兽",
+      "image": "/js/data/guides/src/digimon/TUKAIMON/tukaimon-1751199725897.webp",
+      "evolution_names": "使魔兽,究极魔兽(斗篷形态),究极魔兽(野兽形态)",
+      "evolution_images": "/js/data/guides/src/digimon/TUKAIMON/tukaimon-1751199725897.webp,/js/data/guides/src/digimon/TUKAIMON/Demon_20th-1751738402733.webp,/js/data/guides/src/digimon/TUKAIMON/320px-Demon_beast2-1751738403918.webp"
+    },
+    "main": {
+      "id": "TUKAIMON",
+      "title": "使魔兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "SP"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "TUKAIMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "使魔兽",
+        "image": "/js/data/guides/src/digimon/TUKAIMON/tukaimon-1751199725897.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "TUKAIMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "恶魔兽",
+        "image": "/js/data/guides/src/digimon/PICODEVIMON/devimon-1751194269486.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "TUKAIMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "骷髅撒旦兽",
+        "image": "/js/data/guides/src/digimon/TUKAIMON/skullsatamon-1751199726715.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "TUKAIMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "究极魔兽(斗篷形态)",
+        "image": "/js/data/guides/src/digimon/TUKAIMON/Demon_20th-1751738402733.webp",
+        "requirement": "使用七魔核",
+        "is_hidden": false,
+        "digimon_id_link": "DEMONDP"
+      },
+      {
+        "evolution_id": "TUKAIMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "究极魔兽(野兽形态)",
+        "image": "/js/data/guides/src/digimon/TUKAIMON/320px-Demon_beast2-1751738403918.webp",
+        "requirement": "使用无穷的怒火",
+        "is_hidden": false,
+        "digimon_id_link": "DEMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "TUKAIMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "究极魔兽(七大魔王)",
+        "type": "SP",
+        "programId": "item-1751115885924",
+        "itemIds": [
+          "item-1751131050372",
+          "item-1751134598508"
+        ]
+      }
+    ]
+  },
+  "PSYCHEMON": {
+    "card": {
+      "id": "PSYCHEMON",
+      "name": "迷幻兽",
+      "image": "/js/data/guides/src/digimon/PSYCHEMON/psychemon-1751199933382.webp",
+      "evolution_names": "迷幻兽,贝尔菲兽SM,贝尔菲兽RM",
+      "evolution_images": "/js/data/guides/src/digimon/PSYCHEMON/psychemon-1751199933382.webp, /js/data/guides/src/digimon/PSYCHEMON/belphemonsleepmode-1751199934201.webp, /js/data/guides/src/digimon/PSYCHEMON/belphemonragemode-1751199934201.webp"
+    },
+    "main": {
+      "id": "PSYCHEMON",
+      "title": "迷幻兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "AT"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "PSYCHEMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "迷幻兽",
+        "image": "/js/data/guides/src/digimon/PSYCHEMON/psychemon-1751199933382.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PSYCHEMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PSYCHEMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "阿斯塔兽",
+        "image": "/js/data/guides/src/digimon/PSYCHEMON/astamon-1751199939029.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PSYCHEMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "贝尔菲兽SM",
+        "image": "/js/data/guides/src/digimon/PSYCHEMON/belphemonsleepmode-1751199934201.webp",
+        "requirement": "使用七魔核",
+        "is_hidden": false,
+        "digimon_id_link": "BELPHEMONSM"
+      },
+      {
+        "evolution_id": "PSYCHEMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "贝尔菲兽RM",
+        "image": "/js/data/guides/src/digimon/PSYCHEMON/belphemonragemode-1751199934201.webp",
+        "requirement": "使用愤怒因子",
+        "is_hidden": false,
+        "digimon_id_link": "BELPHEMONRM"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "PSYCHEMON",
+        "type": "line",
+        "line_type": "AT",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "贝尔菲兽(七大魔王)",
+        "type": "AT",
+        "programId": "item-1751112904825",
+        "itemIds": [
+          "item-1751131050372",
+          "item-1751134169683"
+        ]
+      }
+    ]
+  },
+  "ARKADIMON": {
+    "card": {
+      "id": "ARKADIMON",
+      "name": "阿卡迪兽",
+      "image": "/js/data/guides/src/digimon/ARKADIMON/arkadimon-1751200391725.webp",
+      "evolution_names": "阿卡迪兽(成长期),阿卡迪兽(究极体),阿卡迪兽(超究极体)",
+      "evolution_images": "/js/data/guides/src/digimon/ARKADIMON/arkadimon-1751200391725.webp,/js/data/guides/src/digimon/ARKADIMON/Arkadimon_ultimate2-1751737877885.webp,/js/data/guides/src/digimon/ARKADIMON/320px-Arkadimon_superultimate-1751737878246.webp"
+    },
+    "main": {
+      "id": "ARKADIMON",
+      "title": "阿卡迪兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "SP"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "ARKADIMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "阿卡迪兽(成长期)",
+        "image": "/js/data/guides/src/digimon/ARKADIMON/arkadimon-1751200391725.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "ARKADIMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "阿卡迪兽(成熟期)",
+        "image": "/js/data/guides/src/digimon/ARKADIMON/Arkadimon_adult-1751737876363.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "ARKADIMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "阿卡迪兽(完全体)",
+        "image": "/js/data/guides/src/digimon/ARKADIMON/Arkadimon_perfect-1751737877517.webp",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "ARKADIMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "阿卡迪兽(究极体)",
+        "image": "/js/data/guides/src/digimon/ARKADIMON/Arkadimon_ultimate2-1751737877885.webp",
+        "requirement": "使用抹消核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "ARKADIMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "阿卡迪兽(超究极体)",
+        "image": "/js/data/guides/src/digimon/ARKADIMON/320px-Arkadimon_superultimate-1751737878246.webp",
+        "requirement": "使用理想乡",
+        "is_hidden": false,
+        "digimon_id_link": "ArkadimonSU"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "ARKADIMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "阿卡迪兽(超究极体)",
+        "type": "SP",
+        "programId": "item-1751115482724",
+        "itemIds": [
+          "item-1751131115390",
+          "item-1751176502841"
+        ]
+      }
+    ]
+  },
+  "PATAMON": {
+    "card": {
+      "id": "PATAMON",
+      "name": "巴达兽",
+      "image": "/js/data/guides/src/digimon/PATAMON/patamon-1751200569484.webp",
+      "evolution_names": "巴达兽,神圣天使兽",
+      "evolution_images": "/js/data/guides/src/digimon/PATAMON/patamon-1751200569484.webp,/js/data/guides/src/digimon/PATAMON/seraphimon-1751200575660.webp"
+    },
+    "main": {
+      "id": "PATAMON",
+      "title": "巴达兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "SP"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "PATAMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "巴达兽",
+        "image": "/js/data/guides/src/digimon/PATAMON/patamon-1751200569484.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PATAMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "天使兽",
+        "image": "/js/data/guides/src/digimon/PATAMON/angemon-1751200592211.webp",
+        "requirement": "契合达到20%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PATAMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "神圣天使兽",
+        "image": "/js/data/guides/src/digimon/PATAMON/holyangemon-1751745418383.jpeg",
+        "requirement": "契合达到40%",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PATAMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "究极天使兽",
+        "image": "/js/data/guides/src/digimon/PATAMON/seraphimon-1751200575660.webp",
+        "requirement": "使用炽天核",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "PATAMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "究极天使兽(三大天使)",
+        "image": "/js/data/guides/src/digimon/PATAMON/seraphimon-1751200575660.webp",
+        "requirement": "使用神意的代行者",
+        "is_hidden": false,
+        "digimon_id_link": "SERAPHIMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "PATAMON",
+        "type": "line",
+        "line_type": "SP",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "究极天使兽(三大天使)",
+        "type": "SP",
+        "programId": "item-1751115606074",
+        "itemIds": [
+          "item-1751131227446",
+          "item-1751134511441"
+        ]
+      }
+    ]
+  },
+  "ELECMON-VIOLET": {
+    "card": {
+      "id": "ELECMON-VIOLET",
+      "name": "艾力兽(紫)",
+      "image": "/js/data/guides/src/digimon/ELECMON-VIOLET/elecmon-violet-1751200872388.webp",
+      "evolution_names": "艾力兽(紫),青龙兽,黄龙兽",
+      "evolution_images": "/js/data/guides/src/digimon/ELECMON-VIOLET/elecmon-violet-1751200872388.webp,/js/data/guides/src/digimon/ELECMON-VIOLET/qinglongmon-1751201206467.webp,/js/data/guides/src/digimon/ELECMON-VIOLET/huanglongmon-1751200874860.webp"
+    },
+    "main": {
+      "id": "ELECMON-VIOLET",
+      "title": "艾力兽(紫)进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "EX"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "ELECMON-VIOLET",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "艾力兽(紫)",
+        "image": "/js/data/guides/src/digimon/ELECMON-VIOLET/elecmon-violet-1751200872388.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "ELECMON-VIOLET",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "ELECMON-VIOLET",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "ELECMON-VIOLET",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "ELECMON-VIOLET",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "青龙兽",
+        "image": "/js/data/guides/src/digimon/ELECMON-VIOLET/qinglongmon-1751201206467.webp",
+        "requirement": "40%契合使用圣兽之力",
+        "is_hidden": false,
+        "digimon_id_link": "QINGLONGMON"
+      },
+      {
+        "evolution_id": "ELECMON-VIOLET",
+        "path_index": 0,
+        "stage_index": 5,
+        "name": "黄龙兽",
+        "image": "/js/data/guides/src/digimon/ELECMON-VIOLET/huanglongmon-1751200874860.webp",
+        "requirement": "使用IC:圣兽太极阵",
+        "is_hidden": false,
+        "digimon_id_link": "HUANGLONGMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "ELECMON-VIOLET",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "黄龙兽",
+        "type": "EX",
+        "programId": "item-1751114193852",
+        "itemIds": [
+          "item-1751131344476",
+          "item-1751200923721"
+        ]
+      }
+    ]
+  },
+  "BEARMON": {
+    "card": {
+      "id": "BEARMON",
+      "name": "小熊兽",
+      "image": "/js/data/guides/src/digimon/BEARMON/bearmon-1751201297432.webp",
+      "evolution_names": "小熊兽,白虎兽,黄龙兽",
+      "evolution_images": "/js/data/guides/src/digimon/BEARMON/bearmon-1751201297432.webp,/js/data/guides/src/digimon/ELECMON-VIOLET/baihumon-1751200873144.webp,/js/data/guides/src/digimon/ELECMON-VIOLET/huanglongmon-1751200874860.webp"
+    },
+    "main": {
+      "id": "BEARMON",
+      "title": "小熊兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "EX"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "BEARMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "小熊兽",
+        "image": "/js/data/guides/src/digimon/BEARMON/bearmon-1751201297432.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "BEARMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "BEARMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "BEARMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "BEARMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "白虎兽",
+        "image": "/js/data/guides/src/digimon/ELECMON-VIOLET/baihumon-1751200873144.webp",
+        "requirement": "40%契合使用圣兽之力",
+        "is_hidden": false,
+        "digimon_id_link": "BAIHUMON"
+      },
+      {
+        "evolution_id": "BEARMON",
+        "path_index": 0,
+        "stage_index": 5,
+        "name": "黄龙兽",
+        "image": "/js/data/guides/src/digimon/ELECMON-VIOLET/huanglongmon-1751200874860.webp",
+        "requirement": "使用IC:圣兽太极阵",
+        "is_hidden": false,
+        "digimon_id_link": "HUANGLONGMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "BEARMON",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "黄龙兽",
+        "type": "EX",
+        "programId": "item-1751114225943",
+        "itemIds": [
+          "item-1751131344476",
+          "item-1751200923721"
+        ]
+      }
+    ]
+  },
+  "MUCHOMON": {
+    "card": {
+      "id": "MUCHOMON",
+      "name": "五彩兽",
+      "image": "/js/data/guides/src/digimon/MUCHOMON/muchomon-1751201430471.webp",
+      "evolution_names": "五彩兽,朱雀兽,黄龙兽",
+      "evolution_images": "/js/data/guides/src/digimon/MUCHOMON/muchomon-1751201430471.webp,/js/data/guides/src/digimon/MUCHOMON/zhuqiaomon-1751201430913.webp,/js/data/guides/src/digimon/ELECMON-VIOLET/huanglongmon-1751200874860.webp"
+    },
+    "main": {
+      "id": "MUCHOMON",
+      "title": "五彩兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "EX"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "MUCHOMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "五彩兽",
+        "image": "/js/data/guides/src/digimon/MUCHOMON/muchomon-1751201430471.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "MUCHOMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "MUCHOMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "MUCHOMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "MUCHOMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "朱雀兽",
+        "image": "/js/data/guides/src/digimon/MUCHOMON/zhuqiaomon-1751201430913.webp",
+        "requirement": "40%契合使用圣兽之力",
+        "is_hidden": false,
+        "digimon_id_link": "ZHUQUEMON"
+      },
+      {
+        "evolution_id": "MUCHOMON",
+        "path_index": 0,
+        "stage_index": 5,
+        "name": "黄龙兽",
+        "image": "/js/data/guides/src/digimon/ELECMON-VIOLET/huanglongmon-1751200874860.webp",
+        "requirement": "使用IC:圣兽太极阵",
+        "is_hidden": false,
+        "digimon_id_link": "HUANGLONGMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "MUCHOMON",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "黄龙兽",
+        "type": "EX",
+        "programId": "item-1751114268068",
+        "itemIds": [
+          "item-1751131344476",
+          "item-1751200923721"
+        ]
+      }
+    ]
+  },
+  "KAMEMON": {
+    "card": {
+      "id": "KAMEMON",
+      "name": "乌龟兽",
+      "image": "/js/data/guides/src/digimon/KAMEMON/kamemon-1751201563870.webp",
+      "evolution_names": "乌龟兽,玄武兽,黄龙兽",
+      "evolution_images": "/js/data/guides/src/digimon/KAMEMON/kamemon-1751201563870.webp,/js/data/guides/src/digimon/KAMEMON/xuanwumon-1751201564347.webp,/js/data/guides/src/digimon/ELECMON-VIOLET/huanglongmon-1751200874860.webp"
+    },
+    "main": {
+      "id": "KAMEMON",
+      "title": "乌龟兽进化路线",
+      "branch_acquisition": [],
+      "branch_types": [
+        "EX"
+      ]
+    },
+    "stages": [
+      {
+        "evolution_id": "KAMEMON",
+        "path_index": 0,
+        "stage_index": 0,
+        "name": "乌龟兽",
+        "image": "/js/data/guides/src/digimon/KAMEMON/kamemon-1751201563870.webp",
+        "requirement": "",
+        "is_hidden": false,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KAMEMON",
+        "path_index": 0,
+        "stage_index": 1,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KAMEMON",
+        "path_index": 0,
+        "stage_index": 2,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KAMEMON",
+        "path_index": 0,
+        "stage_index": 3,
+        "name": "",
+        "image": "",
+        "requirement": "",
+        "is_hidden": true,
+        "digimon_id_link": null
+      },
+      {
+        "evolution_id": "KAMEMON",
+        "path_index": 0,
+        "stage_index": 4,
+        "name": "玄武兽",
+        "image": "/js/data/guides/src/digimon/KAMEMON/xuanwumon-1751201564347.webp",
+        "requirement": "40%契合使用圣兽之力",
+        "is_hidden": false,
+        "digimon_id_link": "XUANWUMON"
+      },
+      {
+        "evolution_id": "KAMEMON",
+        "path_index": 0,
+        "stage_index": 5,
+        "name": "黄龙兽",
+        "image": "/js/data/guides/src/digimon/ELECMON-VIOLET/huanglongmon-1751200874860.webp",
+        "requirement": "使用IC:圣兽太极阵",
+        "is_hidden": false,
+        "digimon_id_link": "HUANGLONGMON"
+      }
+    ],
+    "connections": [
+      {
+        "evolution_id": "KAMEMON",
+        "type": "line",
+        "line_type": "EX",
+        "line_path_index": 0
+      }
+    ],
+    "acquisition": [
+      {
+        "name": "黄龙兽",
+        "type": "EX",
+        "programId": "item-1751114308460",
+        "itemIds": [
+          "item-1751131344476",
+          "item-1751200923721"
+        ]
+      }
+    ]
+  }
+}

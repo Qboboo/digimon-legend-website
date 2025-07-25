@@ -1,0 +1,835 @@
+<!-- digimon_legend_website/frontend/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>数码兽传说 - ORPG地图官网</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <!-- 预加载字体和图片 -->
+  <link rel="preload" href="fonts/ark-pixel-12px-proportional-zh_cn.ttf" as="font" type="font/ttf" crossorigin>
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    /* 新增图片容器样式 */
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 60%; /* 控制宽高比 (3:5比例) */
+      overflow: hidden;
+      background: #f0f4ff;
+      border-radius: 8px;
+    }
+
+    /* 响应式图片样式 */
+    .responsive-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .responsive-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* 保持像素风格 */
+    .image-container .pixel-border {
+      border-width: 3px;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+    }
+
+    /* 不同方向的图片优化 */
+    .vertical-image {
+      object-position: center 20%;
+    }
+
+    .horizontal-image {
+      object-position: center 35%;
+    }
+
+    /* Custom style for the highlighted link */
+    .link-highlight {
+        color: #fefcbf; /* Light yellow to stand out */
+        text-decoration: underline;
+        display: inline-block; /* Allows transform */
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .link-highlight:hover {
+        color: #ffffff; /* Brighter on hover */
+        transform: scale(1.05);
+    }
+    #latest-digimon-image {
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+  <style>
+    /* Modal styles copied from digimon.html for details modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    
+    .modal-content {
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      max-width: 95%;
+      width: 800px; /* Adjusted for details modal */
+      max-height: 90vh;
+      overflow-y: auto; /* 允许内容滚动 */
+      position: relative;
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 1.5rem;
+      font-size: 1.75rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #4a5568;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+    }
+    
+    .modal-close:hover {
+      color: #e53e3e;
+    }
+
+    .pixel-card {
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+      position: relative;
+      background: rgba(255,255,255,0.9);
+    }
+
+    .pixel-text-outline {
+      text-shadow: 
+        2px 0 0 #000,
+        -2px 0 0 #000,
+        0 2px 0 #000,
+        0 -2px 0 #000,
+        1px 1px 0 #000;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .pixel-info-card {
+      border: 2px solid #000;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pixel-info-title {
+      font-weight: bold;
+      color: #1a365d;
+      font-size: 0.95rem;
+      margin: 0;
+      border-bottom: none;
+      padding: 0;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    #details-modal .modal-content p,
+    #details-modal .modal-content div,
+    #details-modal .modal-content span,
+    #details-modal .modal-content h5 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+    }
+    #details-modal .pixel-text-outline {
+        font-family: 'Ark Pixel', sans-serif !important;
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <!-- 添加数码兽背景 -->
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+  <!-- 修改导航栏下方的邀请信息 -->
+  <div class="container mx-auto px-4 mb-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center bg-blue-500 text-white py-3 px-4 rounded-lg pixel-border animate-pulse">
+        <span class="text-xl md:text-2xl font-bold">游玩本图前请先下载<a href="guide-detail.html?id=xin-shou-xu-zhi-：-ru-he-you-wan-ben-tu" class="link-highlight mx-1">模型包</a>，否则无法正常显示数码兽相关模型</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="container mx-auto px-4">
+    <!-- 主要内容区域 -->
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-blue-700 mb-5 tracking-wide text-center">欢迎来到数码兽传说</h2>
+      <div class="flex flex-col md:flex-row gap-6">
+        <!-- 左侧活动模块 -->
+        <div class="flex flex-col w-full md:w-1/2">
+          <div class="flex flex-col flex-grow">
+            <div class="image-container pixel-border relative aspect-video mb-4">
+              <div id="activities-carousel" class="absolute top-0 left-0 w-full h-full overflow-hidden rounded-lg">
+                <!-- Carousel slides will be injected here -->
+              </div>
+            </div>
+            <div id="carousel-controls" class="flex justify-center items-center mt-auto space-x-2">
+              <button id="prev-btn" class="bg-blue-500 text-white rounded-full p-1 hover:bg-blue-600 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <div id="carousel-indicators" class="flex items-center space-x-2"></div>
+              <button id="next-btn" class="bg-blue-500 text-white rounded-full p-1 hover:bg-blue-600 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 右侧最新资讯模块 -->
+        <div class="flex flex-col w-full md:w-1/2">
+          <h3 class="text-xl md:text-2xl text-blue-700 mb-4 tracking-wide text-center">最新资讯</h3>
+          <div id="latest-news-container" class="flex-grow">
+            <ul id="latest-news-list" class="space-y-3">
+              <!-- News items will be injected here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三个展示模块 -->
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- 最新数码兽卡片 -->
+        <div id="latest-digimon-card" class="bg-blue-100 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300 cursor-pointer">
+          <h3 class="text-lg text-center mb-3 text-blue-800">最新数码兽</h3>
+          <div class="image-container relative group">
+            <img 
+              id="latest-digimon-image"
+              src="/js/data/guides/src/digimon/V-MON/magnamon-1751186446222.webp" 
+              alt="最新数码兽"
+                class="responsive-image pixel-border vertical-image"
+              >
+            <button id="prev-digimon-btn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-30 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-all z-10 hover:bg-opacity-50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button id="next-digimon-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-30 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-all z-10 hover:bg-opacity-50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+          </div>
+          <p id="latest-digimon-name" class="text-xs text-center mt-2">金甲龙兽</p>
+        </div>
+
+        <div class="bg-blue-100 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-lg text-center mb-3 text-blue-800">最新装备</h3>
+          <div class="image-container">
+            <a href="equipment.html">
+              <img 
+                src="js/data/guides/src/equipment/ZQ/BTNshijianbeilun-1751692416594.png" 
+                alt="最新装备"
+                class="responsive-image pixel-border"
+                loading="lazy"
+              >
+            </a>
+          </div>
+          <p class="text-xs text-center mt-2">邪神系列</p>
+        </div>
+
+        <!-- 新手推荐卡片 -->
+        <div class="bg-blue-100 bg-opacity-90 rounded-xl p-4 pixel-border hover:transform hover:scale-105 transition-transform duration-300">
+          <h3 class="text-lg text-center mb-3 text-blue-800">新手推荐</h3>
+          <div class="image-container">
+            <a href="guide.html">
+              <img 
+                src="js/data/guides/src/index/img_kv_09.webp" 
+                alt="新手攻略"
+                class="responsive-image pixel-border"
+                loading="lazy"
+              >
+            </a>
+          </div>
+          <p class="text-xs text-center mt-2">新手攻略</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 新增：独立的更新日志模块 -->
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center mb-6 text-blue-700">更新公告</h2>
+      <div id="homepage-changelog-container" class="space-y-4">
+        <ul class="space-y-3 md:space-y-4" id="homepage-changelog-list">
+          <!-- Changelog will be dynamically loaded here -->
+        </ul>
+        <div class="text-center mt-6">
+          <a href="changelog.html" class="inline-block bg-blue-500 text-white font-bold py-2 px-6 rounded-lg pixel-border hover:bg-blue-600 transition-all duration-300">
+            查看历史更新 →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p>© 2025 数码兽传说ORPG地图</p>
+        <p>作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 设置当前日期
+      document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+
+      // 监听数据加载完成事件
+      document.addEventListener('dataLoaded', () => {
+        // 现在轮播是静态的，数据加载后只需要渲染日志
+        renderHomepageChangelog();
+        renderLatestNews();
+        setupLatestDigimonClick();
+        setupLatestDigimonCarousel();
+      });
+
+      // 页面加载后直接渲染静态轮播和动态日志
+      renderActivitiesCarousel();
+      renderLatestNews(); // Also call here in case data is already available
+      // 如果changelog数据已加载，也渲染它
+      if (window.getChangelogData) {
+        renderHomepageChangelog();
+      }
+      if (window.getDigimonData) {
+        setupLatestDigimonClick();
+        setupLatestDigimonCarousel();
+      }
+    });
+
+    // 渲染最新活动轮播（现在是静态配置）
+    function renderActivitiesCarousel() {
+      const carouselContainer = document.getElementById('activities-carousel');
+      const indicatorsContainer = document.getElementById('carousel-indicators');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+
+      if (!carouselContainer || !indicatorsContainer || !prevBtn || !nextBtn) return;
+      
+      // =================================================================
+      // 在这里手动配置您的活动轮播内容
+      // =================================================================
+      const activities = [
+        {
+          title: '欢迎来到数码兽传说',
+          imageUrl: 'js/data/guides/src/index/456.webp',
+          linkUrl: 'index.html'
+        },
+        {
+          title: '始祖的回归',
+          imageUrl: 'js/data/guides/src/index/baidi.webp',
+          linkUrl: 'guide-detail?id=fu-ben-gong-lüe-：-shi-zu-de-hui-gui'
+        },
+        {
+          title: '带来破灭的终极邪神',
+          imageUrl: 'js/data/guides/src/index/zq.webp',
+          linkUrl: ''
+        }
+        // 您可以按上面的格式添加更多活动...
+        // {
+        //   title: '新活动标题',
+        //   imageUrl: '图片的URL',
+        //   linkUrl: '点击后跳转的URL'
+        // },
+      ];
+      // =================================================================
+
+      if (activities.length === 0) {
+        carouselContainer.parentElement.innerHTML = '<p class="text-center text-gray-500">暂无最新活动。</p>';
+        return;
+      }
+
+      carouselContainer.innerHTML = '';
+      indicatorsContainer.innerHTML = '';
+
+      activities.forEach((activity, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out';
+        slide.style.opacity = index === 0 ? '1' : '0';
+        slide.innerHTML = `
+          <a href="${activity.linkUrl}" class="block w-full h-full">
+            <img src="${activity.imageUrl}" class="w-full h-full object-fill" alt="${activity.title}">
+            <div class="absolute bottom-0 left-0 w-full p-2 bg-black bg-opacity-50">
+              <h3 class="text-white text-lg font-bold text-center">${activity.title}</h3>
+            </div>
+          </a>
+        `;
+        carouselContainer.appendChild(slide);
+
+        const indicator = document.createElement('button');
+        indicator.className = `w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-blue-600' : 'bg-gray-400'}`;
+        indicator.dataset.index = index;
+        indicatorsContainer.appendChild(indicator);
+      });
+      
+      let currentIndex = 0;
+      const slides = Array.from(carouselContainer.children).filter(el => el.tagName === 'DIV');
+      const indicators = indicatorsContainer.querySelectorAll('button');
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.style.opacity = i === index ? '1' : '0';
+          slide.style.zIndex = i === index ? 10 : 0;
+        });
+        indicators.forEach((ind, i) => {
+          ind.className = `w-3 h-3 rounded-full transition-all duration-300 ${i === index ? 'bg-blue-600' : 'bg-gray-400'}`;
+        });
+        currentIndex = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentIndex + 1) % slides.length);
+      }
+
+      prevBtn.addEventListener('click', () => {
+        showSlide((currentIndex - 1 + slides.length) % slides.length);
+      });
+      nextBtn.addEventListener('click', nextSlide);
+
+      indicators.forEach(ind => ind.addEventListener('click', () => showSlide(parseInt(ind.dataset.index))));
+
+      setInterval(nextSlide, 5000);
+    }
+
+    // 渲染最新资讯
+    function renderLatestNews() {
+      const container = document.getElementById('latest-news-list');
+      if (!container) return;
+
+      // guidesData is now a single flat array, so we use it directly.
+      const allGuides = window.guidesData || [];
+      
+      if (!allGuides || allGuides.length === 0) {
+        container.innerHTML = '<li><p class="text-center text-gray-500">暂无最新资讯。</p></li>';
+        return;
+      }
+      
+      const publishedGuides = allGuides.filter(guide => guide.status === 'published' && guide.slug);
+
+      const sortedGuides = publishedGuides.sort((a, b) => {
+        const dateA = new Date(a.updatedAt || a.updateDate);
+        const dateB = new Date(b.updatedAt || b.updateDate);
+        return dateB - dateA;
+      });
+
+      const latestGuides = sortedGuides.slice(0, 7);
+
+      if (latestGuides.length === 0) {
+        container.innerHTML = '<li><p class="text-center text-gray-500">暂无最新资讯。</p></li>';
+        return;
+      }
+
+      container.innerHTML = ''; // Clear existing content
+
+      latestGuides.forEach(guide => {
+        const li = document.createElement('li');
+        li.className = 'flex justify-between items-center';
+        
+        const dateString = guide.updatedAt || guide.updateDate;
+        const displayDate = dateString ? new Date(dateString).toISOString().split('T')[0] : '';
+
+        const categoryMap = {
+          'gameplay': { text: '玩法攻略' },
+          'boss': { text: 'BOSS攻略' },
+          'area': { text: '区域攻略' }
+        };
+        const categoryInfo = categoryMap[guide.category];
+        let categoryTag = '';
+        if (categoryInfo) {
+          categoryTag = `<span class="flex-shrink-0 bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2 py-0.5 rounded w-24 text-center">${categoryInfo.text}</span>`;
+        }
+
+        li.innerHTML = `
+          <div class="flex items-center min-w-0">
+            ${categoryTag}
+            <a href="guide-detail.html?slug=${guide.slug}" class="text-blue-600 hover:text-blue-800 underline truncate text-lg" title="${guide.title}">
+              ${guide.title}
+            </a>
+          </div>
+          <span class="text-gray-500 text-sm flex-shrink-0 ml-2">${displayDate}</span>
+        `;
+        container.appendChild(li);
+      });
+    }
+
+    // 动态加载更新日志
+    function renderHomepageChangelog() {
+      const container = document.getElementById('homepage-changelog-list');
+      if (!container) return;
+
+      const changelogData = window.getChangelogData ? window.getChangelogData() : [];
+      if (!changelogData || changelogData.length === 0) {
+        container.innerHTML = '<li><p class="text-center text-gray-500">暂无更新日志。</p></li>';
+        return;
+      }
+
+      const compareVersions = (v1, v2) => {
+        const parts1 = v1.split('.').map(Number);
+        const parts2 = v2.split('.').map(Number);
+        const len = Math.max(parts1.length, parts2.length);
+        for (let i = 0; i < len; i++) {
+          const p1 = parts1[i] || 0;
+          const p2 = parts2[i] || 0;
+          if (p1 > p2) return 1;
+          if (p1 < p2) return -1;
+        }
+        return 0;
+      };
+      
+      const latestChanges = changelogData.sort((a, b) => compareVersions(b.version, a.version)).slice(0, 2);
+      
+      container.innerHTML = '';
+
+      latestChanges.forEach(item => {
+        const changesHtml = item.changes.map(change => `
+          <li class="flex items-start">
+            <span class="text-sm md:text-base leading-relaxed">${change}</span>
+          </li>
+        `).join('');
+
+        const listItem = document.createElement('li');
+        listItem.className = 'flex items-start justify-between';
+        listItem.innerHTML = `
+          <div class="flex items-start flex-1">
+            <span class="text-blue-500 mr-3 text-lg md:text-xl">▶</span>
+            <div class="flex-1">
+              <div class="text-lg md:text-xl leading-loose md:leading-loose tracking-wide">${item.version}</div>
+              <ul class="ml-4 mt-2 space-y-2 text-gray-700">
+                ${changesHtml}
+              </ul>
+            </div>
+          </div>
+          <span class="text-lg md:text-xl leading-loose md:leading-loose tracking-wide text-gray-600">${item.date}</span>
+        `;
+        container.appendChild(listItem);
+      });
+    }
+
+    // --- Start: Functions for Digimon Details Modal ---
+
+    function setSmartImageSource(imgElement, originalSrc) {
+        if (!originalSrc || originalSrc.startsWith('data:') || !imgElement) {
+            if (imgElement && !imgElement.src) {
+                 imgElement.src = originalSrc || ''; 
+            }
+            return;
+        }
+
+        imgElement.src = originalSrc;
+
+        try {
+            const url = new URL(originalSrc, window.location.origin);
+            if (url.origin !== window.location.origin) return;
+
+            const webpSrc = url.pathname.replace(/\.(jpe?g|png|gif)$/i, '.webp');
+            
+            if (webpSrc === url.pathname) return;
+
+            fetch(webpSrc, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        if (imgElement.src !== webpSrc) {
+                             imgElement.src = webpSrc;
+                        }
+                    }
+                })
+                .catch(() => { /* Fallback to original src is implicit */ });
+        } catch (e) {
+            console.warn('Could not process image src for WebP conversion:', originalSrc, e);
+        }
+    }
+
+    // 如果已经定义了showDigimonDetailsModal函数,就不再重复定义
+    if (typeof window.showDigimonDetailsModal === 'undefined') {
+      window.showDigimonDetailsModal = function(details) {
+        // 检查是否已经存在详情页模态框
+        const existingModal = document.getElementById('details-modal');
+        if (existingModal) {
+          document.body.removeChild(existingModal);
+        }
+
+        if (!details) {
+          console.error("No details provided to showDigimonDetailsModal");
+          return;
+        }
+        // 创建模态框覆盖层
+        const detailsModalOverlay = document.createElement('div');
+        detailsModalOverlay.className = 'modal-overlay';
+        detailsModalOverlay.id = 'details-modal';
+        detailsModalOverlay.style.zIndex = '1100';
+        
+        // 创建模态框内容
+        const detailsModalContent = document.createElement('div');
+        detailsModalContent.className = 'modal-content';
+        
+        // 构建技能HTML
+        let skillsHTML = '';
+        if (details.skills && details.skills.length > 0) {
+          details.skills.forEach(skill => {
+            skillsHTML += `
+              <div class="mb-4 bg-gray-50 p-3 rounded-lg">
+                <div class="font-bold text-xl text-left border-b border-gray-300 pb-2 mb-2">${skill.name}</div>
+                <div class="flex flex-col gap-2">
+                  <div class="font-bold text-xxl text-black">技能效果</div>
+                  <div>${skill.description}</div>
+                </div>
+              </div>
+            `;
+          });
+        }
+        
+        // 构建模态框内容HTML
+        detailsModalContent.innerHTML = `
+          <div class="pixel-card bg-white rounded-lg p-4 mb-6 relative">
+            <!-- 关闭按钮 -->
+            <button class="modal-close">&times;</button>
+            <!-- 标题部分 -->
+            <div class="font-bold text-2xl text-center mb-4 text-white-800 pixel-text-outline">${details.name}</div>
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 h-full">
+          <!-- 图片区域 -->
+          <div class="flex justify-center items-center p-2 bg-blue-50 rounded-lg border-2 border-blue-200 h-full">
+            <img 
+              src="${details.image}" 
+              alt="${details.name}" 
+              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 100 100\\'%3E%3Crect width=\\'100\\' height=\\'100\\' fill=\\'%23e2e8f0\\'/%3E%3C/svg%3E'; this.onerror=null;"
+              class="w-full h-auto max-h-80 object-contain"
+            >
+          </div>
+
+          <!-- 信息区域 -->
+          <div class="grid grid-cols-1 gap-3 h-full content-start">
+            <!-- 整行项目 -->
+            <div class="pixel-info-card bg-blue-100 col-span-full">
+              <h5 class="pixel-info-title">定位:${details.positioning || '未知'}</h5>
+            </div>
+
+            <div class="pixel-info-card bg-purple-100 col-span-full">
+              <h5 class="pixel-info-title">预计获取时长:${details.time || '未知'}</h5>
+            </div>
+
+            <!-- 双列项目 -->
+            <div class="grid grid-cols-2 gap-3 col-span-full">
+              <div class="pixel-info-card bg-yellow-100 h-full">
+                <h5 class="pixel-info-title">类型:${details.Type || '未知'}</h5>
+              </div>
+
+              <div class="pixel-info-card bg-red-100 h-full">
+                <h5 class="pixel-info-title">属性:${details.armor || '未知'}</h5>
+              </div>
+
+              <div class="pixel-info-card bg-green-100 h-full">
+                <h5 class="pixel-info-title">契合:${details.fit || '未知'}</h5>
+              </div>
+
+              <div class="pixel-info-card bg-pink-100 h-full">
+                <h5 class="pixel-info-title">数码蛋:${details.egg || '未知'}</h5>
+              </div>
+            </div>
+          </div>
+        </div>  
+          <div class="skills-container">
+            ${skillsHTML}
+          </div>        
+                    `;
+        
+        // Apply smart loading to all images within this modal
+        detailsModalContent.querySelectorAll('img').forEach(img => {
+            setSmartImageSource(img, img.src);
+        });
+        
+        // 构建模态框结构
+        detailsModalOverlay.appendChild(detailsModalContent);
+        
+        // 添加关闭按钮的事件监听
+        const modalCloseBtn = detailsModalContent.querySelector('.modal-close');
+        if (modalCloseBtn) {
+          modalCloseBtn.addEventListener('click', () => {
+            document.body.removeChild(detailsModalOverlay);
+          });
+        }
+        
+        // 点击覆盖层关闭模态框
+        detailsModalOverlay.addEventListener('click', (e) => {
+          if (e.target === detailsModalOverlay) {
+            document.body.removeChild(detailsModalOverlay);
+          }
+        });
+        
+        // 将模态框添加到文档
+        document.body.appendChild(detailsModalOverlay);
+      };
+    }
+
+    function setupLatestDigimonClick() {
+      const card = document.getElementById('latest-digimon-card');
+      if (!card) return;
+
+      card.addEventListener('click', () => {
+        const digimonName = card.dataset.digimonName;
+        if (!digimonName) {
+          console.error('Latest digimon card is missing data-digimon-name attribute.');
+          return;
+        }
+
+        const allDigimon = window.getDigimonData ? window.getDigimonData() : [];
+        const digimonData = allDigimon.find(d => d.name === digimonName);
+
+        if (digimonData) {
+          showDigimonDetailsModal(digimonData);
+        } else {
+          console.error(`Digimon with name "${digimonName}" not found in data.js.`);
+          alert(`错误：找不到名为 "${digimonName}" 的数码兽数据。`);
+        }
+      });
+    }
+
+    function setupLatestDigimonCarousel() {
+        const LATEST_DIGIMON_NAMES = [
+            '金甲龙兽',
+            '帝皇龙甲兽:圣骑士形态',
+            '帝皇龙甲兽:战士形态',
+            '最终千年兽'
+        ];
+
+        const card = document.getElementById('latest-digimon-card');
+        const imageElement = document.getElementById('latest-digimon-image');
+        const nameElement = document.getElementById('latest-digimon-name');
+        const prevBtn = document.getElementById('prev-digimon-btn');
+        const nextBtn = document.getElementById('next-digimon-btn');
+
+        if (!card || !imageElement || !nameElement || !prevBtn || !nextBtn) return;
+
+        const allDigimon = window.getDigimonData ? window.getDigimonData() : [];
+        if (allDigimon.length === 0) return;
+
+        const latestDigimonData = LATEST_DIGIMON_NAMES
+            .map(name => allDigimon.find(d => d.name === name))
+            .filter(d => d); // Filter out any not found
+
+        if (latestDigimonData.length === 0) {
+            card.style.display = 'none'; // Hide card if no data found
+            return;
+        }
+
+        let currentIndex = 0;
+        let autoPlayInterval = null;
+
+        function showDigimon(index) {
+            const digimonToShow = latestDigimonData[index];
+            if (!digimonToShow) return;
+
+            imageElement.style.opacity = 0;
+
+            setTimeout(() => {
+                setSmartImageSource(imageElement, digimonToShow.image);
+                nameElement.textContent = digimonToShow.name.replace(/：.*/, '');
+                card.dataset.digimonName = digimonToShow.name;
+                imageElement.style.opacity = 1;
+            }, 500); // Corresponds to fade out time
+        }
+
+        function startAutoplay() {
+            clearInterval(autoPlayInterval); // Clear existing interval
+            autoPlayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % latestDigimonData.length;
+                showDigimon(currentIndex);
+            }, 3000);
+        }
+
+        // --- Initialization ---
+        // 1. Immediately display the first Digimon
+        showDigimon(0);
+
+        // 2. Setup controls and autoplay if there are multiple items
+        if (latestDigimonData.length > 1) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent modal from opening
+                currentIndex = (currentIndex - 1 + latestDigimonData.length) % latestDigimonData.length;
+                showDigimon(currentIndex);
+                startAutoplay(); // Reset timer
+            });
+
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent modal from opening
+                currentIndex = (currentIndex + 1) % latestDigimonData.length;
+                showDigimon(currentIndex);
+                startAutoplay(); // Reset timer
+            });
+            
+            startAutoplay();
+        } else {
+            // Hide buttons if only one item
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        }
+    }
+    // --- End: Functions for Digimon Details Modal ---
+  </script>
+</body>
+</html>

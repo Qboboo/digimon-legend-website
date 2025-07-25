@@ -1,0 +1,401 @@
+<!-- digimon_legend_website/frontend/guide.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>地图攻略 - 数码兽传说</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/data.js"></script>
+  <style>
+    @font-face {
+      font-family: 'Ark Pixel';
+      src: url('fonts/ark-pixel-12px-proportional-zh_cn.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    html, body, input, button, h1, h2, h3, h4, h5, h6, p, span, div {
+      font-family: 'Ark Pixel', sans-serif !important;
+    }
+    
+    /* 设置代码和选中文本的背景 */
+    code, pre {
+      background-color: #f0f4ff;
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+      font-family: 'Ark Pixel', monospace !important;
+    }
+    
+    /* 选中文本样式 */
+    ::selection {
+      background-color: #93c5fd;
+      color: #1e3a8a;
+    }
+    
+    /* 所有内容卡片背景 */
+    .guide-card, .modal-content, .type-filter, .info-field {
+      background-color: #ffffff !important;
+    }
+    
+    /* 按颜色区分的卡片 */
+    .bg-blue-100 {
+      background-color: rgba(219, 234, 254, 0.8) !important;
+    }
+    
+    .bg-green-100 {
+      background-color: rgba(220, 252, 231, 0.8) !important;
+    }
+
+    #filter-buttons .active {
+      background-color: #3b82f6;
+      color: white;
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 flex-grow">
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center mb-6 text-blue-700">地图攻略</h2>
+      
+      <!-- 攻略筛选区 -->
+      <div class="mb-6">
+        <!-- 搜索框 -->
+        <div class="flex justify-center mb-6">
+          <div class="w-full md:w-1/2">
+            <div class="relative">
+              <input type="text" id="guide-search" placeholder="搜索攻略..." class="w-full pl-3 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-2 mb-4" id="filter-buttons">
+          <button class="filter-btn bg-transparent text-blue-800 px-4 py-2 rounded-lg border-2 border-blue-500 hover:bg-blue-200 transition-colors" data-filter="all">全部</button>
+          <button class="filter-btn bg-transparent text-blue-800 px-4 py-2 rounded-lg border-2 border-blue-500 hover:bg-blue-200 transition-colors" data-filter="gameplay">玩法攻略</button>
+          <button class="filter-btn bg-transparent text-blue-800 px-4 py-2 rounded-lg border-2 border-blue-500 hover:bg-blue-200 transition-colors" data-filter="area">区域攻略</button>
+          <button class="filter-btn bg-transparent text-blue-800 px-4 py-2 rounded-lg border-2 border-blue-500 hover:bg-blue-200 transition-colors" data-filter="boss">BOSS攻略</button>
+        </div>
+      </div>
+      
+      <!-- 攻略内容 -->
+      <div id="guides-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 攻略内容将通过JavaScript从JSON文件加载 -->
+        <div id="loading-indicator" class="col-span-2 text-center py-10">
+          <p class="text-blue-800">正在加载攻略内容...</p>
+        </div>
+      </div>
+      
+      <!-- 分页控制 -->
+      <div class="flex justify-center items-center mt-8 gap-2" id="pagination-controls">
+        <!-- Pagination buttons will be inserted by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p class="order-1">© 2025 数码兽传说ORPG地图</p>
+        <p class="order-2">作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 设置当前日期
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+    
+    // 分页相关变量
+    let currentPage = 1;
+    const itemsPerPage = 8;
+    let currentGuides = [];
+    let currentFilter = 'all';
+    let currentSearchTerm = '';
+    
+    // 渲染攻略卡片
+    function renderGuides(guides) {
+      console.log('开始渲染攻略卡片，数据:', guides);
+      const container = document.getElementById('guides-container');
+      
+      // 清空已有内容
+      container.innerHTML = '';
+      
+      if (!guides || guides.length === 0) {
+        console.log('没有攻略数据可显示');
+        container.innerHTML = '<div class="col-span-2 text-center py-10"><p class="text-red-600">暂无攻略内容</p></div>';
+        return;
+      }
+      
+      // 计算当前页的起始和结束索引
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const guidesToShow = guides.slice(startIndex, endIndex);
+      
+      guidesToShow.forEach(guide => {
+        console.log('渲染攻略:', guide.title);
+        // 根据分类设置边框颜色
+        let borderColor = 'border-green-500';
+        let categoryLabel = '玩法';
+        let categoryBg = 'bg-green-100 text-green-800';
+        
+        if (guide.category === 'area') {
+          borderColor = 'border-blue-500';
+          categoryLabel = '区域';
+          categoryBg = 'bg-blue-100 text-blue-800';
+        } else if (guide.category === 'boss') {
+          borderColor = 'border-red-500';
+          categoryLabel = 'BOSS';
+          categoryBg = 'bg-red-100 text-red-800';
+        }
+        
+        // 创建攻略卡片
+        const card = document.createElement('div');
+        card.className = `bg-blue-50 bg-opacity-80 rounded-lg px-4 pt-4 pb-1 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 ${borderColor} cursor-pointer`;
+        card.setAttribute('data-category', guide.category);
+        // card.onclick = () => window.location.href = `guide-detail?id=${guide.id}`;
+        const guideIdentifier = guide.slug || guide.id;
+        card.onclick = () => window.location.href = `guide-detail?id=${guideIdentifier}`;
+        
+        // 确保id是数字类型
+        const guideId = parseInt(guide.id);
+        console.log('创建攻略卡片，ID:', guideId, '标题:', guide.title);
+        
+        card.innerHTML = `
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="text-xl font-bold text-blue-800">${guide.title}</h3>
+            <span class="px-2 py-1 text-xs rounded ${categoryBg}">${categoryLabel}</span>
+          </div>
+          <div class="mb-3">
+            <p class="text-sm mb-2">${guide.summary || guide.description || ''}</p>
+            <div class="flex items-center text-xs text-gray-500">
+              ${guide.difficulty ? `<span>难度: ${guide.difficulty}</span><span class="mx-2">|</span>` : ''}
+              <span>更新: ${new Date(guide.updatedAt || guide.createdAt || guide.updateDate).toLocaleDateString('zh-CN')}</span>
+            </div>
+          </div>
+        `;
+        
+        container.appendChild(card);
+      });
+      
+      // 更新分页控制
+      updatePaginationControls(guides.length);
+      
+      console.log('所有攻略卡片渲染完成');
+    }
+    
+    // 更新分页控制
+    function updatePaginationControls(totalItems) {
+      const paginationContainer = document.getElementById('pagination-controls');
+      paginationContainer.innerHTML = '';
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+      if (totalPages <= 1) {
+          paginationContainer.style.display = 'none';
+          return;
+      }
+      paginationContainer.style.display = 'flex';
+
+      const createButton = (text, page, isDisabled = false, isActive = false) => {
+          const button = document.createElement('button');
+          button.innerHTML = text;
+          button.disabled = isDisabled;
+          button.dataset.page = page;
+          button.className = `px-3 py-1 rounded-lg pixel-border transition-colors duration-200`;
+          
+          if (isActive) {
+              button.classList.add('bg-blue-500', 'text-white', 'border-blue-700');
+          } else {
+              button.classList.add('bg-white', 'hover:bg-blue-100', 'disabled:opacity-50', 'disabled:cursor-not-allowed');
+          }
+          if(isDisabled) {
+              button.classList.add('opacity-50', 'cursor-not-allowed');
+          }
+          return button;
+      };
+
+      const addEllipsis = () => {
+          const span = document.createElement('span');
+          span.textContent = '...';
+          span.className = 'px-2 py-1 text-gray-500';
+          paginationContainer.appendChild(span);
+      };
+
+      // Prev button
+      paginationContainer.appendChild(createButton('&lt;', currentPage - 1, currentPage === 1));
+
+      // Page numbers
+      if (totalPages <= 7) {
+          for (let i = 1; i <= totalPages; i++) {
+              paginationContainer.appendChild(createButton(i, i, false, i === currentPage));
+          }
+      } else {
+          paginationContainer.appendChild(createButton(1, 1, false, currentPage === 1));
+          if (currentPage > 3) addEllipsis();
+          
+          let start = Math.max(2, currentPage - 1);
+          let end = Math.min(totalPages - 1, currentPage + 1);
+
+          if (currentPage <= 3) {
+              start = 2;
+              end = 4;
+          }
+          if (currentPage >= totalPages - 2) {
+              start = totalPages - 3;
+              end = totalPages - 1;
+          }
+
+          for (let i = start; i <= end; i++) {
+              paginationContainer.appendChild(createButton(i, i, false, i === currentPage));
+          }
+
+          if (currentPage < totalPages - 2) addEllipsis();
+          paginationContainer.appendChild(createButton(totalPages, totalPages, false, currentPage === totalPages));
+      }
+
+      // Next button
+      paginationContainer.appendChild(createButton('&gt;', currentPage + 1, currentPage === totalPages));
+    }
+    
+    // 主加载函数
+    async function loadAndRenderGuides() {
+        const loadingIndicator = document.getElementById('loading-indicator');
+        try {
+            // 现在我们直接等待 getAllGuides 完成
+            const guides = await getAllGuides();
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+            // 只筛选出状态为"发布"的攻略
+            currentGuides = guides.filter(guide => guide.status === 'published');
+            applyFilters(); // 初始渲染
+        } catch (error) {
+        console.error('加载攻略失败:', error);
+            if (loadingIndicator) {
+                loadingIndicator.innerHTML = '<p class="text-red-600">加载攻略内容失败，请刷新页面重试。</p>';
+            }
+        }
+    }
+
+    // 筛选和搜索应用函数
+    function applyFilters() {
+      let filteredGuides = [...currentGuides];
+
+      // 应用分类筛选
+      if (currentFilter !== 'all') {
+        filteredGuides = filteredGuides.filter(guide => guide.category === currentFilter);
+      }
+
+      // 应用搜索词
+      if (currentSearchTerm) {
+        const lowerCaseTerm = currentSearchTerm.toLowerCase();
+        filteredGuides = filteredGuides.filter(guide => 
+          guide.title.toLowerCase().includes(lowerCaseTerm) ||
+          (guide.summary && guide.summary.toLowerCase().includes(lowerCaseTerm))
+        );
+      }
+      
+      renderGuides(filteredGuides);
+    }
+
+    // 事件监听器设置
+    function setupEventListeners() {
+      const filterButtons = document.getElementById('filter-buttons');
+      const searchInput = document.getElementById('guide-search');
+      const paginationControls = document.getElementById('pagination-controls');
+
+      // 筛选按钮
+      if (filterButtons) {
+        filterButtons.addEventListener('click', (event) => {
+          if (event.target.tagName === 'BUTTON') {
+            currentFilter = event.target.dataset.filter;
+            // 更新按钮激活状态
+            document.querySelectorAll('#filter-buttons button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            currentPage = 1; // Reset page when filter changes
+            applyFilters();
+          }
+          });
+        }
+
+      // 搜索框
+      if (searchInput) {
+        searchInput.addEventListener('input', (event) => {
+          currentSearchTerm = event.target.value;
+          currentPage = 1; // Reset page when search changes
+          applyFilters();
+      });
+      }
+      
+      // 分页按钮
+      if (paginationControls) {
+        paginationControls.addEventListener('click', (e) => {
+            const target = e.target.closest('button');
+            if (!target || target.disabled) return;
+            
+            const page = parseInt(target.dataset.page, 10);
+            if (page && page !== currentPage) {
+                currentPage = page;
+                applyFilters();
+            }
+        });
+      }
+    }
+      
+    // 初始化页面
+    document.addEventListener('DOMContentLoaded', () => {
+      // 监听由 data.js 触发的自定义事件
+      document.addEventListener('dataLoaded', () => {
+        console.log('dataLoaded 事件被监听到，开始加载攻略。');
+        loadAndRenderGuides();
+    });
+    
+      // 如果数据已经加载（例如，从缓存快速加载），则直接运行
+      // 这个检查是为了防止竞争条件
+      if (window.guidesData && Object.keys(window.guidesData).length > 0) {
+           console.log('数据已存在，直接加载攻略。');
+           loadAndRenderGuides();
+      }
+      
+      setupEventListeners();
+      // 设置默认选中的筛选器
+      document.querySelector('#filter-buttons button[data-filter="all"]').classList.add('active');
+    });
+  </script>
+</body>
+</html>
+

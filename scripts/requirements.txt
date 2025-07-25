@@ -1,0 +1,11 @@
+# 数据迁移脚本依赖包
+# 安装命令: pip install -r requirements.txt
+
+# MySQL 数据库驱动
+pymysql>=1.0.2
+
+# PostgreSQL 数据库驱动
+psycopg2-binary>=2.9.0
+
+# 其他可能用到的包
+python-dotenv>=1.0.0

@@ -1,0 +1,715 @@
+<!-- digimon_legend_website/frontend/equipment.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>装备图鉴 - 数码兽传说</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Ark Pixel';
+      src: url('fonts/ark-pixel-12px-proportional-zh_cn.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    html, body, input, button, h1, h2, h3, h4, h5, h6, p, span, div {
+      font-family: 'Ark Pixel', sans-serif !important;
+    }
+
+    /* 设置代码和选中文本的背景 */
+    code, pre {
+      background-color: #f0f4ff;
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+      font-family: 'Ark Pixel', monospace !important;
+    }
+    
+    /* 选中文本样式 */
+    ::selection {
+      background-color: #93c5fd;
+      color: #1e3a8a;
+    }
+    
+    /* 基础样式 */
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+      position: relative;
+      margin: 0; /* 确保没有默认边距 */
+      overflow-x: hidden; /* 防止水平滚动条 */
+      color: #1a202c; /* 深色文本确保可读性 */
+      background-color: #d3dbff;
+    }
+    
+    /* 背景 */
+    .p-bgMonster {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* 确保在内容下方 */
+      opacity: 0.5;
+      background: repeating-linear-gradient(
+        45deg,
+        #d3dbff,
+        #d3dbff 10px,
+        #e2e8ff 10px,
+        #e2e8ff 20px
+      );
+    }
+    
+    /* 装备相关样式 */
+    .equipment-card {
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      background-color: #ffffff !important;
+      border-radius: 0.75rem;
+    }
+    
+    .equipment-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(55,125,255,0.7);
+    }
+    
+    .filter-btn {
+      transition: all 0.3s ease;
+      border: 2px solid #3b82f6;
+    }
+    
+    .filter-btn.active {
+      background-color: #3b82f6;
+      color: white;
+    }
+    
+    /* 像素风格边框 */
+    .pixel-border {
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    /* 新增：装备折叠列表样式 */
+    .dungeon-container {
+      margin-bottom: 0.25rem;
+      border-radius: 0.75rem;
+    }
+    
+    .dungeon-banner {
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 3px solid #4a5568;
+      padding: 0.75rem 1.25rem; /* 再次减小内边距以适应更小的内容 */
+      margin-bottom: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 1rem; /* 减小元素间距 */
+      transition: all 0.3s ease;
+      border-radius: 0.75rem;
+      position: relative;
+    }
+
+    .dungeon-banner h3 {
+      font-size: 1.25rem; /* 缩小标题字号 */
+    }
+
+    .dungeon-banner img {
+      width: 3rem; /* 缩小图片宽度 */
+      height: 3rem; /* 缩小图片高度 */
+    }
+
+    .dungeon-banner .arrow-icon {
+      font-size: 1rem; /* 缩小箭头大小 */
+    }
+
+    .dungeon-banner:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+      box-shadow: 8px 10px 0 rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .dungeon-sets-container {
+      transition: padding-top 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      padding-left: 2rem;
+      border-left: 2px dashed #a0aec0;
+      margin-left: 2rem;
+    }
+    .dungeon-sets-container > div {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .dungeon-sets-container.open {
+      padding-top: 1rem;
+    }
+    .dungeon-sets-container.open > div {
+      max-height: 3000px; /* A large enough value */
+    }
+    .set-banner {
+      background-color: rgba(239, 246, 255, 0.9);
+      border: 2px solid #93c5fd;
+      padding: 0.6rem 1rem; /* 微调内边距 */
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .set-banner h4 {
+      font-size: 1rem; /* 微调字号 */
+    }
+    .set-banner:hover {
+      background-color: rgba(219, 234, 254, 1);
+    }
+
+    .set-items-container > div {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out; /* 恢复更快的动画速度 */
+    }
+    .set-items-container.open > div {
+      max-height: 2000px; /* A large enough value */
+    }
+
+    .set-items-container-inner {
+      padding: 1.5rem;
+      margin: 1rem 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+    }
+    .equipment-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-bottom: 1px dashed #e2e8f0;
+      border-radius: 0.75rem;
+    }
+    .equipment-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .equipment-item + .equipment-item {
+      margin-top: 0.5rem;
+    }
+    .item-acquisition {
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      color: #4a5568;
+      font-style: italic;
+    }
+    .item-acquisition strong {
+      color: #1a202c;
+      font-style: normal;
+    }
+    .set-bonus {
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .set-bonus h5 {
+      margin-bottom: 1rem;
+    }
+    .set-bonus p {
+      margin-bottom: 0.5rem;
+    }
+    .set-bonus p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 全新合成树模态框样式 (CSS Tree) */
+    .synthesis-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 1rem;
+    }
+    .synthesis-modal-content {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      width: 100%;
+      max-width: 80rem; /* 增加宽度以容纳树状图 */
+      max-height: 90vh;
+      overflow: auto;
+      position: relative;
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+    }
+    .synthesis-modal-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.75rem;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: #6b7280;
+      border: none;
+      background: none;
+    }
+    .synthesis-tree {
+      text-align: center;
+      white-space: nowrap;
+    }
+    .synthesis-tree ul {
+      padding-top: 20px;
+      position: relative;
+      transition: all 0.5s;
+    }
+    .synthesis-tree li {
+      display: inline-block;
+      text-align: center;
+      list-style-type: none;
+      position: relative;
+      padding: 20px 5px 0 5px;
+      transition: all 0.5s;
+      vertical-align: top;
+    }
+    /* 连接线: 父到子 */
+    .synthesis-tree li::before, .synthesis-tree li::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 50%;
+      border-top: 1px solid #ccc;
+      width: 50%;
+      height: 20px;
+    }
+    .synthesis-tree li::after {
+      right: auto;
+      left: 50%;
+      border-left: 1px solid #ccc;
+    }
+    /* --- Connector Fixes --- */
+    /* The root node must NOT have any lines going up. */
+    .synthesis-tree > ul > li::before,
+    .synthesis-tree > ul > li::after {
+        border: 0 none;
+    }
+
+    /* Remove left horizontal line from the first child */
+    .synthesis-tree li:first-child:not(:only-child)::before {
+      border: 0 none;
+    }
+
+    /* Remove right horizontal line from the last child, but KEEP the vertical connector */
+    .synthesis-tree li:last-child:not(:only-child)::after {
+      border-top: 0 none;
+    }
+
+    /* For a single child, remove the horizontal line completely, leaving only the vertical connector */
+    .synthesis-tree li:only-child::before {
+        border: 0 none;
+    }
+    .synthesis-tree li:only-child::after {
+      border-top: 0 none;
+    }
+
+    /* Style the corners of the horizontal line for the first and last children */
+    .synthesis-tree li:last-child:not(:only-child)::before {
+      border-right: 1px solid #ccc;
+      border-radius: 0 5px 0 0;
+    }
+    .synthesis-tree li:first-child:not(:only-child)::after {
+      border-radius: 5px 0 0 0;
+    }
+    
+    /* 连接线: 子到父 */
+    .synthesis-tree ul ul::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      border-left: 1px solid #ccc;
+      width: 0;
+      height: 20px;
+    }
+    /* 节点样式 */
+    .tree-node {
+      border: 1px solid #d1d5db;
+      padding: 0.75rem;
+      text-decoration: none;
+      background-color: #f9fafb;
+      color: #374151;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 0.5rem;
+      min-width: 160px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .tree-node img {
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+    .node-name {
+      font-weight: 600;
+    }
+    .node-acquisition {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .node-acquisition-placeholder {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      visibility: hidden;
+    }
+    .expand-btn {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid #9ca3af;
+      background-color: white;
+      color: #4b5563;
+      font-size: 1rem;
+      line-height: 18px;
+      z-index: 1; /* 确保按钮在连接线上方 */
+    }
+
+    /* 展开/收起动画 */
+    .content-container.open {
+      display: block;
+    }
+    .arrow-icon {
+      transition: transform 0.3s ease-in-out;
+      font-size: 1.2em;
+      margin-left: auto; /* 将箭头推到最右侧 */
+    }
+    .arrow-icon.open {
+      transform: rotate(90deg);
+    }
+
+    /* 非套装物品和套装效果样式 */
+    .non-set-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .set-bonus {
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* 导航项样式 */
+    .nav-item {
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item:hover {
+      background-color: #3b82f6;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Expanded dungeon, set, and synthesis modal font override */
+    .dungeon-sets-container *,
+    .synthesis-modal-content * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+    }
+
+    /* 在 <style> 标签中添加以下样式 */
+    .usage-recipe-item {
+        margin: 15px 0;
+        padding: 15px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        background-color: #f9fafb;
+    }
+
+    .synthesis-target {
+        border: 2px solid #10b981 !important;
+        background-color: #ecfdf5 !important;
+        margin-bottom: 10px;
+    }
+
+    .recipe-formula {
+        text-align: center;
+    }
+
+    .formula-title {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #374151;
+    }
+
+    .materials-horizontal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .material-mini {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4px;
+        border-radius: 4px;
+        background-color: white;
+        border: 1px solid #d1d5db;
+        min-width: 50px;
+    }
+
+    .material-mini.current-material {
+        background-color: #fef3c7;
+        border-color: #f59e0b;
+        box-shadow: 0 0 0 2px #f59e0b;
+    }
+
+    .material-mini:hover:not(.current-material) {
+        background-color: #f3f4f6;
+        border-color: #9ca3af;
+    }
+
+    .material-mini img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+    }
+
+    .material-mini .quantity {
+        font-size: 12px;
+        font-weight: bold;
+        color: #374151;
+    }
+
+    .plus-sign {
+        font-size: 18px;
+        font-weight: bold;
+        color: #6b7280;
+    }
+
+    /* 材料悬停提示框 */
+    .material-tooltip {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        max-width: 250px;
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    .material-tooltip.show {
+        opacity: 1;
+    }
+
+    .material-tooltip .tooltip-name {
+        font-weight: bold;
+        margin-bottom: 4px;
+        color: #fbbf24;
+    }
+
+    .material-tooltip .tooltip-acquisition {
+        color: #d1d5db;
+        font-size: 11px;
+    }
+
+    /* 材料mini样式增强 */
+    .recipe-formula-inline .material-mini {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 4px;
+        border-radius: 4px;
+        background-color: white;
+        border: 1px solid #d1d5db;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .recipe-formula-inline .material-mini:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 10;
+        border-color: #3b82f6;
+    }
+
+    .recipe-formula-inline .material-mini.current-material {
+        border-color: #f59e0b;
+        background-color: #fef3c7;
+    }
+
+    .recipe-formula-inline .material-mini.current-material:hover {
+        border-color: #d97706;
+        background-color: #fde68a;
+    }
+
+    /* 升级链条中的材料样式 */
+    .recipe-formula-inline .material-mini.chain-material {
+        border-color: #f59e0b;
+        background-color: #fef3c7;
+        box-shadow: 0 0 0 2px #f59e0b;
+        font-weight: bold;
+    }
+
+    .recipe-formula-inline .material-mini.chain-material:hover {
+        border-color: #d97706;
+        background-color: #fde68a;
+        box-shadow: 0 0 0 3px #d97706;
+        transform: scale(1.15);
+    }
+
+    .recipe-formula-inline.material-mini.chain-material.quantity {
+        color: #d97706;
+        font-weight: bold;
+    }
+  
+    /* 升级链条中的材料样式 */
+    .recipe-formula-inline .material-mini.chain-material {
+        border-color: #f59e0b;
+        background-color: #fef3c7;
+        box-shadow: 0 0 0 2px #f59e0b;
+        font-weight: bold;
+    }
+
+    .recipe-formula-inline .material-mini.chain-material:hover {
+        border-color: #d97706;
+        background-color: #fde68a;
+        box-shadow: 0 0 0 3px #d97706;
+        transform: scale(1.15);
+    }
+
+    .recipe-formula-inline .material-mini.chain-material .quantity {
+        color: #d97706;
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 flex-grow">
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center mb-6 text-blue-700">装备图鉴</h2>
+      
+      <div class="mb-6 flex justify-center">
+        <div class="relative w-full md:w-1/2">
+          <input type="text" id="equipment-search" placeholder="搜索装备/套装/副本..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+      </div>
+      
+      <div id="equipment-accordion-container">
+        <!-- 装备折叠列表将通过JavaScript动态加载 -->
+      </div>
+      
+      <div id="equipment-pagination-controls" class="flex justify-center items-center mt-8 gap-2">
+        <!-- Pagination buttons will be inserted by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p>© 2025 数码兽传说ORPG地图</p>
+        <p>作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        // 确保数据被初始化
+        if (typeof initData === 'function') {
+            await initData();
+        }
+        
+        // 然后渲染装备页面
+        if (typeof renderEquipmentPage === 'function') {
+            renderEquipmentPage();
+        }
+    });
+
+    // 设置当前日期
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

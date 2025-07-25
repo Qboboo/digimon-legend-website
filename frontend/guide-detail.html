@@ -1,0 +1,954 @@
+<!-- digimon_legend_website/frontend/guide-detail.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>攻略详情 - 数码兽传说</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/lib/marked.min.js"></script>
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/data.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            orange: {
+              700: '#c2410c'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 卡片切换样式 */
+    .card-nav-btn {
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .card-nav-btn.prev {
+      left: 10px;
+    }
+
+    .card-nav-btn.next {
+      right: 10px;
+    }
+
+    .card-nav-btn:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .card-indicator {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .card-indicator:hover {
+      transform: scale(1.2);
+    }
+    
+    #card-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    #card-slider {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+      width: fit-content;
+    }
+    
+    .card-item {
+      flex: 0 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .card-item > div {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-indicators-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 0;
+    }
+    .guide-content a {
+      text-decoration: underline;
+    }
+    /* 将攻略正文重置为标准字体 */
+    .guide-content {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+    /* 添加Markdown列表样式 */
+    .guide-content ul {
+      list-style-type: disc !important;
+      padding-left: 2rem;
+      margin: 1rem 0;
+    }
+    .guide-content ul ul {
+      list-style-type: circle !important;
+    }
+    .guide-content ul ul ul {
+      list-style-type: square !important;
+    }
+
+    .guide-content ol {
+      list-style-type: decimal !important;
+      padding-left: 2rem;
+      margin: 1rem 0;
+    }
+
+    .guide-content li {
+      margin: 0.5rem 0;
+    }
+    .guide-content h1,
+    .guide-content h2,
+    .guide-content h3,
+    .guide-content h4,
+    .guide-content h5,
+    .guide-content h6 {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .guide-content h1 {
+      font-size: 2rem;
+    }
+
+    .guide-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .guide-content h3 {
+      font-size: 1.25rem;
+    }
+
+    .guide-content h4 {
+      font-size: 1.1rem;
+    }
+
+    .guide-content h5,
+    .guide-content h6 {
+      font-size: 1rem;
+    }
+
+    .guide-content blockquote {
+      border-left: 4px solid #818cf8;
+      padding: 0.75rem 1rem;
+      margin: 1.5rem 0;
+      background-color: #f0f4ff;
+      border-radius: 0 8px 8px 0;
+      color: #374151;
+      font-style: italic;
+    }
+    .guide-content blockquote p {
+        margin: 0;
+    }
+
+    /* Table Styles */
+    .guide-content table:has(thead) {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9em;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .guide-content table:has(thead) th,
+    .guide-content table:has(thead) td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    .guide-content thead tr {
+      background-color: #3b82f6; /* Blue from your active TOC item */
+      color: #ffffff;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .guide-content table:has(thead) tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .guide-content table:has(thead) tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    .guide-content table:has(thead) tbody tr:last-of-type {
+      border-bottom: 2px solid #3b82f6;
+    }
+
+    .guide-content table:has(thead) tbody tr:hover {
+        background-color: #e0e7ff; /* A hover from your TOC */
+    }
+
+    /* Table of Contents Styles */
+    #toc-container {
+      position: fixed;
+      right: 20px;
+      top: 150px;
+      width: 200px;
+      max-height: calc(100vh - 200px);
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 2px solid #60a5fa; /* a nice blue from your theme */
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-y: auto;
+      transition: opacity 0.3s ease;
+      z-index: 50;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    #toc-container.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #toc-container h4 {
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+      color: #1e3a8a;
+    }
+    #toc-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    #toc-list li a {
+      display: block;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #374151;
+      transition: all 0.2s ease;
+    }
+    #toc-list li a:hover {
+      background-color: #e0e7ff;
+      color: #1d4ed8;
+    }
+    #toc-list li a.active {
+      background-color: #3b82f6;
+      color: white;
+      font-weight: 600;
+    }
+    #toc-list .toc-h3 {
+      padding-left: 1rem;
+    }
+
+    @media (max-width: 767px) {
+      #toc-container {
+        display: none;
+      }
+    }
+
+    /* Item Tooltip Styles */
+    [data-item-id] {
+      cursor: help;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-decoration-color: #60a5fa;
+    }
+
+    #item-tooltip {
+      transition: opacity 0.2s ease-in-out;
+      pointer-events: none; /* Allows mouse to pass through to elements underneath */
+    }
+
+    /* Styles for Clickable Images */
+    .guide-content img {
+      cursor: default;
+      transition: box-shadow 0.2s ease;
+      max-width: 100%; /* Ensure images are responsive */
+      height: auto;
+      border-radius: 4px;
+    }
+    
+    #image-zoom-content {
+      transition: transform 0.2s ease;
+    }
+    
+    body.no-scroll {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+
+  <div id="toc-container" class="hidden">
+    <h4 class="text-lg">本页目录</h4>
+    <ul id="toc-list"></ul>
+  </div>
+
+  <main class="container mx-auto px-4">
+    <section class="bg-white bg-opacity-90 rounded-xl p-6 mb-8 pixel-border">
+      <!-- 返回按钮 -->
+      <div class="mb-6">
+        <a href="guide" class="flex items-center text-blue-700 hover:text-blue-900 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          返回攻略列表
+        </a>
+      </div>
+      
+      <!-- 攻略详情内容 -->
+      <div id="guide-detail">
+        <div id="loading-indicator" class="text-center py-10">
+          <p class="text-blue-800">正在加载攻略内容...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p class="order-1">© 2025 数码兽传说ORPG地图</p>
+        <p class="order-2">作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Image Zoom Modal -->
+  <div id="image-zoom-overlay" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[100] flex items-center justify-center p-4 transition-opacity duration-300" style="opacity: 0;">
+    <span id="image-zoom-close" class="absolute top-4 right-6 text-white text-5xl font-bold cursor-pointer hover:opacity-80">&times;</span>
+    <img id="image-zoom-content" src="" alt="Zoomed Image" class="max-w-full max-h-full object-contain">
+  </div>
+
+  <script>
+    // 设置当前日期
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+    
+    // 获取URL参数
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    
+    // 加载攻略详情
+    function loadGuideDetail() {
+      const guideSlug = getQueryParam('slug') || getQueryParam('id'); // 支持旧的id参数
+      
+      if (!guideSlug) {
+        showError('未指定攻略');
+        return;
+      }
+      
+      // NEW: Use the pre-loaded data from data.js
+      const guide = getGuideBySlug(guideSlug);
+
+      if (guide) {
+        renderGuideDetail(guide);
+      } else {
+        showError('未找到指定的攻略内容');
+      }
+    }
+    
+    // 显示错误信息
+    function showError(message) {
+      const container = document.getElementById('guide-detail');
+      container.innerHTML = `
+        <div class="text-center py-10">
+          <p class="text-red-600">${message}</p>
+          <a href="guide" class="inline-block mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
+            返回攻略列表
+          </a>
+        </div>
+      `;
+    }
+    
+    // NEW: Function to configure Marked.js on demand
+    let markedConfigured = false;
+    function configureMarked() {
+      // Run only once and only if marked is available
+      if (markedConfigured || !window.marked) {
+        return;
+      }
+      
+      marked.setOptions({
+          gfm: true,      // Use GitHub Flavored Markdown, which helps with mixed content
+          breaks: true,   // Add <br> on single line breaks
+      });
+
+      markedConfigured = true;
+    }
+
+    // 渲染攻略详情
+    function renderGuideDetail(guide) {
+      const container = document.getElementById('guide-detail');
+      
+      // 设置页面标题
+      document.title = `${guide.title} - 数码兽传说`;
+
+      // Ensure marked is configured before parsing
+      configureMarked();
+
+      let contentHtml = '暂无内容';
+      if (guide.content) {
+        if (guide.contentType === 'markdown' || !guide.contentType) {
+          contentHtml = marked.parse(guide.content || '');
+        } else {
+          contentHtml = guide.content || '';
+        }
+      }
+      
+      // 渲染攻略详情
+      container.innerHTML = `
+        <div class="mb-6 border-b pb-4">
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
+          </div>
+        </div>
+        
+        <div class="prose max-w-none">
+          <div class="guide-content">
+            ${contentHtml}
+          </div>
+        </div>
+      `;
+      
+      // -- 图片加载逻辑已移除 --
+      // 浏览器现在将直接加载您在攻略内容中指定的图片路径，不再自动转换或检查 WebP 格式。
+      
+      // 初始化卡片切换功能（如果存在）
+      initCardNavigation();
+      
+      // 渲染完成后生成目录
+      generateToc();
+      // NEW: Initialize image zoom functionality
+      initImageZoom();
+    }
+    
+    // 生成目录
+    function generateToc() {
+        const contentContainer = document.querySelector('.guide-content');
+        const tocContainer = document.getElementById('toc-container');
+        const tocList = document.getElementById('toc-list');
+        
+        if (!contentContainer || !tocList) return;
+
+        tocList.innerHTML = '';
+        const headings = contentContainer.querySelectorAll('h2:not(.no-toc), h3:not(.no-toc)');
+        
+        if (headings.length === 0) {
+            tocContainer.classList.add('hidden');
+            return; // Don't show TOC for less than 1 headings
+        }
+
+        headings.forEach((heading, index) => {
+            const id = `toc-heading-${index}`;
+            heading.id = id;
+
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            
+            a.textContent = heading.textContent;
+            a.href = `#${id}`;
+            li.appendChild(a);
+
+            if (heading.tagName === 'H3') {
+                li.classList.add('toc-h3');
+            }
+
+            tocList.appendChild(li);
+        });
+
+        tocContainer.classList.remove('hidden');
+        // Initial highlight
+        updateTocHighlight();
+    }
+
+    function initImageZoom() {
+        const overlay = document.getElementById('image-zoom-overlay');
+        const contentEl = document.getElementById('image-zoom-content');
+        const closeBtn = document.getElementById('image-zoom-close');
+        const guideContentContainer = document.querySelector('.guide-content');
+
+        if (!overlay || !contentEl || !closeBtn || !guideContentContainer) {
+            console.warn('Image zoom elements not found. Feature disabled.');
+            return;
+        }
+
+        // State for zoom & pan
+        let scale = 1;
+        let panning = false;
+        let pointX = 0;
+        let pointY = 0;
+        let start = { x: 0, y: 0 };
+
+        function setTransform() {
+            contentEl.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+        }
+
+        const closeOverlay = () => {
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                document.body.classList.remove('no-scroll');
+                contentEl.src = '';
+                // Reset transform state for next image
+                scale = 1;
+                pointX = 0;
+                pointY = 0;
+                setTransform();
+                contentEl.style.cursor = 'grab';
+            }, 300);
+        };
+
+        guideContentContainer.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG') {
+                contentEl.src = e.target.src;
+                overlay.classList.remove('hidden');
+                setTimeout(() => { 
+                    overlay.style.opacity = '1'; 
+                }, 10);
+                document.body.classList.add('no-scroll');
+            }
+        });
+
+        closeBtn.addEventListener('click', closeOverlay);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closeOverlay();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
+                closeOverlay();
+            }
+        });
+
+        contentEl.addEventListener('wheel', (e) => {
+            if (overlay.classList.contains('hidden')) return;
+            e.preventDefault();
+
+            const oldScale = scale;
+            const delta = -e.deltaY;
+            const zoomFactor = 1.2;
+
+            scale *= (delta > 0 ? zoomFactor : 1 / zoomFactor);
+            scale = Math.max(1, Math.min(scale, 10)); // Clamp scale
+
+            if (scale === oldScale) return;
+
+            // By removing the mouse position calculation here, the zoom will
+            // default to the element's center (transform-origin: center center).
+            
+            if (scale === 1) { // Reset position when zoomed all the way out
+                pointX = 0;
+                pointY = 0;
+            }
+
+            setTransform();
+        });
+
+        contentEl.addEventListener('mousedown', (e) => {
+            if (scale > 1) { // Panning only allowed when zoomed in
+                e.preventDefault();
+                panning = true;
+                start = { x: e.clientX - pointX, y: e.clientY - pointY };
+                contentEl.style.cursor = 'grabbing';
+                contentEl.style.transition = 'none'; // Make panning instant
+            }
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (panning) {
+                panning = false;
+                contentEl.style.cursor = 'grab';
+                contentEl.style.transition = 'transform 0.2s ease';
+            }
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (panning) {
+                e.preventDefault();
+                pointX = e.clientX - start.x;
+                pointY = e.clientY - start.y;
+                setTransform();
+            }
+        });
+    }
+
+    // 更新目录高亮
+    function updateTocHighlight() {
+        const headings = document.querySelectorAll('.guide-content h2:not(.no-toc), .guide-content h3:not(.no-toc)');
+        const tocLinks = document.querySelectorAll('#toc-list li a');
+        let activeId = null;
+
+        headings.forEach(heading => {
+            const rect = heading.getBoundingClientRect();
+            // Check if heading is in the top 2/3 of the viewport
+            if (rect.top >= 0 && rect.top <= window.innerHeight * 0.66) {
+                if (activeId === null) { // Only set the first one we find
+                    activeId = heading.id;
+                }
+            }
+        });
+
+        // Fallback: if no heading is in the sweet spot, find the one closest to the top
+        if (!activeId) {
+            let closestHeading = null;
+            let minDistance = Infinity;
+            headings.forEach(heading => {
+                const distance = Math.abs(heading.getBoundingClientRect().top);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestHeading = heading;
+                }
+            });
+            if (closestHeading) {
+                activeId = closestHeading.id;
+            }
+        }
+
+        tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.hash === `#${activeId}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // 初始化卡片导航功能
+    function initCardNavigation() {
+      // 检查页面上是否存在卡片导航元素
+      const prevBtn = document.getElementById('prev-card');
+      const nextBtn = document.getElementById('next-card');
+      const cardSlider = document.getElementById('card-slider');
+      const indicators = document.querySelectorAll('.card-indicator');
+      const cardItems = document.querySelectorAll('.card-item');
+      
+      if (!prevBtn || !nextBtn || !cardSlider || indicators.length === 0) {
+        // 如果页面上没有卡片导航元素，则不执行初始化
+        return;
+      }
+      
+      console.log('初始化卡片切换功能');
+      
+      let currentIndex = 0;
+      const totalCards = cardItems.length; // 获取实际卡片数量
+      
+      // 如果只有一张卡片，隐藏导航按钮和指示器
+      if (totalCards <= 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        if (indicators.length > 0) {
+          indicators[0].parentElement.style.display = 'none';
+        }
+        return;
+      }
+      
+      // 初始化
+      updateButtonVisibility();
+      updateActiveIndicator();
+      
+      // 更新按钮显示状态
+      function updateButtonVisibility() {
+        // 始终显示左右箭头，不隐藏
+        prevBtn.classList.remove('hidden');
+        nextBtn.classList.remove('hidden');
+      }
+      
+      // 更新指示器状态
+      function updateActiveIndicator() {
+        indicators.forEach((indicator, index) => {
+          if (index === currentIndex) {
+            indicator.classList.remove('bg-gray-300');
+            indicator.classList.add('bg-gray-800', 'active');
+          } else {
+            indicator.classList.remove('bg-gray-800', 'active');
+            indicator.classList.add('bg-gray-300');
+          }
+        });
+      }
+      
+      // 滑动到特定卡片 - 所有切换都有动画
+      function slideToCard(index) {
+        // 更新当前索引
+        currentIndex = index;
+        
+        // 直接滑动到目标卡片
+        const slideDistance = -100 * currentIndex;
+        cardSlider.style.transform = `translateX(${slideDistance}%)`;
+        
+        updateButtonVisibility();
+        updateActiveIndicator();
+      }
+      
+      // 点击指示器切换卡片 - 直接跳转到对应卡片
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          slideToCard(index);
+        });
+      });
+      
+      // 上一张卡片按钮点击事件(循环切换)
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          // 正常向前滑动
+          slideToCard(currentIndex - 1);
+        } else {
+          // 如果是第一张，则直接跳转到最后一张
+          slideToCard(totalCards - 1);
+        }
+      });
+      
+      // 下一张卡片按钮点击事件(循环切换)
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < totalCards - 1) {
+          // 正常向后滑动
+          slideToCard(currentIndex + 1);
+        } else {
+          // 如果是最后一张，则直接跳转到第一张
+          slideToCard(0);
+        }
+      });
+      
+      // 添加键盘事件处理，让用户可以按数字键直接跳转
+      document.addEventListener('keydown', (event) => {
+        const keyNum = parseInt(event.key);
+        if (!isNaN(keyNum) && keyNum > 0 && keyNum <= totalCards) {
+          // 数字键1-N对应卡片0-(N-1)
+          slideToCard(keyNum - 1);
+        }
+      });
+    }
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+      // --- Marked.js Configuration ---
+      // This needs to run after the document is loaded to ensure `marked` is defined.
+      if (window.marked) {
+        const tokenizer = {
+          html(src) {
+            const rule = /^(?:<(\w+)[\s\S]*?>[\s\S]*?<\/\1>|<(\w+)[\s\S]*?\/>)/;
+            const match = rule.exec(src);
+            if (match) {
+              return { type: 'html', raw: match[0], text: match[0] };
+            }
+          }
+        };
+        marked.use({ tokenizer });
+        marked.setOptions({
+            gfm: true,      // Use GitHub Flavored Markdown
+            breaks: true,   // Add <br> on single line breaks
+        });
+      } else {
+        console.error("Marked.js library failed to load. Markdown content may not render correctly.");
+      }
+      // --- End Marked.js Configuration ---
+      
+      // Listen for the custom event from data.js
+      document.addEventListener('dataLoaded', () => {
+        console.log('dataLoaded event received in guide-detail, loading guide.');
+        loadGuideDetail();
+      });
+
+      // Fallback if data is already loaded (e.g., from browser cache)
+      if (window.guidesData) {
+        console.log('Data was already present, loading guide immediately.');
+        loadGuideDetail();
+      }
+
+      // Add scroll listener for TOC highlighting
+      window.addEventListener('scroll', updateTocHighlight);
+
+      let itemDataPromise = null;
+      // This function starts the download and returns a promise.
+      // It ensures we only fetch the data once.
+      function preloadItemData() {
+          if (!itemDataPromise) {
+              itemDataPromise = fetch('/api/all-craftable-items')
+                  .then(response => {
+                      if (!response.ok) throw new Error('Network response was not ok for item preloading');
+                      return response.json();
+                  })
+                  .then(data => {
+                      window.allCraftableItemsCache = data;
+                      console.log("Item data preloaded successfully in the background.");
+                      return data;
+                  })
+                  .catch(error => {
+                      console.error("Failed to preload item data:", error);
+                      itemDataPromise = null; // Allow retrying on hover
+                      throw error; // Propagate error to be caught by await
+                  });
+          }
+          return itemDataPromise;
+      }
+
+      // --- ITEM TOOLTIP LOGIC ---
+      function initItemTooltips() {
+        const tooltip = document.createElement('div');
+        tooltip.id = 'item-tooltip';
+        tooltip.className = 'hidden absolute z-50 p-3 rounded-lg bg-white bg-opacity-95 shadow-2xl border border-gray-200 w-64 backdrop-blur-sm';
+        document.body.appendChild(tooltip);
+
+        let activeTarget = null;
+
+        document.body.addEventListener('mouseover', async (e) => {
+          const target = e.target.closest('[data-item-id]');
+          if (!target) return;
+
+          activeTarget = target;
+
+          const itemId = target.dataset.itemId;
+          
+          try {
+            // Await the preloading promise. It will either resolve instantly
+            // with cached data, wait for the background fetch to complete, or re-fetch on failure.
+            await preloadItemData();
+          } catch (error) {
+              console.error("Failed to ensure item data is available for tooltip:", error);
+              tooltip.innerHTML = `<div class="text-red-500">Error loading item data.</div>`;
+              // Position and show the error tooltip
+              const rect = target.getBoundingClientRect();
+              tooltip.style.left = `${rect.left + window.scrollX}px`;
+              tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+              tooltip.classList.remove('hidden');
+              tooltip.style.opacity = '1';
+              return;
+          }
+          
+          const item = window.allCraftableItemsCache.find(i => i.id === itemId);
+
+          if (item) {
+            let descriptionHtml = '';
+            // For equipment, use attributes as the primary description, styled distinctively.
+            if (item.type === 'equipment') {
+                descriptionHtml = `<div class="text-sm text-indigo-600 font-semibold">${item.attributes || '无属性信息'}</div>`;
+            } else {
+            // For other items, use the standard description field.
+                descriptionHtml = `<div class="text-sm text-gray-600">${item.description || '暂无描述'}</div>`;
+            }
+
+            let acquisitionHtml = '';
+            // Only show acquisition method for the new style with 'item-drop' class
+            if (target.classList.contains('item-drop') && item.acquisitionMethod) {
+                acquisitionHtml = `<div class="text-xs text-gray-500 mt-2 pt-2 border-t border-gray-200"><strong>获取:</strong> ${item.acquisitionMethod}</div>`;
+            }
+
+            // 直接使用数据中提供的图片URL，不做任何修改
+            const imageUrl = item.image || 'placeholder.svg';
+
+            tooltip.innerHTML = `
+              <div class="flex items-center gap-3 border-b border-gray-200 pb-2 mb-2">
+                <img src="${imageUrl}" class="w-12 h-12 object-contain rounded-md bg-gray-100 p-1">
+                <div>
+                  <div class="font-bold text-gray-800">${item.name}</div>
+                  <div class="text-xs text-gray-500">${item.type === 'equipment' ? '装备' : (item.type || '道具')}</div>
+                </div>
+              </div>
+              ${descriptionHtml}
+              ${acquisitionHtml}
+            `;
+            
+            // Show the tooltip to calculate its dimensions, but keep it invisible initially
+            tooltip.classList.remove('hidden');
+            tooltip.style.opacity = '0';
+
+            const rect = target.getBoundingClientRect();
+            const tooltipHeight = tooltip.offsetHeight;
+            const tooltipWidth = tooltip.offsetWidth;
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+
+            let top = rect.bottom + 8; // Default position: below the element
+            let left = rect.left;   // Default position: aligned to the left of the element
+
+            // Check for vertical overflow. If it overflows below, move it above.
+            if (top + tooltipHeight > windowHeight) {
+                top = rect.top - tooltipHeight - 8;
+            }
+
+            // Check for horizontal overflow. If it overflows to the right, adjust it.
+            if (left + tooltipWidth > windowWidth) {
+                left = windowWidth - tooltipWidth - 10; // 10px padding from the edge
+            }
+            
+            // Ensure it doesn't go off the left side of the screen
+            if (left < 10) {
+              left = 10;
+            }
+
+            // Apply calculated positions (adding scroll offsets for absolute positioning)
+            tooltip.style.top = `${top + window.scrollY}px`;
+            tooltip.style.left = `${left + window.scrollX}px`;
+            
+            // Fade the tooltip in at the correct position
+            tooltip.style.opacity = '1';
+          }
+        });
+
+        document.body.addEventListener('mouseout', (e) => {
+            if (e.target === activeTarget) {
+                 tooltip.classList.add('hidden');
+                 activeTarget = null;
+            }
+        });
+      }
+      
+      initItemTooltips();
+      // Start preloading the data in the background as soon as the DOM is ready.
+      preloadItemData();
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,2359 @@
+<!-- digimon_legend_website/frontend/digimon.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>数码兽图鉴 - 数码兽传说</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Ark Pixel';
+      src: url('fonts/ark-pixel-12px-proportional-zh_cn.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    html, body, input, button, h1, h2, h3, h4, h5, h6, p, span, div {
+      font-family: 'Ark Pixel', sans-serif !important;
+    }
+    
+    /* 设置代码和选中文本的背景 */
+    code, pre {
+      background-color: #f0f4ff;
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+      font-family: 'Ark Pixel', monospace !important;
+    }
+    
+    /* 选中文本样式 */
+    ::selection {
+      background-color: #93c5fd;
+      color: #1e3a8a;
+    }
+    
+    /* 所有内容卡片背景 */
+        .digimon-card, .modal-content, .type-filter, .info-field {
+      background-color: #ffffff !important;
+    }
+    
+    /* 按颜色区分的卡片 */
+    .bg-blue-100 {
+      background-color: rgba(219, 234, 254, 0.8) !important;
+    }
+    
+    .bg-green-100 {
+      background-color: rgba(220, 252, 231, 0.8) !important;
+    }
+    
+    .bg-purple-100 {
+      background-color: rgba(237, 233, 254, 0.8) !important;
+    }
+    
+    .bg-yellow-100 {
+      background-color: rgba(254, 249, 195, 0.8) !important;
+    }
+    
+    .bg-red-100 {
+      background-color: rgba(254, 226, 226, 0.8) !important;
+    }
+    
+    /* 基础样式 */
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+      position: relative;
+      margin: 0; /* 确保没有默认边距 */
+      overflow-x: hidden; /* 防止水平滚动条 */
+      color: #1a202c; /* 深色文本确保可读性 */
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    }
+    
+    /* 新增背景层 - 替换原来的渐变背景 */
+    .p-bgMonster {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* 确保在内容下方 */
+    }
+    
+    .p-bgMonster:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: #d3dbff url("https://digimon.net/images/common/bg_pattern_monster_01.png") repeat left top;
+      background-size: calc(2640px / 1.375) auto;
+      -webkit-animation: bg-anime_pc 40s infinite linear;
+      animation: bg-anime_pc 40s infinite linear;
+      pointer-events: none;
+      cursor: none;
+    }
+    
+    /* 添加背景动画 */
+    @keyframes bg-anime_pc {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: -1000px 0; /* 横向滚动效果 */
+      }
+    }
+    /* 像素风格边框 */
+    .pixel-border {
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+      position: relative;
+    }
+  
+    /* 主内容区 */
+    main section.pixel-border {
+      position: relative;
+      z-index: 10;
+      min-height: 80vh;
+      overflow: visible;
+      border-radius: 0;
+    }
+  
+    /* 数码兽网格布局 - 修改为固定每行3个，每页9个 */
+    #digimon-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+  
+    /* 数码兽卡片 */
+    .digimon-card {
+      border: 2px solid #4285f4;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 1.25rem;
+      transition: all 0.25s ease;
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+  
+    .digimon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 3px 5px 0 #4a5568;
+      cursor: pointer;
+    }
+  
+    /* 卡片头部 */
+    .digimon-header {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+  
+    .digimon-image {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border: none;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 4px;
+    }
+  
+    /* 类型标签 */
+    .type-tag {
+      background: #bfdbfe;
+      color: #1e3a8a;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin: 0.25rem;
+      width: calc(50% - 0.5rem);
+      text-align: center;
+    }
+  
+    .stage-tag {
+      background: #ddd6fe;
+      color: #4c1d95;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin: 0.25rem;
+      width: calc(50% - 0.5rem);
+      text-align: center;
+    }
+    
+    /* 卡片属性标签容器 */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -0.25rem;
+    }
+    
+    /* 卡片属性标签 */
+    .card-type-tag {
+      background-color: rgba(254, 249, 195, 0.8) !important;
+      color: #854d0e;
+    }
+    
+    .card-stage-tag {
+      background-color: rgba(237, 233, 254, 0.8) !important;
+      color: #5b21b6;
+    }
+    
+    .card-armor-tag {
+      background-color: rgba(219, 234, 254, 0.8) !important;
+      color: #1e40af;
+    }
+  
+    /* 技能横向滚动区 */
+    .skill-box {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+      margin: 0 -0.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e0 #f1f5f9;
+    }
+  
+    .skill-item {
+      flex: 0 0 260px;
+      background: linear-gradient(145deg, #f8fafc, #ffffff);
+      border: 2px dashed #cbd5e0;
+      padding: 1rem;
+      position: relative;
+    }
+  
+    .skill-item::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 4px,
+        #cbd5e0 4px,
+        #cbd5e0 8px
+      );
+    }
+  
+    /* 进化路线 */
+    .evolution-path {
+      margin-top: auto;
+      background: #f1f5f9;
+      border-top: 3px solid #cbd5e0;
+      padding: 1rem;
+    }
+  
+    /* 按钮样式 */
+    .detail-btn {
+      background: #3b82f6;
+      color: white;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border: 2px solid #1d4ed8;
+      box-shadow: 3px 3px 0 #1d4ed8;
+      transition: all 0.2s ease;
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
+  
+    .detail-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 #1d4ed8;
+      background: #2563eb;
+    }
+    
+    .detail-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 #1d4ed8;
+    }
+    
+    /* 滚动条样式 */
+    .skill-box::-webkit-scrollbar {
+      height: 5px;
+    }
+  
+    .skill-box::-webkit-scrollbar-thumb {
+      background: #cbd5e0;
+      border-radius: 2px;
+    }
+  
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      #digimon-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+  
+      .digimon-card {
+        max-width: 100%;
+      }
+  
+      .skill-item {
+        flex: 0 0 90%;
+        margin: 0 5%;
+      }
+  
+      .digimon-header {
+        gap: 1rem;
+      }
+  
+      .digimon-image {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .type-tag, .stage-tag {
+        width: 100%;
+      }
+    }
+  
+    @media (max-width: 640px) {
+      #digimon-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+  
+      .pixel-border {
+        box-shadow: 4px 4px 0 #4a5568;
+      }
+  
+      .digimon-card {
+        padding: 1rem;
+      }
+      
+      .digimon-image {
+        width: 90px;
+        height: 90px;
+      }
+      
+      .pixel-card {
+        box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+      }
+      
+      .pixel-info-card {
+        padding: 0.5rem;
+      }
+    }
+  
+    /* 模态框样式 */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    
+    .modal-content {
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      max-width: 95%;
+      width: 1200px;
+      max-height: 90vh;
+      overflow-y: auto; /* 允许内容滚动 */
+      position: relative;
+      border: 4px solid #000;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 1.5rem;
+      font-size: 1.75rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #4a5568;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+    }
+    
+    .modal-close:hover {
+      color: #e53e3e;
+    }
+    
+    /* 模态框左右对齐 */
+    .modal-content .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+    
+    @media (max-width: 768px) {
+      .modal-content .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* 技能网格中的文本居中 */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: minmax(100px, 1fr) minmax(200px, 4fr) minmax(300px, 4fr);
+      gap: 1rem;
+    }
+    
+    .skill-grid > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    /* 技能文本样式 */
+    .skill-name {
+      padding: 0.75rem;
+      border-radius: 0.25rem;
+      font-family: 'Ark Pixel', sans-serif !important;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(219, 234, 254, 0.8) !important;
+      word-break: break-word;
+    }
+    
+    .skill-description {
+      padding: 0.75rem 1rem;
+      border-radius: 0.25rem;
+      font-family: 'Ark Pixel', sans-serif !important;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(237, 233, 254, 0.8) !important;
+      word-break: break-word;
+    }
+    
+    .skill-effect {
+      padding: 0.75rem 1rem;
+      border-radius: 0.25rem;
+      font-family: 'Ark Pixel', sans-serif !important;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(254, 226, 226, 0.8) !important;
+      word-break: break-word;
+    }
+    
+    @media (max-width: 992px) {
+      .skill-grid {
+        grid-template-columns: minmax(100px, 0.8fr) minmax(180px, 3fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .skill-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .modal-content {
+        width: 95%;
+        padding: 1rem;
+      }
+      
+      .skill-name, .skill-description, .skill-effect {
+        min-height: 60px;
+      }
+      
+      .evolution-path-container {
+        padding: 0.75rem;
+      }
+      
+      .evolution-stages {
+        gap: 2rem;
+        padding: 0.5rem 0;
+      }
+    }
+  
+    /* 类型筛选按钮 */
+    .type-filter {
+      color: #4b5563;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+    
+    .type-filter:hover {
+      background-color: #d1d5db;
+    }
+    
+    .type-filter.active {
+      background-color: #3b82f6 !important;
+      color: white;
+      border-color: #1d4ed8;
+    }
+  
+    /* 信息字段容器样式 */
+    .info-field {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #3b82f6;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease;
+      background-color: rgba(239, 246, 255, 0.6) !important;
+      text-align: center;
+    }
+    
+    .info-field:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .info-field h5 {
+      color: #1e40af;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    
+    .info-field p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    /* 进化路线样式 */
+    .evolution-path-container {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* 分支类型标签样式 */
+    .branch-type-tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-right: 10px;
+      text-align: center;
+    }
+    
+    .branch-type-ba {
+      background-color: rgba(167, 243, 208, 0.3);
+      color: #059669;
+      border: 1px solid #059669;
+    }
+    
+    .branch-type-at {
+      background-color: rgba(253, 186, 116, 0.3);
+      color: #fa911a;
+      border: 1px solid #fa911a;
+    }
+    
+    .branch-type-sp {
+      background-color: rgba(216, 180, 254, 0.3);
+      color: #7e22ce;
+      border: 1px solid #7e22ce;
+    }
+    
+    .branch-type-ex {
+      background-color: rgba(253, 224, 71, 0.3);
+      color: #a16207;
+      border: 1px solid #a16207;
+    }
+    
+    .branch-type-xai {
+      background-color: rgba(252, 165, 165, 0.3);
+      color: #e90505;
+      border: 1px solid #e90505;
+    }
+    
+    .branch-info-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .branch-label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    
+    /* 使用新的grid布局 */
+    .evolution-stages {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(140px, 1fr));
+      gap: 3.5rem;
+      padding: 1rem 0;
+      overflow-x: auto;
+      overflow-y: visible !important; /* 强制确保垂直方向溢出内容可见 */
+      scrollbar-width: thin;
+      scrollbar-color: #93c5fd #e0e7ff;
+      position: relative; /* 确保定位上下文正确 */
+    }
+    
+    .evolution-stages::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .evolution-stages::-webkit-scrollbar-track {
+      background: #e0e7ff;
+      border-radius: 3px;
+    }
+    
+    .evolution-stages::-webkit-scrollbar-thumb {
+      background-color: #93c5fd;
+      border-radius: 3px;
+    }
+    
+    .evolution-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      position: relative;
+      min-width: 140px;
+      overflow: visible !important;
+    }
+    
+    .evolution-stage img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border: 3px solid #93c5fd;
+      border-radius: 0.5rem;
+      background-color: white;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .evolution-stage img:hover {
+      transform: scale(1.1);
+    }
+    
+    .evolution-name {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .evolution-name p {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      margin: 0 !important;
+    }
+    
+    .evolution-stage p {
+      margin: 0.5rem 0;
+      text-align: center;
+      max-width: 140px;
+    }
+    
+    .evolution-stage p.font-medium {
+      font-weight: 600;
+      color: #1e40af;
+      font-size: 1rem;
+      overflow: visible;
+      white-space: normal;
+      word-break: break-word;
+    }
+    
+    .evolution-stage p.text-xs {
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      width: 100%;
+      min-height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.4;
+    }
+    
+    /* 进化条件容器样式 */
+    .evolution-fitness {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60px;
+    }
+    
+    /* 移除原来的CSS悬浮提示相关样式 */
+    .evolution-requirements-hover {
+      display: none; /* 隐藏原来的悬浮提示 */
+    }
+    
+    /* 新的动态创建的悬浮提示样式 */
+    .dynamic-tooltip {
+      position: fixed;
+      z-index: 10000;
+      background-color: transparent;
+      border-radius: 4px;
+      padding: 8px 12px;
+      box-shadow: none;
+      width: 220px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+    
+    .dynamic-tooltip p {
+      background-color: transparent;
+      color: #111827;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.5;
+      width: 100%;
+      display: block;
+      text-align: center;
+      font-size: 14px;
+    }
+    
+    /* 新增：进化路线布局管理 */
+    .evolution-paths-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      overflow: visible !important; /* 强制确保溢出内容可见 */
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 1200px) {
+      .evolution-stages {
+        grid-template-columns: repeat(6, minmax(120px, 1fr));
+        gap: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .evolution-stages {
+        grid-template-columns: repeat(6, minmax(100px, 1fr));
+        gap: 2rem;
+      }
+      
+      .evolution-stage img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .evolution-stages {
+        grid-template-columns: repeat(6, minmax(90px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .evolution-stage {
+        min-width: 90px;
+      }
+      
+      .evolution-stage img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .evolution-stages {
+        grid-template-columns: repeat(3, minmax(90px, 1fr));
+        gap: 1.5rem;
+        overflow-x: scroll;
+        padding-bottom: 20px; /* 添加底部填充以便更好地滚动 */
+        -webkit-overflow-scrolling: touch; /* 添加iOS滚动惯性 */
+      }
+      
+      .evolution-stage img {
+        width: 80px;
+        height: 80px;
+      }
+      
+      /* 添加提示滚动的视觉指示 */
+      .evolution-paths-container::after {
+        content: "→ 左右滑动查看更多";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        padding: 5px;
+        background-color: rgba(59, 130, 246, 0.1);
+        color: #2563eb;
+      }
+    }
+  </style>
+  <style>
+    /* 新增: 交叉连接线样式 */
+    .cross-branch-line {
+      position: absolute;
+      background-color: #3b82f6; /* 默认颜色，将由JavaScript根据type动态设置 */
+      z-index: 5;
+      border-radius: 2px;
+      height: 3px;
+    }
+    
+    /* L型连接的垂直部分 */
+    .cross-branch-line-vertical {
+      position: absolute;
+      background-color: #3b82f6; /* 默认颜色，将由JavaScript根据type动态设置 */
+      z-index: 5;
+      border-radius: 2px;
+      width: 3px;
+    }
+    
+    /* 确保图片显示在连线上方 */
+    .evolution-stage {
+      position: relative;
+      z-index: 10;
+    }
+    
+    .evolution-stage img {
+      position: relative;
+      z-index: 15;
+    }
+    
+    /* 隐藏原有箭头 */
+    .evolution-arrow {
+      display: none !important;
+    }
+    
+    /* 确保容器不裁剪溢出内容 */
+    .evolution-paths-container,
+    .evolution-paths-container .relative,
+    .evolution-stages {
+      overflow: visible !important;
+      position: relative;
+    }
+    
+    /* 加粗连线，提高可见性 */
+    .cross-branch-line {
+      height: 4px !important;
+      /* 移除硬编码颜色，将由JavaScript根据type动态设置 */
+    }
+    
+    .cross-branch-line-vertical {
+      width: 4px !important;
+      /* 移除硬编码颜色，将由JavaScript根据type动态设置 */
+    }
+    
+    /* 添加CSS过渡效果 */
+    .hover-container {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    
+    .hover-image {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-image.fade-out {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    
+    .hover-image.fade-in {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    .pixel-card {
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+      position: relative;
+      background: rgba(255,255,255,0.9);
+    }
+
+    /* 像素文字效果 */
+    .pixel-text-outline {
+      text-shadow: 
+        2px 0 0 #000,
+        -2px 0 0 #000,
+        0 2px 0 #000,
+        0 -2px 0 #000,
+        1px 1px 0 #000;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .card-text-outline {
+      text-shadow: 
+        2px 0 0 #4285f4,
+        -2px 0 0 #4285f4,
+        0 2px 0 #4285f4,
+        0 -2px 0 #4285f4,
+        1px 1px 0 #4285f4;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    /* 信息卡片 */
+    .pixel-info-card {
+      border: 2px solid #000;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pixel-info-title {
+      font-weight: bold;
+      color: #1a365d;
+      font-size: 0.95rem;
+      margin: 0;
+      border-bottom: none;
+      padding: 0;
+      line-height: 1.2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .pixel-info-content {
+      font-size: 0.9rem;
+      color: #2d3748;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .pixel-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    /* 图片悬停效果 */
+    .pixel-image-hover {
+      transition: all 0.3s ease;
+      filter: none;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 640px) {
+      .pixel-card {
+        box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+      }
+      
+      .pixel-info-card {
+        padding: 0.5rem;
+      }
+    }
+    
+    /* 基础布局类 */
+    .h-full {
+      height: 100%;
+    }
+
+    /* 网格内容对齐 */
+    .content-start {
+      align-content: start;
+    }
+    
+    /* Digimon details modal font override */
+    #details-modal .modal-content p,
+    #details-modal .modal-content div,
+    #details-modal .modal-content span,
+    #details-modal .modal-content h5 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+    }
+    #details-modal .pixel-text-outline {
+        font-family: 'Ark Pixel', sans-serif !important;
+    }
+
+    /* Evolution path modal font override */
+    #evolution-modal .modal-content p,
+    #evolution-modal .modal-content div,
+    #evolution-modal .modal-content span,
+    #evolution-modal .modal-content .font-medium,
+    #evolution-modal .modal-content button {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+    }
+    #evolution-modal .modal-content h2,
+    #evolution-modal .modal-content .branch-type-tag {
+        font-family: 'Ark Pixel', sans-serif !important;
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 flex-grow">
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center mb-6 text-blue-700">数码兽图鉴</h2>
+      <div class="mb-6 flex justify-center">
+        <div class="relative w-full md:w-1/2">
+          <input type="text" id="evolution-search" placeholder="搜索数码兽进化路线..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+      </div>
+      
+      <!-- 数码兽卡片网格 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-2" id="digimon-grid">
+        <!-- 数码兽卡片将通过JavaScript动态加载 -->
+      </div>
+      
+      <!-- 分页控制 -->
+      <div class="flex justify-center items-center mt-8 gap-2" id="pagination-controls">
+        <!-- Pagination buttons will be inserted by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 替换原有的footer部分 -->
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p>© 2025 数码兽传说ORPG地图</p>
+        <p>作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 设置当前日期
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+    });
+  </script>
+
+  <script src="js/data.js" defer></script>
+
+  <script>
+    // digimon_legend_website/frontend/digimon.html
+
+    // This script now depends on data.js being loaded first.
+    // It will initialize once the 'dataLoaded' event is fired from data.js.
+    document.addEventListener('dataLoaded', () => {
+        initializeDigimonPage();
+    });
+
+    function setSmartImageSource(imgElement, originalSrc) {
+        if (!originalSrc || originalSrc.startsWith('data:') || !imgElement) {
+            if (imgElement && !imgElement.src) {
+                 imgElement.src = originalSrc || ''; 
+            }
+            return;
+        }
+
+        imgElement.src = originalSrc;
+
+        try {
+            const url = new URL(originalSrc, window.location.origin);
+            if (url.origin !== window.location.origin) return;
+
+            const webpSrc = url.pathname.replace(/\.(jpe?g|png|gif)$/i, '.webp');
+            
+            if (webpSrc === url.pathname) return;
+
+            fetch(webpSrc, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        if (imgElement.src !== webpSrc) {
+                             imgElement.src = webpSrc;
+                        }
+                    }
+                })
+                .catch(() => { /* Fallback to original src is implicit */ });
+        } catch (e) {
+            console.warn('Could not process image src for WebP conversion:', originalSrc, e);
+        }
+    }
+
+    function transformEvolutionData(evolutionDetails) {
+        if (!evolutionDetails || (!evolutionDetails.stages && !evolutionDetails.evolvesTo)) {
+            return null;
+        }
+
+        const paths = [];
+        const stagesToProcess = evolutionDetails.evolvesTo || evolutionDetails.stages;
+        const isNewFormat = !!evolutionDetails.evolvesTo;
+
+        if (isNewFormat) {
+            // New format: 'evolvesTo' is a flat array for a single path.
+            // We treat it as the first and only path (path_index: 0).
+            const singlePathStages = stagesToProcess.map(stage => ({
+                name: stage.name,
+                image: stage.image,
+                // New format saves 'conditions' as an array of strings. Convert it back to a single string for display.
+                requirement: (stage.conditions && stage.conditions.join) ? stage.conditions.join('<br>') : '',
+                hidden: false, // Assume stages in 'evolvesTo' are always visible.
+                digimonId: stage.digimonId || null
+            }));
+            paths.push({ stages: singlePathStages });
+
+        } else {
+            // Old format: 'stages' is an array of objects with path_index.
+            const stagesByPath = stagesToProcess.reduce((acc, stage) => {
+            const pathIndex = stage.path_index;
+            if (!acc[pathIndex]) {
+                acc[pathIndex] = [];
+            }
+            // Use stage_index for initial sorting within a path
+            acc[pathIndex].push({ ...stage, sortKey: stage.stage_index });
+            return acc;
+        }, {});
+
+        Object.keys(stagesByPath).sort((a,b) => Number(a) - Number(b)).forEach(pathIndex => {
+            const sortedStages = stagesByPath[pathIndex]
+                .sort((a, b) => a.sortKey - b.sortKey)
+                .map(stage => ({
+                    name: stage.name,
+                    image: stage.image,
+                    requirement: stage.requirement,
+                    hidden: stage.is_hidden,
+                    digimonId: stage.digimon_id_link // Ensure this matches the JSON key
+                }));
+            paths.push({ stages: sortedStages });
+        });
+        }
+
+
+        return {
+            title: evolutionDetails.main?.title || '进化路线',
+            type: evolutionDetails.main,
+            acquisition: evolutionDetails.acquisition || [], // Pass top-level acquisition data
+            paths: paths,
+            connections: evolutionDetails.connections?.map(c => ({
+                type: c.type,
+                from: { pathIndex: c.from_path, stageIndex: c.from_stage },
+                to: { pathIndex: c.to_path, stageIndex: c.to_stage },
+                lineType: c.line_type,
+                pathIndex: c.line_path_index,
+                startIndex: c.line_start_index
+            })) || []
+        };
+    }
+
+    function initializeDigimonPage() {
+        console.log('dataLoaded event received, initializing digimon page...');
+        const allDigimon = window.getDigimonData() || [];
+        const allEvolutions = window.getEvolutionData() || {};
+        const digimonGrid = document.getElementById('digimon-grid');
+        const paginationControls = document.getElementById('pagination-controls');
+        const searchInput = document.getElementById('evolution-search');
+
+        if (!digimonGrid) {
+            console.error('CRITICAL: Could not find digimon-grid element.');
+            return;
+        }
+
+        const digimonDetailsMap = allDigimon.reduce((acc, digimon) => {
+            acc[digimon.id] = digimon;
+            return acc;
+        }, {});
+        
+        let displayedEvolutionKeys = Object.keys(allEvolutions);
+        
+        let currentPage = 1;
+        const itemsPerPage = 9;
+
+        function renderPage(page) {
+            currentPage = page;
+            digimonGrid.innerHTML = '';
+            
+            if (displayedEvolutionKeys.length === 0) {
+                digimonGrid.innerHTML = '<p class="text-gray-500 text-center col-span-full">没有找到匹配的数码兽。</p>';
+                updatePagination();
+                return;
+            }
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageKeys = displayedEvolutionKeys.slice(startIndex, endIndex);
+
+            pageKeys.forEach(key => {
+                const evolutionDetails = allEvolutions[key];
+                if (!evolutionDetails || !evolutionDetails.card) {
+                    console.error(`Skipping evolution key "${key}" due to missing card data.`);
+                    return;
+                }
+                const cardData = evolutionDetails.card;
+                const transformedEvolutionPath = transformEvolutionData(evolutionDetails);
+                if (cardData && transformedEvolutionPath) {
+                    renderEvolutionCard(cardData, transformedEvolutionPath, digimonDetailsMap, digimonGrid);
+                }
+            });
+
+            updatePagination();
+            // Scroll to the top of the grid smoothly
+            const mainContent = document.querySelector('main section');
+            if (mainContent) {
+                mainContent.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function updatePagination() {
+            if (!paginationControls) return;
+            
+            paginationControls.innerHTML = '';
+            const totalPages = Math.ceil(displayedEvolutionKeys.length / itemsPerPage);
+            paginationControls.style.display = totalPages > 1 ? 'flex' : 'none';
+
+            if (totalPages <= 1) return;
+
+            const createButton = (text, page, isDisabled = false, isActive = false) => {
+                const button = document.createElement('button');
+                button.innerHTML = text;
+                button.disabled = isDisabled;
+                button.dataset.page = page;
+                button.className = `px-3 py-1 rounded-lg pixel-border transition-colors duration-200`;
+                
+                if (isActive) {
+                    button.classList.add('bg-blue-500', 'text-white', 'border-blue-700');
+                } else {
+                    button.classList.add('bg-white', 'hover:bg-blue-100', 'disabled:opacity-50', 'disabled:cursor-not-allowed');
+                }
+                if(isDisabled) {
+                    button.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+                return button;
+            };
+
+            const addEllipsis = () => {
+                const span = document.createElement('span');
+                span.textContent = '...';
+                span.className = 'px-2 py-1 text-gray-500';
+                paginationControls.appendChild(span);
+            };
+
+            // Prev button
+            paginationControls.appendChild(createButton('&lt;', currentPage - 1, currentPage === 1));
+
+            // Page numbers
+            if (totalPages <= 7) {
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationControls.appendChild(createButton(i, i, false, i === currentPage));
+                }
+            } else {
+                paginationControls.appendChild(createButton(1, 1, false, currentPage === 1));
+                if (currentPage > 3) addEllipsis();
+                
+                let start = Math.max(2, currentPage - 1);
+                let end = Math.min(totalPages - 1, currentPage + 1);
+
+                if (currentPage <= 3) {
+                    start = 2;
+                    end = 4;
+                }
+                if (currentPage >= totalPages - 2) {
+                    start = totalPages - 3;
+                    end = totalPages - 1;
+                }
+
+                for (let i = start; i <= end; i++) {
+                    paginationControls.appendChild(createButton(i, i, false, i === currentPage));
+                }
+
+                if (currentPage < totalPages - 2) addEllipsis();
+                paginationControls.appendChild(createButton(totalPages, totalPages, false, currentPage === totalPages));
+            }
+
+            // Next button
+            paginationControls.appendChild(createButton('&gt;', currentPage + 1, currentPage === totalPages));
+        }
+
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                displayedEvolutionKeys = Object.keys(allEvolutions);
+            } else {
+                displayedEvolutionKeys = Object.keys(allEvolutions).filter(key => {
+                    const card = allEvolutions[key]?.card;
+                    if (card && card.name) {
+                        const evolutionNames = (card.evolution_names || "").toLowerCase().split(',');
+                        return card.name.toLowerCase().includes(searchTerm) || evolutionNames.some(name => name.includes(searchTerm));
+                    }
+                    return false;
+                });
+            }
+            renderPage(1);
+        }
+
+        function setupPaginationListeners() {
+             if (!paginationControls) return;
+             paginationControls.removeEventListener('click', handlePaginationClick);
+             paginationControls.addEventListener('click', handlePaginationClick);
+        }
+
+        function handlePaginationClick(e) {
+            const target = e.target.closest('button');
+            if (!target || target.disabled) return;
+            
+            const page = parseInt(target.dataset.page, 10);
+            if (page && page !== currentPage) {
+                renderPage(page);
+            }
+        }
+        
+        // Setup search listener
+        if (searchInput) {
+            searchInput.addEventListener('input', performSearch);
+        }
+
+        // Initial Render
+        renderPage(1);
+        setupPaginationListeners();
+    }
+    
+    // Renders a single evolution line card and appends it to the grid
+    function renderEvolutionCard(cardData, evolutionPath, detailsData, gridContainer) {
+      console.log(`开始为 ${cardData.name} 创建卡片...`);
+      
+      // Create evolution card
+      const evolutionCard = document.createElement('div');
+      evolutionCard.className = 'digimon-card';
+      evolutionCard.style = 'max-width: 220px; padding: 1rem;';
+
+      const evolutionImages = (cardData.evolution_images || "").split(',');
+      const evolutionNames = (cardData.evolution_names || "").split(',');
+      
+      evolutionCard.innerHTML = `
+            <div class="digimon-header" style="justify-content: center; flex-direction: column; align-items: center; margin: 0;">
+              <div class="hover-container" style="position: relative; width: 200px; height: 220px; overflow: hidden; margin-top: -10px;">
+                <img src="${cardData.image}" alt="${cardData.name}" 
+                    class="digimon-image hover-image" 
+                    data-images='${JSON.stringify(evolutionImages)}'
+                    data-names='${JSON.stringify(evolutionNames)}'
+                    data-current-index="0"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 100 100\\'%3E%3Crect width=\\'100\\' height=\\'100\\' fill=\\'%23e2e8f0\\'/%3E%3C/svg%3E'; this.onerror=null;" 
+                    style="width: 200px; height: 240px; margin: 0; padding: 0; display: block; object-fit: contain;">
+              </div>
+              <h3 class="text-lg font-bold text-center digimon-name-display card-text-outline" style="margin: 0 0 -10px; font-size: 1.5em; transform: translateY(-1px); letter-spacing: -0.5px; transition: all 0.3s ease;">${cardData.name}</h3>
+            </div>
+      `;
+      
+      gridContainer.appendChild(evolutionCard);
+      
+      // NEW: Apply smart image loading to the initial card image
+      const hoverImage = evolutionCard.querySelector('.hover-image');
+      setSmartImageSource(hoverImage, cardData.image);
+
+      // Add click event to show modal, passing the correct data
+      evolutionCard.addEventListener('click', () => {
+        if (evolutionPath) {
+          showEvolutionModal(evolutionPath, detailsData);
+        } else {
+          console.error(`找不到 ${cardData.name} 的进化路径数据`);
+        }
+      });
+      
+      // Add hover event to cycle through images
+      const nameDisplay = evolutionCard.querySelector('.digimon-name-display');
+      
+      if (hoverImage && nameDisplay) {
+        let isHovering = false;
+        let intervalId = null;
+        const images = JSON.parse(hoverImage.dataset.images || '[]');
+        const names = JSON.parse(hoverImage.dataset.names || '[]');
+        
+        // Preload all images
+        images.forEach(src => { new Image().src = src; });
+        
+        // Image and name switching function
+        const switchImage = async (img) => {
+          if (!isHovering || images.length <= 1) return;
+          
+          img.classList.add('fade-out');
+          await new Promise(resolve => setTimeout(resolve, 500));
+          
+          // After waiting, check again if we are still hovering.
+          // This prevents the image from changing if the mouse left during the fade-out.
+          if (!isHovering) {
+            img.classList.remove('fade-out'); // Clean up class just in case
+            return;
+          }
+          
+          let currentIndex = parseInt(img.dataset.currentIndex || '0');
+          currentIndex = (currentIndex + 1) % images.length;
+          setSmartImageSource(img, images[currentIndex]); // With smart loading
+          img.dataset.currentIndex = currentIndex;
+          
+          nameDisplay.textContent = names[currentIndex];
+          nameDisplay.style.fontSize = names[currentIndex].length > 8 ? '0.85em' : '1.5em';
+          
+          img.classList.remove('fade-out');
+          img.classList.add('fade-in');
+          setTimeout(() => img.classList.remove('fade-in'), 500);
+        };
+        
+        // Mouse hover starts the animation
+        hoverImage.addEventListener('mouseenter', () => {
+          isHovering = true;
+          hoverImage.parentElement.style.transform = 'scale(1.05)';
+          switchImage(hoverImage);
+          intervalId = setInterval(() => {
+            if (isHovering) {
+              switchImage(hoverImage);
+            }
+          }, 2000);
+        });
+        
+        // Mouse leave stops animation and resets
+        hoverImage.addEventListener('mouseleave', () => {
+          isHovering = false;
+          clearInterval(intervalId);
+          hoverImage.parentElement.style.transform = 'scale(1)';
+          
+          // Force reset to the initial state immediately without fade
+          hoverImage.classList.remove('fade-out', 'fade-in');
+          setSmartImageSource(hoverImage, images[0]); // With smart loading
+          hoverImage.dataset.currentIndex = '0';
+          nameDisplay.textContent = names[0];
+          nameDisplay.style.fontSize = '1.5em';
+        });
+      }
+    }
+    
+    // Modal implementation for evolution paths
+    function showEvolutionModal(evolutionData, detailsData) {
+      if (!evolutionData) {
+        console.error("没有收到进化路径数据");
+        return;
+      }
+      
+      // 声明为全局变量，以便其他函数可以访问
+      window.currentEvolutionData = evolutionData;
+      
+      // Create modal overlay
+      const modalOverlay = document.createElement('div');
+      modalOverlay.className = 'modal-overlay';
+      modalOverlay.id = 'evolution-modal';
+      
+      // Create modal content
+      const modalContent = document.createElement('div');
+      modalContent.className = 'modal-content';
+      
+      // Close button
+      const closeButton = document.createElement('button');
+      closeButton.className = 'modal-close';
+      closeButton.innerHTML = '&times;';
+      
+      // Modal title
+      const modalTitle = document.createElement('h2');
+      modalTitle.className = 'text-2xl font-bold mb-4 text-center';
+      modalTitle.textContent = evolutionData.title || '进化路线';
+      
+      // 查找所有路径中最大的阶段数
+      let maxStages = 0;
+      evolutionData.paths.forEach(path => {
+        maxStages = Math.max(maxStages, path.stages.length);
+      });
+      
+      console.log("检测到最大阶段数:", maxStages);
+      
+      // 获取类型颜色信息
+      const typeColors = {
+        'BA': '#10b981', // 更鲜艳的绿色
+        'AT': '#f97316', // 更鲜艳的橙色
+        'SP': '#8b5cf6', // 更鲜艳的紫色
+        'EX': '#eab308', // 更鲜艳的黄色
+        'X-AI': '#dc2626', // 更鲜艳的红色
+        'default': '#3b82f6' // 默认蓝色
+      };
+      
+      // Branch Acquisition Info
+      const acquisitionContainer = document.createElement('div');
+      acquisitionContainer.className = 'text-center mb-6';
+
+      const acquisitionData = evolutionData.acquisition; // Use the new top-level acquisition data
+
+      if (Array.isArray(acquisitionData) && acquisitionData.length > 0) {
+        const infoContainer = document.createElement('div');
+        infoContainer.className = 'flex flex-wrap justify-center items-center gap-4';
+        
+        acquisitionData.forEach(group => {
+            const color = typeColors[group.type] || typeColors.default;
+            const button = document.createElement('button');
+            button.className = 'inline-block font-bold py-2 px-4 rounded-full cursor-pointer hover:opacity-80 text-white shadow-md';
+            button.style.backgroundColor = color;
+            button.textContent = group.name;
+
+            // Pass programId and itemIds separately to handle null programId case
+            const itemData = {
+                programId: group.programId,
+                itemIds: group.itemIds || []
+            };
+            
+            button.dataset.itemData = JSON.stringify(itemData);
+            
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const data = JSON.parse(e.currentTarget.dataset.itemData);
+                showCombinedItemModal(data);
+            });
+            infoContainer.appendChild(button);
+        });
+        
+        acquisitionContainer.appendChild(infoContainer);
+
+      } else {
+        acquisitionContainer.style.display = 'none';
+      }
+      
+      // Evolution paths container
+      const evolutionPathsContainer = document.createElement('div');
+      evolutionPathsContainer.className = 'evolution-paths-container';
+      
+      // 构建进化路径HTML
+      let evolutionPathsHTML = '<div class="relative">';
+      
+      // 遍历所有进化路径
+      evolutionData.paths.forEach((path, pathIndex) => {
+        // 确定当前路径的类型
+        let pathType = '';
+        if (evolutionData.type && evolutionData.type.branch_types) {
+          pathType = evolutionData.type.branch_types[pathIndex] || '';
+        }
+        
+        // 获取当前路径的边框颜色
+        const borderColor = pathType ? typeColors[pathType] || typeColors.default : typeColors.default;
+        
+        evolutionPathsHTML += `<div class="evolution-stages${pathIndex > 0 ? ' mt-12 pt-4' : ''}" style="grid-template-columns: repeat(${maxStages}, minmax(140px, 1fr));">`;
+        
+        // 添加每个阶段
+        path.stages.forEach((stage, stageIndex) => {
+          // 如果超过最大阶段数，不显示
+          if (stage.hidden) {
+            evolutionPathsHTML += `<div class="evolution-stage" style="visibility: hidden;"></div>`;
+          } else {
+            // 基尔兽（第一路径的第一阶段）保持原样，其他阶段根据路径类型设置边框颜色
+            const imgStyle = (pathIndex === 0 && stageIndex === 0) ? 
+              `style="border: 3px solid #3b82f6;border-radius: 0.5rem; background-color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"` : 
+              `style="border: 3px solid ${borderColor};border-radius: 0.5rem; background-color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"`;
+            
+            // 根据路径类型设置名称文本颜色，但基尔兽保持原色
+            const nameColor = (pathIndex === 0 && stageIndex === 0) ? 
+              '#1e40af' : // 基尔兽使用原始蓝色
+              borderColor; // 其他阶段使用对应type的颜色
+            
+            let acquisitionHTML = '';
+            if (stage.acquisition && Array.isArray(stage.acquisition) && stage.acquisition.length > 0) {
+              acquisitionHTML += '<div class="mt-2 flex flex-col items-center gap-1">';
+              stage.acquisition.forEach(acq => {
+                  const programIds = acq.programs || [];
+                  const itemIds = acq.items || [];
+                  const allIds = [...programIds, ...itemIds];
+                  if (acq.name) {
+                      acquisitionHTML += `
+                          <button 
+                              class="text-xs font-bold py-1 px-2 rounded-full cursor-pointer hover:opacity-80 text-white shadow" 
+                              style="background-color: ${nameColor};"
+                              data-item-ids='${JSON.stringify(allIds)}'
+                          >
+                              ${acq.name}
+                          </button>`;
+                  }
+              });
+              acquisitionHTML += '</div>';
+            }
+
+            evolutionPathsHTML += `
+              <div class="evolution-stage" data-req="${stage.requirement || ''}">
+                <img src="${stage.image}" alt="${stage.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 100 100\\'%3E%3Crect width=\\'100\\' height=\\'100\\' fill=\\'%23e2e8f0\\'/%3E%3C/svg%3E'; this.onerror=null;"${stage.digimonId ? ` data-digimon-id="${stage.digimonId}"` : ''} ${imgStyle}>
+                <div class="evolution-name">
+                  <p class="font-medium" style="color: ${nameColor};">${stage.name}</p>
+                </div>
+                ${acquisitionHTML}
+              </div>
+            `;
+          }
+        });
+        
+        // 如果当前路径的阶段数小于最大阶段数，添加空的占位元素
+        const currentStageCount = path.stages.length;
+        if (currentStageCount < maxStages) {
+          const placeholdersNeeded = maxStages - currentStageCount;
+          for (let i = 0; i < placeholdersNeeded; i++) {
+            evolutionPathsHTML += `<div class="evolution-stage" style="visibility: hidden;"></div>`;
+          }
+        }
+        
+        evolutionPathsHTML += '</div>';
+      });
+      
+      evolutionPathsHTML += '</div>';
+      evolutionPathsContainer.innerHTML = evolutionPathsHTML;
+      
+      // NEW: Apply smart image loading to all evolution images
+      evolutionPathsContainer.querySelectorAll('img').forEach(img => {
+        setSmartImageSource(img, img.src);
+      });
+      
+      // 添加悬浮事件监听
+      evolutionPathsContainer.querySelectorAll('.evolution-stage').forEach(stage => {
+        const req = stage.getAttribute('data-req');
+        if (req && req.trim() !== '') {
+          // 记录当前悬停的元素，用于滚动检查
+          let currentHoverElement = null;
+          
+          stage.addEventListener('mouseenter', () => {
+            currentHoverElement = stage;
+            const tooltip = createTooltip(req);
+            positionTooltip(tooltip, stage);
+          });
+          
+          stage.addEventListener('mouseleave', () => {
+            currentHoverElement = null;
+            removeAllTooltips();
+          });
+        }
+      });
+      
+      // 添加获取按钮的点击事件监听
+      evolutionPathsContainer.querySelectorAll('button[data-item-ids]').forEach(button => {
+          button.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const ids = JSON.parse(e.currentTarget.dataset.itemIds);
+              showCombinedItemModal(ids);
+          });
+      });
+
+      // 添加滚动事件监听器，确保滚动时移除所有提示
+      modalContent.addEventListener('scroll', () => {
+        removeAllTooltips();
+      });
+      
+      // 添加全局滚动和鼠标移动事件监听器，确保在任何情况下都能移除提示
+      const scrollHandler = () => removeAllTooltips();
+      const mouseMoveHandler = (e) => {
+        // 检查鼠标是否在任何evolution-stage元素上
+        const elementsUnderMouse = document.elementsFromPoint(e.clientX, e.clientY);
+        const isOverEvolutionStage = elementsUnderMouse.some(el => {
+          // 检查元素本身或其父元素是否是evolution-stage
+          if (el.classList && el.classList.contains('evolution-stage')) {
+            return true;
+          }
+          // 检查是否是evolution-stage内的图片
+          if (el.tagName === 'IMG' && el.closest('.evolution-stage')) {
+            return true;
+          }
+          return false;
+        });
+        
+        if (!isOverEvolutionStage) {
+          removeAllTooltips();
+        }
+      };
+      
+      window.addEventListener('scroll', scrollHandler);
+      window.addEventListener('mousemove', mouseMoveHandler);
+      
+      // 函数用于清理全局事件监听器
+      const cleanupEventListeners = () => {
+        window.removeEventListener('scroll', scrollHandler);
+        window.removeEventListener('mousemove', mouseMoveHandler);
+        removeAllTooltips();
+      };
+      
+      // Build the modal structure
+      modalContent.appendChild(closeButton);
+      modalContent.appendChild(modalTitle);
+      modalContent.appendChild(acquisitionContainer);
+      modalContent.appendChild(evolutionPathsContainer);
+      modalOverlay.appendChild(modalContent);
+      
+      // Close modal when clicking overlay
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          cleanupEventListeners();
+          document.body.removeChild(modalOverlay);
+        }
+      });
+      
+      // 关闭按钮也需要移除全局事件监听器
+      closeButton.addEventListener('click', () => {
+        cleanupEventListeners();
+        document.body.removeChild(modalOverlay);
+      });
+      
+      // Add modal to document
+      document.body.appendChild(modalOverlay);
+      
+      const closeEvolutionModal = () => {
+        // Safe removal of the modal and its listeners
+        const modal = document.getElementById('evolution-modal');
+        if (modal && modal.parentNode) {
+          cleanupEventListeners();
+          modal.parentNode.removeChild(modal);
+        }
+      };
+
+      // Attach close logic to the button and overlay
+      closeButton.addEventListener('click', closeEvolutionModal);
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          closeEvolutionModal();
+        }
+      });
+      
+      // 绘制所有连接线
+      setTimeout(() => {
+        const container = document.querySelector('.evolution-paths-container .relative');
+        
+        // 遍历所有连接并绘制它们
+        if (evolutionData.connections && container) {
+          let atLabelPosition = null;
+          
+          // Data-driven connection drawing
+          evolutionData.connections.forEach(connection => {
+            const pathType = (pathIndex) => {
+                if (!window.currentEvolutionData.type || !window.currentEvolutionData.type.branch_types) return null;
+                return window.currentEvolutionData.type.branch_types[pathIndex] || null;
+            };
+
+            if (connection.type === 'cross') {
+              // Draw cross-path connection
+              const fromPath = connection.from.pathIndex;
+              const fromStage = connection.from.stageIndex;
+              const toPath = connection.to.pathIndex;
+              const toStage = connection.to.stageIndex;
+              
+              if (fromStage >= maxStages || toStage >= maxStages) return;
+              
+              const sourceElement = document.querySelector(`.evolution-stages:nth-child(${fromPath + 1}) .evolution-stage:nth-child(${fromStage + 1}) img`);
+              const targetElement = document.querySelector(`.evolution-stages:nth-child(${toPath + 1}) .evolution-stage:nth-child(${toStage + 1}) img`);
+              
+              if (sourceElement && targetElement) {
+                // Determine color based on the TARGET path's type
+                const targetPathType = pathType(toPath);
+                // 根据目标路径索引计算z-index，toPath越小，zIndex越大，优先级越高
+                const zIndex = 10 - toPath;
+                drawCrossBranchLine(sourceElement, targetElement, container, targetPathType, zIndex);
+                console.log(`已绘制跨路径连接: 从(${fromPath},${fromStage})到(${toPath},${toStage}) 使用类型 ${targetPathType} 和 z-index ${zIndex}`);
+              } else {
+                console.error(`无法找到跨路径连接的元素: 从(${fromPath},${fromStage})到(${toPath},${toStage})`);
+              }
+            } else if (connection.type === 'line') {
+              // Draw intra-path connections
+              const pathIndex = connection.pathIndex;
+              if (typeof pathIndex !== 'number') {
+                console.warn("Skipping 'line' connection with invalid pathIndex:", connection);
+                return;
+              }
+              const stageElements = document.querySelectorAll(`.evolution-stages:nth-child(${pathIndex + 1}) .evolution-stage:not([style*="visibility: hidden"]) img`);
+              
+              if (stageElements.length > 1) {
+                for (let i = 0; i < stageElements.length - 1; i++) {
+                  const showLabel = (i === 0);
+                  const label = pathType(pathIndex);
+
+                  // 仅当为第一路径(pathIndex 0)的第一段线段时，才传递标签以供显示
+                  const labelToShow = (showLabel && pathIndex === 0) ? label : null;
+                  
+                  // 新增: 检测是否为多路径布局
+                  const isMultiPath = evolutionData.paths.length > 1;
+
+                  // Pass the label for coloring on ALL segments.
+                  drawStageLine(stageElements[i], stageElements[i+1], container, labelToShow, null, label, isMultiPath);
+                }
+              }
+            }
+          });
+        }
+        
+        // 添加数码兽详情功能, 将完整的详情map传递过去
+        // 延迟更长时间确保所有图片都已渲染完成
+        setTimeout(() => {
+          console.log('开始初始化数码兽详情功能...');
+          initDigimonDetails(detailsData);
+        }, 200);
+      }, 100); // 短暂延迟确保DOM已完全渲染
+    }
+    
+    // 绘制跨分支连接线
+    function drawCrossBranchLine(sourceElement, targetElement, container, type = null, zIndex = 5) {
+      // 检查元素是否存在
+      if (!sourceElement || !targetElement || !container) {
+        console.error("无法绘制分支连线：缺少元素", { sourceElement, targetElement, container });
+        return;
+      }
+
+      // 获取源元素和目标元素的位置
+      const sourceRect = sourceElement.getBoundingClientRect();
+      const targetRect = targetElement.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      
+      // 获取类型颜色
+      const typeColors = {
+        'BA': '#10b981', 'AT': '#f97316', 'SP': '#8b5cf6', 
+        'EX': '#eab308', 'X-AI': '#dc2626', 'default': '#3b82f6'
+      };
+      const lineColor = type ? typeColors[type] || typeColors.default : typeColors.default;
+      const strokeWidth = 3;
+
+      // 找到主路径的第一个连接线的中点作为垂直线的X坐标
+      const mainPathFirstStage = document.querySelector('.evolution-stages:first-child .evolution-stage:nth-child(1) img');
+      const mainPathSecondStage = document.querySelector('.evolution-stages:first-child .evolution-stage:nth-child(2) img');
+      
+      let verticalTrunkX = sourceRect.left - containerRect.left + sourceRect.width / 2; // Fallback
+      if (mainPathFirstStage && mainPathSecondStage) {
+        const firstRect = mainPathFirstStage.getBoundingClientRect();
+        const secondRect = mainPathSecondStage.getBoundingClientRect();
+        verticalTrunkX = (firstRect.right - containerRect.left + (secondRect.left - firstRect.right) / 2);
+      }
+      
+      const mainPathLineY = sourceRect.top - containerRect.top + sourceRect.height / 2;
+      const branchPathY = targetRect.top - containerRect.top + targetRect.height / 2;
+      const branchImageX = targetRect.left - containerRect.left;
+
+      // 创建SVG
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.style.position = 'absolute';
+      svg.style.left = '0';
+      svg.style.top = '0';
+      svg.style.width = '100%';
+      svg.style.height = '100%';
+      svg.style.pointerEvents = 'none';
+      svg.style.zIndex = zIndex;
+
+      // 绘制"L"型连接线
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", `M ${verticalTrunkX},${mainPathLineY} L ${verticalTrunkX},${branchPathY} L ${branchImageX},${branchPathY}`);
+      path.setAttribute("stroke", lineColor);
+      path.setAttribute("stroke-width", strokeWidth);
+      path.setAttribute("fill", "none");
+      svg.appendChild(path);
+
+      // 在水平部分上绘制标签
+      if (type) {
+        const labelPathId = `label-path-${Math.random().toString(36).substr(2, 9)}`;
+        const labelPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        // 定义一个从右到左或从左到右的路径，以确保文本方向正确
+        if (verticalTrunkX < branchImageX) {
+            labelPath.setAttribute("d", `M ${verticalTrunkX},${branchPathY} L ${branchImageX},${branchPathY}`);
+        } else {
+            labelPath.setAttribute("d", `M ${branchImageX},${branchPathY} L ${verticalTrunkX},${branchPathY}`);
+        }
+        labelPath.id = labelPathId;
+        svg.appendChild(labelPath); //添加到svg但不显示
+
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute('dy', '-5');
+        text.style.textAnchor = 'middle';
+
+        const textPath = document.createElementNS("http://www.w3.org/2000/svg", "textPath");
+        textPath.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", `#${labelPathId}`);
+        textPath.setAttribute("startOffset", "50%");
+        textPath.textContent = type;
+        textPath.style.fill = lineColor;
+        textPath.style.fontWeight = 'bold';
+        textPath.style.fontSize = '14px';
+        textPath.style.textShadow = '0 0 2px white, 0 0 2px white';
+        
+        text.appendChild(textPath);
+        svg.appendChild(text);
+      }
+
+      container.appendChild(svg);
+    }
+    
+    // 绘制相邻进化阶段间的L型连接线
+    function drawStageLine(sourceElement, targetElement, container, type = null, alignWithLabel = null, colorType = null, isMultiPath = false) {
+      // 检查元素是否存在
+      if (!sourceElement || !targetElement) {
+        console.error("无法绘制连线：源元素或目标元素不存在");
+        return;
+      }
+
+      // 获取源元素和目标元素的位置
+      const sourceRect = sourceElement.getBoundingClientRect();
+      const targetRect = targetElement.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      
+      // 获取类型颜色信息
+      const typeColors = {
+        'BA': '#10b981',
+        'AT': '#f97316',
+        'SP': '#8b5cf6',
+        'EX': '#eab308',
+        'X-AI': '#dc2626',
+        'default': '#3b82f6'
+      };
+      
+      const typeForColor = colorType || type;
+      const lineColor = typeForColor ? typeColors[typeForColor] || typeColors.default : typeColors.default;
+      const strokeWidth = 3;
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.style.position = 'absolute';
+      svg.style.left = '0';
+      svg.style.top = '0';
+      svg.style.width = '100%';
+      svg.style.height = '100%';
+      svg.style.pointerEvents = 'none';
+      svg.style.zIndex = '5';
+
+      const startX = sourceRect.left - containerRect.left + sourceRect.width;
+      const startY = sourceRect.top - containerRect.top + sourceRect.height / 2;
+      const endX = targetRect.left - containerRect.left;
+      const endY = targetRect.top - containerRect.top + targetRect.height / 2;
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      const middleX = startX + (endX - startX) / 2;
+      path.setAttribute("d", `M ${startX},${startY} L ${middleX},${startY} L ${middleX},${endY} L ${endX},${endY}`);
+      path.setAttribute("stroke", lineColor);
+      path.setAttribute("stroke-width", strokeWidth);
+      path.setAttribute("fill", "none");
+      svg.appendChild(path);
+      
+      // 新增: 如果提供了type (label)，则绘制它以实现分支标签
+      if (type) {
+        // 我们将标签放置在连接两个阶段的"staple"形线条的垂直部分的旁边，
+        // 以便与下面的跨分支标签在垂直方向上对齐。
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
+        if (isMultiPath) {
+          // 多路径布局：将标签放在垂直主干旁边
+          const labelX = middleX + 20; // 在垂直主干线右侧20px处
+          const labelY = startY;       // Y坐标与水平线一致
+          text.setAttribute("x", labelX);
+          text.setAttribute("y", labelY);
+          text.style.textAnchor = 'start'; // 文本前端对齐到(x,y)，即向左对齐
+        } else {
+          // 单路径布局：将标签放在线段中间
+          const labelX = startX + (endX - startX) / 2;
+          const labelY = startY;
+          text.setAttribute("x", labelX);
+          text.setAttribute("y", labelY);
+          text.style.textAnchor = 'middle'; // 居中对齐
+        }
+
+        text.setAttribute("dy", "-5"); // 在线上方5px
+        text.textContent = type;
+        text.style.fill = lineColor;
+        text.style.fontWeight = 'bold';
+        text.style.fontSize = '14px';
+        text.style.textShadow = '0 0 2px white, 0 0 3px white'; // 加粗阴影以提高可读性
+        
+        svg.appendChild(text);
+      }
+      
+      container.appendChild(svg);
+    }
+    
+    /**
+     * 数码兽详情功能
+     * 这部分使用类Java格式编写，独立管理数码兽详情功能
+     */
+    function initDigimonDetails(detailsData) {
+      /**
+       * 主入口函数 - 初始化数码兽详情功能
+       */
+      function main() {
+        // 移除之前的事件监听器，避免重复绑定
+        const existingImages = document.querySelectorAll('img[data-digimon-id]');
+        existingImages.forEach(img => {
+          // 移除旧的点击事件监听器
+          const newImg = img.cloneNode(true);
+          img.parentNode.replaceChild(newImg, img);
+        });
+
+        // 为有data-digimon-id属性的图片添加点击事件
+        const digimonImages = document.querySelectorAll('img[data-digimon-id]');
+        console.log(`找到 ${digimonImages.length} 个数码兽图片，准备绑定点击事件`);
+
+        digimonImages.forEach(img => {
+          const digimonId = img.getAttribute('data-digimon-id');
+          console.log(`处理数码兽图片: ${digimonId}`);
+
+          if (digimonId && detailsData) {
+            // 检查detailsData的结构
+            console.log(`detailsData类型: ${typeof detailsData}, 是否为数组: ${Array.isArray(detailsData)}`);
+
+            let digimonDetails = null;
+
+            // 如果detailsData是数组（新的API格式）
+            if (Array.isArray(detailsData)) {
+              digimonDetails = detailsData.find(d => d.id === digimonId);
+            }
+            // 如果detailsData是对象（旧的格式）
+            else if (typeof detailsData === 'object') {
+              digimonDetails = detailsData[digimonId];
+            }
+
+            if (digimonDetails) {
+              img.style.cursor = 'pointer';
+              img.title = `点击查看 ${digimonDetails.name} 的详细信息`;
+
+              img.addEventListener('click', function(e) {
+                e.stopPropagation(); // 阻止事件冒泡
+                console.log(`点击了数码兽: ${digimonId}`, digimonDetails);
+                showDigimonDetailsModal(digimonDetails);
+              });
+
+              console.log(`✅ 成功为 ${digimonId} 绑定点击事件`);
+            } else {
+              console.warn(`⚠️  数码兽 ${digimonId} 没有找到对应的详情数据`);
+              console.log('可用的数码兽ID:', Array.isArray(detailsData) ?
+                detailsData.map(d => d.id).slice(0, 10) :
+                Object.keys(detailsData).slice(0, 10));
+            }
+          } else {
+            console.warn(`⚠️  数码兽 ${digimonId} 或 detailsData 为空`);
+          }
+        });
+      }
+      
+      /**
+       * 显示数码兽详情模态框
+       * @param {Object} details - 数码兽详情数据
+       */
+      function showDigimonDetailsModal(details) {
+        // 创建模态框覆盖层
+        const detailsModalOverlay = document.createElement('div');
+        detailsModalOverlay.className = 'modal-overlay';
+        detailsModalOverlay.id = 'details-modal';
+        detailsModalOverlay.style.zIndex = '1100'; // 确保在进化路线模态框之上
+        
+        // 创建模态框内容
+        const detailsModalContent = document.createElement('div');
+        detailsModalContent.className = 'modal-content';
+        detailsModalContent.style.maxWidth = '800px';
+        
+        // 构建技能HTML
+        let skillsHTML = '';
+        if (details.skills && details.skills.length > 0) {
+          details.skills.forEach(skill => {
+            skillsHTML += `
+              <div class="mb-4 bg-gray-50 p-3 rounded-lg">
+                <div class="font-bold text-xl text-left border-b border-gray-300 pb-2 mb-2">${skill.name}</div>
+                <div class="flex flex-col gap-2">
+                  <div class="font-bold text-xxl text-black">技能效果</div>
+                  <div>${skill.description}</div>
+                </div>
+              </div>
+            `;
+          });
+        }
+        
+        // 构建模态框内容HTML
+        detailsModalContent.innerHTML = `
+        <div class="pixel-card bg-white rounded-lg p-4 mb-6 relative">
+          <!-- 关闭按钮 -->
+          <button class="modal-close">&times;</button>
+          <!-- 标题部分 -->
+        <div class="font-bold text-2xl text-center mb-4 text-white-800 pixel-text-outline">${details.name}</div>
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 h-full">
+          <!-- 图片区域 -->
+          <div class="flex justify-center items-center p-2 bg-blue-50 rounded-lg border-2 border-blue-200 h-full">
+            <img 
+              src="${details.image}" 
+              alt="${details.name}" 
+              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 100 100\\'%3E%3Crect width=\\'100\\' height=\\'100\\' fill=\\'%23e2e8f0\\'/%3E%3C/svg%3E'; this.onerror=null;"
+              class="w-full h-auto max-h-80 object-contain"
+            >
+          </div>
+
+          <!-- 信息区域 -->
+          <div class="grid grid-cols-1 gap-3 h-full content-start">
+            <!-- 整行项目 -->
+            <div class="pixel-info-card bg-blue-100 col-span-full">
+              <h5 class="pixel-info-title">定位:${details.positioning || '未知'}</h5>
+            </div>
+
+            <div class="pixel-info-card bg-purple-100 col-span-full">
+              <h5 class="pixel-info-title">预计获取时长:${details.time || '未知'}</h5>
+            </div>
+
+            <!-- 双列项目 -->
+            <div class="grid grid-cols-2 gap-3 col-span-full">
+              <div class="pixel-info-card bg-yellow-100 h-full">
+                <h5 class="pixel-info-title">类型:${details.Type || '未知'}</h5>
+              </div>
+
+              <div class="pixel-info-card bg-red-100 h-full">
+                <h5 class="pixel-info-title">属性:${details.armor || '未知'}</h5>
+              </div>
+
+              <div class="pixel-info-card bg-green-100 h-full">
+                <h5 class="pixel-info-title">契合:${details.fit || '未知'}</h5>
+              </div>
+
+              <div class="pixel-info-card bg-pink-100 h-full">
+                <h5 class="pixel-info-title">数码蛋:${details.egg || '未知'}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="skills-container">
+            ${skillsHTML}
+          </div>
+        `;
+        
+        // NEW: Apply smart loading to all images within this modal
+        detailsModalContent.querySelectorAll('img').forEach(img => {
+            setSmartImageSource(img, img.src);
+        });
+        
+        // 构建模态框结构
+        detailsModalOverlay.appendChild(detailsModalContent);
+        
+        // 重新添加关闭按钮的事件监听
+        const modalCloseBtn = detailsModalContent.querySelector('.modal-close');
+        if (modalCloseBtn) {
+          modalCloseBtn.addEventListener('click', () => {
+            document.body.removeChild(detailsModalOverlay);
+          });
+        }
+        
+        // 点击覆盖层关闭模态框
+        detailsModalOverlay.addEventListener('click', (e) => {
+          if (e.target === detailsModalOverlay) {
+            document.body.removeChild(detailsModalOverlay);
+          }
+        });
+        
+        // 将模态框添加到文档
+        document.body.appendChild(detailsModalOverlay);
+      }
+      
+      // 执行主函数
+      main();
+    }
+    
+    // 悬浮提示相关函数
+    function createTooltip(text) {
+      // 移除可能存在的任何旧提示
+      removeAllTooltips();
+      
+      // 创建新提示
+      const tooltip = document.createElement('div');
+      tooltip.className = 'dynamic-tooltip';
+      tooltip.innerHTML = `<p>${text}</p>`;
+      document.body.appendChild(tooltip);
+      return tooltip;
+    }
+    
+    function removeAllTooltips() {
+      const tooltips = document.querySelectorAll('.dynamic-tooltip');
+      tooltips.forEach(t => t.remove());
+    }
+    
+    function positionTooltip(tooltip, element) {
+      const rect = element.getBoundingClientRect();
+      tooltip.style.left = rect.left + rect.width/2 - tooltip.offsetWidth/2 + 'px';
+      tooltip.style.top = rect.top - tooltip.offsetHeight - 10 + 'px';
+    }
+
+    /**
+     * Creates and shows a modal with detailed item information.
+     * This function is copied from main.js to be used here.
+     * @param {string} itemId - The ID of the item to display.
+     */
+    function showItemDetailModal(itemId) {
+      const items = window.getItemsData ? window.getItemsData() : [];
+      const item = items.find(i => i.id === itemId);
+      if (!item) {
+        console.error(`Item with ID "${itemId}" not found.`);
+        return;
+      }
+
+      // Use a placeholder if the image URL is invalid or missing
+      const imageUrl = item.image ? item.image : `https://via.placeholder.com/150/808080/FFFFFF?text=${encodeURIComponent(item.category)}`;
+
+      // Create modal elements
+      const modalOverlay = document.createElement('div');
+      modalOverlay.className = 'fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50';
+      modalOverlay.style.zIndex = '1200'; // Higher z-index to show over evolution modal
+      
+      modalOverlay.addEventListener('click', (e) => {
+          if (e.target === modalOverlay) {
+              document.body.removeChild(modalOverlay);
+          }
+      });
+
+      const modalContent = `
+          <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl pixel-border-thick relative animate-fade-in-up">
+              <button class="absolute top-2 right-2 text-2xl font-bold text-gray-500 hover:text-gray-800">&times;</button>
+              <div class="p-6 md:p-8 flex flex-col md:flex-row gap-6">
+                  <div class="md:w-1/3 flex-shrink-0">
+                      <img src="${imageUrl}" alt="${item.name}" class="w-full h-auto rounded-md pixel-border" onerror="this.src='https://via.placeholder.com/150/e2e8f0/FFFFFF?text=Image+Error'; this.onerror=null;">
+                  </div>
+                  <div class="md:w-2/3">
+                      <h2 class="text-2xl md:text-3xl font-bold mb-4 text-blue-700">${item.name}</h2>
+                      <p class="text-gray-700 mb-4">${item.description || '暂无描述。'}</p>
+                      <div class="border-t pt-4">
+                          <h3 class="font-bold text-lg mb-2">获取方式:</h3>
+                          <p class="text-gray-600 whitespace-pre-line">${item.acquisition_method || '未知'}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      `;
+
+      modalOverlay.innerHTML = modalContent;
+      document.body.appendChild(modalOverlay);
+
+      // Add close functionality
+      modalOverlay.querySelector('button').addEventListener('click', () => {
+          document.body.removeChild(modalOverlay);
+      });
+    }
+
+    /**
+     * Creates and shows a modal with details for multiple items.
+     * @param {object} itemData - An object containing item IDs: { programId: string|null, itemIds: string[] }.
+     */
+    function showCombinedItemModal(itemData) {
+        const allItems = window.getItemsData ? window.getItemsData() : [];
+        if (!itemData || (!itemData.programId && (!itemData.itemIds || itemData.itemIds.length === 0))) {
+            return;
+        }
+
+        // Correctly find the program and evolution items
+        const programItem = itemData.programId ? allItems.find(item => item.id === itemData.programId) : null;
+        const evolutionItems = (itemData.itemIds || []).map(id => allItems.find(item => item.id === id)).filter(item => item);
+
+        const modalOverlay = document.createElement('div');
+        modalOverlay.className = 'fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50';
+        modalOverlay.style.zIndex = '1300';
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                document.body.removeChild(modalOverlay);
+            }
+        });
+        
+        // Helper to render a single item's details in a compact form
+        const renderItemHTML = (item) => {
+            if (!item) return '';
+            const imageUrl = item.image || `https://via.placeholder.com/150/e2e8f0/FFFFFF?text=Image+Error`;
+            return `
+                <div class="flex gap-4">
+                    <div class="w-1/3 flex-shrink-0">
+                        <img src="${imageUrl}" alt="${item.name}" class="w-full h-auto rounded-md pixel-border" onerror="this.src='https://via.placeholder.com/150/e2e8f0/FFFFFF?text=Image+Error'; this.onerror=null;">
+                    </div>
+                    <div class="w-2/3">
+                        <h4 class="text-lg font-bold text-blue-700">${item.name}</h4>
+                        <p class="text-gray-600 text-xs mt-1 mb-2">${item.description || '暂无描述。'}</p>
+                        <div class="border-t pt-1">
+                            <p class="text-gray-500 text-xs whitespace-pre-line">${item.acquisitionMethod || item.acquisition_method || '未知'}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+        
+        const programHTML = programItem ? renderItemHTML(programItem) : '<p class="text-sm text-gray-400">无程式信息。</p>';
+        const evolutionItemsHTML = evolutionItems.length > 0 
+            ? evolutionItems.map(renderItemHTML).join('<div class="border-b my-3"></div>') 
+            : '<p class="text-sm text-gray-400">无额外进化道具。</p>';
+
+        const modalContent = `
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl pixel-border-thick relative animate-fade-in-up flex flex-col max-h-[90vh]">
+                <div class="p-3 bg-gray-100 border-b flex justify-end items-center flex-shrink-0">
+                    <button class="text-2xl font-bold text-gray-500 hover:text-gray-800">&times;</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 overflow-y-auto">
+                    <!-- Program Column -->
+                    <div class="border-r pr-4">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">程式</h3>
+                        ${programHTML}
+                    </div>
+                    <!-- Evolution Items Column -->
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">进化道具</h3>
+                        <div class="space-y-3">
+                            ${evolutionItemsHTML}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        modalOverlay.innerHTML = modalContent;
+        document.body.appendChild(modalOverlay);
+
+        // NEW: Apply smart image loading to all item images
+        modalOverlay.querySelectorAll('img').forEach(img => {
+            setSmartImageSource(img, img.src);
+        });
+
+        modalOverlay.querySelector('button').addEventListener('click', () => {
+            document.body.removeChild(modalOverlay);
+        });
+    }
+  </script>
+</body>
+</html>
+

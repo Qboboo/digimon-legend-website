@@ -1,0 +1,2084 @@
+[
+  {
+    "id": "mat_sturdy_skull",
+    "name": "坚固的头骨",
+    "category": "材料",
+    "image": "/js/data/guides/src/items/材料/BTNSacrificialSkull-1751046873711.jpg",
+    "description": "从野人长者处获得的坚硬头骨，是制作装备的材料。",
+    "acquisition_method": "野人长者掉落",
+    "acquisitionMethod": "修炼镇森林的野人长者掉落"
+  },
+  {
+    "id": "mat_sharp_wolf_claw",
+    "name": "尖锐的狼爪",
+    "category": "材料",
+    "image": "/js/data/guides/src/items/材料/BTNCreatureAttack-1751046891946.jpg",
+    "description": "从巨狼身上获得的锋利爪子，是制作装备的材料。",
+    "acquisition_method": "巨狼掉落",
+    "acquisitionMethod": "修炼镇森林的巨狼掉落"
+  },
+  {
+    "id": "item-1751619669688",
+    "name": "飞虫兽的认可",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/feichong-1751633424399.png",
+    "description": "你得到了飞虫兽的认可！",
+    "acquisitionMethod": "修炼镇挑战飞虫兽"
+  },
+  {
+    "id": "item-1751012874307",
+    "name": "合成芯片[B]",
+    "category": "材料",
+    "image": "/js/data/guides/src/items/材料/Lv3_up-1751030708556.png",
+    "description": "分子兽研发的全新芯片，是合成B级装备必备的材料。",
+    "acquisitionMethod": "万维网大陆在分子兽处购买"
+  },
+  {
+    "id": "item-1751013870453",
+    "name": "防御类磁片",
+    "category": "材料",
+    "image": "/js/data/guides/src/items/材料/chip_2-1751030803086.png",
+    "description": "具有引导装备走向作用的磁片。",
+    "acquisitionMethod": "编码器遗迹在顽固兽处购买数码投影[顽固兽的残酷训练]，使用后击败阿卡迪兽（完全体）概率掉落"
+  },
+  {
+    "id": "item-1751013895430",
+    "name": "攻击类磁片",
+    "category": "材料",
+    "image": "/js/data/guides/src/items/材料/chip_1-1751030846822.png",
+    "description": "具有引导装备走向作用的磁片。",
+    "acquisitionMethod": "编码器遗迹在顽固兽处购买数码投影[顽固兽的残酷训练]，使用后击败阿卡迪兽（完全体）概率掉落"
+  },
+  {
+    "id": "item-1751013906198",
+    "name": "技能类磁片",
+    "category": "材料",
+    "image": "/js/data/guides/src/items/材料/chip_3-1751030876307.png",
+    "description": "具有引导装备走向作用的磁片。",
+    "acquisitionMethod": "编码器遗迹在顽固兽处购买数码投影[顽固兽的残酷训练]，使用后击败阿卡迪兽（完全体）概率掉落"
+  },
+  {
+    "id": "item-1751103163102",
+    "name": "[Y1型]光属性程式<br>(迪路兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_Guang1-1751103158768.png",
+    "description": "获得小狗兽必备的材料",
+    "acquisitionMethod": "艾力兽支线任务<br>周一至周五基米拉兽boss掉落礼盒兑换"
+  },
+  {
+    "id": "item-1751103293233",
+    "name": "[B1型]自然属性程式<br>(加布兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_ZiRan1-1751103264540.png",
+    "description": "获得加布兽必备的材料",
+    "acquisitionMethod": "副本[团结之试炼]掉落"
+  },
+  {
+    "id": "item-1751103351591",
+    "name": "[G1型]自然属性程式<br>(莲花兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_ZiRan1-1751103308785.png",
+    "description": "获得拉拉兽必备的材料",
+    "acquisitionMethod": "小丑皇处2挂坠兑换1个投影，100%掉落"
+  },
+  {
+    "id": "item-1751103397872",
+    "name": "[R2型]自然属性程式<br>(亚古兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_ZiRan2-1751103378282.png",
+    "description": "获得亚古兽必备的材料",
+    "acquisitionMethod": "副本[勇气之试炼]掉落"
+  },
+  {
+    "id": "item-1751103489255",
+    "name": "[Y2型]光属性程式<br>(御魂兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_Guang2-1751103447415.png",
+    "description": "获得管狐兽必备的材料",
+    "acquisitionMethod": "签到三天获得"
+  },
+  {
+    "id": "item-1751103546079",
+    "name": "[R2型]自然属性程式<br>(核龙兽绿)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_ZiRan2-1751103522227.png",
+    "description": "获得核龙兽绿必备的材料",
+    "acquisitionMethod": "神话时代龙仔兽每日任务(绿孔雀石)"
+  },
+  {
+    "id": "item-1751104129869",
+    "name": "[Y2型]暗属性程式<br>(黑迪路兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_an2-1751104109439.png",
+    "description": "获得黑迪路兽必备的材料",
+    "acquisitionMethod": "首次通关副本[汇编塔深处]可领取<br>周一至周五基米拉兽boss掉落礼盒兑换"
+  },
+  {
+    "id": "item-1751104517287",
+    "name": "[Y3型]自然属性程式<br>(刺猬兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_ZiRan3-1751104460446.png",
+    "description": "获得刺猬兽必备的材料",
+    "acquisitionMethod": "周一至周六修炼镇究极v龙兽npc处兑换"
+  },
+  {
+    "id": "item-1751104616001",
+    "name": "[Y3型]自然属性程式<br>(基米拉兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_ZiRan3-1751104597175.png",
+    "description": "获得基米拉兽必备的材料",
+    "acquisitionMethod": "神话时代分子兽处购买生物投影击败产出"
+  },
+  {
+    "id": "item-1751112014780",
+    "name": "[Y3型]暗属性程式<br>(木乃伊兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_an3-1751112010157.png",
+    "description": "获得法老兽必备的材料",
+    "acquisitionMethod": "签到30天获得"
+  },
+  {
+    "id": "item-1751112066204",
+    "name": "[R3型]物理属性程式<br>(单角龙兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_WuLi3-1751112044112.png",
+    "description": "获得单角龙兽必备的材料",
+    "acquisitionMethod": "周一至周六修炼镇究极v龙兽npc处兑换"
+  },
+  {
+    "id": "item-1751112306715",
+    "name": "[R3型]物理属性程式<br>(机械邪龙兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_WuLi3-1751112302742.png",
+    "description": "获得无限龙兽必备的材料",
+    "acquisitionMethod": "周一至周五基米拉兽boss掉落礼盒兑换"
+  },
+  {
+    "id": "item-1751112407942",
+    "name": "[Y3型]暗属性程式<br>(小妖兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_an3-1751112396163.png",
+    "description": "获得小妖兽必备的材料",
+    "acquisitionMethod": "周一至周六修炼镇究极v龙兽npc处兑换"
+  },
+  {
+    "id": "item-1751112499011",
+    "name": "[Y4型]物理属性程式<br>(颅骨兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_WuLi4-1751112468121.png",
+    "description": "获得颅骨兽必备的材料",
+    "acquisitionMethod": "签到15天获得"
+  },
+  {
+    "id": "item-1751112567464",
+    "name": "[R4型]物理属性程式<br>(V仔兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_WuLi4-1751112555753.png",
+    "description": "获得v仔兽必备的材料",
+    "acquisitionMethod": "周一至周六修炼镇究极v龙兽npc处兑换"
+  },
+  {
+    "id": "item-1751112610899",
+    "name": "[B4型]光属性程式<br>(八足马兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_Guang4-1751112610141.png",
+    "description": "获得八足马兽必备的材料",
+    "acquisitionMethod": "周一至周五基米拉兽boss掉落礼盒兑换"
+  },
+  {
+    "id": "item-1751112667946",
+    "name": "[R4型]光属性程式<br>(基尔兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_Guang4-1751112667072.png",
+    "description": "获得基尔兽必备的材料",
+    "acquisitionMethod": "副本[黑暗之骑士]概率掉落<br>npc混沌红莲骑士兽处兑换"
+  },
+  {
+    "id": "item-1751112748552",
+    "name": "[Y4型]自然属性程式<br>(顽固兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_ZiRan4-1751112745093.png",
+    "description": "获得顽固兽必备的材料",
+    "acquisitionMethod": "限时活动：究极对战中 奥古杜兽掉落每日材料兑换"
+  },
+  {
+    "id": "item-1751112904825",
+    "name": "[B4型]暗属性程式<br>(贝尔菲兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_an4-1751112862424.png",
+    "description": "获得贝尔菲兽必备的材料",
+    "acquisitionMethod": "古代数码世界，击杀邪恶森林的阿斯塔兽掉落"
+  },
+  {
+    "id": "item-1751114119846",
+    "name": "[Y4型]暗属性程式<br>(小丑皇)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_an4-1751114117786.png",
+    "description": "获得小丑皇[SP]必备的材料",
+    "acquisitionMethod": "神话时代击杀小丑皇获得(需先击杀四圣兽)"
+  },
+  {
+    "id": "item-1751114193852",
+    "name": "[B4型]自然属性程式<br>(青龙兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_ZiRan4-1751114182301.png",
+    "description": "获得青龙兽必备的材料",
+    "acquisitionMethod": "神话时代击杀青龙兽获得"
+  },
+  {
+    "id": "item-1751114225943",
+    "name": "[B4型]物理属性程式<br>(白虎兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_WuLi4-1751114214995.png",
+    "description": "获得白虎兽必备的材料",
+    "acquisitionMethod": "神话时代击杀白虎兽获得"
+  },
+  {
+    "id": "item-1751114268068",
+    "name": "[Y4型]自然属性程式<br>(朱雀兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/FH_ZiRan4-1751114252742.png",
+    "description": "获得朱雀兽必备的材料",
+    "acquisitionMethod": "神话时代击杀朱雀兽获得"
+  },
+  {
+    "id": "item-1751114308460",
+    "name": "[G4型]自然属性程式<br>(玄武兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_ZiRan4-1751114297160.png",
+    "description": "获得玄武兽必备的材料",
+    "acquisitionMethod": "神话时代击杀玄武兽获得"
+  },
+  {
+    "id": "item-1751114364601",
+    "name": "[Y5型]光属性程式<br>(光明兽)",
+    "category": "数码核",
+    "image": "http://14.103.153.196/js/data/guides/src/items/数码核/FH_Guang5-1751476206526.png",
+    "description": "获得光明兽必备的材料",
+    "acquisitionMethod": "副本[傲慢的魔王]概率掉落<br>小丑皇npc处兑换"
+  },
+  {
+    "id": "item-1751114530586",
+    "name": "[R5型]暗属性程式<br>(黑亚古兽)",
+    "category": "数码核",
+    "image": "http://14.103.153.196/js/data/guides/src/items/数码核/FH_an5-1751476267454.png",
+    "description": "获得黑亚古兽必备的材料",
+    "acquisitionMethod": "神话时代分子兽处购买机械投影击败产出"
+  },
+  {
+    "id": "item-1751114582378",
+    "name": "[R5型]自然属性程式<br>(亚古兽BB)",
+    "category": "数码核",
+    "image": "http://14.103.153.196/js/data/guides/src/items/数码核/FH_ZiRan5-1751476271693.png",
+    "description": "获得亚古兽BB必备的材料",
+    "acquisitionMethod": "限时活动：鹦鹉兽来袭掉落的礼盒兑换"
+  },
+  {
+    "id": "item-1751114682330",
+    "name": "[B5型]自然属性程式<br>(加布兽BF)",
+    "category": "数码核",
+    "image": "http://14.103.153.196/js/data/guides/src/items/数码核/FH_ZiRan5-1751476274608.png",
+    "description": "获得加布兽BF必备的材料",
+    "acquisitionMethod": "限时活动：鹦鹉兽来袭掉落的礼盒兑换"
+  },
+  {
+    "id": "item-1751115114775",
+    "name": "[Y2型]暗属性程式<br>(小丑皇)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_an3-1751115112485.png",
+    "description": "获得小丑皇[AT]必备的材料",
+    "acquisitionMethod": "魔术吊坠兑换"
+  },
+  {
+    "id": "item-1751115365949",
+    "name": "[R5型]物理属性程式<br>(V仔兽EX)",
+    "category": "数码核",
+    "image": "http://14.103.153.196/js/data/guides/src/items/数码核/FH_WuLi5-1751476279379.png",
+    "description": "获得V仔兽EX必备的材料",
+    "acquisitionMethod": "古代数码世界击杀恐蜂兽获得"
+  },
+  {
+    "id": "item-1751115438305",
+    "name": "[G3型]自然属性程式<br>(虫虫兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_ZiRan3-1751115429382.png",
+    "description": "获得虫虫兽必备的材料",
+    "acquisitionMethod": "古代数码世界击杀恐蜂兽获得"
+  },
+  {
+    "id": "item-1751115482724",
+    "name": "[Y4型]暗属性程式<br>(阿卡迪兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_an4-1751115479556.png",
+    "description": "获得阿卡迪兽必备的材料",
+    "acquisitionMethod": "周一至周六修炼镇究极v龙兽npc处兑换"
+  },
+  {
+    "id": "item-1751115538240",
+    "name": "[G3型]自然属性程式<br>(蔷薇兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_ZiRan3-1751115530894.png",
+    "description": "获得蔷薇兽必备的材料",
+    "acquisitionMethod": "神话时代黑暗森林婆婆兽处购买"
+  },
+  {
+    "id": "item-1751115606074",
+    "name": "[Y4型]光属性程式<br>(巴达兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_Guang4-1751115605326.png",
+    "description": "获得巴达兽必备的材料",
+    "acquisitionMethod": "古代数码世界神圣天使兽每日任务"
+  },
+  {
+    "id": "item-1751115726588",
+    "name": "[R1型]自然属性程式<br>(核龙兽蓝)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_ZiRan1-1751115687430.png",
+    "description": "获得核龙兽蓝必备的材料",
+    "acquisitionMethod": "神话时代龙仔兽日常(蓝色钻石)"
+  },
+  {
+    "id": "item-1751115885924",
+    "name": "[Y4型]暗属性程式<br>(使魔兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_an4-1751115828385.png",
+    "description": "获得使魔兽必备的材料",
+    "acquisitionMethod": "古代数码世界女恶魔兽支线任务<br>周一至周五基米拉兽boss掉落礼盒兑换"
+  },
+  {
+    "id": "item-1751116773499",
+    "name": "[Y1型]暗属性程式<br>(吸血魔兽)",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/FH_an1-1751116766374.png",
+    "description": "获得吸血魔兽必备的材料",
+    "acquisitionMethod": "数据资料(吸血魔兽)兑换"
+  },
+  {
+    "id": "item-1751122156818",
+    "name": "数码密码[Y]",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/BTNmimaY-1751122023210.png",
+    "description": "无处不在的数码密码，不仅能够组成数码世界的山川河流，也是数码蛋所必须的。<br>用途:合成数码蛋[Y]",
+    "acquisitionMethod": "日常任务<br>古代数码世界神圣天使兽每日任务概率获得<br>副本[逆袭的超恶魔]掉落物礼盒兑换<br>商城道具数码密码[自选]兑换获得"
+  },
+  {
+    "id": "item-1751122252307",
+    "name": "数码密码[R]",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/BTNmimaR-1751122170350.png",
+    "description": "无处不在的数码密码，不仅能够组成数码世界的山川河流，也是数码蛋所必须的。<br>用途:合成数码蛋[R]",
+    "acquisitionMethod": "神话世界完成龙仔兽日常概率获得<br>副本[逆袭的超恶魔]掉落物礼盒兑换<br>商城道具数码密码[自选]兑换"
+  },
+  {
+    "id": "item-1751122288242",
+    "name": "数码密码[B]",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/BTNmimaB-1751122281943.png",
+    "description": "无处不在的数码密码，不仅能够组成数码世界的山川河流，也是数码蛋所必须的。<br>用途:合成数码蛋[B]",
+    "acquisitionMethod": "黑暗森林完成德库拉兽日常任务获得<br>副本[逆袭的超恶魔]掉落物礼盒兑换<br>商城道具数码密码[自选]兑换"
+  },
+  {
+    "id": "item-1751122331519",
+    "name": "数码密码[G]",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/BTNmimaG-1751122327969.png",
+    "description": "无处不在的数码密码，不仅能够组成数码世界的山川河流，也是数码蛋所必须的。<br>用途:合成数码蛋[G]",
+    "acquisitionMethod": "神话世界完成巴鲁兽日常获得<br>副本[逆袭的超恶魔]掉落物礼盒兑换<br>商城道具数码密码[自选]兑换"
+  },
+  {
+    "id": "item-1751123004643",
+    "name": "进化的秘密I",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/item_thumbnail_100001-1751122658072.png",
+    "description": "分子兽解析进化材料所得产物，可用于数码蛋进阶。<br><span style=\"color: blue;\">将该物品放至第一格输入-hcl消耗全部该物品，每10个合成1个进化的秘密II。</span>",
+    "acquisitionMethod": "1、基米拉兽日常挑战（周一到周五）<br>2、分子兽处分解苹果,初级肉,绿色名称的数据资料,小金币获得"
+  },
+  {
+    "id": "item-1751123124664",
+    "name": "进化的秘密II",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/item_thumbnail_100001-1751123128530.png",
+    "description": "分子兽解析进化材料所得产物，可用于数码蛋进阶。<br><span style=\"color: blue;\">将该物品放至第一格输入-hcl消耗全部该物品，每10个合成1个进化的秘密III。</span>",
+    "acquisitionMethod": "日常任务概率获得<br>分解万维果,高级肉,光子程式,蓝色名称的数据资料获得<br>进化的秘密I输入-hc1合成"
+  },
+  {
+    "id": "item-1751123548650",
+    "name": "进化的秘密III",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/item_thumbnail_100001-1751123536203.png",
+    "description": "分子兽解析进化材料所得产物，可用于数码蛋进阶。<br><span style=\"color: blue;\">将该物品放至第一格输入-hcl消耗全部该物品，每10个合成1个进化的秘密IV。</span>",
+    "acquisitionMethod": "日常任务概率获得<br>分子兽分解数码核获得<br>进化的秘密II输入-hc1合成"
+  },
+  {
+    "id": "item-1751123626153",
+    "name": "进化的秘密IV",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/item_thumbnail_100001-1751123621301.png",
+    "description": "分子兽解析进化材料所得产物，可用于数码蛋进阶。<br><span style=\"color: blue;\">将该物品放至第一格输入-hcl消耗全部该物品，每10个合成1个进化的秘密V。</span>",
+    "acquisitionMethod": "日常任务概率获得<br>进化的秘密III输入-hc1合成"
+  },
+  {
+    "id": "item-1751123655940",
+    "name": "进化的秘密V",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/item_thumbnail_100001-1751123650451.png",
+    "description": "分子兽解析进化材料所得产物，可用于数码蛋进阶。",
+    "acquisitionMethod": "日常任务概率获得<br>进化的秘密IV输入-hc1合成"
+  },
+  {
+    "id": "item-1751125029198",
+    "name": "数码蛋[Y]",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/DigiEggY0-1751124917927.png",
+    "description": "外表是黄色的数码蛋，十分珍贵，会孵化出什么数码兽呢？真期待啊",
+    "acquisitionMethod": "数码密码[Y]*80+备份瓷碟*20在艾力兽处合成<br>商城购买"
+  },
+  {
+    "id": "item-1751125053857",
+    "name": "数码蛋[R]",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/DigiEggR0-1751125033482.png",
+    "description": "外表是红色的数码蛋，十分珍贵，会孵化出什么数码兽呢？真期待啊",
+    "acquisitionMethod": "数码密码[R]*80+备份瓷碟*20在艾力兽处合成<br>商城购买"
+  },
+  {
+    "id": "item-1751125070350",
+    "name": "数码蛋[B]",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/BTNDigiEggB0-1751125066442.png",
+    "description": "外表是蓝色的数码蛋，十分珍贵，会孵化出什么数码兽呢？真期待啊",
+    "acquisitionMethod": "数码密码[B]*80+备份瓷碟*20在艾力兽处合成<br>商城购买"
+  },
+  {
+    "id": "item-1751125082197",
+    "name": "数码蛋[G]",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/数码核/BTNDigiEggG0-1751125078736.png",
+    "description": "外表是绿色的数码蛋，十分珍贵，会孵化出什么数码兽呢？真期待啊",
+    "acquisitionMethod": "数码密码[G]*80+备份瓷碟*20在艾力兽处合成<br>商城购买"
+  },
+  {
+    "id": "item-1751125193476",
+    "name": "备份瓷碟",
+    "category": "数码核",
+    "image": "/js/data/guides/src/items/消耗品/extra_slot_01-1751125127783.png",
+    "description": "作为存放资料的载体极少出现于成熟期数码兽，更多的是完全体数码兽。是孵化数码蛋必备的材料。",
+    "acquisitionMethod": "每日任务概率获得<br>黑暗森林古鲁鲁兽概率掉落<br>神话时代仙人掌兽概率掉落"
+  },
+  {
+    "id": "item-1751174731180",
+    "name": "万能拼图(小)",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/item_smpt1-1751174728587.png",
+    "description": "不知因何遗失的拼图，仅残余下了极其微少数据。<br>使用后能增加当前数码兽的契合度，最多增加至20%, 使用失败不返还。",
+    "acquisitionMethod": "部分野外怪物掉落"
+  },
+  {
+    "id": "item-1751174748432",
+    "name": "万能拼图(中)",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/item_smpt2-1751174744416.png",
+    "description": "不知因何遗失的拼图，仅残余下了少量数据。<br>使用后能增加当前数码兽的契合度，最多增加至40%, 使用失败不返还。",
+    "acquisitionMethod": "每日任务概率获得<br>部分野外怪物掉落"
+  },
+  {
+    "id": "item-1751170427114",
+    "name": "苹果",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/pingguo-1751170384247.png",
+    "description": "从苹果树上掉下的苹果。<br>使用后能够恢复(30+20%)点魔法值。<br><span style=\"color: green;\">特殊效果：护甲类型为[自然]的数码兽使用时，会增加契合度，最高20%。</span>",
+    "acquisitionMethod": "修炼镇砍树获得<br>种树获得(种在地里)"
+  },
+  {
+    "id": "item-1751170563924",
+    "name": "万维果",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNCrystalBall-1751170530312.jpg",
+    "description": "万维网大陆的特产，产量稀少，具有神奇的作用。<br>使用后能够增加10000点经验值。<br><span style=\"color: green;\">特殊效果：护甲类型为[自然]的数码兽使用时，会增加契合度，最高40%。</span>",
+    "acquisitionMethod": "万维网大陆砍树获得<br>种树获得(种在地里)"
+  },
+  {
+    "id": "item-1751170671299",
+    "name": "烤肉",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/KaoRou-1751170646710.png",
+    "description": "烤熟的肉，香味扑鼻。<br>使用后能够恢复(1000+20%)点生命值。<br><span style=\"color: green;\">特殊效果：护甲类型为[物理]的数码兽使用时，会增加契合度，最高20%。</span>",
+    "acquisitionMethod": "野外怪物掉落肉在蛋蛋兽处烤制获得"
+  },
+  {
+    "id": "item-1751170726990",
+    "name": "飘香四溢肉",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/INV_Misc_Food_122_Steak-1751170697743.png",
+    "description": "使用万维网大陆的高级肉烹饪而成的肉，飘香四溢。<br>使用后能够恢复(20000+50%)点生命值。<br><span style=\"color: green;\">特殊效果：护甲类型为[物理]的数码兽使用时，会增加契合度，最高40%。</span>",
+    "acquisitionMethod": "野外怪物掉落高级肉在蛋蛋兽处烤制获得"
+  },
+  {
+    "id": "item-1751173077148",
+    "name": "金钱果",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNjinqianguo-1751173069467.png",
+    "description": "摇钱树的果实，象征富裕。<br>使用后能够获得3点金币。<br><span style=\"color: green;\">特殊效果：护甲类型为[光]的数码兽使用时，会增加契合度，最高20%。</span>",
+    "acquisitionMethod": "种树获得(种在地里)"
+  },
+  {
+    "id": "item-1751173543326",
+    "name": "光子程式",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/8B304E9DEEB662B038713BA33742371E-1751264696146.png",
+    "description": "分子兽所研究出的程式，对极少数数码兽来说虽不是必需品，但也具有重要意义。<br><span style=\"color: blue;\">输入-zzD+数字 可批量购买(例如-zzD100为购买100次)</span><br><span style=\"color: green;\">特殊效果：护甲类型为[光]的数码兽使用时，会增加契合度，最高20%。</span>",
+    "acquisitionMethod": "万维网大陆分子兽处购买"
+  },
+  {
+    "id": "item-1750995362367",
+    "name": "数据资料[豺狼人守望者]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/材料/BTNGnollWarden-1751028666503.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高20%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "编码器遗迹豺狼人守望者掉落"
+  },
+  {
+    "id": "item-1750995821347",
+    "name": "数据资料[岩石傀儡]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/材料/BTNRockGolem-1751030345059.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高20%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "编码器遗迹岩石傀儡掉落"
+  },
+  {
+    "id": "item-1751171405805",
+    "name": "数据资料[地狱火机器人]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNInfernalCannon-1751171396654.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高20%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "编码器遗迹地狱火机器人掉落"
+  },
+  {
+    "id": "item-1751171689712",
+    "name": "数据资料[强制者]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNBandit-1751171686490.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高20%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆强制者掉落"
+  },
+  {
+    "id": "item-1751171719656",
+    "name": "数据资料[强盗领主]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNBanditLord-1751171766662.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆强盗领主掉落"
+  },
+  {
+    "id": "item-1751171866110",
+    "name": "数据资料[地狱战舰]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNInfernalFlameCannon-1751171863367.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆地狱战舰掉落"
+  },
+  {
+    "id": "item-1751172309689",
+    "name": "数据资料[熊怪乌萨战士]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNFurbolgElder-1751172307088.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆熊怪乌萨战士掉落"
+  },
+  {
+    "id": "item-1751172384856",
+    "name": "数据资料[九头蛇怪长者]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNGreenHydra-1751172368350.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆九头蛇怪长者掉落"
+  },
+  {
+    "id": "item-1751172532982",
+    "name": "数据资料[风暴巨龙]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNThunderLizard-1751172523946.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆风暴巨龙掉落"
+  },
+  {
+    "id": "item-1751172602930",
+    "name": "数据资料[大型蜥蜴怪物]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNThunderLizardVizier-1751172582800.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆大型蜥蜴怪物掉落"
+  },
+  {
+    "id": "item-1751172652065",
+    "name": "数据资料[花岗岩傀儡]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNRockGolem-1751172686484.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "编码器遗迹花岗岩傀儡掉落"
+  },
+  {
+    "id": "item-1751172741395",
+    "name": "数据资料[龙卵领主]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNBlueDragonSpawn-1751172728640.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆龙卵领主掉落"
+  },
+  {
+    "id": "item-1751172797074",
+    "name": "数据资料[埃瑞达-信魔者]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNEredarWarlockPurple-1751172790534.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "万维网大陆埃瑞达-信魔者掉落"
+  },
+  {
+    "id": "item-1751187661860",
+    "name": "数据资料[异教徒]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNAcolyte-1751187658751.jpg",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "废坑异教徒掉落"
+  },
+  {
+    "id": "item-1751172867559",
+    "name": "数据资料[古加兽]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/ui_chara_icon_1367_idx0-1751172864837.png",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "汇编塔古加兽掉落"
+  },
+  {
+    "id": "item-1751172896394",
+    "name": "数据资料[独眼龙兽]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/ui_chara_icon_1452_idx0-1751172893655.png",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "汇编塔独眼龙兽掉落"
+  },
+  {
+    "id": "item-1751172910620",
+    "name": "数据资料[迪路兽]",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/ui_chara_icon_1092_idx0-1751172907890.png",
+    "description": "怪物身上的数据资料，记录着其的信息，用途广泛<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span>",
+    "acquisitionMethod": "汇编塔迪路兽掉落"
+  },
+  {
+    "id": "item-1751009171694",
+    "name": "数据资料[吸血魔兽]",
+    "category": "副本材料",
+    "image": "/js/data/guides/src/items/副本材料/XiXueMo-1751030408237.png",
+    "description": "怪物身上的数据资料，记录着其信息。<br><span style=\"color: green;\">特殊效果：护甲类型为[暗]的数码兽使用时，会增加契合度，最高40%。其他类型无效，使用失败不返还。</span><br><span style=\"color: blue;\">指令合成(将该物品放至第一格):<br>-hc1:消耗20个，获得[嗜血伯爵假面]<br>-hc2:消耗25个，获得[吸血鬼之牙]<br>-hc3:消耗30个，获得[孤独使我的心更加坚韧]<br>-hc4:消耗20个，获得[Y1型]暗属性程式(吸血魔兽[联展进化])*5(该程式无60%契合形态)</span>",
+    "acquisitionMethod": "副本汇编塔通关敲柱子掉落"
+  },
+  {
+    "id": "item-1751012093676",
+    "name": "奇迹之光",
+    "category": "副本材料",
+    "image": "/js/data/guides/src/items/副本材料/BTNHolyBolt-1751030452022.jpg",
+    "description": "据说这种光芒能引发奇迹。",
+    "acquisitionMethod": "副本金甲龙兽的实力检验打宝箱概率掉落"
+  },
+  {
+    "id": "item-1751127282037",
+    "name": "究极核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/jiujihe-1751126695475.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:巨针兽(BA);科学飞龙兽[AT];天翔V龙兽[AT];巴力兽[SP];麒麟兽[BA];v仔兽[EX]<br>契合度:40%-59%",
+    "acquisitionMethod": "主线任务获取<br>哈克兽处副本掉落<br>万维网大陆时钟兽处时间证明兑换(不推荐)"
+  },
+  {
+    "id": "item-1751130402777",
+    "name": "神女核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_Guang5-1751130334738.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:天女兽(BA)<br>契合度:40%-59%",
+    "acquisitionMethod": "地图等级8级万维网大陆天使兽处领取<br>万维网大陆时钟兽处时间证明兑换"
+  },
+  {
+    "id": "item-1751130525030",
+    "name": "龙战核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_ZiRan5-1751130494372.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:机械暴龙兽[BA];机械暴龙兽[EX]<br>契合度:40%-59%",
+    "acquisitionMethod": "银镜兽处特别训练[镜中世界]战斗暴龙兽boss掉落"
+  },
+  {
+    "id": "item-1751130568268",
+    "name": "钢狼核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_ZiRan5-1751130538187.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:兽人加鲁鲁[BA];兽人加鲁鲁[EX]<br>契合度:40%-59%",
+    "acquisitionMethod": "银镜兽处特别训练[镜中世界]钢铁加鲁鲁boss掉落"
+  },
+  {
+    "id": "item-1751130604601",
+    "name": "傲魔核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_an5-1751130582334.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:光明兽[BA]<br>契合度:40%-59%",
+    "acquisitionMethod": "地图等级达到20级在大德库拉兽处领取(混沌红莲骑士兽处地图往后走或者光明兽副本旁边)<br>使用时间的证明兑换"
+  },
+  {
+    "id": "item-1751130633581",
+    "name": "髑骑核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_WuLi5-1751130631150.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:安杜路兽[BA]<br>契合度:40%-59%",
+    "acquisitionMethod": "副本[忠诚的圣骑士]掉落"
+  },
+  {
+    "id": "item-1751130704913",
+    "name": "美棘核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_ZiRan5-1751130690087.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:丁香兽[BA];花仙兽[SP]<br>契合度:40%-59%",
+    "acquisitionMethod": "神话时代击杀黑暗森林处女妖(需先击杀四圣兽)后净化婆婆兽并购买"
+  },
+  {
+    "id": "item-1751130801584",
+    "name": "弩骑核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_Guang5-1751130757424.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:麒麟兽[AT]<br>契合度:40%-59%",
+    "acquisitionMethod": "风雪域出生点处左走进入八足马房间，完成极致挑战[神速の红马]后领取"
+  },
+  {
+    "id": "item-1751130874549",
+    "name": "四大龙的试炼",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNsidalong-1751130848161.png",
+    "description": "[适配信息]<br>数码兽:翔龙兽[SP];地龙兽[AT]<br>契合度:40%-59%",
+    "acquisitionMethod": "神话时代青龙兽/神龙兽处购买(需先击杀四圣兽)"
+  },
+  {
+    "id": "item-1751118048460",
+    "name": "枪骑核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_Guang5-1751117881229.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:大古拉兽(AT)<br>契合度:40%-59%",
+    "acquisitionMethod": "地图等级10万维网大陆红莲骑士兽npc处领取<br>[限时活动:未知世界的相遇]击杀中世纪公爵兽掉落"
+  },
+  {
+    "id": "item-1751130915279",
+    "name": "无限核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_WuLi5-1751130891972.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:丧尸暴龙兽[AT];机械巨龙兽[SP]<br>契合度:40%-59%",
+    "acquisitionMethod": "银镜兽处特别训练[镜中世界]无限龙兽boss掉落"
+  },
+  {
+    "id": "item-1751130944703",
+    "name": "顽骑核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_ZiRan5-1751130935691.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:死神火焰兽[AT]<br>契合度:40%-59%",
+    "acquisitionMethod": "[限时活动:究极对战!数码兽战斗终端02]击杀奥古杜兽掉落"
+  },
+  {
+    "id": "item-1751130993546",
+    "name": "色欲核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_an5-1751130975883.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:女恶魔兽[SP]<br>契合度:40%-59%",
+    "acquisitionMethod": "地图等级9级汇编塔梅菲斯兽处领取<br>万维网大陆时钟兽处时间证明兑换"
+  },
+  {
+    "id": "item-1751131050372",
+    "name": "七魔核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_an5-1751131015886.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:阿斯塔兽[AT]、丧尸撒旦兽[SP]<br>契合度:40%-59%",
+    "acquisitionMethod": "古代数码世界击杀神之领域究极魔兽或者风雪域贝尔菲兽掉落"
+  },
+  {
+    "id": "item-1751131115390",
+    "name": "抹消核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/FH_an5-1751131103838.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:阿卡迪兽(完全体)[SP]<br>契合度:40%-59%",
+    "acquisitionMethod": "周日世界boss阿卡迪兽掉落(第四只究极体)"
+  },
+  {
+    "id": "item-1751131169438",
+    "name": "小丑核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_an5-1751131163681.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:死神兽[SP];死神兽[AT]<br>契合度:40%-59%",
+    "acquisitionMethod": "神话时代击杀小丑皇掉落(需先击杀四圣兽)"
+  },
+  {
+    "id": "item-1751131227446",
+    "name": "炽天核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_Guang5-1751131218538.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:神圣天使兽[SP]<br>契合度:40%-59%",
+    "acquisitionMethod": "神话时代神圣领域击杀究极天使兽掉落"
+  },
+  {
+    "id": "item-1751131344476",
+    "name": "圣兽之力",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNcjqj-1751131332452.png",
+    "description": "[适配信息]<br>数码兽:艾力兽（紫）[EX];小熊兽[EX];五彩兽[EX];乌龟兽[EX]<br>契合度:40%-59%",
+    "acquisitionMethod": "地图等级30级神之领域往下走进入下一个房间，在中核分身处领取"
+  },
+  {
+    "id": "item-1751132421367",
+    "name": "传说龙魂",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNlonghun_2-1751132406924.png",
+    "description": "[适配信息]<br>数码兽:刺猬兽[BA];单角龙兽[AT];V仔兽[AT];小妖兽[SP]<br>契合度:75%",
+    "acquisitionMethod": "主线任务获得<br>飞龙之魂合成<br>飞龙之魂:副本[最终龙魂试炼]掉落"
+  },
+  {
+    "id": "item-1751117484894",
+    "name": "格拉尼",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNgrani-1751117415752.png",
+    "description": "[适配信息]<br>数码兽:红莲骑士兽[AT]<br>契合度:75%",
+    "acquisitionMethod": "小丑皇npc处兑换"
+  },
+  {
+    "id": "item-1751132613403",
+    "name": "遗迹未知物质(充满能量的)",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNZuiQiHe-1751132534338.png",
+    "description": "[适配信息]<br>数码兽:战斗暴龙兽[BA]与钢铁加鲁鲁[BA](需同时持有并都在仓库)<br>契合度:75%<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "分子兽处支线任务获得<br>万维网大陆时钟兽npc处使用时间证明兑换"
+  },
+  {
+    "id": "item-1751132688097",
+    "name": "神的仁慈",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNshenderenci-1751132643089.png",
+    "description": "[适配信息]<br>数码兽:光明兽[BA]<br>契合度:75%",
+    "acquisitionMethod": "通关副本[傲慢的魔王]50次可在光明兽npc处领取"
+  },
+  {
+    "id": "item-1751132725861",
+    "name": "魔盾「阿瓦隆」",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNawalong-1751132722985.png",
+    "description": "[适配信息]<br>数码兽:颅骨兽[BA]<br>契合度:75%",
+    "acquisitionMethod": "髑骑核合成<br>髑骑核:副本[忠诚的圣骑士]掉落"
+  },
+  {
+    "id": "item-1751133128683",
+    "name": "光与暗的交错",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNitem_thumbnail_82-1751133125645.png",
+    "description": "[适配信息]<br>数码兽:神圣天女兽[BA]与莉莉丝兽[SP](需同时持有并都在仓库)<br>契合度:75%<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "内测奖励(已绝版)"
+  },
+  {
+    "id": "item-1751133271005",
+    "name": "奇迹之种",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/item_thumbnail_111-1751133257290.png",
+    "description": "[适配信息]<br>数码兽:莲花兽[BA]与蔷薇兽[SP](需同时持有并都在仓库)<br>契合度:75%<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "万维网大陆时钟兽npc处使用时间证明兑换"
+  },
+  {
+    "id": "item-1751133390133",
+    "name": "吾辈的道路以此箭开创",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNbazumahun-1751133362603.png",
+    "description": "[适配信息]<br>数码兽:八足马兽[BA]<br>契合度:75%",
+    "acquisitionMethod": "弩骑核合成<br>弩骑核:风雪域出生点处左走进入八足马房间，完成极致挑战[神速の红马]后领取"
+  },
+  {
+    "id": "item-1751133494887",
+    "name": "融合的意志",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/item_thumbnail_75-1751133474550.png",
+    "description": "[适配信息]<br>数码兽:电光暴龙兽[SP]与偃月加鲁鲁[AT](需同时持有并都在仓库)<br>契合度:75%<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "使用未知的意志合成<br>未知的元素*15=未知的意志<br>未知的元素:副本[未知的圣骑士]掉落"
+  },
+  {
+    "id": "item-1751133563849",
+    "name": "至高荣光",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/zhigaorongguang-1751133537039.png",
+    "description": "[适配信息]<br>数码兽:斩龙兽[SP]与破坏龙兽[AT](需同时持有并都在仓库)<br>契合度:75%<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "通关副本[君临顶点之龙帝]30次获得"
+  },
+  {
+    "id": "item-1751133794127",
+    "name": "启示录兽の怨念",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNPossession-1751133766557.jpg",
+    "description": "[适配信息]<br>数码兽:机械邪龙兽[AT];小丑皇[SP]<br>契合度:75%",
+    "acquisitionMethod": "小丑皇npc处限时兑换<br>使用限时进化礼盒(2024)获得"
+  },
+  {
+    "id": "item-1751133867799",
+    "name": "钢铁的意志",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNLuoXuanR-1751133864056.png",
+    "description": "[适配信息]<br>数码兽:蜡烛兽[AT]、哈克兽[EX]<br>契合度:75%",
+    "acquisitionMethod": "荣耀之证兑换<br>荣耀之证:[限时活动:究极对战!数码兽战斗终端02]击杀奥古杜兽掉落"
+  },
+  {
+    "id": "item-1751134007605",
+    "name": "炎狩狱镰",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNshennvFME-1751133987080.png",
+    "description": "[适配信息]<br>数码兽:神圣天女兽[BA]<br>契合度:75%",
+    "acquisitionMethod": "大德库拉兽处购买<br>使用限时进化礼盒(2024)获得"
+  },
+  {
+    "id": "item-1751134092625",
+    "name": "魔女的偏爱",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNseyu-1751134089338.png",
+    "description": "[适配信息]<br>数码兽:莉莉丝兽[SP]<br>契合度:75%",
+    "acquisitionMethod": "2024国庆节计签到活动获得<br>使用限时进化礼盒(2024)获得"
+  },
+  {
+    "id": "item-1751134169683",
+    "name": "愤怒因子",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/HongLianZhan-1751134168022.png",
+    "description": "[适配信息]<br>数码兽:迷幻兽[AT]<br>契合度:75%",
+    "acquisitionMethod": "古代数码世界击杀贝尔菲兽后同位置出现的贝尔菲兽npc处购买"
+  },
+  {
+    "id": "item-1751134266449",
+    "name": "雷电推进器",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNdianbaoE-1751134261673.png",
+    "description": "亚古兽使用时能够将战斗类型转换为SP(不可逆,只能对契合75及以下的亚古兽使用)<br>[适配信息]<br>数码兽:亚古兽[BA]<br>契合度:60%",
+    "acquisitionMethod": "金哥滚"
+  },
+  {
+    "id": "item-1751134403768",
+    "name": "黄兽偃月刀",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTN05_65-1751134321374.png",
+    "description": "加布兽使用时能够将战斗类型转换为AT(不可逆,只能对契合75及以下的加布兽使用)<br>[适配信息]<br>数码兽:加布兽[BA]<br>契合度:60%",
+    "acquisitionMethod": "周一黑暗森林世界boss概率掉落"
+  },
+  {
+    "id": "item-1751134511441",
+    "name": "神意的代行者",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTN013_17-1751134477631.png",
+    "description": "[适配信息]<br>数码兽:究极天使兽[SP];神圣天女兽[BA]<br>契合度:75%",
+    "acquisitionMethod": "神圣领域神圣天女兽处购买<br>使用限时进化礼盒(2024)获得"
+  },
+  {
+    "id": "item-1751134598508",
+    "name": "无穷的怒火",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNOrbOfFire-1751134590840.jpg",
+    "description": "[适配信息]<br>数码兽:究极魔兽[SP]<br>契合度:75%",
+    "acquisitionMethod": "黑核+地狱之火*3+七魔核*7=愤怒之核<br>愤怒之核*333=无穷的怒火<br><strong style=\"color: #555555;\">所有道具均为古代数码世界掉落</strong><br>黑核:勇气本往右边走,地狱之门前打怪掉落;<br>地狱之火:黑暗森林左侧中间传送,究极魔兽处购买,需要30黑色齿轮;<br>带愤怒之核到万维网大陆,击杀333只天使兽进阶无穷的怒火"
+  },
+  {
+    "id": "item-1751135037016",
+    "name": "奇迹数码精神",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNQiJiZhuangJia-1751134981663.png",
+    "description": "V仔兽使用时能够将战斗类型转换为EX(只能对契合75及以下的V仔兽使用)<br>[适配信息]<br>数码兽:V仔兽[AT]<br>契合度:60%",
+    "acquisitionMethod": "副本金甲龙兽的实力检验打宝箱概率掉落成品<br>机械之心+奇迹之光*30+防御类磁片=奇迹数码精神"
+  },
+  {
+    "id": "item-1751135174647",
+    "name": "最后の绊",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNevotb-1751135171936.png",
+    "description": "[适配信息]<br>数码兽:亚古兽[EX];加布兽[EX]<br>契合度:75%",
+    "acquisitionMethod": "限时副本[少女的梦幻世间]兑换积分获得"
+  },
+  {
+    "id": "item-1751135249923",
+    "name": "森之秘叶",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNsenzhimiye-1751135247442.png",
+    "description": "[适配信息]<br>数码兽:红莲骑士兽[AT]<br>契合度:75%",
+    "acquisitionMethod": "使用御龙秘叶兑换<br>御龙秘叶:[限时活动:未知世界的相遇]击杀中世纪公爵兽掉落"
+  },
+  {
+    "id": "item-1751135325355",
+    "name": "深怨之手",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNshenyuanzhishou-1751135323171.png",
+    "description": "[适配信息]<br>数码兽:小丑皇[AT]与吸血魔兽[BA](需同时持有并都在仓库)<br>契合度小丑皇:75%;吸血魔兽:40%<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "万维网大陆时钟兽npc处使用时间证明兑换"
+  },
+  {
+    "id": "item-1751135694968",
+    "name": "时空悖论",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNyueqianR-1751170000231.png",
+    "description": "[适配信息]<br>数码兽:黑亚古兽[SP]与基米拉兽[BA](需同时持有并都在仓库)<br>黑亚古:75%;基米拉兽:40%<br>必须以黑亚古兽为主体使用该道具<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "黑暗之心+黑暗种子*999=时空悖论<br>邪恶的意志+黑核=黑暗种子<br><strong style=\"color: #555555;\">所有道具均为古代数码世界掉落</strong><br>黑暗之心:古代数码世界击杀千年兽后会出现月之千年兽等级达到40级即可购买<br>邪恶意志:击杀千年兽掉落<br>黑核:勇气本往右边走,地狱之门前打怪掉落<br>黑暗种子*999:携带黑暗种子累计获得99900w经验"
+  },
+  {
+    "id": "item-1751136311011",
+    "name": "邪神之心",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNHeartOfSearinox-1751170208996.jpg",
+    "description": "[适配信息]<br>数码兽:黑亚古兽[SP]与基米拉兽[BA](需同时持有并都在仓库)<br>黑亚古:75%;基米拉兽:40%<br>必须以加支兽(基米拉兽幼年期)为主体使用该道具<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "合成型数码核+黑暗种子*999=邪神之心<br>邪恶的意志+黑核=黑暗种子<br>合成型数码核:万维网大陆首领稀有掉落物以及废坑首领稀有掉落物合成<br><strong style=\"color: #555555;\">下面所有道具均为古代数码世界掉落</strong><br>邪恶意志:击杀千年兽掉落<br>黑核:勇气本往右边走,地狱之门前打怪掉落<br>黑暗种子*999:携带黑暗种子累计获得99900w经验"
+  },
+  {
+    "id": "item-1751175336162",
+    "name": "矶汉那(地狱)",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/消耗品/BTNOrbOfDarkness-1751175314517.jpg",
+    "description": "[适配信息]<br>数码兽:光明兽FM[BA]<br>契合度:90%",
+    "acquisitionMethod": "限时活动[七大魔王的回归]获得"
+  },
+  {
+    "id": "item-1751176502841",
+    "name": "理想乡",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTN012_193-1751176458802.png",
+    "description": "[适配信息]<br>数码兽:阿卡迪兽（究极体）[SP]<br>契合度:75%",
+    "acquisitionMethod": "使用矩阵核心合成<br>矩阵核心:副本[营造理想乡的最终兵器]掉落"
+  },
+  {
+    "id": "item-1751187020743",
+    "name": "研究成果:联展进化(V仔兽EX联展道具)",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/BTNBansheeAdept-1751186934414.jpg",
+    "description": "数码兽以及想要守护数码世界安定的人类并没有因为敌人过于强大便就此放弃希望--通过解析千年兽的数据，人类发明了利用外部媒介(数码器)将两只数码兽的数码核融合,由此使之进化到更高层次的进化方式:“联展进化(Jogress-Evolution)”,藉由新方式产生的新种数码兽们登上了对抗千年兽的舞台。<br>[适配信息]<br>数码兽:V仔兽EX[BA](晶片工厂需存在20%契合度的飞虫兽[BA])<br>契合度:20%<br><span style=\"color: red;\">联展进化说明：该道具使用后，将为使用者开启联展进化，但另一数码兽将永久消失！</span>",
+    "acquisitionMethod": "研究资料(时之数码合金)*2+千年兽的数据*2+神秘卷轴=研究成果:联展进化(V仔兽EX联展道具)<br>研究资料(时之数码合金):神话时代钢铁猩猩兽掉落<br>千年兽的数据:古代数码世界击杀千年兽(重生)掉落<br>神秘卷轴:废坑异教徒掉落"
+  },
+  {
+    "id": "item-1751187206461",
+    "name": "帝龙核",
+    "category": "进化道具",
+    "image": "/js/data/guides/src/items/进化道具/FH_WuLi5-1751187196892.png",
+    "description": "来自未知之地的数码核。研究表明，此类数码核对普通数码兽没有任何效果，甚至可能遭受反噬。但，意外的是，如果是某些特定的数码兽却有惊人的效果。<br>[适配信息]<br>数码兽:机甲龙兽[BA]<br>契合度:40%-59%",
+    "acquisitionMethod": "限时活动：联结「终末」与「起始」的圣剑光辉，在帝皇龙甲兽npc处消耗500副本积分兑换"
+  },
+  {
+    "id": "item-1751616015620",
+    "name": "领主令",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN02643-1751633930734.png",
+    "description": "强盗领主的令牌，神奇的是其不属于主流组件却能提高持有者的综合能力。<br>力量+6<br>防御+6<br>智力+6<br>领主令+燃烧意志+龙甲+神秘卷轴+风暴之眼=合成型数码核(自动合成)",
+    "acquisitionMethod": "万维网大陆强盗领主掉落，地图积分兑换或者可疑的邮件兑换"
+  },
+  {
+    "id": "item-1751616199643",
+    "name": "风暴之眼",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNFengBaoZhiYan-1751633728604.png",
+    "description": "风暴巨龙的能量核心。<br>技能暴击+5%<br>领主令+燃烧意志+龙甲+神秘卷轴+风暴之眼=合成型数码核(自动合成)",
+    "acquisitionMethod": "万维网大陆风暴巨龙掉落，地图积分兑换或者可疑的邮件兑换"
+  },
+  {
+    "id": "item-1751616310783",
+    "name": "龙甲",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNAdvancedCreatureCarapace-1751633788844.jpg",
+    "description": "坚硬无比的龙甲，攻击即使对其造成了伤害，效果也会大打折扣。<br>伤害抵挡：<br>减少8点受到的伤害，但伤害不能低于3点。<br>领主令+燃烧意志+龙甲+神秘卷轴+风暴之眼=合成型数码核(自动合成)",
+    "acquisitionMethod": "undefined"
+  },
+  {
+    "id": "item-1751616332811",
+    "name": "死亡面罩",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNMaskOfDeath-1751633499964.jpg",
+    "description": "历史悠久的面罩。<br>攻击吸血+5%",
+    "acquisitionMethod": "万维网大陆九头蛇长者掉落，地图积分兑换或者可疑的邮件兑换"
+  },
+  {
+    "id": "item-1751616357689",
+    "name": "燃烧意志",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNRanShaoYiZhi-1751633897464.png",
+    "description": "战士的意志燃之不尽。<br>攻击暴伤+20%<br>领主令+燃烧意志+龙甲+神秘卷轴+风暴之眼=合成型数码核(自动合成)",
+    "acquisitionMethod": "万维网大陆龙卵领主掉落，地图积分兑换或者可疑的邮件兑换"
+  },
+  {
+    "id": "item-1751616391971",
+    "name": "神秘卷轴",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNBansheeMaster-1751633508753.jpg",
+    "description": "一种强大的卷轴。<br>技能暴伤+5%<br>领主令+燃烧意志+龙甲+神秘卷轴+风暴之眼=合成型数码核(自动合成)",
+    "acquisitionMethod": "废坑异教徒掉落，地图积分兑换或者可疑的邮件兑换"
+  },
+  {
+    "id": "item-1751616433907",
+    "name": "信魔者指环",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNXinMoZheZhiJie-1751633519680.png",
+    "description": "令人疯狂的指环。<br>冷却缩减+2%",
+    "acquisitionMethod": "万维网大陆埃瑞达-信魔者掉落"
+  },
+  {
+    "id": "item-1751616452209",
+    "name": "大型蜥蜴鳞片",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNDaXingXiYiLinPian-1751633524595.png",
+    "description": "大型蜥蜴怪物身上的鳞片，防御力强大。<br>伤害减免+2%",
+    "acquisitionMethod": "万维网大陆大型蜥蜴怪物掉落，地图积分兑换或者可疑的邮件兑换"
+  },
+  {
+    "id": "item-1751617974976",
+    "name": "玩具熊",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTN_18_-1751633578341.png",
+    "description": "孩子们丢失的玩偶。",
+    "acquisitionMethod": "汇编塔玩偶熊掉落"
+  },
+  {
+    "id": "item-1751617992093",
+    "name": "千纸鹤",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTN_19_-1751633588774.png",
+    "description": "孩子们的最爱。",
+    "acquisitionMethod": "汇编塔鼻涕兽掉落"
+  },
+  {
+    "id": "item-1751618032869",
+    "name": "面具状数码核",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTN_52_-1751633592697.png",
+    "description": "面具状的数码核，或许正是梅菲斯兽所指的\"那个\"。",
+    "acquisitionMethod": "副本[汇编塔封印区域]掉落"
+  },
+  {
+    "id": "item-1751618084123",
+    "name": "凯王兽的护身符[伪]",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNSpellShieldAmulet-1751633645172.jpg",
+    "description": "凯王兽曾经友人的杰作的模仿品，能驱散黑魔法，但在抵挡一次后就会碎裂。",
+    "acquisitionMethod": "万维网大陆凯王兽处购买"
+  },
+  {
+    "id": "item-1751195886271",
+    "name": "IC:邪神降临",
+    "category": "消耗品",
+    "image": "/js/data/guides/src/items/消耗品/xieshenjianglin-1751195791329.png",
+    "description": "点击激活/使用该IC技能<br>效果:自身每有1%冷却缩减便提升0.15%最终伤害和最终减伤,持续10s。<br><span style=\"color: red;\">特殊:当千年兽/月之千年兽（90%）使用时,若晶片工厂内（需取出图鉴）存在不相同的月之千年兽/千年兽(90%),则将契合度提高至100%。</span><br><span style=\"color: green;\">- 激活前需拥有IC:逆神</span>",
+    "acquisitionMethod": "副本[带来破灭的终极邪神]概率掉落<br>邪神遗产*5合成<br>邪神遗产:副本副本[带来破灭的终极邪神]概率掉落,必定掉落下位材料邪恶水晶<br>邪恶水晶*24=邪神遗产"
+  },
+  {
+    "id": "item-1751200923721",
+    "name": "IC:圣兽太极阵",
+    "category": "消耗品",
+    "image": "/js/data/guides/src/items/消耗品/huanglongruchang-1751200905350.png",
+    "description": "点击激活/使用该IC技能<br>效果:自身每有1%冷却缩减便提升0.15%最终伤害和最终减伤,持续10s。<br><span style=\"color: red;\">特殊:当任意四圣兽(90%)使用时,若晶片工厂内(需取出图鉴)存在所有四圣兽(90%),则将契合度提高至100%。</span><br><span style=\"color: green;\">- 激活前需拥有IC:勇者封印</span>",
+    "acquisitionMethod": "副本[统一四方的皇帝]概率掉落<br>黄龙矿*5合成<br>黄龙矿:副本副本[统一四方的皇帝]概率掉落,必定掉落下位材料黄龙矿残片<br>黄龙矿残片*30=黄龙矿"
+  },
+  {
+    "id": "item-1751533870566",
+    "name": "晋升宝玉",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNEnchantedGemstone-1751542884149.jpg",
+    "description": "能提升装备等级的宝玉。",
+    "acquisitionMethod": "万维网大陆怪物掉落"
+  },
+  {
+    "id": "item-1751542853914",
+    "name": "自选礼盒(基米拉兽讨伐战)",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNINV_Misc_Gift_03-1751542281791.png",
+    "description": "可以从几种类型的奖励中任选一项。<br>- 奖励列表：<br><span style=\"color: blue;\">[Y1]型光属性程式(迪路兽)x1<br>[Y2]型暗属性程式(黑迪路兽)x1<br>[R3]型物理属性程式(机械邪龙兽)x1<br>[B4]型光属性程式(八足马兽)x1<br>[Y4]型暗属性程式(使魔兽)X1(完成女恶魔兽任务)<br>进化的秘密Ix50</span>",
+    "acquisitionMethod": "周一至周五脚本森林古代贤者兽处挑战基米拉兽"
+  },
+  {
+    "id": "item-1751543718903",
+    "name": "自选礼盒(逆袭的超恶魔)",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNINV_Misc_Gift_02-1751543688806.png",
+    "description": "可以从几种类型的奖励中任选一项。<br>- 奖励列表：<br><span style=\"color: blue;\">可疑的邮件x1<br>数码密码[Y]x10<br>数码密码[R]x10<br>数码密码[G]x10<br>数码密码[B]x10<br>备份磁碟x3</span>",
+    "acquisitionMethod": "通关[逆袭的超恶魔]获得的奖励。"
+  },
+  {
+    "id": "item-1751545808202",
+    "name": "最后的晋升宝石[防]",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN02000-1751545760362.png",
+    "description": "最后的宝玉，特别的是，它的能量并不足以将修炼装备直接提升至Max，还缺少了一样至关重要的东西，也许近在咫尺...",
+    "acquisitionMethod": "汇编塔古加兽掉落"
+  },
+  {
+    "id": "item-1751545818838",
+    "name": "最后的晋升宝石[速]",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN02000-1751545807022.png",
+    "description": "最后的宝玉，特别的是，它的能量并不足以将修炼装备直接提升至Max，还缺少了一样至关重要的东西，也许近在咫尺...",
+    "acquisitionMethod": "汇编塔迪路兽掉落"
+  },
+  {
+    "id": "item-1751545862938",
+    "name": "最后的晋升宝石[攻]",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTN02000-1751545847080.png",
+    "description": "最后的宝玉，特别的是，它的能量并不足以将修炼装备直接提升至Max，还缺少了一样至关重要的东西，也许近在咫尺...",
+    "acquisitionMethod": "汇编塔独眼龙兽掉落"
+  },
+  {
+    "id": "item-1751545951006",
+    "name": "汇编塔残留的数据",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNshujucanliu-1751545919859.png",
+    "description": "汇编塔中的残留数据，能感受一丝强大数码兽气息混杂在其中，是微不足道却又不可或缺的存在，如果是分子兽的话一定可以开发出它的潜在能量。",
+    "acquisitionMethod": "汇编塔汇编盏掉落"
+  },
+  {
+    "id": "item-1751559489826",
+    "name": "时间的证明",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/Spell_Nature_TimeStop-1751559378918.png",
+    "description": "在数码世界某段时间的证明，当集齐一定数量后可在时钟兽处获得一件过去甚至是未来的物品。<br><span style=\"color: blue;\">- 兑换列表：<br>加速电池G*5<br>任务装备自选<br>数码核自选A<br>时间之楔</span>",
+    "acquisitionMethod": "日常任务以及每日首次通关副本[带来破灭的终极邪神]获得"
+  },
+  {
+    "id": "item-1751559647924",
+    "name": "破旧的记忆石",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN_120_-1751559527074.png",
+    "description": "通常用来记录一些讯息的记忆石。但已经破旧，除非使用特殊的方法，否则无法再查看里面的内容。",
+    "acquisitionMethod": "修炼镇蝌蚪兽处购买"
+  },
+  {
+    "id": "item-1751611639399",
+    "name": "团结之证明",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNTuanJieZhiZhengMing-1751633697645.png",
+    "description": "这是你通过[团结之历练]的证明！",
+    "acquisitionMethod": "副本[团结之历练掉落]"
+  },
+  {
+    "id": "item-1751611943735",
+    "name": "友情徽章",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNYouQingHuiZhang-1751633702272.png",
+    "description": "我不会忘记的<br>我不会忘记同伴的<br>要相信朋友 相信友情！<br>......<br>友情之纹章中镌刻着这样一段信息。",
+    "acquisitionMethod": "团结之证明*25合成<br>副本[团结之历练]掉落"
+  },
+  {
+    "id": "item-1751612457819",
+    "name": "红色结晶",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTN_116_-1751633707237.png",
+    "description": "美丽的结晶，在这里随处可见，其用途鲜有人知。",
+    "acquisitionMethod": "风雪域怪物掉落"
+  },
+  {
+    "id": "item-1751612868142",
+    "name": "蓝色结晶",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTN_114_-1751633711276.png",
+    "description": "美丽的结晶，在这里随处可见，其用途鲜有人知。",
+    "acquisitionMethod": "风雪域怪物掉落"
+  },
+  {
+    "id": "item-1751613641833",
+    "name": "加速电池",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNEXPdianchi-1751633721336.png",
+    "description": "使用后在接下来30分钟内经验加成+50%",
+    "acquisitionMethod": "时间的证明兑换"
+  },
+  {
+    "id": "item-1751613839309",
+    "name": "勇者之证明",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNyongzhezhengming-1751633995217.png",
+    "description": "这是你通过[勇气之历练]的证明！",
+    "acquisitionMethod": "副本[勇气之历练掉落]"
+  },
+  {
+    "id": "item-1751613851305",
+    "name": "勇气徽章",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNyongqihuizhang-1751634000918.png",
+    "description": "我都忘了 亚古兽<br>我忘记了绝对不能够气馁<br>我担心亚古兽会再次进化错误 所以变得很懦弱<br>我也和你一样啊 所以才没有进化成暴龙兽<br>不过就像学骑车一样<br>只要我们能同心协力 相信我一定可以再进化的<br>......<br>勇气之纹章中镌刻着这样一段信息。",
+    "acquisitionMethod": "勇者之证明*25合成<br>副本[勇气之历练]掉落"
+  },
+  {
+    "id": "item-1751613931633",
+    "name": "数码矿砂",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNKuangSha-1751634193819.png",
+    "description": "外界稀有的矿砂，但在未知世界中随处可见。",
+    "acquisitionMethod": "战争前线怪物掉落"
+  },
+  {
+    "id": "item-1751613991709",
+    "name": "友情之馈赠",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNbox07-1751634241811.png",
+    "description": "点击使用后可获得以下物品：<br>100% - 团结之证明<br>10% - [B2型]自然属性程式(加布兽)<br>1% - 友情徽章<br>通过团结之试炼获得的奖励。",
+    "acquisitionMethod": "主线任务奖品"
+  },
+  {
+    "id": "item-1751614025977",
+    "name": "勇气之馈赠",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNbox10-1751634225333.png",
+    "description": "点击使用后可获得以下物品：<br>100% - 勇者之证明<br>10% - [R2型]自然属性程式(亚古兽)<br>1% - 勇气徽章<br>通过勇气之试炼获得的奖励。",
+    "acquisitionMethod": "主线任务奖品"
+  },
+  {
+    "id": "item-1751620303046",
+    "name": "遗失的货物",
+    "category": "任务道具",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNDust-1751634382546.jpg",
+    "description": "不知道哪个倒霉蛋丢的。",
+    "acquisitionMethod": "修炼镇野人长者下方野人的私藏掉落"
+  },
+  {
+    "id": "item-1751620798017",
+    "name": "吸血鬼之牙",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNVampiricAura-1751634416655.jpg",
+    "description": "吸血鬼之牙。<br>攻击吸血+7%",
+    "acquisitionMethod": "副本[汇编塔封印区域]掉落"
+  },
+  {
+    "id": "item-1751621065762",
+    "name": "勇者的秘宝",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNMedalionOfCourage-1751634649295.jpg",
+    "description": "传说中的勇者留下的宝物。<br>合成：<br>亚基利兽的头发*10+黑暗之塔残片*100+勇者秘宝*1=数码投影（究极体）",
+    "acquisitionMethod": "风雪域左轮兽掉落"
+  },
+  {
+    "id": "item-1751621167078",
+    "name": "亚基利兽的头发",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNQuillSprayOff-1751634689841.jpg",
+    "description": "亚基利兽的毛发，具有融入黑暗之塔将其变为数码兽的神奇特性。<br>合成：<br>亚基利兽的头发*10+黑暗之塔残片*100+勇者秘宝*1=数码投影（究极体）",
+    "acquisitionMethod": "黑暗森林亚基利兽掉落"
+  },
+  {
+    "id": "item-1751621218776",
+    "name": "黑暗之塔残片",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNIceCrownObelisk-1751634705491.jpg",
+    "description": "曾经被损毁的黑暗之塔的残片，同时也是重筑黑暗之塔所需的原料。<br>合成：<br>亚基利兽的头发*10+黑暗之塔残片*100+勇者秘宝*1=数码投影（究极体）",
+    "acquisitionMethod": "黑暗森林木乃伊兽掉落"
+  },
+  {
+    "id": "item-1751621439610",
+    "name": "数码投影「顽固兽的残酷训练」",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN_7_-1751634713611.png",
+    "description": "顽固兽游历数码世界时偶然所得，据说使用后会放出曾经某一位强大的数码兽的影像。未经允许，切勿使用！<br> - 无法在禁止传送区域使用<br>掉落：<br>技能类磁片<br>攻击类磁片<br>防御类磁片",
+    "acquisitionMethod": "顽固兽处购买"
+  },
+  {
+    "id": "item-1751621499431",
+    "name": "数码投影「漆黑的龙战士」",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN_7_-1751634716678.png",
+    "description": "以堪比100座黑暗之塔的数据构成的数码投影，据说能够召唤出「漆黑的龙战士」。<br> - 无法在禁止传送区域使用<br>掉落：<br>终结之命运",
+    "acquisitionMethod": "undefined"
+  },
+  {
+    "id": "item-1751621553064",
+    "name": "终结之命运",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNzhongjiezhimingyun-1751637335241.png",
+    "description": "必将终结的命运。<br>自动合成：<br>终结之命运*10 = IC：勇者封印",
+    "acquisitionMethod": "使用数码投影「漆黑的龙战士」后击杀黑暗战斗暴龙兽掉落。"
+  },
+  {
+    "id": "item-1751621641368",
+    "name": "数码投影「生物改造的顶端」",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN_7_-1751634722858.png",
+    "description": "使用后能够召唤出本阶段钢铁帝国生物改造顶端的实验体。<br>- 无法在禁止传送区域使用<br>掉落：<br>[Y3型]自然属性程式(基米拉兽)",
+    "acquisitionMethod": "神话时代分子兽处购买"
+  },
+  {
+    "id": "item-1751621669758",
+    "name": "数码投影「机械改造的顶端」",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN_7_-1751634725444.png",
+    "description": "使用后能够召唤出本阶段钢铁帝国机械改造顶端的实验体。<br>- 无法在禁止传送区域使用<br>掉落：<br>[R5型]暗属性程式(黑亚古兽)",
+    "acquisitionMethod": "神话时代分子兽处购买"
+  },
+  {
+    "id": "item-1751621862561",
+    "name": "数码投影「盛开于天界的花朵」",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN_7_-1751634728049.png",
+    "description": "使用后能够召唤出盛开于天界的数码兽——莲花兽。<br>- 无法在禁止传送区域使用<br>掉落：<br>[G1型]自然属性程式(莲花兽)",
+    "acquisitionMethod": "小丑皇npc处购买"
+  },
+  {
+    "id": "item-1751633675304",
+    "name": "凯王兽的护身符[真]",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNSpellShieldAmulet-1751633672522.jpg",
+    "description": "凯王兽曾经友人的真正杰作，能驱散黑魔法，可以无限次使用。<br>冷却缩减+1%<br>伤害减免+1%<br>魔法护盾：每隔40s抵挡一次指向性技能。",
+    "acquisitionMethod": "凯王兽处合成<br>合成公式：<br>\n信魔者指环+大型蜥蜴鳞片+数据资料[吸血魔兽]*3+合成芯片[B]"
+  },
+  {
+    "id": "item-1751634866230",
+    "name": "神龙赐福",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNshenzhicifu-1751634853666.png",
+    "description": "源自神龙兽的神龙之赐福。",
+    "acquisitionMethod": "银镜兽处特别训练[镜中世界]神龙兽boss掉落"
+  },
+  {
+    "id": "item-1751634937539",
+    "name": "破坏型计算机病毒",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNMetamorphosis-1751634936980.jpg",
+    "description": "究极吸血魔兽通过从眼睛或腹部发射的破坏型计算机病毒，其必杀技便是将该病毒注入到敌方数码兽体内将其构成数据全部破坏导致机能停止的\"剧毒流注\"。<br>嗜血伯爵假面+破坏型计算机病毒*3+吸血鬼之牙+死亡面罩=怨毒鬼手（自动合成）",
+    "acquisitionMethod": "银镜兽处特别训练[镜中世界]究极吸血魔兽boss掉落"
+  },
+  {
+    "id": "item-1751637110172",
+    "name": "飞龙之魂",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNlonghun_1-1751637109231.png",
+    "description": "隐藏着飞龙之力的龙魂，曾是最强魔枪「杜纳斯（Dynas）」的一部分。",
+    "acquisitionMethod": "副本[最终龙魂试炼掉落]"
+  },
+  {
+    "id": "item-1751637329097",
+    "name": "废弃数据",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNOrbofSlowness-1751637244840.jpg",
+    "description": "在这形成纯净的黑暗以及消极能量的\\\"被消去的数据的墓地\\\"中大量存在着这种数据，但这些数据的主人却无从得知。",
+    "acquisitionMethod": "黑暗区域深渊幽灵掉落"
+  },
+  {
+    "id": "item-1751637508615",
+    "name": "灾祸因子",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTN01887-1751637493687.png",
+    "description": "象征黑暗与混沌的灾祸因子。",
+    "acquisitionMethod": "副本[暗黑之骑士]掉落"
+  },
+  {
+    "id": "item-1751637807758",
+    "name": "数码危机",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/hongliane-1751637805744.png",
+    "description": "数码危机(Digital-Hazard)，刻印在对计算机有损害可能性的危险数码兽上。相反，如果这个能力为 和平所用，则数码世界可被守护。另一说法是拥有毁灭性力量的数码兽所特有的印记，控制不住的话会给数码世界带来毁灭性的浩劫。",
+    "acquisitionMethod": "灾祸因子*25合成<br>副本[暗黑之骑士]掉落"
+  },
+  {
+    "id": "item-1751639188719",
+    "name": "黑数码核心数据(Black Digitron)",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN02220-1751639198072.png",
+    "description": "黑数码核心数据（Black-Digitron）」是近年来确认的会改变形象为黑色的分泌物，它被认为以某种形式混入后姿态会暂时变成黑色，在此期间力量得到增强。<br>自动合成：黑数码核心数据+黑数码核心数据+废弃数据*10=IC：未知疫苗程式",
+    "acquisitionMethod": "副本[暗黑之骑士]掉落"
+  },
+  {
+    "id": "item-1751643975862",
+    "name": "涤罪之炎",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNdizuizhiyan-1751643961031.png",
+    "description": "净化一切的破坏之炎残留",
+    "acquisitionMethod": "副本[傲慢的魔王]掉落"
+  },
+  {
+    "id": "item-1751644005348",
+    "name": "被封印的权能",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/beifengyindequanneng-1751643978894.png",
+    "description": "法律、秩序、爱、传承、知识、道路...",
+    "acquisitionMethod": "涤罪之炎*13<br>副本[傲慢的魔王]掉落"
+  },
+  {
+    "id": "item-1751644180562",
+    "name": "？？？",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNyuyuzheng-1751644167685.png",
+    "description": "？？？",
+    "acquisitionMethod": "副本[傲慢的魔王]掉落"
+  },
+  {
+    "id": "item-1751644213397",
+    "name": "？？？(★★)",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNyuyuzheng2-1751644205026.png",
+    "description": "？？？",
+    "acquisitionMethod": "？？？*3合成"
+  },
+  {
+    "id": "item-1751644305839",
+    "name": "研究资料（时之数码合金）",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNGreaterRejuvScroll-1751644278919.jpg",
+    "description": "时之数码金属是数码世界本身的不可被破坏的“基础代码”所构成的虚构金属（“玩偶服”的本质与之相类似，但强度和表现形式不同），尽管其几乎无法被添加数码兽的程序代码之中，不过在被混入生物代码后它获得能与数码兽生体一体化的特质——与生物体融合后的类型被称作是“时之数码合金”<br>自动合成：时之数码金属 + 研究资料（时之数码合金） = 时之数码合金",
+    "acquisitionMethod": "神话时代钢铁猩猩兽掉落"
+  },
+  {
+    "id": "item-1751644352074",
+    "name": "时之数码金属",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNshizhishumahejinjinshu-1751700746210.png",
+    "description": "在被混入生物代码后的时之数码金属获得能与数码兽生体一体化的特质--与生物体融合后的类型被称作是“时之数码合金”",
+    "acquisitionMethod": "神话时代外星人兽掉落"
+  },
+  {
+    "id": "item-1751644417203",
+    "name": "挑战券[统一四方的皇帝]",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/huanglongruchang-1751644392923.png",
+    "description": "开启副本需要的挑战券",
+    "acquisitionMethod": "神话时代击杀四圣兽或者拉结尔兽处购买"
+  },
+  {
+    "id": "item-1751644521389",
+    "name": "熊玩偶服",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN_18_-1751644503410.png",
+    "description": "有目击者称鼻涕兽在进入“熊玩偶服”后进化成了熊仔兽，那么，猿猴兽的真身或许是——",
+    "acquisitionMethod": "神话时代击杀熊仔兽"
+  },
+  {
+    "id": "item-1751646492982",
+    "name": "黄龙矿碎片",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNINV_Jewelcrafting_Lionseye_01-1751646459270.png",
+    "description": "据说要让黄龙矿与生物一体化，需要从神话时代起经过漫长的岁月，现在与这种超硬度矿石一体化的数码兽，目前被发现的只有黄龙兽。<br>自动合成：黄龙矿残片*30=黄龙矿",
+    "acquisitionMethod": "副本[统一四方的皇帝]掉落"
+  },
+  {
+    "id": "item-1751646534938",
+    "name": "黄龙矿",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/huanglongkuang-1751646509379.png",
+    "description": "作为时之数码合金基础的矿石，以绝对硬度著称的假想矿石。<br><span style=\"color: blue;\">自动合成：<br>- 神执的律法+时之数码合金*2+黄龙矿=帝皇之牙<br>- 神拥的智慧+时之数码合金*2+黄龙矿=帝皇太极<br>- 神赐的护佑+时之数码合金*2+黄龙矿=帝皇之护<br>- 神思的秩序+时之数码合金*2+黄龙矿=帝皇之烈焰<br>- 神行的旅途+时之数码合金*2+黄龙矿=帝皇之雷霆<br>- 超合金铠甲+时之数码合金*2+黄龙矿=神兽之力<br><br>指令合成（将该物品放至第一格）：<br>-hc1  消耗5个，获得[IC：圣兽太极阵]</span>",
+    "acquisitionMethod": "黄龙矿碎片*30合成<br>副本[统一四方的皇帝]掉落"
+  },
+  {
+    "id": "item-1751650168181",
+    "name": "皇家骑士勋章",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNMedalionOfCourage-1751650117812.jpg",
+    "description": "<span style=\"color: blue;\">指令合成（将该物品放至第一格）：<br>-hc1  消耗4个，获得失落的财宝*1\n-hc2  消耗7个，获得[Y4型]自然属性程式(顽固兽)*5<br>-hc3  消耗11个，获得钢铁的意志（顽固兽、杰斯兽80契合道具）<br>-hc4  消耗10个，获得IC：践踏（力量相关伤害）</span>",
+    "acquisitionMethod": "[限时活动：究极对战!数码兽战斗终端02]击杀奥古杜兽获得"
+  },
+  {
+    "id": "item-1751650226311",
+    "name": "荣耀之证",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNrongyaozhizheng-1751650188929.png",
+    "description": "击败艾可萨兽的证明。<br><br>自动合成：荣耀之证*15=龙之宝玉",
+    "acquisitionMethod": "通关副本[君临顶点之龙帝]掉落（每日三个）"
+  },
+  {
+    "id": "item-1751650279428",
+    "name": "龙之宝玉",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNlongzhibaoyu-1751650251189.png",
+    "description": "<span style=\"color: blue;\">自动合成：<br>神的傲慢+龙之宝玉=龙帝の荣光（数码之魂）<br>吾辈的道路以此箭开创+时之数码合金*2+龙之宝玉=安布罗修斯（数码之魂）<br>灾厄魔铠+时之数码合金*2+龙之宝玉=卡雷德乌尔弗（防御插件）<br><br>指令合成（将该物品放至第一格）：<br>-hc1  消耗3个，获得龙之威严（万能插件）</span>",
+    "acquisitionMethod": "荣耀之证*15合成，副本[君临顶点之龙帝]掉落"
+  },
+  {
+    "id": "item-1751650305834",
+    "name": "魔术挂坠",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNMoShuGuaZui-1751650297652.png",
+    "description": "小丑魔术的产物，通过与小丑皇交换收藏获得，可用于小丑皇处兑换物品。<br><br>指令合成（将该物品放至第一格）：<br>-hc1：消耗10个，获得[Y2型]暗属性程式(小丑皇[联展进化])*5",
+    "acquisitionMethod": "小丑皇npc处兑换"
+  },
+  {
+    "id": "item-1751650367793",
+    "name": "御龙秘叶",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNyulongmiye-1751650329492.png",
+    "description": "<span style=\"color: blue;\">指令合成（将该物品放至第一格）：<br>-hc1  消耗4个，获得失落的财宝*1<br>-hc2  消耗14个，获得森之秘叶（红莲路线转移道具）<br>-hc3  消耗18个，获得IC：魔法（提高智力加成）</span>",
+    "acquisitionMethod": "[限时活动：未知世界的相遇]中击杀中世纪公爵兽获得"
+  },
+  {
+    "id": "item-1751650421830",
+    "name": "未知元素",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNweizhideyuansu-1751650396949.png",
+    "description": "未知的元素。<br><br>自动合成：未知元素*15=未知的意志",
+    "acquisitionMethod": "副本[未知的圣骑士]掉落（每日3个）"
+  },
+  {
+    "id": "item-1751650486688",
+    "name": "未知的意志",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNweizhideyizhi-1751650462084.png",
+    "description": "<span style=\"color: blue;\">自动合成：<br>1：中世纪公爵兽の友情（数码之魂）=神给予的爱+潜龙之魂+未知的意志*1<br>2：月华光刃（万能插件）=吾辈的道路以此箭开创+黄兽偃月刀+未知的意志*1<br>3：电磁光炮（万能插件）=超合金铠甲+雷电推进器+未知的意志*1<br>4：光之神枪「冈格尼尔」（万能插件，仅可携带一件）=格拉尼*2+未知的意志*3+重组的拼图*1<br>5：IC：Black Digitron=黑数码核心数据+未知的意志*3<br><br>指令合成（将该物品放至第一格）：<br>-hc1  消耗2个，获得融合的意志（联展进化道具）</span>",
+    "acquisitionMethod": "未知元素*15合成，副本[未知的圣骑士]掉落"
+  },
+  {
+    "id": "item-1751650547246",
+    "name": "天使之羽",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNshenshengyumao-1751650530360.png",
+    "description": "蕴含神圣力量的数码兽之羽。",
+    "acquisitionMethod": "古代数码世界击杀万维网大陆天使兽获得"
+  },
+  {
+    "id": "item-1751650594943",
+    "name": "大天使之羽",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNshenshengyumao-1751650580483.png",
+    "description": "蕴含神圣力量的数码兽之羽。",
+    "acquisitionMethod": "古代数码世界击杀万维网大陆神圣天女兽"
+  },
+  {
+    "id": "item-1751650747370",
+    "name": "古之封印",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNguzhifengyin-1751650660881.png",
+    "description": "凭借不屈的意志与相互协作，古代暴龙兽与古代加鲁鲁兽最终以自身生命为代价将光明兽堕落形态封印于（删除到）黑暗区域。如此一来、以巨大牺牲为代价，反叛战争终于为善的一方所平息。<br><br>自动合成：古之封印+神的仁慈+大天使之羽+被封印的权能*3=IC：逆神",
+    "acquisitionMethod": "古代数码世界战争前线击杀光明兽FM"
+  },
+  {
+    "id": "item-1751650836849",
+    "name": "矩阵核心",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNjuzhenhexin-1751650805355.png",
+    "description": "自动合成：<br>1：猎杀者之印（万能插件）=破坏者指环+恶魔印记*30+矩阵核心*14<br>2：矩阵引力（万能插件）=古代智慧纹章+天使之羽*20+矩阵核心*7<br>3：噩梦的敌托邦（万能插件）=凯王兽的护符（真）+古代智慧结晶*30+矩阵核心*7<br><br>指令合成（将该物品放至第一格）：<br>-hc1  消耗2个，获得黑色齿轮x1<br>-hc2  消耗14个，获得IC：敌托邦之矛<br>-hc3  消耗14个，获得理想乡（阿卡迪80契合道具）",
+    "acquisitionMethod": "副本[营造理想乡的最终兵器]掉落"
+  },
+  {
+    "id": "item-1751651018696",
+    "name": "古代智慧结晶",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNMoonStone-1751650991489.jpg",
+    "description": "古代智慧的结晶",
+    "acquisitionMethod": "神话时代风雪域怪物掉落"
+  },
+  {
+    "id": "item-1751651063375",
+    "name": "恶魔印记",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNDoomGuard-1751651042191.jpg",
+    "description": "阿卡迪兽在四处捕食与黑暗区域相关的数码兽（那些数码兽的身上被刻印下特殊的标记：恶魔印记）",
+    "acquisitionMethod": "古代数码世界击杀战争前线恶魔兽或者黑暗森林血狼兽"
+  },
+  {
+    "id": "item-1751651189642",
+    "name": "黑核",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/BTNOrbOfDarkness-1751651093505.jpg",
+    "description": "凝聚了大量黑暗力量的特异数码核。",
+    "acquisitionMethod": "古代数码世界战争前线击杀丧失撒旦兽"
+  },
+  {
+    "id": "item-1751651345086",
+    "name": "地狱之火",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNanyehuoyan-1751651316751.png",
+    "description": "混沌地狱之火。<br><br>自动合成：黑核+地狱之火*3+七魔核*7=愤怒之核（究极魔兽80道具前置）",
+    "acquisitionMethod": "古代数码世界黑暗森林究极魔兽处购买"
+  },
+  {
+    "id": "item-1751651473041",
+    "name": "邪恶的意志",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNUnholyAura-1751651433541.jpg",
+    "description": "增加附近单位20%移动速度和攻击速度。<br>千年兽残留的邪恶意志！<br><br>自动合成：邪恶的意志+黑核=黑暗种子",
+    "acquisitionMethod": "古代数码世界脚本森林千年兽掉落（需先击杀大德库拉兽）"
+  },
+  {
+    "id": "item-1751651605904",
+    "name": "黑暗之心",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNSoulGem-1751651539599.jpg",
+    "description": "千年兽内心所映射出的黑暗。<br><br>自动合成：时空悖论（月之千年兽联展道具）=黑暗之心+黑暗种子*999",
+    "acquisitionMethod": "古代数码世界从击杀脚本森林千年兽后出现的月之千年兽npc处购买（仅存在30s，且地图等级40级才能购买）"
+  },
+  {
+    "id": "item-1751651651190",
+    "name": "愤怒之核",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNOrbOfFire-1751651632972.jpg",
+    "description": "包含了大量愤怒情绪的数码核，每当击杀光属性数码兽都会助长其中的愤怒（尤其是神之列队的数码兽！）。\n<br>自动合成：<br>愤怒之核*333=无穷的怒火（究极魔兽80契合道具）<br><span style=\"color: red;\">击杀万维网大陆天使兽以填充</span>",
+    "acquisitionMethod": "黑核+地狱之火*3+七魔核*7=愤怒之核"
+  },
+  {
+    "id": "item-1751651840994",
+    "name": "净化药水",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNPotionOfClarity-1751651839931.jpg",
+    "description": "能够解开诅咒的药水。",
+    "acquisitionMethod": "神话时代黑暗森林击杀掉落"
+  },
+  {
+    "id": "item-1751651908545",
+    "name": "HP补给药水",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNPotionGreenSmall-1751651895105.jpg",
+    "description": "使用后能够恢复(100+5%)点生命值。",
+    "acquisitionMethod": "时空之墙处购买"
+  },
+  {
+    "id": "item-1751651933892",
+    "name": "MP补给药水",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNPotionBlueSmall-1751651925677.jpg",
+    "description": "使用后能够恢复(2+5%)点魔法值。",
+    "acquisitionMethod": "时空之墙处购买"
+  },
+  {
+    "id": "item-1751651988601",
+    "name": "神奇的药水",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/INV_Potion_111-1751651964371.png",
+    "description": "小丑皇特制药水，有着不合乎常理的作用。<br>使用后能够恢复(10000+40%)点生命值与(400+40%)点魔法值。",
+    "acquisitionMethod": "小丑皇npc处兑换"
+  },
+  {
+    "id": "item-1751652022500",
+    "name": "失落的财宝",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/many_gold-1751652004832.png",
+    "description": "一次性获得10000金币",
+    "acquisitionMethod": "小丑皇npc处兑换，皇家骑士勋章或者御龙秘叶兑换"
+  },
+  {
+    "id": "item-1751652090644",
+    "name": "7日签到礼包(月)",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNqiandao1-1751652077718.png",
+    "description": "点击使用后可获得以下物品：<br> - 数码密码[Y]*20<br> - 备份磁碟*6<br> - 进化的秘密III*40<br> - 次元拼图*1<br>签到一定天数的玩家可获得的礼包。",
+    "acquisitionMethod": "签到获得"
+  },
+  {
+    "id": "item-1751652127891",
+    "name": "14日签到礼包(月)",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNqiandao2-1751652113749.png",
+    "description": "点击使用后可获得以下物品：<br> - 数码密码[Y]*40<br> - 备份磁碟*9<br> - 魔术挂坠*2<br> - 次元拼图*2<br>签到一定天数的玩家可获得的礼包。",
+    "acquisitionMethod": "签到获得"
+  },
+  {
+    "id": "item-1751652166144",
+    "name": "21日签到礼包(月)",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNqiandao3-1751652162885.png",
+    "description": "点击使用后可获得以下物品：<br>\n - 备份磁碟*20<br> - 进化的秘密IV*40<br> - 次元拼图*2<br>签到一定天数的玩家可获得的礼包。",
+    "acquisitionMethod": "签到获得"
+  },
+  {
+    "id": "item-1751652209614",
+    "name": "暗黑之馈赠",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNPhaseShift-1751652208191.jpg",
+    "description": "点击使用后可获得以下物品：<br>100% - 灾祸因子<br>1% - 数码危机<br>通过暗黑之骑士获得的奖励。",
+    "acquisitionMethod": "主线任务获得"
+  },
+  {
+    "id": "item-1751652278974",
+    "name": "进化自选礼盒(2024)",
+    "category": "活动道具",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN02134-1751652258578.png",
+    "description": "可以从往期80契合道具中自选一项：<br>1、炎狩狱镰（神圣天女兽FM）<br>2、神意的代行者（神圣天女兽[三大天使]）<br>3、魔女的偏爱（莉莉丝兽[七大魔王]）<br>4、启示录兽の怨念（小丑皇[黑暗四天王]、机械邪龙兽[黑暗四天王]）<br>5、重组的拼图",
+    "acquisitionMethod": "限时活动获得"
+  },
+  {
+    "id": "item-1751652385897",
+    "name": "自选礼盒(野外稀有掉落)",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNINV_Misc_EngGizmos_18-1751652354780.png",
+    "description": "可以从以下几种野外怪物掉落的奖励中任选一项：<br>领主令、燃烧意志、风暴之眼、龙甲、死亡面罩、大型蜥蜴鳞片、信魔者指环、神秘卷轴",
+    "acquisitionMethod": "商城积分兑换，可疑的邮件兑换"
+  },
+  {
+    "id": "item-1751652411103",
+    "name": "可疑的邮件",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNkeyideyoujian-1751652432477.png",
+    "description": "一封可疑的邮件。",
+    "acquisitionMethod": "自选礼盒(逆袭的超恶魔)兑换"
+  },
+  {
+    "id": "item-1751652531561",
+    "name": "自选礼盒(鹦鹉兽来袭)",
+    "category": "活动道具",
+    "image": "http://14.103.153.196/js/data/guides/src/items/活动道具/BTNINV_Misc_Gift_03-1751652530678.png",
+    "description": "",
+    "acquisitionMethod": "活动[鹦鹉兽来袭]中击杀鹦鹉兽掉落"
+  },
+  {
+    "id": "item-1751652607484",
+    "name": "梦幻回忆",
+    "category": "活动道具",
+    "image": "http://14.103.153.196/js/data/guides/src/items/活动道具/BTNitem_25-1751652587115.png",
+    "description": "输入-dh消耗1个「梦幻回忆」，将当前回忆值（至少1000）转换为一定数量的永恒回忆积分（单次转换上限：16）<br>提示：于「少女的梦幻世间」对厄俄斯兽每造成1w伤害可累计1点回忆值。但每次进入副本都会重新清空回忆值。",
+    "acquisitionMethod": "自选礼盒(鹦鹉兽来袭)兑换"
+  },
+  {
+    "id": "item-1751652684018",
+    "name": "撒旦时刻",
+    "category": "活动道具",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNsadanshike-1751652654764.png",
+    "description": "输入-dh消耗1个「撒旦时刻」，将当前击败的魔王对应的七大罪的回归进度提高50%。",
+    "acquisitionMethod": "限时活动击杀光明兽幼虫掉落"
+  },
+  {
+    "id": "item-1751652789989",
+    "name": "邪恶水晶",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNxieeshuijing-1751652752554.png",
+    "description": "蕴藏终末千年兽邪恶力量的水晶。<br><br>自动合成：邪恶水晶*24=邪神遗产",
+    "acquisitionMethod": "副本[带来破灭的终极邪神]掉落"
+  },
+  {
+    "id": "item-1751652831969",
+    "name": "挑战券[带来破灭的终极邪神]",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/xieshenjianglin-1751652797245.png",
+    "description": "开启副本需要的挑战券",
+    "acquisitionMethod": "古代数码世界击杀千年兽掉落，拉结尔兽处购买"
+  },
+  {
+    "id": "item-1751652860657",
+    "name": "邪神遗产",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/BTNxieshenyichan-1751652850275.png",
+    "description": "自动合成：<br>1：帝皇之牙+千年兽的数据+邪神遗产=邪神的野望（攻击插件）<br>2：帝皇太极+千年兽的数据+邪神遗产=复苏的暗之魂（攻击插件）<br>3：帝皇之护+千年兽的数据+邪神遗产=咒缚锁链（防御插件）<br>4：神选的传承+神给予的爱+千年兽的数据+邪神遗产=时间悖论（防御插件）<br>5：帝皇之烈焰+千年兽的数据+邪神遗产=时光咆哮（速度插件）<br>6：帝皇之雷霆+千年兽的数据+邪神遗产=遮天的黑暗（速度插件）<br><br>指令合成（将该物品放至第一格）：<br>-hc1  消耗5个，获得[IC：邪神降临]",
+    "acquisitionMethod": "邪恶水晶*24兑换，副本[带来破灭的终极邪神]掉落"
+  },
+  {
+    "id": "item-1751693779191",
+    "name": "合成芯片[A]",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/Lv3_up-1751693767586.png",
+    "description": "分子兽研发的全新芯片，是合成B级装备必备的材料。",
+    "acquisitionMethod": "合成芯片[B]*6=合成芯片[A](自动合成)"
+  },
+  {
+    "id": "item-1751694148758",
+    "name": "IC：利刃",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNOrcMeleeUpTwo-1751694119901.jpg",
+    "description": "点击激活/使用该IC技能<br>效果：使用后5分钟内提高50%攻击加成",
+    "acquisitionMethod": "风雪域下方芳香兽npc处使用髑骑核*100兑换"
+  },
+  {
+    "id": "item-1751694184854",
+    "name": "IC：坚盾",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNThoriumArmor-1751694200528.jpg",
+    "description": "点击激活/使用该IC技能<br>效果：使用后5分钟内提高10%伤害减免",
+    "acquisitionMethod": "风雪域下方芳香兽npc处使用髑骑核*100兑换"
+  },
+  {
+    "id": "item-1751694301088",
+    "name": "IC：克劳·索拉斯",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/kelaosuolasi-1751694276294.png",
+    "description": "点击激活/使用该IC技能<br>效果（主动）：5s内对拥有护盾的敌人的伤害结果提高50%。若为物理伤害且超过目标最大生命1%则提前移除护盾。",
+    "acquisitionMethod": "风雪域下方芳香兽npc处IC：利刃*3兑换"
+  },
+  {
+    "id": "item-1751695080117",
+    "name": "IC：逆袭",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNMoonStone-1751695048038.jpg",
+    "description": "点击激活/使用该IC技能<br>效果：使用后5分钟内提高10%冷却缩减",
+    "acquisitionMethod": "地狱使者兽npc处使用可疑的邮件*30兑换"
+  },
+  {
+    "id": "item-1751695165944",
+    "name": "IC：勇者封印",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/thumb_597-1751695159174.png",
+    "description": "点击激活/使用该IC技能<br>效果：使用后立即扣除自身50%当前生命，在5s后获得扣除生命50%的护盾值，持续10s。",
+    "acquisitionMethod": "终结之命运*10 = IC：勇者封印"
+  },
+  {
+    "id": "item-1751695207967",
+    "name": "IC：蕉皮滑行",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/jiaopihuaxing-1751695194510.png",
+    "description": "点击激活/使用该IC技能<br>效果：立即向面向角度滑行600码距离。",
+    "acquisitionMethod": "神话时代钢铁猩猩兽掉落"
+  },
+  {
+    "id": "item-1751695238125",
+    "name": "IC：行星毁灭者",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/waixingshou-1751695226198.png",
+    "description": "点击激活/使用该IC技能<br>效果：立即向面向角度滑行600码距离。",
+    "acquisitionMethod": "神话时代外星人兽掉落"
+  },
+  {
+    "id": "item-1751695295531",
+    "name": "IC：太极",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNic_taiji-1751695267321.png",
+    "description": "点击激活/使用该IC技能<br>效果：使用后5分钟内提高20%技能加成",
+    "acquisitionMethod": "通关副本[统一四方的皇帝]100次获得"
+  },
+  {
+    "id": "item-1751695343329",
+    "name": "IC：践踏",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNjianta-1751695319418.png",
+    "description": "点击激活/使用该IC技能<br>效果：对400范围敌人造成力量x80点伤害后0.5s再对800范围敌人造成力量x40点伤害。",
+    "acquisitionMethod": "皇家骑士勋章*10兑换"
+  },
+  {
+    "id": "item-1751695386266",
+    "name": "IC：未知疫苗程式",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNyimiaochengshi-1751695379077.png",
+    "description": "点击激活/使用该IC技能<br>效果：似乎能够消除距离最近的友方数码兽身上的某种病毒的影响（需充能）",
+    "acquisitionMethod": "黑数码核心数据+黑数码核心数据+废弃数据*10=IC：未知疫苗程式"
+  },
+  {
+    "id": "item-1751695491143",
+    "name": "IC：魔法",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNManaStone-1751695414037.jpg",
+    "description": "点击激活/使用该IC技能<br>效果：使用后5分钟内提高50%智力加成",
+    "acquisitionMethod": "御龙秘叶*18兑换"
+  },
+  {
+    "id": "item-1751695542587",
+    "name": "IC：BlackDigitron",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BlackDigitron-1751695530228.png",
+    "description": "点击激活/使用该IC技能<br>效果：提高15%最终增伤，降低15%最终减伤。持续5分钟。<br>特殊：部分数码兽使用时可能临时改变姿态。<br><span style=\"color: green;\">- 激活前需拥有IC：未知疫苗程式</span>",
+    "acquisitionMethod": "黑数码核心数据+未知的意志*3=IC：Black Digitro"
+  },
+  {
+    "id": "item-1751695628262",
+    "name": "IC：戈耳工之眼",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNgeergongzhiyan-1751695608824.png",
+    "description": "点击激活/使用该IC技能<br>效果：立即令600范围内敌人进入击晕状态3s。",
+    "acquisitionMethod": "古代数码世界大德库拉兽掉落"
+  },
+  {
+    "id": "item-1751695677148",
+    "name": "IC：敌托邦之矛",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN01_73-1751695659036.png",
+    "description": "点击激活/使用该IC技能<br>效果：将额外伤害贯穿次数变为1（即接下来的1次伤害获得贯穿效果）。",
+    "acquisitionMethod": "矩阵核心*14兑换"
+  },
+  {
+    "id": "item-1751695710996",
+    "name": "IC：慈爱",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNshenshengqipao-1751695696250.png",
+    "description": "点击激活/使用该IC技能<br>效果：使用后5分钟内提高20%治疗加成",
+    "acquisitionMethod": "古代数码世界神圣天女兽掉落"
+  },
+  {
+    "id": "item-1751695750320",
+    "name": "IC：逆神",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/nishen-1751695725833.png",
+    "description": "点击激活/使用该IC技能<br>效果：使用后10秒内增加自身10%技能暴击与20%技能暴伤，cd30s。",
+    "acquisitionMethod": "古之封印+神的仁慈+大天使之羽+被封印的权能*3=IC：逆神"
+  },
+  {
+    "id": "item-1751695786178",
+    "name": "IC：回溯",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNzhongqianE-1751695777545.png",
+    "description": "点击激活/使用该IC技能<br>效果：强制将自身的生命值和魔法值重置为上限的50%（无视任何治疗加成、禁疗效果）。",
+    "acquisitionMethod": "通关副本[带来破灭的终极邪神]100次获得"
+  },
+  {
+    "id": "item-1751700795625",
+    "name": "时之数码合金",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNshizhishumahejin-1751700781709.png",
+    "description": "在被混入生物代码后的时之数码金属获得能与数码兽生体一体化的特质--与生物体融合后的类型被称作是“时之数码合金”",
+    "acquisitionMethod": "时之数码金属 + 研究资料（时之数码合金） = 时之数码合金"
+  },
+  {
+    "id": "item-1751702330275",
+    "name": "重组的拼图",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/item_smpt4-1751702241191.png",
+    "description": "世界的中枢所赋予的拼图。<br>使用后能增加当前数码兽的契合度至90%，仅限80%契合度使用。",
+    "acquisitionMethod": "拉结尔兽处兑换"
+  },
+  {
+    "id": "item-1751702605688",
+    "name": "千年兽的数据",
+    "category": "材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/材料/qiannian1-1751702582668.png",
+    "description": "千年兽残留的数据资料，有待解析。",
+    "acquisitionMethod": "古代数码世界击杀战争前线千年兽"
+  },
+  {
+    "id": "item-1751702902946",
+    "name": "难以形容之物",
+    "category": "任务道具",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTNSelectHeroOn-1751702889258.jpg",
+    "description": "懂的都懂，不懂的我也不多说，总之跟鼻涕兽很有缘。",
+    "acquisitionMethod": "矿石兽支线获得"
+  },
+  {
+    "id": "item-1751703213309",
+    "name": "次元拼图",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/item_smpt3-1751703181787.png",
+    "description": "使用后能扩充次元储物间的格数，最多扩充至70格。<br><br>指令合成（将该物品放至第一格）：<br>-hc1  消耗2个合成1个扩容磁碟（材料背包）",
+    "acquisitionMethod": "周一黑暗森林斩伐兽掉落<br>签到"
+  },
+  {
+    "id": "item-1752059801885",
+    "name": "摇钱树种子",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/zhongzi-1752059796720.png",
+    "description": "能种出摇钱树的种子，在不同的土地上收成也许会不同。（成长过程中可能会被附近的怪物破坏，建议种在安全的地方）<br>成熟时间：15分钟<br>友情提示：投资有风险，种树需谨慎。谨防掉线，从我做起。",
+    "acquisitionMethod": "修炼镇巴鲁兽处购买"
+  },
+  {
+    "id": "item-1752243136760",
+    "name": "黑色齿轮",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/BTN_33_-1752245630862.webp",
+    "description": "黑色齿轮x1",
+    "acquisitionMethod": "周日击杀阿卡迪兽"
+  },
+  {
+    "id": "item-1752256674923",
+    "name": "残留的数码精神",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/QQ20250712_015253-1752256646045.png",
+    "description": "为了防止能打败自己的力量出现，千年兽污染、破坏了大量的「数码精神」，但仍然存在残留的数码精神。<br>\n\n<span style=\"color: blue;\">自动合成：<br>残留的数码精神*15=古代之力</span>",
+    "acquisitionMethod": "副本「究极的古代龙」"
+  },
+  {
+    "id": "item-1752256723562",
+    "name": "古代之力",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/QQ20250712_015235-1752256705915.png",
+    "description": "<span style=\"color: blue;\">自动合成：<br>\n1：正电子激光炮（数码之魂）=ZERO-ARMS-格拉尼（Grani）+古代之力*2<br>\n2：战士的觉醒（万能插件）=古代智慧纹章+希望之光*5+古代之力*1<br>\n3：正义之心（万能插件）=奇迹手镯+希望之光*5+古代之力*1<br>\n4：破坏之戒（万能插件）=毁灭魔枪+希望之光*5+古代之力*1</span><br>\n\n<span style=\"color: green;\">指令合成（将该物品放至第一格）：<br>\n-hc1 消耗2个，获得觉醒正义之力（帝皇龙80契合）</span>",
+    "acquisitionMethod": "副本「究极的古代龙」"
+  },
+  {
+    "id": "item-1752256788994",
+    "name": "希望之光",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/QQ20250712_015938-1752256787742.png",
+    "description": "没有放弃「希望」的数码兽们的力量。<br>\n\n<span style=\"color: green;\">指令合成（将该物品放至第一格）：<br>\n-hc1  消耗20个，获得圣剑余辉*1</span>",
+    "acquisitionMethod": "副本「始祖的回归」"
+  },
+  {
+    "id": "item-1752256826621",
+    "name": "圣剑余辉",
+    "category": "副本材料",
+    "image": "http://14.103.153.196/js/data/guides/src/items/副本材料/QQ20250712_015303-1752256813229.png",
+    "description": "<span style=\"color: blue;\">自动合成：<br>\n1：奥米加之剑（数码之魂）=安布罗修斯+圣剑余辉*2+古代之力*2+重组的拼图*1<br>\n2：救世荣光（数码之魂）=龙帝の荣光+圣剑余辉*1+古代之力*1<br>\n3：救世之旅（防御插件）=卡雷德乌尔弗+圣剑余辉*1+古代之力*1</span><br>\n\n<span style=\"color: green;\">指令合成（将该物品放至第一格）：<br>\n-hc1，消耗7个圣剑余辉，获得IC：奥米加之剑（暂未开放）</span>",
+    "acquisitionMethod": "副本「始祖的回归」"
+  },
+  {
+    "id": "item-1752943345089",
+    "name": "IC：奥米加之剑",
+    "category": "消耗品",
+    "image": "http://14.103.153.196/js/data/guides/src/items/消耗品/xianshi2-1752943300720.jpg",
+    "description": "点击激活/使用该IC技能<br />效果：使用0.3s后开始抽取魔法值，时间越长射程越远，当魔法值低于1%时自动释放（按下ESC立即释放）。对直线敌人造成全属性x100x充能%点伤害，充能上限200%。<br /><span style=\"color: red;\">特殊：当帝皇龙甲兽FM（90%）使用时，若晶片工厂内（需取出图鉴）存在奥米加兽（90%），则将契合度提高至100%。</span><br /><span style=\"color: green;\">- 激活前需拥有IC：行星毁灭者</span>",
+    "acquisitionMethod": "圣剑余辉*7合成"
+  }
+]

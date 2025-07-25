@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据库管理 - 数码兽传说</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-database mr-2"></i>数据库管理
+            </h1>
+            
+            <!-- 数据库状态 -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">数据库状态</h2>
+                <div id="database-status" class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>
+                        <span>检查中...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">操作</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button id="refresh-status" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
+                        <i class="fas fa-refresh mr-2"></i>刷新状态
+                    </button>
+                    <button id="sync-to-json" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
+                        <i class="fas fa-sync mr-2"></i>同步到JSON
+                    </button>
+                    <button id="validate-data" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg">
+                        <i class="fas fa-check mr-2"></i>验证数据
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 数据一致性检查结果 -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">数据一致性</h2>
+                <div id="validation-results" class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-gray-500">点击"验证数据"按钮查看结果</p>
+                </div>
+            </div>
+            
+            <!-- 模式切换 -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">数据源模式</h2>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex items-center space-x-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="data-mode" value="database" class="mr-2">
+                            <span>数据库模式</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="data-mode" value="json" class="mr-2">
+                            <span>JSON文件模式</span>
+                        </label>
+                        <button id="toggle-mode" class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg ml-4">
+                            <i class="fas fa-toggle-on mr-2"></i>切换模式
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 日志输出 -->
+            <div>
+                <h2 class="text-xl font-semibold mb-4">操作日志</h2>
+                <div id="log-output" class="bg-black text-green-400 p-4 rounded-lg h-64 overflow-y-auto font-mono text-sm">
+                    <div class="log-entry">[INFO] 数据库管理界面已加载</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局变量
+        let currentStatus = null;
+        
+        // 日志函数
+        function addLog(message, type = 'INFO') {
+            const logOutput = document.getElementById('log-output');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            logEntry.innerHTML = `[${timestamp}] [${type}] ${message}`;
+            logOutput.appendChild(logEntry);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        }
+        
+        // API调用函数
+        async function apiCall(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    credentials: 'include',
+                    ...options
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                return await response.json();
+            } catch (error) {
+                addLog(`API调用失败: ${error.message}`, 'ERROR');
+                throw error;
+            }
+        }
+        
+        // 获取数据库状态
+        async function getDatabaseStatus() {
+            try {
+                addLog('获取数据库状态...');
+                const status = await apiCall('/api/admin/database/status');
+                currentStatus = status;
+                updateStatusDisplay(status);
+                addLog('数据库状态获取成功', 'SUCCESS');
+            } catch (error) {
+                updateStatusDisplay({ error: error.message });
+            }
+        }
+        
+        // 更新状态显示
+        function updateStatusDisplay(status) {
+            const statusDiv = document.getElementById('database-status');
+            
+            if (status.error) {
+                statusDiv.innerHTML = `
+                    <div class="flex items-center text-red-600">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span>错误: ${status.error}</span>
+                    </div>
+                `;
+                return;
+            }
+            
+            const connectionStatus = status.database_connected ? 
+                '<span class="text-green-600"><i class="fas fa-check-circle mr-1"></i>已连接</span>' :
+                '<span class="text-red-600"><i class="fas fa-times-circle mr-1"></i>未连接</span>';
+                
+            statusDiv.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <strong>数据库连接:</strong> ${connectionStatus}
+                    </div>
+                    <div>
+                        <strong>当前模式:</strong> ${status.config.USE_DATABASE ? '数据库' : 'JSON文件'}
+                    </div>
+                    <div>
+                        <strong>降级模式:</strong> ${status.config.FALLBACK_TO_JSON ? '启用' : '禁用'}
+                    </div>
+                    <div>
+                        <strong>双写模式:</strong> ${status.config.DUAL_WRITE ? '启用' : '禁用'}
+                    </div>
+                </div>
+            `;
+            
+            // 更新模式选择
+            const modeRadios = document.querySelectorAll('input[name="data-mode"]');
+            modeRadios.forEach(radio => {
+                if (radio.value === 'database' && status.config.USE_DATABASE) {
+                    radio.checked = true;
+                } else if (radio.value === 'json' && !status.config.USE_DATABASE) {
+                    radio.checked = true;
+                }
+            });
+        }
+        
+        // 同步数据到JSON
+        async function syncToJSON() {
+            try {
+                addLog('开始同步数据到JSON文件...');
+                const result = await apiCall('/api/admin/database/sync-to-json', {
+                    method: 'POST'
+                });
+                addLog('数据同步完成', 'SUCCESS');
+                console.log('同步结果:', result);
+            } catch (error) {
+                addLog(`数据同步失败: ${error.message}`, 'ERROR');
+            }
+        }
+        
+        // 验证数据一致性
+        async function validateData() {
+            try {
+                addLog('开始验证数据一致性...');
+                const result = await apiCall('/api/admin/database/validate');
+                updateValidationResults(result.results);
+                addLog('数据一致性验证完成', 'SUCCESS');
+            } catch (error) {
+                addLog(`数据验证失败: ${error.message}`, 'ERROR');
+            }
+        }
+        
+        // 更新验证结果显示
+        function updateValidationResults(results) {
+            const resultsDiv = document.getElementById('validation-results');
+            let html = '<div class="space-y-2">';
+            
+            Object.entries(results).forEach(([type, result]) => {
+                if (result.error) {
+                    html += `
+                        <div class="flex items-center text-red-600">
+                            <i class="fas fa-times-circle mr-2"></i>
+                            <span><strong>${type}:</strong> ${result.error}</span>
+                        </div>
+                    `;
+                } else {
+                    const icon = result.consistent ? 'fa-check-circle text-green-600' : 'fa-exclamation-triangle text-yellow-600';
+                    html += `
+                        <div class="flex items-center">
+                            <i class="fas ${icon} mr-2"></i>
+                            <span><strong>${type}:</strong> 数据库(${result.dbCount}) vs JSON(${result.jsonCount}) - ${result.consistent ? '一致' : '不一致'}</span>
+                        </div>
+                    `;
+                }
+            });
+            
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+        
+        // 切换模式
+        async function toggleMode() {
+            try {
+                const selectedMode = document.querySelector('input[name="data-mode"]:checked');
+                if (!selectedMode) {
+                    addLog('请选择一个模式', 'ERROR');
+                    return;
+                }
+                
+                const useDatabase = selectedMode.value === 'database';
+                addLog(`切换到${useDatabase ? '数据库' : 'JSON文件'}模式...`);
+                
+                const result = await apiCall('/api/admin/database/toggle-mode', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ useDatabase })
+                });
+                
+                addLog(`模式切换成功: ${result.current_mode}`, 'SUCCESS');
+                await getDatabaseStatus(); // 刷新状态
+            } catch (error) {
+                addLog(`模式切换失败: ${error.message}`, 'ERROR');
+            }
+        }
+        
+        // 事件监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化
+            getDatabaseStatus();
+            
+            // 按钮事件
+            document.getElementById('refresh-status').addEventListener('click', getDatabaseStatus);
+            document.getElementById('sync-to-json').addEventListener('click', syncToJSON);
+            document.getElementById('validate-data').addEventListener('click', validateData);
+            document.getElementById('toggle-mode').addEventListener('click', toggleMode);
+        });
+    </script>
+</body>
+</html>

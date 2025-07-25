@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>综合图鉴 - 数码兽传说</title>
+  <link rel="icon" type="image/jpeg" href="/favicon.webp">
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    /* 与digimon.html类似的卡片样式 */
+    .item-card {
+      display: block; /* 确保内容垂直堆叠 */
+      background-color: #fff;
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    }
+    .item-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 6px 6px 0 rgba(55,125,255,0.3);
+    }
+    .item-image {
+      width: 100%;
+      height: 96px;
+      object-fit: contain;
+      margin-bottom: 0.75rem;
+    }
+    .item-name {
+      font-weight: 600;
+      color: #1a202c;
+    }
+    .filter-btn {
+      transition: all 0.3s ease;
+      border: 2px solid #3b82f6;
+    }
+    .filter-btn.active {
+      background-color: #3b82f6;
+      color: white;
+    }
+     .nav-item {
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item:hover {
+      background-color: #3b82f6;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Item detail modal font override */
+    .pixel-border-thick * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+    }
+  </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+  <div class="p-bgMonster"></div>
+  
+  <header class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl md:text-5xl text-shadow-lg">
+        <span class="bg-blue-600 px-4 py-2 rounded pixel-border text-white">数码兽传说</span>
+      </h1>
+      <div class="flex flex-col items-end gap-2">
+        <div class="text-sm md:text-base bg-blue-100 px-4 py-2 rounded pixel-border">
+          <span id="current-date" class="text-blue-800"></span>
+        </div>
+        <a href="https://qm.qq.com/q/h4YDaAXr3O" target="_blank" 
+           class="text-sm md:text-base bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded pixel-border transition-colors">
+           Q群: 230494484
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="container mx-auto px-4 mb-8">
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">首页</a>
+      <a href="digimon" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">数码兽图鉴</a>
+      <a href="guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">地图攻略</a>
+      <a href="equipment" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">装备图鉴</a>
+      <a href="item-guide" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">综合图鉴</a>
+      <a href="changelog" class="nav-item px-6 py-3 rounded-lg pixel-border transition-all duration-300">更新日志</a>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 flex-grow">
+    <section class="bg-white bg-opacity-50 rounded-xl p-6 mb-8 pixel-border max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center mb-6 text-blue-700">综合图鉴</h2>
+      
+      <div class="mb-6 flex justify-center">
+        <div class="relative w-full md:w-1/2">
+          <input type="text" id="item-search" placeholder="搜索道具名称..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+      </div>
+      
+      <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-6">
+        <!-- Category filter buttons will be dynamically loaded here -->
+      </div>
+      
+      <div id="item-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-12">
+        <!-- Item cards will be dynamically loaded here -->
+      </div>
+      
+      <!-- Pagination Controls -->
+      <div class="flex justify-center items-center mt-8 gap-4" id="item-pagination-controls" style="display: none;">
+          <!-- Dynamically generated buttons will go here -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-wrapper mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm py-4">
+      <div class="footer-text flex flex-col">
+        <p>© 2025 数码兽传说ORPG地图</p>
+        <p>作者 | 半盏、溡珖</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // 设置当前日期
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN');
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Logic to render the item guide will be added in main.js
+      // For now, this just initializes the date.
+    });
+  </script>
+</body>
+</html> 

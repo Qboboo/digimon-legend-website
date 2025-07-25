@@ -1,0 +1,13 @@
+{
+  "name": "digimon-legend-website",
+  "version": "1.0.0",
+  "description": "数码兽图鉴网站前端",
+  "main": "js/main.js",
+  "scripts": {
+    "serve": "http-server -p 3000 -a 0.0.0.0 -c-1",
+    "dev": "http-server -p 3000 -a 0.0.0.0 -c-1"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+} 
